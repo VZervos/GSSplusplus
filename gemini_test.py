@@ -4,7 +4,7 @@ import sys
 from typing import Optional
 
 # Your API key
-API_KEY = "AIzaSyBf7J4568JtOP122Q820BO4D05AfYLdJ6A"
+API_KEY = ""
 
 # API endpoint for Gemini 2.5 Flash change model name to use different models
 model_name = "gemini-2.5-flash"
