@@ -62,12 +62,33 @@ def should_use_llm(entities, verbs, query):
     return False
 
 def refine_with_llm(query: str) -> dict:
-    response = call_gemini_api(query)
-    text = extract_response_text(response)
+    prompt = f"""
+Extract all entities, verbs, and possible synonyms from the following question.
+
+Return ONLY valid JSON. No explanation. No extra text.
+
+JSON format:
+{{
+  "entities": ["entity1", "entity2"],
+  "verbs": ["verb1"],
+  "synonyms": ["synonym1", "synonym2"]
+}}
+
+Question: "{query}"
+
+Respond ONLY with the JSON object.
+"""
+
+    response = call_gemini_api(prompt)
+    text = extract_response_text(response).strip()
+
+    # Clean JSON → sometimes Gemini adds ```json ...``` wrappers
+    text = text.replace("```json", "").replace("```", "").strip()
 
     try:
         return json.loads(text)
-    except:
+    except Exception as e:
+        print("❌ LLM JSON parse failed. Text was:", text)
         return {
             "entities": ["UnknownEntity"],
             "verbs": ["unknownVerb"],
