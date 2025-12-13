@@ -1,10 +1,10 @@
 from utils.dbpedia import fetch_triples_with_importance, extract_entity_name_from_uri
 
 
-def compute_importance(TRIPLES_PER_ENTITY_LIMIT: int, all_triples, entity_uris, uri_importance_map):
+def compute_importance(all_triples, entity_uris, uri_importance_map, triples_per_entity_limit = 50):
     for entity, uri in entity_uris.items():
         print(f"  Processing: {entity}")
-        result = fetch_triples_with_importance(uri, TRIPLES_PER_ENTITY_LIMIT)
+        result = fetch_triples_with_importance(uri, triples_per_entity_limit)
 
         total_degree = result["total_degree"]
         normalized_score = min(10.0, 1.0 + (total_degree ** 0.5) / 10.0) if total_degree > 0 else 0.0

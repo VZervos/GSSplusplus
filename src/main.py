@@ -43,7 +43,7 @@ def main():
             print(f"  {len(triples)} triples found")
             print(f"  {len(importance_map)} URIs with importance scores")
             
-            # Print final list of triples with importance scores
+            # Print the final list of triples with importance scores
             if triples:
                 print(f"\nFinal triples with importance scores:")
                 for triple in triples:

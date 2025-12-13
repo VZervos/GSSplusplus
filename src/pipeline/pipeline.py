@@ -22,14 +22,13 @@ def pipeline(query):
         entity_uris[entity] = uri
         print(f"  {entity} -> {uri}")
 
-    # STEP 4 & 5: Retrieve triples and compute importance for entity URIs
+    # STEP 4 & 5: Retrieve triples and compute the importance for entity URIs
     print("Step 4 & 5: Retrieving triples and computing importance...")
     all_triples = []
     uri_importance_map = {}
-    TRIPLES_PER_ENTITY_LIMIT = 50
 
     query_keywords = extract_query_keywords(extraction, query)
-    compute_importance(TRIPLES_PER_ENTITY_LIMIT, all_triples, entity_uris, uri_importance_map)
+    compute_importance(all_triples, entity_uris, uri_importance_map)
     print(f"  Total: {len(all_triples)} triples, {len(uri_importance_map)} URIs with importance scores")
     
     # STEP 6: Assign importance scores to triples based on their URIs
