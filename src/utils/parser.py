@@ -1,6 +1,6 @@
 import json
 import spacy
-from services.gemini_client import call_gemini_api
+from src.services.gemini_client import call_gemini_api
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -27,9 +27,9 @@ def extract_entities(query: str) -> dict:
     # Extract verbs
     verbs = [t.lemma_ for t in doc if t.pos_ == "VERB"] or ["unknownVerb"]
 
-    # 🔍 Decide if LLM is needed
+    # Decide if LLM is needed
     if should_use_llm(all_entities, verbs, query):
-        print("➡️ Using LLM to refine entities and expand synonyms...")
+        print("-> Using LLM to refine entities and expand synonyms...")
         return refine_with_llm(query)
 
     # Return spaCy-only extraction
@@ -88,7 +88,7 @@ Respond ONLY with the JSON object.
     try:
         return json.loads(text)
     except Exception as e:
-        print("❌ LLM JSON parse failed. Text was:", text)
+        print("ERROR: LLM JSON parse failed. Text was:", text)
         return {
             "entities": ["UnknownEntity"],
             "verbs": ["unknownVerb"],

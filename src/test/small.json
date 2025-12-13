@@ -1,0 +1,883 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "question": [
+        {
+          "language": "en",
+          "string": "List all boardgames by GMT."
+        },
+        {
+          "language": "de",
+          "string": "Liste die Brettspiele von GMT auf."
+        },
+        {
+          "language": "de",
+          "string": "Zeige mir alle Brettspiele von GMT."
+        },
+        {
+          "language": "ru",
+          "string": "Перечислите все игры GMT."
+        },
+        {
+          "language": "lt",
+          "string": "Išvardinkite visus stalo žaidimus pagal GMT."
+        },
+        {
+          "language": "uk",
+          "string": "Перерахуйте всі ігри GMT."
+        },
+        {
+          "language": "lt",
+          "string": "Išvardykite visus GMT žaidimus."
+        },
+        {
+          "language": "fr",
+          "string": "Listez tous les jeux de société de GMT."
+        },
+        {
+          "language": "es",
+          "string": "¿Qué juegos de mesa fueron hechos por GMT?",
+          "keywords": "juego de mesa ,  GMT "
+        }
+      ],
+      "query": {
+        "sparql": "PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX res: <http://dbpedia.org/resource/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?uri WHERE { ?uri dbo:publisher res:GMT_Games }"
+      },
+      "answers": [
+        {
+          "head": {
+            "link": [],
+            "vars": [
+              "uri"
+            ]
+          },
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Chandragupta_(board_game)"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Fields_of_Fire_(game)"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Sword_of_Rome"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Paths_of_Glory_(board_game)"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Commands_&_Colors:_Ancients"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Labyrinth:_The_War_on_Terror,_2001_–_%3F"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Twilight_Struggle"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Washington's_War"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "question": [
+        {
+          "language": "en",
+          "string": "Who developed Skype?"
+        },
+        {
+          "language": "de",
+          "string": "Wer entwickelte Skype?"
+        },
+        {
+          "language": "de",
+          "string": "Wer hat Skype entwickelt?"
+        },
+        {
+          "language": "ru",
+          "string": "Кто разработал скайп"
+        },
+        {
+          "language": "ru",
+          "string": "Кто создал Скайп?"
+        },
+        {
+          "language": "ru",
+          "string": "Кто разработал Skype?"
+        },
+        {
+          "language": "lt",
+          "string": "Kas sukūrė „Skype“?"
+        },
+        {
+          "language": "uk",
+          "string": "Хто розробив скайп"
+        },
+        {
+          "language": "be",
+          "string": "Хто распрацаваў скайп"
+        },
+        {
+          "language": "fr",
+          "string": "Qui a développé Skype ?"
+        },
+        {
+          "language": "es",
+          "string": "¿Quién desarrolló Skype?",
+          "keywords": "desarrollar ,  Skype "
+        }
+      ],
+      "query": {
+        "sparql": "PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX res: <http://dbpedia.org/resource/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT DISTINCT ?uri WHERE { res:Skype dbo:developer ?uri. }"
+      },
+      "answers": [
+        {
+          "head": {
+            "link": [],
+            "vars": [
+              "uri"
+            ]
+          },
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Skype_Technologies"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "question": [
+        {
+          "language": "en",
+          "string": "Which people were born in Heraklion?"
+        },
+        {
+          "language": "de",
+          "string": "Welche Personen wurden in Heraklion geboren?"
+        },
+        {
+          "language": "de",
+          "string": "Welche Menschen wurden in Heraklion geboren?"
+        },
+        {
+          "language": "ru",
+          "string": "Кто родился в Ираклионе"
+        },
+        {
+          "language": "ru",
+          "string": "Кто был рожден в Гераклионе?"
+        },
+        {
+          "language": "ru",
+          "string": "Какие люди родились в Ираклионе?"
+        },
+        {
+          "language": "uk",
+          "string": "Хто народився в Іракліоні"
+        },
+        {
+          "language": "lt",
+          "string": "Kas gimė Heraklione"
+        },
+        {
+          "language": "fr",
+          "string": "Qui est né à Heraklion ?"
+        },
+        {
+          "language": "es",
+          "string": "¿Qué personas nacieron en Heraklion?",
+          "keywords": "personas ,  nacer ,  Heraklion "
+        }
+      ],
+      "query": {
+        "sparql": "PREFIX yago: <http://dbpedia.org/class/yago/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX onto: <http://dbpedia.org/ontology/> SELECT DISTINCT ?uri WHERE { ?uri rdf:type onto:Person ; onto:birthPlace <http://dbpedia.org/resource/Heraklion>. }"
+      },
+      "answers": [
+        {
+          "head": {
+            "link": [],
+            "vars": [
+              "uri"
+            ]
+          },
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Sapfo_Notara"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Spyros_Danellis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Meletius_I_Pegas"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Christoforos_Liontakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Christoforos_Papakaliatis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Christos_Belevonis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Christos_Kozyrakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Christos_Saloustros"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Chrysovalantis_Kozoronis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Dimitrios_Kiliaras"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Dimitris_Raptakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Lena_Platonos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Leonidas_Kyrkos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Lili_Zografou"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Androulakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Karelis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Kazantzakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Kousidis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Machlas"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Marinakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Psimopoulos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikos_Vrettos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Notis_Sfakianakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Ntinos_Konstantakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Minos_Kalokairinos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Anastasios_Triantafyllou"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Anastasios_Triantafyllou_(footballer)"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Andreas_Bouchalakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georges_Panayotis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georgios_Kalaitzakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georgios_Klontzas"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georgios_Samaras"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georgios_Sarris"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Georgios_Vlastos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Labros_Kefaloukos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Lefteris_Gialousis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Zacharias_Kavousakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Şadi_Çalık"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Michail_Fragoulakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Michalis_Sifakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Minas_Chalkiadakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Minas_Pitsos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Stavros_Arnaoutakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Stavros_Labrakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Vangelis_Nikokyrakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Vasilis_Babis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nicholas_Kalliakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Andreas_Musalus"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Joseph_Sifakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Konstanty_Korniakt"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Fotis_Kafatos"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Gianna_Angelopoulos-Daskalaki"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giannis_Boutsakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giannis_Dermitzakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giannis_Domatas"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giannis_Iatroudis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giannis_Vardinogiannis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giorgos_Giakoumakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giorgos_Grammatikakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giorgos_Manousakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giorgos_Petrakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Giorgos_Sournakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Rika_Dialina"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Theodore_Poulakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nikonas_Spiliotakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Antonis_Alexakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Antonis_Bourselis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Archbishop_Makarios_of_Australia"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/El_Greco"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Eleftherios_Goulielmakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Konstantinos_Gouvis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Konstantinos_Provydakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Kostas_Chaniotakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Kyle_Hamilton_(American_football)"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Bolakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Moniakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Papamattheakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Patemtzis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Roubakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Roussakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Rovithis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Saliakas"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Manolis_Stefanoudakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Maria_Papapetros"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Maria_Spiridaki"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Myron_Michailidis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nadia_Valavani"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nektarios_Azizi"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Nektarios_Tavernarakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Petros_Giakoumakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Emin_Ali_Bedir_Khan"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Charalabos_Charalabakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Charalampos_Damianakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Edison_Kola"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Cyril_Lucaris"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Ilias_Theodoridis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Ilya_Livykou"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Ioannis_Ikonomou"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Iosif_Daskalakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Irini_Vasiliou"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Beata_Kitsikis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Odysseas_Elytis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Oresti_Kacurri"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Panagiotis_Kalaitzakis"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Panagiotis_Petras"
+                }
+              },
+              {
+                "uri": {
+                  "type": "uri",
+                  "value": "http://dbpedia.org/resource/Michael_Katehakis"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

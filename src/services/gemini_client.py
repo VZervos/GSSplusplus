@@ -1,6 +1,5 @@
 import requests
-import json
-from config.settings import API_KEY, API_URL
+from src.config.settings import API_KEY, API_URL
 
 def call_gemini_api(prompt: str, api_key: str = API_KEY, timeout: int = 30):
     url = f"{API_URL}?key={api_key}"
@@ -12,12 +11,12 @@ def call_gemini_api(prompt: str, api_key: str = API_KEY, timeout: int = 30):
         ]
     }
 
-    print(f"📤 Sending request to Gemini API...")
-    print(f"📝 Prompt: {prompt[:50]}..." if len(prompt) > 50 else prompt)
+    print(f"Sending request to Gemini API...")
+    print(f"Prompt: {prompt[:50]}..." if len(prompt) > 50 else prompt)
 
     try:
         response = requests.post(url, headers=headers, json=payload, timeout=timeout)
-        print(f"✅ Response status: {response.status_code}")
+        print(f"Response status: {response.status_code}")
 
         if response.status_code != 200:
             error_json = response.json() if response.content else {}
@@ -27,7 +26,7 @@ def call_gemini_api(prompt: str, api_key: str = API_KEY, timeout: int = 30):
         return response.json()
 
     except requests.exceptions.Timeout:
-        raise Exception(f"⏱️ Request timeout after {timeout} seconds")
+        raise Exception(f"Request timeout after {timeout} seconds")
 
     except requests.exceptions.RequestException as e:
-        raise Exception(f"❌ Network error: {str(e)}")
+        raise Exception(f"Network error: {str(e)}")
