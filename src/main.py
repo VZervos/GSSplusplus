@@ -37,17 +37,30 @@ def main():
         print()
         
         try:
-            triples = pipeline(question_text)
+            result = pipeline(question_text)
+            triples = result["triples"]
+            importance_map = result["importance_map"]
+            
             print()
             print(f"{len(triples)} triples were found for question {question_id}:")
             for triple in triples:
                 print(f"  {triple['s']} {triple['p']} {triple['o']}.")
+            
+            print()
+            print(f"Importance scores computed for {len(importance_map)} URIs:")
+            sorted_uris = sorted(importance_map.items(), key=lambda x: x[1]["score"], reverse=True)
+            for uri, importance in sorted_uris:
+                print(f"  {uri}: {importance['method']} score = {importance['score']:.4f}")
+                if importance['method'] == 'weighted_degree':
+                    print(f"    (out: {importance['out_degree']}, in: {importance['in_degree']}, total: {importance['total_degree']})")
             
         except Exception as e:
             print(f"ERROR processing question {question_id}:")
             print(str(e))
             print()
             continue
+
+        break # TODO Remove
     
     print("=" * 60)
     print("Dataset processing completed!")
