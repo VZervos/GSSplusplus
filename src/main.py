@@ -5,11 +5,9 @@ import io
 from pipeline.pipeline import pipeline
 from utils.dataset import loadDataset
 
-# Set UTF-8 encoding for stdout on Windows
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-# Add parent directory to path to allow imports to work from both project root and src directory
 _current_dir = os.path.dirname(os.path.abspath(__file__))
 _parent_dir = os.path.dirname(_current_dir)
 if _parent_dir not in sys.path:
@@ -22,18 +20,18 @@ def main():
     print("=" * 60)
     print()
     
-    # Load the small.json dataset
     dataset_path = os.path.join(os.path.dirname(__file__), "test", "small.json")
+    print(f"Loading dataset: {dataset_path}")
     english_questions = loadDataset(dataset_path)
-    print(f"Found {len(english_questions)} English questions in the dataset")
+    print(f"Found {len(english_questions)} English questions")
     print()
     
-    # Process each question
     for idx, q_data in enumerate(english_questions, 1):
         question_id = q_data["id"]
         question_text = q_data["question"]
 
-        print(f"Question {idx}/{len(english_questions)} (ID: {question_id}): {question_text}")
+        print(f"\nQuestion {idx}/{len(english_questions)} (ID: {question_id})")
+        print(f"  {question_text}")
         print()
         
         try:
@@ -41,28 +39,25 @@ def main():
             triples = result["triples"]
             importance_map = result["importance_map"]
             
-            print()
-            print(f"{len(triples)} triples were found for question {question_id}:")
-            for triple in triples:
-                print(f"  {triple['s']} {triple['p']} {triple['o']}.")
+            print(f"\nResults for question {question_id}:")
+            print(f"  {len(triples)} triples found")
+            print(f"  {len(importance_map)} URIs with importance scores")
             
-            print()
-            print(f"Importance scores computed for {len(importance_map)} URIs:")
-            sorted_uris = sorted(importance_map.items(), key=lambda x: x[1]["score"], reverse=True)
-            for uri, importance in sorted_uris:
-                print(f"  {uri}: {importance['method']} score = {importance['score']:.4f}")
-                if importance['method'] == 'weighted_degree':
-                    print(f"    (out: {importance['out_degree']}, in: {importance['in_degree']}, total: {importance['total_degree']})")
+            # Print final list of triples with importance scores
+            if triples:
+                print(f"\nFinal triples with importance scores:")
+                for triple in triples:
+                    s = triple.get('s', '')
+                    p = triple.get('p', '')
+                    o = triple.get('o', '')
+                    importance = triple.get('importance', 0.0)
+                    print(f"  {s} {p} {o} -> importance: {importance:.4f}")
             
         except Exception as e:
-            print(f"ERROR processing question {question_id}:")
-            print(str(e))
-            print()
+            print(f"Error processing question {question_id}: {str(e)}")
             continue
-
-        break # TODO Remove
     
-    print("=" * 60)
+    print("\n" + "=" * 60)
     print("Dataset processing completed!")
     print("=" * 60)
 

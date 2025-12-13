@@ -1,241 +1,222 @@
-import urllib
 import requests
+import time
+
+
+def execute_sparql_query_with_retry(sparql_query, max_retries=2, initial_timeout=45, max_timeout=90):
+    """
+    Executes a SPARQL query with retry logic and exponential backoff.
+    Only retries on timeouts (transient issues), not on other errors.
+    
+    Args:
+        sparql_query: The SPARQL query string
+        max_retries: Maximum number of retry attempts (default: 2)
+        initial_timeout: Initial timeout in seconds (default: 45)
+        max_timeout: Maximum timeout in seconds (default: 90)
+    
+    Returns:
+        dict: JSON response from SPARQL endpoint, or None if all retries fail
+    """
+    sparql_endpoint = "https://dbpedia.org/sparql"
+    headers = {
+        "Accept": "application/sparql-results+json",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "Mozilla/5.0"
+    }
+    
+    data = {"query": sparql_query, "format": "json"}
+    
+    for attempt in range(max_retries):
+        timeout = min(initial_timeout * (2 ** attempt), max_timeout)
+        
+        try:
+            if attempt > 0:
+                wait_time = 2 ** attempt
+                print(f"    Retrying after {wait_time}s...")
+                time.sleep(wait_time)
+            
+            response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=timeout)
+            response.raise_for_status()
+            return response.json()
+            
+        except requests.exceptions.Timeout:
+            if attempt < max_retries - 1:
+                print(f"    Timeout ({timeout}s), retrying...")
+                continue
+            else:
+                print(f"    Timeout after {max_retries} attempts")
+                return None
+                
+        except requests.exceptions.RequestException as e:
+            print(f"    Error: {str(e)}")
+            return None
+    
+    return None
 
 
 def lookup_entity_uri(entity):
-    """
-    Converts an entity name to a DBpedia URI.
-    Formats the entity name by capitalizing words and replacing spaces with underscores.
-    """
-    # Format entity name for DBpedia: capitalize each word and replace spaces with underscores
-    formatted_entity = entity.replace(" ", "_")
-    # Capitalize first letter of each word (DBpedia convention)
-    parts = formatted_entity.split("_")
-    formatted_entity = "_".join([part.capitalize() if part else "" for part in parts])
-    
-    return (
-        f"http://dbpedia.org/resource/{formatted_entity}"
-    )
+    """Converts an entity name to a DBpedia URI."""
+    formatted_entity = "_".join(part.capitalize() for part in entity.replace(" ", "_").split("_") if part)
+    return f"http://dbpedia.org/resource/{formatted_entity}"
+
+
+def extract_entity_name_from_uri(uri):
+    """Extracts a readable entity name from a DBpedia URI."""
+    if not uri or not uri.startswith("http://dbpedia.org/resource/"):
+        return None
+    return uri.replace("http://dbpedia.org/resource/", "").replace("_", " ").lower()
+
+
+_NOISY_PREDICATES = [
+    "rdf:type",
+    "rdfs:label",
+    "dbo:wikiPageID",
+    "<http://dbpedia.org/ontology/wikiPageWikiLink>",
+    "<http://xmlns.com/foaf/0.1/name>",
+    "<http://www.w3.org/2000/01/rdf-schema#comment>",
+    "<http://dbpedia.org/ontology/wikiPageRedirects>",
+    "<http://dbpedia.org/ontology/wikiPageDisambiguates>",
+    "<http://dbpedia.org/property/wikiPageUsesTemplate>",
+    "<http://purl.org/linguistics/gold/hypernym>",
+    "<http://purl.org/dc/terms/subject>",
+    "<http://www.w3.org/2000/01/rdf-schema#seeAlso>",
+    "<http://www.w3.org/2002/07/owl#differentFrom>"
+]
 
 def generate_retrieve_query(uri, limit=100):
+    """Generates a SPARQL query to retrieve triples for a URI, excluding noisy predicates."""
+    predicate_filter = ",\n                ".join(_NOISY_PREDICATES)
     sparql_query = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX dbo: <http://dbpedia.org/ontology/>
     SELECT ?s ?p ?o
     WHERE {{
         {{
             <{uri}> ?p ?o .
             BIND(<{uri}> AS ?s)
-        }}
-        UNION
-        {{
-            ?s <{uri}> ?o .
-            BIND(<{uri}> AS ?p)
+            FILTER(isIRI(?o))
+            FILTER(STRSTARTS(STR(?o), "http://dbpedia.org/resource/"))
+            FILTER(?p NOT IN (
+                {predicate_filter}
+            ))
         }}
         UNION
         {{
             ?s ?p <{uri}> .
             BIND(<{uri}> AS ?o)
+            FILTER(isIRI(?s))
+            FILTER(STRSTARTS(STR(?s), "http://dbpedia.org/resource/"))
+            FILTER(?p NOT IN (
+                {predicate_filter}
+            ))
         }}
     }}
     LIMIT {limit}
     """
     return sparql_query
 
-def fetch_triples_from_sparql(uri):
-    sparql_query = generate_retrieve_query(uri)
-    """
-    Fetches triples from DBpedia SPARQL endpoint using POST request and returns the results.
-    """
-    try:
-        sparql_endpoint = "https://dbpedia.org/sparql"
-        headers = {
-            "Accept": "application/sparql-results+json",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": "Mozilla/5.0"
-        }
-        
-        # Send query as POST data
-        data = {
-            "query": sparql_query,
-            "format": "json"
-        }
-        
-        response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=30)
-        response.raise_for_status()
-        
-        # Parse JSON response
-        result_data = response.json()
-        
-        # Extract triples from SPARQL JSON response
-        triples = []
-        if "results" in result_data and "bindings" in result_data["results"]:
-            for binding in result_data["results"]["bindings"]:
-                triple = {}
-                for var in ["s", "p", "o"]:
-                    if var in binding:
-                        triple[var] = binding[var].get("value", "")
-                if triple:
-                    triples.append(triple)
-        return triples
-    except requests.exceptions.JSONDecodeError as e:
-        print(f"ERROR: Failed to parse JSON response. Response text: {response.text[:500]}")
-        return []
-    except Exception as e:
-        print(f"ERROR fetching triples: {str(e)}")
-        if 'response' in locals():
-            print(f"Response status: {response.status_code}")
-            print(f"Response preview: {response.text[:200]}")
-        return []
+
+def _parse_triples_from_bindings(bindings):
+    """Helper to parse triples from SPARQL bindings."""
+    triples = []
+    for binding in bindings:
+        triple = {var: binding[var].get("value", "") for var in ["s", "p", "o"] if var in binding}
+        if triple:
+            triples.append(triple)
+    return triples
+
+def fetch_triples_with_importance(uri, limit=50):
+    """Fetches triples and computes importance (in/out degree) for a URI."""
+    triples = []
+    out_degree = 0
+    in_degree = 0
+    
+    result_data = execute_sparql_query_with_retry(generate_retrieve_query(uri, limit), max_retries=2, initial_timeout=45)
+    if result_data and "results" in result_data and "bindings" in result_data["results"]:
+        triples = _parse_triples_from_bindings(result_data["results"]["bindings"])
+    
+    result_data = execute_sparql_query_with_retry(generate_degree_query(uri), max_retries=2, initial_timeout=45)
+    if result_data and "results" in result_data and "bindings" in result_data["results"]:
+        bindings = result_data["results"]["bindings"]
+        if bindings:
+            binding = bindings[0]
+            out_degree = int(binding.get("out_degree", {}).get("value", "0"))
+            in_degree = int(binding.get("in_degree", {}).get("value", "0"))
+    
+    return {
+        "triples": triples,
+        "out_degree": out_degree,
+        "in_degree": in_degree,
+        "total_degree": out_degree + in_degree
+    }
 
 
-def get_pagerank(uri):
-    """
-    Attempts to retrieve PageRank score for a URI from DBpedia.
-    Returns the PageRank value if available, None otherwise.
-    """
-    try:
-        sparql_query = f"""
-        PREFIX dbo: <http://dbpedia.org/ontology/>
-        SELECT ?rank
-        WHERE {{
-            <{uri}> dbo:wikiPageRank ?rank .
+def generate_degree_query(uri):
+    """Generates a SPARQL query to compute both out-degree and in-degree for a URI."""
+    predicate_filter = ",\n                ".join(_NOISY_PREDICATES)
+    sparql_query = f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX dbo: <http://dbpedia.org/ontology/>
+    
+    SELECT 
+        (COUNT(DISTINCT ?o_out) AS ?out_degree)
+        (COUNT(DISTINCT ?s_in) AS ?in_degree)
+    WHERE {{
+        OPTIONAL {{
+            <{uri}> ?p_out ?o_out .
+            FILTER(isIRI(?o_out))
+            FILTER(STRSTARTS(STR(?o_out), "http://dbpedia.org/resource/"))
+            FILTER(?p_out NOT IN (
+                {predicate_filter}
+            ))
         }}
-        LIMIT 1
-        """
-        
-        sparql_endpoint = "https://dbpedia.org/sparql"
-        headers = {
-            "Accept": "application/sparql-results+json",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": "Mozilla/5.0"
+        OPTIONAL {{
+            ?s_in ?p_in <{uri}> .
+            FILTER(isIRI(?s_in))
+            FILTER(STRSTARTS(STR(?s_in), "http://dbpedia.org/resource/"))
+            FILTER(?p_in NOT IN (
+                {predicate_filter}
+            ))
+        }}
+    }}
+    """
+    return sparql_query
+
+def fetch_triples_from_sparql(uri, include_degree=False):
+    """Fetches triples from DBpedia SPARQL endpoint. Optionally includes degree information."""
+    result_data = execute_sparql_query_with_retry(generate_retrieve_query(uri), max_retries=2, initial_timeout=45)
+    
+    triples = []
+    if result_data and "results" in result_data and "bindings" in result_data["results"]:
+        triples = _parse_triples_from_bindings(result_data["results"]["bindings"])
+    
+    if include_degree:
+        out_degree, in_degree, total_degree = compute_weighted_degree(uri)
+        return {
+            "triples": triples,
+            "degree": {"out_degree": out_degree, "in_degree": in_degree, "total_degree": total_degree}
         }
-        
-        data = {
-            "query": sparql_query,
-            "format": "json"
-        }
-        
-        response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=30)
-        response.raise_for_status()
-        result_data = response.json()
-        
-        if "results" in result_data and "bindings" in result_data["results"]:
-            bindings = result_data["results"]["bindings"]
-            if bindings and "rank" in bindings[0]:
-                rank_value = bindings[0]["rank"].get("value", "")
-                try:
-                    return float(rank_value)
-                except (ValueError, TypeError):
-                    return None
-        return None
-    except Exception:
-        return None
+    return triples
 
 
 def compute_weighted_degree(uri):
-    """
-    Computes weighted degree centrality for a URI.
-    Counts entity-to-entity links (excluding noisy predicates like rdf:type, rdfs:label).
-    Returns a tuple: (out_degree, in_degree, total_degree)
-    """
-    try:
-        # Query for out-degree (URI as subject, linking to other entities)
-        out_degree_query = f"""
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT (COUNT(DISTINCT ?o) AS ?count)
-        WHERE {{
-            <{uri}> ?p ?o .
-            FILTER(isIRI(?o))
-            FILTER(?p NOT IN (rdf:type, rdfs:label, <http://dbpedia.org/ontology/wikiPageID>))
-        }}
-        """
-        
-        # Query for in-degree (URI as object, linked from other entities)
-        in_degree_query = f"""
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT (COUNT(DISTINCT ?s) AS ?count)
-        WHERE {{
-            ?s ?p <{uri}> .
-            FILTER(isIRI(?s))
-            FILTER(?p NOT IN (rdf:type, rdfs:label, <http://dbpedia.org/ontology/wikiPageID>))
-        }}
-        """
-        
-        sparql_endpoint = "https://dbpedia.org/sparql"
-        headers = {
-            "Accept": "application/sparql-results+json",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": "Mozilla/5.0"
-        }
-        
-        # Get out-degree
-        out_degree = 0
-        try:
-            data = {"query": out_degree_query, "format": "json"}
-            response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=30)
-            response.raise_for_status()
-            result_data = response.json()
-            if "results" in result_data and "bindings" in result_data["results"]:
-                bindings = result_data["results"]["bindings"]
-                if bindings and "count" in bindings[0]:
-                    out_degree = int(bindings[0]["count"].get("value", "0"))
-        except Exception:
-            pass
-        
-        # Get in-degree
-        in_degree = 0
-        try:
-            data = {"query": in_degree_query, "format": "json"}
-            response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=30)
-            response.raise_for_status()
-            result_data = response.json()
-            if "results" in result_data and "bindings" in result_data["results"]:
-                bindings = result_data["results"]["bindings"]
-                if bindings and "count" in bindings[0]:
-                    in_degree = int(bindings[0]["count"].get("value", "0"))
-        except Exception:
-            pass
-        
-        total_degree = out_degree + in_degree
-        return (out_degree, in_degree, total_degree)
-        
-    except Exception as e:
-        print(f"ERROR computing weighted degree for {uri}: {str(e)}")
-        return (0, 0, 0)
+    """Computes weighted degree centrality for a URI. Returns (out_degree, in_degree, total_degree)."""
+    result_data = execute_sparql_query_with_retry(generate_degree_query(uri), max_retries=2, initial_timeout=45)
+    
+    out_degree = in_degree = 0
+    if result_data and "results" in result_data and "bindings" in result_data["results"]:
+        binding = result_data["results"]["bindings"][0] if result_data["results"]["bindings"] else {}
+        out_degree = int(binding.get("out_degree", {}).get("value", "0"))
+        in_degree = int(binding.get("in_degree", {}).get("value", "0"))
+    
+    return (out_degree, in_degree, out_degree + in_degree)
 
 
-def compute_importance(uri):
-    """
-    Computes importance score for a URI.
-    First tries PageRank, falls back to weighted degree centrality.
-    Returns a dictionary with importance metrics.
-    """
-    # Try PageRank first
-    pagerank = get_pagerank(uri)
-    
-    if pagerank is not None:
-        return {
-            "method": "pagerank",
-            "score": pagerank,
-            "out_degree": None,
-            "in_degree": None,
-            "total_degree": None
-        }
-    
-    # Fallback to weighted degree
-    out_degree, in_degree, total_degree = compute_weighted_degree(uri)
-    
-    # Normalize the degree score (using log scale to handle large differences)
-    # This gives a score between 0 and ~10 for most entities
-    normalized_score = 0.0
-    if total_degree > 0:
-        normalized_score = min(10.0, 1.0 + (total_degree ** 0.5) / 10.0)
-    
-    return {
-        "method": "weighted_degree",
-        "score": normalized_score,
-        "out_degree": out_degree,
-        "in_degree": in_degree,
-        "total_degree": total_degree
-    }
+def get_uris_from_triples(all_triples):
+    all_uris_in_triples = set()
+    for triple in all_triples:
+        for key in ["s", "o"]:
+            uri = triple.get(key, "")
+            if uri.startswith("http://dbpedia.org/resource/"):
+                all_uris_in_triples.add(uri)

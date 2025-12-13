@@ -30,3 +30,13 @@ def loadDataset(dataset_path: str):
                 })
                 break  # Take only the first English question if multiple exist
     return english_questions
+
+
+def extract_query_keywords(extraction: dict[str, list[str]], query):
+    query_keywords = set()
+    for entity in extraction["entities"]:
+        query_keywords.add(entity.lower())
+        query_keywords.update(entity.lower().split())
+    query_keywords.add(query.lower())
+    query_keywords.update(query.lower().split())
+    return query_keywords

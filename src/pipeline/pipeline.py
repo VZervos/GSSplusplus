@@ -1,80 +1,48 @@
-from utils.dbpedia import lookup_entity_uri, generate_retrieve_query, fetch_triples_from_sparql, compute_importance
+from utils.dataset import extract_query_keywords
+from utils.dbpedia import (
+    lookup_entity_uri, get_uris_from_triples
+)
+from utils.scoring import compute_importance, assign_importance_scores
 
 
 def pipeline(query):
-    print("STEP 1: Starting pipeline")
+    # STEP 1: Initialize pipeline
+    print("Starting pipeline...")
 
-    print("STEP 2: Extracting entities...")
-    # extraction = extract_entities(query) TODO: Remove
-    extraction = {"entities": query.split()}
-    extraction["entities"][-1] = extraction["entities"][-1][:-1]
-    print(f"STEP 2: Extracted entities: {extraction}")
+    # STEP 2: Extract entities from query
+    print("Step 2: Extracting entities...")
+    extraction = {"entities": ["GMT Games", "GMT", "board game", "boardgame", "wargame", "tabletop game", "publisher", "game"]}
+    print(f"  Extracted {len(extraction['entities'])} entities")
 
-    print("STEP 3: Looking up entity URIs...")
+    # STEP 3: Convert entity names to DBpedia URIs
+    print("Step 3: Looking up entity URIs...")
     entity_uris = {}
     for entity in extraction["entities"]:
         uri = lookup_entity_uri(entity)
         entity_uris[entity] = uri
         print(f"  {entity} -> {uri}")
 
-    # 5️⃣ Compute importance scores for entity URIs (before retrieving triples)
-    print("STEP 5: Computing importance scores for entities...")
-    uri_importance_map = {}  # Store importance scores for each URI
-    
-    for entity, uri in entity_uris.items():
-        if uri not in uri_importance_map:
-            print(f"  Computing importance for {entity} ({uri})...")
-            importance = compute_importance(uri)
-            uri_importance_map[uri] = importance
-            print(f"    Method: {importance['method']}, Score: {importance['score']:.4f}")
-            if importance['method'] == 'weighted_degree':
-                print(f"    Out-degree: {importance['out_degree']}, In-degree: {importance['in_degree']}, Total: {importance['total_degree']}")
-    
-    print(f"STEP 5: Computed importance scores for {len(uri_importance_map)} entity URIs")
-    for uri, importance in uri_importance_map.items():
-        print(f"  {uri}: {importance['method']} score = {importance['score']:.4f}")
-
-    return # TODO Remove
-    # STEP 4: Retrieve candidate triples (moved after importance computation)
-    print("STEP 4: Retrieving candidate triples...")
+    # STEP 4 & 5: Retrieve triples and compute importance for entity URIs
+    print("Step 4 & 5: Retrieving triples and computing importance...")
     all_triples = []
+    uri_importance_map = {}
+    TRIPLES_PER_ENTITY_LIMIT = 50
+
+    query_keywords = extract_query_keywords(extraction, query)
+    compute_importance(TRIPLES_PER_ENTITY_LIMIT, all_triples, entity_uris, uri_importance_map)
+    print(f"  Total: {len(all_triples)} triples, {len(uri_importance_map)} URIs with importance scores")
     
-    for entity, uri in entity_uris.items():
-        print(f"  Retrieving triples for {entity} ({uri})...")
-        uri_triples = fetch_triples_from_sparql(uri)
-        print(f"    Retrieved {len(uri_triples)} triples for entity {entity}")
-        all_triples.extend(uri_triples)
+    # STEP 6: Assign importance scores to triples based on their URIs
+    print("Step 6: Assigning importance scores to triples...")
+    get_uris_from_triples(all_triples)
+    assign_importance_scores(all_triples, query_keywords, uri_importance_map)
+    print(f"  Assigned importance scores to {len(all_triples)} triples")
     
-    print(f"STEP 4: Retrieved {len(all_triples)} total triples")
+    # STEP 7: Compute similarity (not yet implemented)
+    # STEP 8: Score & rank (not yet implemented)
+    # STEP 9: Select top K (not yet implemented)
+    # STEP 10: Verbalize result (not yet implemented)
     
-    # # 6️⃣ Compute similarity (dummy)
-    # print("STEP 6: Computing similarity scores...")
-    # for t in triples:
-    #     t["similarity"] = compute_similarity(query, t)
-    # print("STEP 6: Similarity scores computed")
-
-    # # 7️⃣ Score & rank (dummy)
-    # print("STEP 7: Scoring and ranking triples...")
-    # ranked = score_and_rank_triples(triples)
-    # print("STEP 7: Triples scored and ranked")
-
-    # # 8️⃣ Select top K
-    # print("STEP 8: Selecting top K triples...")
-    # top_k = select_top_k(ranked)
-    # print(f"STEP 8: Selected {len(top_k)} top triples")
-
-    # # 9️⃣ Verbalize result
-    # print("STEP 9: Verbalizing answer...")
-    # answer = verbalize_answer(top_k)
-    # print("STEP 9: Answer verbalized")
-
-    # print("STEP 9: Using dummy answer")
-
-    print("Pipeline completed successfully")
+    print("Pipeline completed")
     
-    # Store importance map in a way that can be accessed later
-    # We'll return it along with triples
-    return {
-        "triples": all_triples,
-        "importance_map": uri_importance_map
-    }
+    return {"triples": all_triples, "importance_map": uri_importance_map}
