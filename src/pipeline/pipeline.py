@@ -6,7 +6,7 @@ from utils.dbpedia import (
 from utils.scoring import compute_importance, assign_importance_scores
 from utils.parser import extract_entities, filter_keywords
 from utils.pruning import prune_bad_uris, clean_triples_from_importance_map
-
+from utils.similarity import compute_similarity_scores
 
 def pipeline(query):
     # STEP 1: Initialize pipeline
@@ -17,15 +17,6 @@ def pipeline(query):
     extraction = extract_entities(query)
     entities = extraction.get("entities", [])
     print(f"  Extracted {len(entities)} entities: {entities}")
-
-    # raw_keywords = extraction.get("entities", []) + extraction.get("synonyms", [])
-    # keywords = filter_keywords(raw_keywords)
-
-    # print(f"  Extracted {len(extraction.get('entities', []))} entities, {len(extraction.get('synonyms', []))} synonyms")
-    # print(f"  Final keywords for DBpedia lookup: {keywords}")
-
-    # extraction["entities"] = keywords if keywords else ["UnknownEntity"]
-
 
     # # Expected format: {"entities": [{"name": "GMT_Games", "type": "resource", "importance": 3}, ...]}
     # extraction = {"entities": [
@@ -49,7 +40,7 @@ def pipeline(query):
     #     uri = lookup_entity_uri(entity)
     #     entity_uri_map[entity] = uri
     #     print(f"  {entity} -> {uri}")
-    
+
     print("Step 3: Looking up entity URIs...")
     entity_uris = {}
     entity_importance = {}
@@ -110,7 +101,10 @@ def pipeline(query):
     assign_importance_scores(all_triples, query_keywords, uri_importance_map)
     print(f"  Assigned importance scores to {len(all_triples)} triples")
     
-    # STEP 7: Compute similarity (not yet implemented)
+    # STEP 7: Compute similarity
+    print("Step 7: Computing similarity scores...")
+    compute_similarity_scores(all_triples, query)
+    print(f"  Computed similarity scores for {len(all_triples)} triples")
     # STEP 8: Score & rank (not yet implemented)
     # STEP 9: Select top K (not yet implemented)
     # STEP 10: Verbalize result (not yet implemented)
