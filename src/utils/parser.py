@@ -100,20 +100,22 @@ ENTITY EXTRACTION RULES - BE COMPREHENSIVE:
 
 1. DIRECT ENTITIES (importance: 3):
    - Extract all entities directly mentioned in the question
-   - Use DBpedia-friendly format: Title_Case_With_Underscores (e.g., "boardgames" -> "Boardgame", "Board_Game")
-   - For acronyms/orgs: include both short form AND canonical expansion (e.g., "GMT" -> include both "GMT" and "GMT_Games")
+   - Use DBpedia-friendly format: Title_Case_With_Underscores (e.g., "movies" -> "Film", "Movie")
+   - For acronyms/orgs: ALWAYS include both short form AND canonical expansion variants
+   - Examples: "IBM" -> include both "IBM" and "IBM_Corporation", "UN" -> include both "UN" and "United_Nations"
+   - For company/publisher acronyms in publishing/creation contexts: include both acronym AND common DBpedia variants with suffixes like "_Games", "_Press", "_Publishing", etc.
 
 2. RELATED CONCEPTS (importance: 2):
    - When a concept is mentioned, include related DBpedia categories/types
-   - Example: "boardgames" -> include "Board_Game", "Boardgame", "Wargame", "Tabletop_game", "Game"
-   - Example: "developed" -> include related concepts if contextually relevant
+   - Example: "movies" -> include "Film", "Movie", "Motion_Picture", "Work", "CreativeWork"
+   - Example: "created" -> include related concepts if contextually relevant
 
 3. IMPLIED PROPERTIES/RELATIONS (importance: 2-3):
    - Extract predicates/properties implied by verbs or question patterns
-   - Patterns: "X by Y" -> include "publisher" or "developer" property
-   - Patterns: "Who developed X" -> include "developer" property
+   - Patterns: "X by Y" -> include "director", "author", or "creator" property
+   - Patterns: "Who created X" -> include "creator" or "author" property
    - Patterns: "Where was X born" -> include "birthPlace" property
-   - Use DBpedia property names: "publisher", "developer", "author", "birthPlace", etc.
+   - Use DBpedia property names: "director", "author", "creator", "birthPlace", "capital", etc.
 
 4. IMPORTANCE SCORING:
    - 3 = Core entities directly mentioned (main subject, key organization/person)
@@ -123,7 +125,8 @@ ENTITY EXTRACTION RULES - BE COMPREHENSIVE:
 5. NAME FORMATTING:
    - Use Title_Case_With_Underscores for DBpedia compatibility
    - Keep original text spans when possible, but convert to DBpedia format
-   - Examples: "boardgames" -> "Boardgame" or "Board_Game", "GMT" -> "GMT" and "GMT_Games"
+   - Examples: "movies" -> "Film" or "Movie", "IBM" -> "IBM" and "IBM_Corporation"
+   - For company/publisher acronyms: include both acronym AND full name variant (e.g., "MIT Press" -> "MIT" and "MIT_Press")
 
 SYNONYM RULES (optional, for additional lookup help):
 - Include alternative spellings, casing variants, or lookup hints
@@ -135,22 +138,52 @@ NOT allowed:
 - Adding completely unrelated concepts
 
 EXAMPLES:
-Question: "List all boardgames by GMT"
+Question: "What is the capital of France?"
 Expected entities:
-- {{"name": "GMT", "type": "resource", "importance": 3}}
-- {{"name": "GMT_Games", "type": "resource", "importance": 3}}
-- {{"name": "Boardgame", "type": "resource", "importance": 2}}
-- {{"name": "Board_Game", "type": "resource", "importance": 2}}
-- {{"name": "Wargame", "type": "resource", "importance": 2}}
-- {{"name": "Tabletop_game", "type": "resource", "importance": 2}}
-- {{"name": "publisher", "type": "property", "importance": 3}}
-- {{"name": "Game", "type": "resource", "importance": 1}}
+- {{"name": "France", "type": "resource", "importance": 3}}
+- {{"name": "capital", "type": "property", "importance": 3}}
+- {{"name": "Country", "type": "resource", "importance": 1}}
 
-Question: "Who developed Skype?"
+Question: "List all movies directed by Christopher Nolan"
 Expected entities:
-- {{"name": "Skype", "type": "resource", "importance": 3}}
-- {{"name": "developer", "type": "property", "importance": 3}}
-- {{"name": "author", "type": "property", "importance": 2}}
+- {{"name": "Christopher_Nolan", "type": "resource", "importance": 3}}
+- {{"name": "Movie", "type": "resource", "importance": 2}}
+- {{"name": "Film", "type": "resource", "importance": 2}}
+- {{"name": "director", "type": "property", "importance": 3}}
+- {{"name": "Work", "type": "resource", "importance": 1}}
+
+Question: "When was the Eiffel Tower built?"
+Expected entities:
+- {{"name": "Eiffel_Tower", "type": "resource", "importance": 3}}
+- {{"name": "completionDate", "type": "property", "importance": 3}}
+- {{"name": "openingDate", "type": "property", "importance": 2}}
+- {{"name": "Building", "type": "resource", "importance": 1}}
+
+Question: "What is the population of Tokyo?"
+Expected entities:
+- {{"name": "Tokyo", "type": "resource", "importance": 3}}
+- {{"name": "populationTotal", "type": "property", "importance": 3}}
+- {{"name": "City", "type": "resource", "importance": 1}}
+- {{"name": "Settlement", "type": "resource", "importance": 1}}
+
+Question: "List all books published by MIT Press"
+Expected entities:
+- {{"name": "MIT_Press", "type": "resource", "importance": 3}}
+- {{"name": "MIT", "type": "resource", "importance": 3}}
+- {{"name": "Book", "type": "resource", "importance": 2}}
+- {{"name": "WrittenWork", "type": "resource", "importance": 2}}
+- {{"name": "publisher", "type": "property", "importance": 3}}
+- {{"name": "Work", "type": "resource", "importance": 1}}
+
+Question: "Show me all games by EA"
+Expected entities:
+- {{"name": "EA", "type": "resource", "importance": 3}}
+- {{"name": "Electronic_Arts", "type": "resource", "importance": 3}}
+- {{"name": "EA_Games", "type": "resource", "importance": 3}}
+- {{"name": "Game", "type": "resource", "importance": 2}}
+- {{"name": "Video_Game", "type": "resource", "importance": 2}}
+- {{"name": "publisher", "type": "property", "importance": 3}}
+- {{"name": "developer", "type": "property", "importance": 2}}
 
 Question: "{query}"
 """
