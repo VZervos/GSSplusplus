@@ -1,5 +1,5 @@
 import requests
-from src.config.settings import API_KEY, API_URL
+from config.settings import API_KEY, API_URL
 
 def call_gemini_api(prompt: str, api_key: str = API_KEY, timeout: int = 30):
     url = f"{API_URL}?key={api_key}"

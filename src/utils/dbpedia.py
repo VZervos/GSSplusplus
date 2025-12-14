@@ -53,10 +53,12 @@ def execute_sparql_query_with_retry(sparql_query, max_retries=2, initial_timeout
     return None
 
 
-def lookup_entity_uri(entity):
-    """Converts an entity name to a DBpedia URI."""
-    formatted_entity = "_".join(part.capitalize() for part in entity.replace(" ", "_").split("_") if part)
-    return f"http://dbpedia.org/resource/{formatted_entity}"
+from urllib.parse import quote
+
+def lookup_entity_uri(entity: str) -> str:
+    slug = quote(entity.strip().replace(" ", "_"))
+    return f"http://dbpedia.org/resource/{slug}"
+
 
 
 def extract_entity_name_from_uri(uri):
