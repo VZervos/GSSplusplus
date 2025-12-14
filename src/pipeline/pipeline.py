@@ -7,8 +7,13 @@ from utils.scoring import compute_importance, assign_importance_scores
 from utils.parser import extract_entities, filter_keywords
 from utils.pruning import prune_bad_uris, clean_triples_from_importance_map
 from utils.similarity import compute_similarity_scores
+from utils.ranking import (
+    compute_final_scores,
+    rank_and_select
+)
+from utils.deduplication import deduplicate_triples
 
-def pipeline(query):
+def pipeline(query: str) -> tuple[list, dict]:
     # STEP 1: Initialize pipeline
     print("Starting pipeline...")
 
@@ -32,15 +37,6 @@ def pipeline(query):
     # print(f"  Extracted {len(extraction['entities'])} entities")
 
     # STEP 3: Convert entity names to DBpedia URIs
-
-        # # STEP 3: Convert entity names to DBpedia URIs
-    # print("Step 3: Looking up entity URIs...")
-    # entity_uri_map = {}
-    # for entity in extraction["entities"]:
-    #     uri = lookup_entity_uri(entity)
-    #     entity_uri_map[entity] = uri
-    #     print(f"  {entity} -> {uri}")
-
     print("Step 3: Looking up entity URIs...")
     entity_uris = {}
     entity_importance = {}
@@ -105,10 +101,18 @@ def pipeline(query):
     print("Step 7: Computing similarity scores...")
     compute_similarity_scores(all_triples, query)
     print(f"  Computed similarity scores for {len(all_triples)} triples")
-    # STEP 8: Score & rank (not yet implemented)
-    # STEP 9: Select top K (not yet implemented)
-    # STEP 10: Verbalize result (not yet implemented)
     
+    # STEP 8: Final scoring and ranking
+    print("Step 8: Ranking triples...")
+    compute_final_scores(all_triples)
+    top_triples = rank_and_select(all_triples, k=20)
+    print(f"  Selected top {len(top_triples)} triples")    
+    
+    # STEP 9: Deduplicate equivalent triples
+    print("Step 9: Deduplicating triples...")
+    top_triples = deduplicate_triples(top_triples)
+    print(f"  After deduplication: {len(top_triples)} triples")
+
     print("Pipeline completed")
     
-    return {"triples": all_triples, "importance_map": uri_importance_map}
+    return top_triples, uri_importance_map

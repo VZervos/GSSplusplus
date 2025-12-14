@@ -1,6 +1,6 @@
 from collections import Counter
 
-def prune_bad_uris(uri_map, uri_importance_map, all_triples):
+def prune_bad_uris(uri_map, uri_importance_map, all_triples) -> tuple:
     """
     Prune URIs with total_degree == 0 OR triples_count == 0.
     If triples_count is missing in uri_importance_map (new scoring), compute it from all_triples.
@@ -74,7 +74,7 @@ def prune_bad_uris(uri_map, uri_importance_map, all_triples):
 
     return uri_map, uri_importance_map, all_triples
 
-def clean_triples_from_importance_map(uri_importance_map):
+def clean_triples_from_importance_map(uri_importance_map: dict) -> None:
     """Remove stored triples from importance map to save memory."""
     for uri, data in uri_importance_map.items():
         if "triples" in data:

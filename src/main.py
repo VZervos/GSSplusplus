@@ -14,7 +14,7 @@ if _parent_dir not in sys.path:
     sys.path.insert(0, _parent_dir)
 
 
-def main():
+def main() -> None:
     print("=" * 60)
     print("GEMINI SEMANTIC SUMMARIZER - Dataset Processing")
     print("=" * 60)
@@ -35,18 +35,16 @@ def main():
         print()
         
         try:
-            result = pipeline(question_text)
-            triples = result["triples"]
-            importance_map = result["importance_map"]
-            
+            top_triples, uri_importance_map = pipeline(question_text)
+
             print(f"\nResults for question {question_id}:")
-            print(f"  {len(triples)} triples found")
-            print(f"  {len(importance_map)} URIs with importance scores")
+            print(f"  {len(top_triples)} triples found")
+            print(f"  {len(uri_importance_map)} URIs with importance scores")
             
             # Print the final list of triples with importance scores
-            if triples:
+            if top_triples:
                 print(f"\nFinal triples with importance scores:")
-                for triple in triples:
+                for triple in top_triples:
                     s = triple.get('s', '')
                     p = triple.get('p', '')
                     o = triple.get('o', '')

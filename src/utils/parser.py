@@ -58,7 +58,7 @@ def extract_entities(query: str) -> dict:
         "synonyms": []  # only added by LLM
     }
 
-def should_use_llm(entities, verbs, query):
+def should_use_llm(entities, verbs, query) -> bool:
     """
     Simple condition to check if spaCy extraction is weak.
     """
@@ -231,7 +231,7 @@ def extract_response_text(api_response: dict) -> str:
         # If structure is different, return formatted JSON
         return json.dumps(api_response, indent=2)
 
-def filter_keywords(keywords):
+def filter_keywords(keywords) -> list:
     filtered_keywords = []
     seen_keywords = set()
     for keyword in keywords:

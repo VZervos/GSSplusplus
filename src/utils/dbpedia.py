@@ -2,7 +2,7 @@ import requests
 import time
 
 
-def execute_sparql_query_with_retry(sparql_query, max_retries=2, initial_timeout=45, max_timeout=90):
+def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = 2, initial_timeout: int = 45, max_timeout: int = 90) -> dict:
     """
     Executes a SPARQL query with retry logic and exponential backoff.
     Only retries on timeouts (transient issues), not on other errors.
@@ -53,12 +53,12 @@ def execute_sparql_query_with_retry(sparql_query, max_retries=2, initial_timeout
     return None
 
 
-def _format_entity_name(name):
+def _format_entity_name(name: str) -> str:
     """Formats entity name for DBpedia URI (handles spaces and underscores)."""
     return "_".join(part for part in name.replace(" ", "_").split("_") if part)
 
 
-def lookup_entity_uri(entity, entity_type=None):
+def lookup_entity_uri(entity: str, entity_type: str = None) -> str:
     """Converts an entity name to a DBpedia URI.
     
     Args:
@@ -86,17 +86,17 @@ def lookup_entity_uri(entity, entity_type=None):
     return f"http://dbpedia.org/{uri_type}/{_format_entity_name(entity)}"
 
 
-def is_predicate_uri(uri):
+def is_predicate_uri(uri: str) -> bool:
     """Checks if a URI is a predicate (property or ontology)."""
     return uri.startswith("http://dbpedia.org/property/") or uri.startswith("http://dbpedia.org/ontology/")
 
 
-def is_resource_uri(uri):
+def is_resource_uri(uri: str) -> bool:
     """Checks if a URI is a resource."""
     return uri.startswith("http://dbpedia.org/resource/")
 
 
-def extract_entity_name_from_uri(uri):
+def extract_entity_name_from_uri(uri: str) -> str:
     """Extracts a readable entity name from a DBpedia URI."""
     if not uri or not uri.startswith("http://dbpedia.org/"):
         return None
@@ -128,7 +128,7 @@ _NOISY_PREDICATES = [
     "<http://www.w3.org/2002/07/owl#differentFrom>"
 ]
 
-def _parse_triples_from_bindings(bindings):
+def _parse_triples_from_bindings(bindings: list) -> list:
     """Helper to parse triples from SPARQL bindings."""
     triples = []
     for binding in bindings:
@@ -138,7 +138,7 @@ def _parse_triples_from_bindings(bindings):
     return triples
 
 
-def generate_degree_query(uri):
+def generate_degree_query(uri: str) -> str:
     """Generates a SPARQL query to compute both out-degree and in-degree for a URI.
     
     For predicates: counts how many triples use this predicate.
@@ -195,7 +195,7 @@ def generate_degree_query(uri):
         """
     return sparql_query
 
-def compute_weighted_degree(uri):
+def compute_weighted_degree(uri: str) -> tuple:
     """Computes weighted degree centrality for a URI. Returns (out_degree, in_degree, total_degree)."""
     result_data = execute_sparql_query_with_retry(generate_degree_query(uri), max_retries=2, initial_timeout=45)
     
@@ -208,12 +208,12 @@ def compute_weighted_degree(uri):
     return (out_degree, in_degree, out_degree + in_degree)
 
 
-def _get_predicate_filter_string():
+def _get_predicate_filter_string() -> str:
     """Returns formatted predicate filter string for SPARQL queries."""
     return ",\n                ".join(_NOISY_PREDICATES)
 
 
-def _build_resource_pattern(resource, as_subject=True, predicate=None):
+def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: str = None) -> str:
     """Builds a SPARQL pattern for a resource as subject or object."""
     if as_subject:
         if predicate:
@@ -261,7 +261,7 @@ def _build_resource_pattern(resource, as_subject=True, predicate=None):
             }}"""
 
 
-def _build_predicate_pattern(predicate):
+def _build_predicate_pattern(predicate: str) -> str:
     """Builds a SPARQL pattern for a predicate."""
     return f"""
             {{
@@ -274,7 +274,7 @@ def _build_predicate_pattern(predicate):
             }}"""
 
 
-def generate_batch_retrieve_query(resource_uris, predicate_uris, limit=1000):
+def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, limit: int = 1000) -> str:
     """Generates a SPARQL query to retrieve triples using resources and/or predicates.
     
     Args:
@@ -324,7 +324,7 @@ def generate_batch_retrieve_query(resource_uris, predicate_uris, limit=1000):
     """
 
 
-def fetch_triples_batch(resource_uris, predicate_uris, limit=1000):
+def fetch_triples_batch(resource_uris: list, predicate_uris: list, limit: int = 1000) -> list:
     """Fetches triples in batch where subject/object is any resource or predicate is any predicate.
     
     Args:
@@ -349,7 +349,7 @@ def fetch_triples_batch(resource_uris, predicate_uris, limit=1000):
     return []
 
 
-def get_uris_from_triples(all_triples):
+def get_uris_from_triples(all_triples: list) -> set:
     """Extracts all DBpedia URIs (resources, properties, ontologies) from triples."""
     all_uris_in_triples = set()
     for triple in all_triples:

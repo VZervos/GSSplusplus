@@ -2,7 +2,7 @@ import json
 import sys
 
 
-def loadDataset(dataset_path: str):
+def loadDataset(dataset_path: str) -> list:
     try:
         with open(dataset_path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -32,7 +32,7 @@ def loadDataset(dataset_path: str):
     return english_questions
 
 
-def extract_query_keywords(extraction: dict, query):
+def extract_query_keywords(extraction: dict, query: str) -> set:
     """Extracts keywords from extraction and query for similarity computation."""
     query_keywords = set()
     

@@ -7,17 +7,17 @@ from utils.dbpedia import (
 )
 
 
-def _normalize_importance_score(degree):
+def _normalize_importance_score(degree: int) -> float:
     """Normalizes degree to importance score in 0-10 range."""
     return min(10.0, 1.0 + (degree ** 0.5) / 10.0) if degree > 0 else 0.0
 
 
-def _calculate_importance_multiplier(importance_weight):
+def _calculate_importance_multiplier(importance_weight: int) -> float:
     """Calculates multiplier based on importance weight (1, 2, or 3)."""
     return 1.0 + (importance_weight - 1) * 0.5
 
 
-def compute_importance(all_triples, entity_uris, uri_importance_map, entity_importance=None, triples_per_entity_limit=200):
+def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None, triples_per_entity_limit: int = 200) -> None:
     """
     Computes importance scores for entities with optional importance weighting.
     
@@ -89,7 +89,7 @@ def compute_importance(all_triples, entity_uris, uri_importance_map, entity_impo
         print(f"    Importance: {weighted_score:.2f} (base: {normalized_score:.2f}, weight: {importance_weight}x{importance_multiplier:.1f}, degree: {total_degree})")
 
 
-def assign_importance_scores(all_triples, query_keywords, uri_importance_map):
+def assign_importance_scores(all_triples: list, query_keywords: set, uri_importance_map: dict) -> None:
     """Assigns importance scores to triples based on the sum of entity scores, normalized."""
     for triple in all_triples:
         # Sum scores of subject, object, and predicate
