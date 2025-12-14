@@ -15,42 +15,88 @@ def pipeline(query):
     # STEP 2: Extract entities from query
     print("Step 2: Extracting entities...")
     extraction = extract_entities(query)
+    entities = extraction.get("entities", [])
+    print(f"  Extracted {len(entities)} entities: {entities}")
 
-    raw_keywords = extraction.get("entities", []) + extraction.get("synonyms", [])
-    keywords = filter_keywords(raw_keywords)
+    # raw_keywords = extraction.get("entities", []) + extraction.get("synonyms", [])
+    # keywords = filter_keywords(raw_keywords)
 
-    print(f"  Extracted {len(extraction.get('entities', []))} entities, {len(extraction.get('synonyms', []))} synonyms")
-    print(f"  Final keywords for DBpedia lookup: {keywords}")
+    # print(f"  Extracted {len(extraction.get('entities', []))} entities, {len(extraction.get('synonyms', []))} synonyms")
+    # print(f"  Final keywords for DBpedia lookup: {keywords}")
 
-    extraction["entities"] = keywords if keywords else ["UnknownEntity"]
+    # extraction["entities"] = keywords if keywords else ["UnknownEntity"]
 
+
+    # # Expected format: {"entities": [{"name": "GMT_Games", "type": "resource", "importance": 3}, ...]}
+    # extraction = {"entities": [
+    #     {"name": "GMT_Games", "type": "resource", "importance": 3},
+    #     {"name": "GMT", "type": "resource", "importance": 3},
+    #     {"name": "Board_Game", "type": "resource", "importance": 2},
+    #     {"name": "Boardgame", "type": "resource", "importance": 2},
+    #     {"name": "Wargame", "type": "resource", "importance": 2},
+    #     {"name": "Tabletop_game", "type": "resource", "importance": 2},
+    #     {"name": "publisher", "type": "property", "importance": 3},
+    #     {"name": "Game", "type": "resource", "importance": 1}
+    # ]}
+    # print(f"  Extracted {len(extraction['entities'])} entities")
 
     # STEP 3: Convert entity names to DBpedia URIs
+
+        # # STEP 3: Convert entity names to DBpedia URIs
+    # print("Step 3: Looking up entity URIs...")
+    # entity_uri_map = {}
+    # for entity in extraction["entities"]:
+    #     uri = lookup_entity_uri(entity)
+    #     entity_uri_map[entity] = uri
+    #     print(f"  {entity} -> {uri}")
+    
     print("Step 3: Looking up entity URIs...")
-    entity_uri_map = {}
-    for entity in extraction["entities"]:
-        uri = lookup_entity_uri(entity)
-        entity_uri_map[entity] = uri
-        print(f"  {entity} -> {uri}")
+    entity_uris = {}
+    entity_importance = {}
+    
+    for entity_obj in extraction["entities"]:
+        if isinstance(entity_obj, dict):
+            entity_name = entity_obj.get("name", "")
+            entity_type = entity_obj.get("type", "resource")
+            importance = entity_obj.get("importance", 1)
+        else:
+            # Legacy format: "resource/EntityName"
+            entity_name = entity_obj
+            entity_type = None
+            importance = 1
+        
+        entity_name = (entity_name or "").strip()
+        if not entity_name:
+            continue
+        uri = lookup_entity_uri(entity_name, entity_type)
+        entity_uris[entity_name] = uri
+        
+        entity_importance[uri] = max(entity_importance.get(uri, 0), int(importance or 1))
+        print(f"  {entity_name} ({entity_type}) -> {uri} [importance: {importance}]")
 
     # Deduplicate by URI: group names by URI and fetch once per URI
     uri_to_names = defaultdict(list)
-    for name, uri in entity_uri_map.items():
+    for name, uri in entity_uris.items():
         uri_to_names[uri].append(name)
     
     uri_map = {}
     for uri, names in uri_to_names.items():
         display_name = max(names, key=len)  # Use longest name as display name
         uri_map[uri] = display_name
-    print(f"  Deduplicated: {len(entity_uri_map)} keywords -> {len(uri_map)} unique URIs")
+    print(f"  Deduplicated: {len(entity_uris)} keywords -> {len(uri_map)} unique URIs")
 
     # STEP 4 & 5: Retrieve triples and compute the importance for entity URIs
     print("Step 4 & 5: Retrieving triples and computing importance...")
     all_triples = []
     uri_importance_map = {}
 
-    query_keywords = extract_query_keywords(extraction, query)
-    compute_importance(all_triples, uri_map, uri_importance_map)
+    extraction_for_keywords = dict(extraction)
+    extraction_for_keywords["entities"] = [
+        e.get("name", "") if isinstance(e, dict) else e
+        for e in extraction.get("entities", [])
+    ]
+    query_keywords = extract_query_keywords(extraction_for_keywords, query)
+    compute_importance(all_triples, entity_uris, uri_importance_map, entity_importance)
     print(f"  Total: {len(all_triples)} triples, {len(uri_importance_map)} URIs with importance scores")
     
     print("Pruning bad URIs...")

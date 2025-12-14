@@ -9,8 +9,8 @@ CUSTOM_DROP = {"who", "what", "which", "where", "when", "why", "how"}
 
 def extract_entities(query: str) -> dict:
     doc = nlp(query)
-
-    # 1️⃣ Named entities (NER) NER = Named Entity Recognition
+    return refine_with_llm(query)
+    # 1️⃣ Named entities (NER) - highest priority
     entities = [ent.text for ent in doc.ents]
 
     # 2️⃣ Targets of key prepositions (by, in, of) - super informative for DBpedia relations
@@ -35,6 +35,9 @@ def extract_entities(query: str) -> dict:
     all_entities = list(dict.fromkeys(
         entities + pobj_by_in + noun_chunks + proper_nouns + common_nouns
     )) or ["UnknownEntity"]
+    
+    # Filter out interrogative pronouns
+    all_entities = [e for e in all_entities if e.lower() not in CUSTOM_DROP]
 
     # Extract verbs
     verbs = [t.lemma_ for t in doc if t.pos_ == "VERB"] or ["unknownVerb"]
@@ -44,9 +47,13 @@ def extract_entities(query: str) -> dict:
         print("-> Using LLM to refine entities and expand synonyms...")
         return refine_with_llm(query)
 
-    # Return spaCy-only extraction
+    # Return spaCy-only extraction (convert to structured format)
+    formatted_entities = [
+        {"name": entity, "type": "resource", "importance": 1}
+        for entity in all_entities
+    ]
     return {
-        "entities": all_entities,
+        "entities": formatted_entities,
         "verbs": verbs,
         "synonyms": []  # only added by LLM
     }
@@ -75,31 +82,75 @@ def should_use_llm(entities, verbs, query):
 
 def refine_with_llm(query: str) -> dict:
     prompt = f"""
-Extract entities and verbs from the question.
+Extract entities, verbs, and safe DBpedia lookup variants from the question.
 
-Rules:
-- "entities": MUST be exact spans copied from the question text (no paraphrasing).
-- "synonyms": MUST be ONLY simple normalization variants of the returned entities.
-  Allowed synonym operations:
-  - change casing (e.g., "Foo Bar" -> "foo bar")
-  - replace spaces with underscores (e.g., "Foo Bar" -> "Foo_Bar")
-  - replace underscores with spaces (e.g., "Foo_Bar" -> "Foo Bar")
-  - optionally: singular/plural for common nouns (e.g., "boardgame" -> "boardgames")
-  Not allowed:
-  - inserting/removing punctuation or splitting acronyms (no "G.M.T.", "G M T", "g-m-t")
-  - adding extra words or suffixes not present in the entity (no "GMT game")
-  - introducing new entities not grounded in the question text
-- DO NOT introduce new entities that do not appear in the question.
-- Exception (light inference): if the question has a pattern like "X by Y" and Y is an acronym/short label, you may add ONE expanded/canonical form of Y if it is strongly implied (e.g., "GMT" -> "GMT Games").
-
-Return ONLY valid JSON (no markdown, no explanation).
+Return ONLY valid JSON (no markdown).
 
 JSON format:
 {{
-  "entities": ["..."],
-  "verbs": ["..."],
-  "synonyms": ["..."]
+  "entities": [
+    {{"name": "...", "type": "resource", "importance": 3}},
+    {{"name": "...", "type": "property", "importance": 2}}
+  ],
+  "verbs": ["..."],        // lemmatized if possible
+  "synonyms": ["..."]      // Additional lookup variants (optional)
 }}
+
+ENTITY EXTRACTION RULES - BE COMPREHENSIVE:
+
+1. DIRECT ENTITIES (importance: 3):
+   - Extract all entities directly mentioned in the question
+   - Use DBpedia-friendly format: Title_Case_With_Underscores (e.g., "boardgames" -> "Boardgame", "Board_Game")
+   - For acronyms/orgs: include both short form AND canonical expansion (e.g., "GMT" -> include both "GMT" and "GMT_Games")
+
+2. RELATED CONCEPTS (importance: 2):
+   - When a concept is mentioned, include related DBpedia categories/types
+   - Example: "boardgames" -> include "Board_Game", "Boardgame", "Wargame", "Tabletop_game", "Game"
+   - Example: "developed" -> include related concepts if contextually relevant
+
+3. IMPLIED PROPERTIES/RELATIONS (importance: 2-3):
+   - Extract predicates/properties implied by verbs or question patterns
+   - Patterns: "X by Y" -> include "publisher" or "developer" property
+   - Patterns: "Who developed X" -> include "developer" property
+   - Patterns: "Where was X born" -> include "birthPlace" property
+   - Use DBpedia property names: "publisher", "developer", "author", "birthPlace", etc.
+
+4. IMPORTANCE SCORING:
+   - 3 = Core entities directly mentioned (main subject, key organization/person)
+   - 2 = Related concepts, categories, or implied relations
+   - 1 = Background/generic concepts
+
+5. NAME FORMATTING:
+   - Use Title_Case_With_Underscores for DBpedia compatibility
+   - Keep original text spans when possible, but convert to DBpedia format
+   - Examples: "boardgames" -> "Boardgame" or "Board_Game", "GMT" -> "GMT" and "GMT_Games"
+
+SYNONYM RULES (optional, for additional lookup help):
+- Include alternative spellings, casing variants, or lookup hints
+- These are supplementary to the main entities array
+
+NOT allowed:
+- Interrogative pronouns as entities ("who", "what", "where", "when", "why", "how")
+- Inventing unrelated famous people/places
+- Adding completely unrelated concepts
+
+EXAMPLES:
+Question: "List all boardgames by GMT"
+Expected entities:
+- {{"name": "GMT", "type": "resource", "importance": 3}}
+- {{"name": "GMT_Games", "type": "resource", "importance": 3}}
+- {{"name": "Boardgame", "type": "resource", "importance": 2}}
+- {{"name": "Board_Game", "type": "resource", "importance": 2}}
+- {{"name": "Wargame", "type": "resource", "importance": 2}}
+- {{"name": "Tabletop_game", "type": "resource", "importance": 2}}
+- {{"name": "publisher", "type": "property", "importance": 3}}
+- {{"name": "Game", "type": "resource", "importance": 1}}
+
+Question: "Who developed Skype?"
+Expected entities:
+- {{"name": "Skype", "type": "resource", "importance": 3}}
+- {{"name": "developer", "type": "property", "importance": 3}}
+- {{"name": "author", "type": "property", "importance": 2}}
 
 Question: "{query}"
 """
@@ -111,11 +162,31 @@ Question: "{query}"
     text = text.replace("```json", "").replace("```", "").strip()
 
     try:
-        return json.loads(text)
+        result = json.loads(text)
+        # Ensure entities are in the correct format
+        if "entities" in result and result["entities"]:
+            formatted_entities = []
+            for entity in result["entities"]:
+                if isinstance(entity, dict):
+                    # Already in correct format, ensure required fields
+                    formatted_entities.append({
+                        "name": entity.get("name", ""),
+                        "type": entity.get("type", "resource"),
+                        "importance": entity.get("importance", 1)
+                    })
+                else:
+                    # Legacy string format, convert to dict
+                    formatted_entities.append({
+                        "name": entity,
+                        "type": "resource",
+                        "importance": 1
+                    })
+            result["entities"] = formatted_entities
+        return result
     except Exception as e:
         print("ERROR: LLM JSON parse failed. Text was:", text)
         return {
-            "entities": ["UnknownEntity"],
+            "entities": [{"name": "UnknownEntity", "type": "resource", "importance": 1}],
             "verbs": ["unknownVerb"],
             "synonyms": []
         }
