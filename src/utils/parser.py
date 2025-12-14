@@ -1,84 +1,28 @@
 import json
-import spacy
-from spacy.lang.en.stop_words import STOP_WORDS as SPACY_STOPWORDS
 from services.gemini_client import call_gemini_api
 
-nlp = spacy.load("en_core_web_sm")
+ENGLISH_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "been", "by", "for", "from",
+    "has", "he", "in", "is", "it", "its", "of", "on", "that", "the", "to",
+    "was", "were", "will", "with", "the", "this", "but", "they", "have",
+    "had", "has", "having", "do", "does", "did", "will", "would", "should",
+    "could", "may", "might", "must", "can", "cannot", "i", "you", "we",
+    "she", "her", "him", "his", "their", "them", "these", "those", "or",
+    "if", "than", "so", "no", "not", "only", "more", "most", "very", "just",
+    "all", "each", "both", "few", "many", "some", "such", "own", "same",
+    "other", "another", "any", "all", "both", "every", "much", "more",
+    "most", "some", "such", "no", "nor", "not", "only", "own", "same",
+    "so", "than", "too", "very", "can", "will", "just", "should", "now"
+}
 
 CUSTOM_DROP = {"who", "what", "which", "where", "when", "why", "how"}
 
 def extract_entities(query: str) -> dict:
-    doc = nlp(query)
+    """
+    Extract entities from query using LLM-based extraction.
+    All entity extraction is now handled by the Gemini API.
+    """
     return refine_with_llm(query)
-    # 1️⃣ Named entities (NER) - highest priority
-    entities = [ent.text for ent in doc.ents]
-
-    # 2️⃣ Targets of key prepositions (by, in, of) - super informative for DBpedia relations
-    pobj_by_in = []
-    for tok in doc:
-        if tok.dep_ == "prep" and tok.text.lower() in ("by", "in", "of"):
-            for child in tok.children:
-                if child.dep_ == "pobj":
-                    span = doc[child.left_edge.i : child.right_edge.i + 1].text
-                    pobj_by_in.append(span)
-
-    # 3️⃣ Noun chunks (multiword phrases)
-    noun_chunks = [chunk.text for chunk in doc.noun_chunks]
-
-    # 4️⃣ Proper nouns (names, companies, products) PROPN = Proper Nouns
-    proper_nouns = [token.text for token in doc if token.pos_ == "PROPN"]
-
-    # 5️⃣ Fallback: ANY nouns if we still have nothing
-    common_nouns = [token.text for token in doc if token.pos_ == "NOUN"]
-
-    # Combine candidates in priority order: ents > pobj_by_in > noun_chunks > PROPN > NOUN
-    all_entities = list(dict.fromkeys(
-        entities + pobj_by_in + noun_chunks + proper_nouns + common_nouns
-    )) or ["UnknownEntity"]
-    
-    # Filter out interrogative pronouns
-    all_entities = [e for e in all_entities if e.lower() not in CUSTOM_DROP]
-
-    # Extract verbs
-    verbs = [t.lemma_ for t in doc if t.pos_ == "VERB"] or ["unknownVerb"]
-
-    # Decide if LLM is needed
-    if should_use_llm(all_entities, verbs, query):
-        print("-> Using LLM to refine entities and expand synonyms...")
-        return refine_with_llm(query)
-
-    # Return spaCy-only extraction (convert to structured format)
-    formatted_entities = [
-        {"name": entity, "type": "resource", "importance": 1}
-        for entity in all_entities
-    ]
-    return {
-        "entities": formatted_entities,
-        "verbs": verbs,
-        "synonyms": []  # only added by LLM
-    }
-
-def should_use_llm(entities, verbs, query) -> bool:
-    """
-    Simple condition to check if spaCy extraction is weak.
-    """
-    # If spaCy found nothing useful
-    if entities == ["UnknownEntity"]:
-        return True
-
-    # Only 1 generic noun (e.g., "father")
-    if len(entities) == 1 and entities[0].lower() in ["father", "mother", "city", "company", "person", "thing"]:
-        return True
-
-    # Verb missing
-    if verbs == ["unknownVerb"]:
-        return True
-
-    # Pronouns usually require LLM interpretation
-    if any(p in query.lower() for p in ["his", "her", "their", "its"]):
-        return True
-
-    return False
 
 def refine_with_llm(query: str) -> dict:
     prompt = f"""
@@ -250,8 +194,8 @@ def filter_keywords(keywords) -> list:
         if len(cleaned_keyword.split()) == 1 and keyword_lower in CUSTOM_DROP:
             continue
 
-        # drop spaCy stopwords (single-word only)
-        if len(cleaned_keyword.split()) == 1 and keyword_lower in SPACY_STOPWORDS:
+        # drop English stopwords (single-word only)
+        if len(cleaned_keyword.split()) == 1 and keyword_lower in ENGLISH_STOPWORDS:
             continue
 
         filtered_keywords.append(cleaned_keyword)

@@ -1,28 +1,47 @@
 # Graph Semantic Summarizer
 
-A Python application that uses the Gemini API and spaCy NLP to extract entities and process semantic queries for graph-based knowledge summarization.
+A Python application that uses the Gemini API to extract entities and process semantic queries for graph-based knowledge summarization.
 
 ## Project Structure
 
 ```
 graph-semantic-summarizer/
-├── main.py                    # Main entry point and pipeline orchestration
-├── config/
-│   └── settings.py           # Configuration (API key, model settings)
-├── services/
-│   └── gemini_client.py      # Gemini API client service
-├── utils/
-│   └── parser.py             # NLP utilities (entity extraction, response parsing)
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
+├── src/
+│   ├── main.py                    # Main entry point for dataset processing
+│   ├── config/
+│   │   └── settings.py           # Configuration (API key, model settings)
+│   ├── pipeline/
+│   │   └── pipeline.py           # Complete pipeline orchestration
+│   ├── services/
+│   │   └── gemini_client.py      # Gemini API client service
+│   └── utils/
+│       ├── parser.py             # NLP utilities (entity extraction, response parsing)
+│       ├── dbpedia.py            # DBpedia URI lookup and triple retrieval
+│       ├── dataset.py            # Dataset loading and query keyword extraction
+│       ├── scoring.py            # Importance score computation
+│       ├── similarity.py         # Semantic similarity computation
+│       ├── ranking.py            # Triple ranking and selection
+│       ├── pruning.py            # URI and triple pruning
+│       └── deduplication.py      # Triple deduplication
+├── dataset/                      # QALD-9+ dataset files
+├── requirements.txt              # Python dependencies
+└── README.md                     # This file
 ```
 
 ## Files
 
-- `main.py` - Main entry point with pipeline orchestration and interactive CLI
-- `config/settings.py` - Configuration for API key and Gemini model settings
-- `services/gemini_client.py` - Service for making requests to the Gemini API
-- `utils/parser.py` - NLP utilities using spaCy for entity extraction and response parsing
+- `src/main.py` - Main entry point for processing QALD-9+ dataset questions
+- `src/pipeline/pipeline.py` - Complete pipeline orchestration with all processing steps
+- `src/config/settings.py` - Configuration for API key and Gemini model settings
+- `src/services/gemini_client.py` - Service for making requests to the Gemini API
+- `src/utils/parser.py` - NLP utilities for entity extraction and response parsing using Gemini API
+- `src/utils/dbpedia.py` - DBpedia SPARQL queries for URI lookup and triple retrieval
+- `src/utils/dataset.py` - Dataset loading utilities and query keyword extraction
+- `src/utils/scoring.py` - Importance score computation for entities and triples
+- `src/utils/similarity.py` - Semantic similarity computation using sentence transformers
+- `src/utils/ranking.py` - Final scoring, ranking, and top-K triple selection
+- `src/utils/pruning.py` - URI filtering and triple cleaning utilities
+- `src/utils/deduplication.py` - Triple deduplication logic
 - `requirements.txt` - Python dependencies
 
 ## Versions & Libraries
@@ -34,7 +53,6 @@ graph-semantic-summarizer/
 ### Dependencies
 
 - **requests**: >=2.31.0 (HTTP library for API calls)
-- **spacy**: >=3.7.0 (Natural Language Processing library)
 
 ### Standard Library Modules Used
 
@@ -48,13 +66,9 @@ graph-semantic-summarizer/
 The `requirements.txt` file specifies minimum versions:
 
 - `requests>=2.31.0`
-- `spacy>=3.7.0`
-
-**Note**: After installing spacy, you need to download the English language model:
-
-```bash
-python -m spacy download en_core_web_sm
-```
+- `sentence-transformers>=2.2.0`
+- `scikit-learn>=1.3.0`
+- `numpy>=1.24.0`
 
 ## Installation
 
@@ -71,13 +85,7 @@ sudo apt install python3-pip
 pip3 install -r requirements.txt
 ```
 
-2. Download the spaCy English language model:
-
-```bash
-python -m spacy download en_core_web_sm
-```
-
-3. Set up your Gemini API key (optional - defaults to hardcoded key):
+2. Set up your Gemini API key (optional - defaults to hardcoded key):
 
 ```bash
 export GEMINI_API_KEY="your-api-key-here"
@@ -87,99 +95,112 @@ Or modify `config/settings.py` directly.
 
 ## Usage
 
-Run the main script interactively:
+Run the main script to process the QALD-9+ dataset:
 
 ```bash
-python3 main.py
+python3 src/main.py
 ```
 
-The script will prompt you to enter a query. The pipeline will:
+The script processes questions from the test dataset (`src/test/small.json`) and runs each through the complete pipeline:
 
-1. **Extract entities** using spaCy NLP:
-   - Named entities (NER)
-   - Proper nouns
-   - Subject nouns
-   - Common nouns (fallback)
-   - Verbs (lemmatized)
-2. **Conditionally refine entities** using Gemini API if extraction is weak
-3. **Call the Gemini API** with your prompt
-4. **Extract and display** the response text
-5. **Process through pipeline** (currently returns dummy answer)
+1. **Extract entities** using Gemini API:
+   - Named entities and concepts
+   - Related DBpedia categories and types
+   - Implied properties and relations
+   - Verbs and synonyms
+2. **Lookup entity URIs** in DBpedia
+3. **Retrieve triples** from DBpedia for each entity
+4. **Compute importance scores** for entities and triples
+5. **Prune bad URIs** and clean triples
+6. **Assign importance scores** to triples based on URI importance
+7. **Compute similarity scores** using sentence transformers
+8. **Rank and select** top-K triples (default: top 20)
+9. **Deduplicate** equivalent triples
 
-**Note**: A query is required. The script will exit if no query is provided.
+Results are displayed for each question showing the number of triples found and the final ranked list with importance scores.
 
 ## Current Implementation Status
 
 ### Implemented Features
 
-- ✅ Gemini API integration (`services/gemini_client.py`)
+- ✅ Gemini API integration (`src/services/gemini_client.py`)
   - HTTP POST requests to Gemini API
   - Error handling for timeouts and network errors
   - Response status code validation
-- ✅ Entity extraction using spaCy (`utils/parser.py`)
-  - Named Entity Recognition (NER) - extracts named entities from text
-  - Proper noun extraction (PROPN) - identifies proper nouns
-  - Subject noun extraction (nsubj, nsubjpass) - extracts grammatical subjects
-  - Common noun fallback - extracts any nouns if other methods fail
-  - Verb extraction - extracts verbs and lemmatizes them
-  - LLM refinement logic - conditionally uses Gemini API to refine entities when spaCy extraction is weak
-- ✅ Response parsing from Gemini API (`utils/parser.py`)
+- ✅ Entity extraction using Gemini API (`src/utils/parser.py`)
+  - LLM-based entity extraction - uses Gemini API to extract entities, verbs, and synonyms
+  - Comprehensive entity extraction including direct entities, related concepts, and implied properties
+  - DBpedia-friendly formatting with importance scoring
+  - Keyword filtering with stopword removal
+- ✅ Response parsing from Gemini API (`src/utils/parser.py`)
   - Extracts text from Gemini API response structure
   - Handles malformed responses gracefully
-- ✅ Interactive CLI interface (`main.py`)
-  - User-friendly prompts and formatted output
-  - Error handling and validation
-- ✅ Pipeline structure (`main.py`)
-  - Modular pipeline function for processing queries
-  - Currently implements entity extraction and Gemini API call
+- ✅ DBpedia integration (`src/utils/dbpedia.py`)
+  - SPARQL queries for entity URI lookup
+  - Triple retrieval from DBpedia endpoint
+  - URI extraction and mapping utilities
+- ✅ Dataset processing (`src/main.py`)
+  - QALD-9+ dataset loading and processing
+  - Batch processing of multiple questions
+  - Formatted output with results for each question
+- ✅ Complete pipeline (`src/pipeline/pipeline.py`)
+  - All 9 pipeline steps fully implemented
+  - Entity extraction, URI lookup, triple retrieval, scoring, ranking, and deduplication
 
 ### Pipeline Steps
 
-The current pipeline (`main.py`) includes:
+The complete pipeline (`src/pipeline/pipeline.py`) includes all 9 steps:
 
 1. **STEP 1**: Pipeline initialization [x]
 2. **STEP 2**: Entity extraction [x]
-   - Uses spaCy to extract entities (NER, proper nouns, subjects, common nouns)
-   - Extracts verbs from the query
-   - Conditionally uses LLM refinement if extraction is weak
+   - Uses Gemini API to extract entities, verbs, and synonyms
+   - Extracts direct entities, related concepts, and implied properties
+   - Formats entities with DBpedia-friendly naming and importance scores
+3. **STEP 3**: Entity URI lookup [x]
+   - Converts entity names to DBpedia URIs using SPARQL queries
+   - Deduplicates entities by URI
+   - Maps entity names to their corresponding URIs
+4. **STEP 4 & 5**: Triple retrieval and importance computation [x]
+   - Retrieves triples from DBpedia for each entity URI
+   - Computes importance scores for entity URIs based on extraction importance
+5. **STEP 6**: Assign importance scores to triples [x]
+   - Assigns importance scores to triples based on their URI importance
+   - Filters and prunes bad URIs and invalid triples
+6. **STEP 7**: Compute similarity scores [x]
+   - Uses sentence transformers to compute semantic similarity between query and triples
+   - Embeds query and triple text for comparison
+7. **STEP 8**: Final scoring and ranking [x]
+   - Combines importance and similarity scores into final scores
+   - Ranks triples and selects top-K (default: 20)
+8. **STEP 9**: Deduplicate triples [x]
+   - Removes equivalent triples that represent the same information
+   - Ensures unique results in the final output
 
 ### Entity Extraction Logic
 
-The entity extraction (`utils/parser.py`) implements a smart fallback strategy:
+The entity extraction (`src/utils/parser.py`) uses Gemini API for comprehensive extraction:
 
-1. **Primary extraction**: Uses spaCy to extract:
+1. **LLM-based extraction**: Uses Gemini API to extract:
 
-   - Named entities (NER)
-   - Proper nouns
-   - Subject nouns
-   - Common nouns (fallback)
+   - Direct entities (importance: 3) - entities directly mentioned in the question
+   - Related concepts (importance: 2) - related DBpedia categories/types
+   - Implied properties/relations (importance: 2-3) - predicates implied by verbs or question patterns
+   - Verbs - lemmatized verbs from the query
+   - Synonyms - additional lookup variants for better DBpedia matching
 
-2. **LLM refinement**: Conditionally calls Gemini API when:
+2. **Entity formatting**: Formats entities with:
 
-   - No entities found (only "UnknownEntity")
-   - Only generic nouns found (e.g., "father", "mother", "city")
-   - No verbs detected
-   - Query contains pronouns requiring interpretation
+   - DBpedia-friendly naming (Title_Case_With_Underscores)
+   - Importance scoring (1-3 scale)
+   - Type classification (resource/property)
 
-3. **Verb extraction**: Extracts and lemmatizes all verbs from the query
-
-### Future Pipeline Steps (Commented Out)
-
-The following steps are planned but not yet implemented:
-
-- STEP 3: Entity URI lookup [ ]
-- STEP 4: Triple retrieval [ ]
-- STEP 5: Importance score computation [ ]
-- STEP 6: Similarity score computation [ ]
-- STEP 7: Scoring and ranking triples [ ]
-- STEP 8: Top K selection [ ]
-- STEP 9: Answer verbalization (currently returns dummy answer) [ ]
+- STEP 10: Answer verbalization (currently returns dummy answer) [ ]
 
 ## Configuration
 
 ### API Settings
 
-Edit `config/settings.py` to configure:
+Edit `src/config/settings.py` to configure:
 
 - **API_KEY**: Your Gemini API key (defaults to environment variable `GEMINI_API_KEY`, with fallback to hardcoded key)
 - **MODEL_NAME**: Gemini model to use (default: `gemini-2.5-flash-lite`)
@@ -193,6 +214,7 @@ Edit `config/settings.py` to configure:
 - **Request method**: POST
 - **Timeout**: 30 seconds (configurable in `call_gemini_api` function)
 - **Request format**: JSON with `contents` array containing `parts` with `text`
+- **DBpedia endpoint**: `https://dbpedia.org/sparql` (used for URI lookup and triple retrieval)
 
 ## Git Status
 
@@ -206,10 +228,18 @@ Edit `config/settings.py` to configure:
 The following files have been modified but not yet committed:
 
 - `README.md` - Documentation updates
-- `config/settings.py` - Configuration updates (API key, model settings, URL structure)
-- `main.py` - Pipeline implementation with entity extraction and Gemini API integration
-- `requirements.txt` - Dependency updates (requests, spacy)
-- `utils/parser.py` - Enhanced entity extraction with LLM refinement logic
+- `src/config/settings.py` - Configuration updates (API key, model settings, URL structure)
+- `src/main.py` - Dataset processing implementation
+- `src/pipeline/pipeline.py` - Complete pipeline with all 9 steps implemented
+- `requirements.txt` - Dependency updates (requests, sentence-transformers, scikit-learn, numpy)
+- `src/utils/parser.py` - Enhanced entity extraction with LLM refinement logic
+- `src/utils/dbpedia.py` - DBpedia SPARQL integration for URI lookup and triple retrieval
+- `src/utils/scoring.py` - Importance score computation
+- `src/utils/similarity.py` - Semantic similarity computation
+- `src/utils/ranking.py` - Triple ranking and selection
+- `src/utils/pruning.py` - URI and triple pruning utilities
+- `src/utils/deduplication.py` - Triple deduplication logic
+- `src/utils/dataset.py` - Dataset loading and keyword extraction
 
 ### Tracked Files
 
@@ -217,11 +247,19 @@ All project files are tracked in git:
 
 - `.gitignore` - Git ignore rules
 - `README.md` - Project documentation
-- `config/settings.py` - Configuration settings
-- `main.py` - Main entry point
+- `src/config/settings.py` - Configuration settings
+- `src/main.py` - Main entry point
+- `src/pipeline/pipeline.py` - Pipeline orchestration
 - `requirements.txt` - Python dependencies
-- `services/gemini_client.py` - Gemini API client service
-- `utils/parser.py` - NLP utilities
+- `src/services/gemini_client.py` - Gemini API client service
+- `src/utils/parser.py` - NLP utilities
+- `src/utils/dbpedia.py` - DBpedia integration
+- `src/utils/dataset.py` - Dataset utilities
+- `src/utils/scoring.py` - Scoring utilities
+- `src/utils/similarity.py` - Similarity computation
+- `src/utils/ranking.py` - Ranking utilities
+- `src/utils/pruning.py` - Pruning utilities
+- `src/utils/deduplication.py` - Deduplication utilities
 
 ### Ignored Files
 
@@ -240,47 +278,60 @@ The following are ignored by git (see `.gitignore`):
 
 The application follows a modular architecture:
 
-1. **Configuration Layer** (`config/settings.py`)
+1. **Configuration Layer** (`src/config/settings.py`)
 
    - Centralized configuration management
    - Environment variable support with fallback values
    - API endpoint construction
 
-2. **Service Layer** (`services/gemini_client.py`)
+2. **Service Layer** (`src/services/gemini_client.py`)
 
    - Encapsulates Gemini API communication
    - Handles HTTP requests, error handling, and timeouts
    - Returns structured JSON responses
 
-3. **Utility Layer** (`utils/parser.py`)
+3. **Utility Layer** (`src/utils/`)
 
-   - NLP processing with spaCy
-   - Entity extraction with multiple strategies
-   - Response parsing from API
-   - LLM refinement logic
+   - **parser.py**: LLM-based entity extraction using Gemini API, response parsing, keyword filtering
+   - **dbpedia.py**: DBpedia SPARQL queries for URI lookup and triple retrieval
+   - **dataset.py**: Dataset loading and query keyword extraction
+   - **scoring.py**: Importance score computation for entities and triples
+   - **similarity.py**: Semantic similarity computation using sentence transformers
+   - **ranking.py**: Final scoring, ranking, and top-K selection
+   - **pruning.py**: URI filtering and triple cleaning
+   - **deduplication.py**: Triple deduplication logic
 
-4. **Application Layer** (`main.py`)
-   - Orchestrates the pipeline
-   - Provides CLI interface
-   - Handles user input and output formatting
+4. **Pipeline Layer** (`src/pipeline/pipeline.py`)
+
+   - Orchestrates all 9 pipeline steps
+   - Coordinates entity extraction, URI lookup, triple retrieval, scoring, ranking, and deduplication
+   - Returns ranked triples with importance scores
+
+5. **Application Layer** (`src/main.py`)
+   - Processes QALD-9+ dataset questions
+   - Handles batch processing and output formatting
+   - Displays results for each processed question
 
 ### Entity Extraction Strategy
 
-The entity extraction uses a multi-tier approach:
+The entity extraction uses a comprehensive LLM-based approach:
 
-1. **Tier 1**: Named Entity Recognition (NER) - spaCy's built-in entity recognition
-2. **Tier 2**: Proper nouns - Identifies capitalized proper nouns
-3. **Tier 3**: Subject nouns - Extracts grammatical subjects
-4. **Tier 4**: Common nouns - Fallback to any nouns
-5. **Tier 5**: LLM refinement - Uses Gemini API when extraction is insufficient
+1. **Direct entities** - Extracts all entities directly mentioned in the question with high importance (3)
+2. **Related concepts** - Includes related DBpedia categories/types with medium importance (2)
+3. **Implied properties** - Extracts predicates/properties implied by verbs or question patterns (importance 2-3)
+4. **Verb extraction** - Extracts and lemmatizes verbs from the query
+5. **Synonym expansion** - Includes alternative spellings and lookup variants for better DBpedia matching
 
-This ensures robust entity extraction even for ambiguous queries.
+This ensures robust entity extraction even for ambiguous queries by leveraging the Gemini API's understanding capabilities.
 
 ## Notes
 
-- Make sure your API key is correct in `config/settings.py` or set as `GEMINI_API_KEY` environment variable
+- Make sure your API key is correct in `src/config/settings.py` or set as `GEMINI_API_KEY` environment variable
 - The API endpoint uses `gemini-2.5-flash-lite` model by default
 - Timeout is set to 30 seconds by default
-- You can modify the model name in `config/settings.py` if needed
-- The spaCy model `en_core_web_sm` must be downloaded before first use
-- The application will automatically use LLM refinement when entity extraction is weak
+- You can modify the model name in `src/config/settings.py` if needed
+- All entity extraction is handled by the Gemini API, ensuring comprehensive and accurate extraction
+- The pipeline processes questions from `src/test/small.json` by default
+- DBpedia SPARQL endpoint is used for URI lookup and triple retrieval
+- Sentence transformers are used for semantic similarity computation (requires model download on first run)
+- Top-K selection defaults to 20 triples per question
