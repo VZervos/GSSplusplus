@@ -33,8 +33,8 @@ Return ONLY valid JSON (no markdown).
 JSON format:
 {{
   "entities": [
-    {{"name": "...", "type": "resource", "importance": 3}},
-    {{"name": "...", "type": "property", "importance": 2}}
+    {{"name": "...", "type": "resource", "importance": 5}},
+    {{"name": "...", "type": "property", "importance": 4}}
   ],
   "verbs": ["..."],        // lemmatized if possible
   "synonyms": ["..."]      // Additional lookup variants (optional)
@@ -42,29 +42,46 @@ JSON format:
 
 ENTITY EXTRACTION RULES - BE COMPREHENSIVE:
 
-1. DIRECT ENTITIES (importance: 3):
+1. DIRECT ENTITIES (importance: 5):
    - Extract all entities directly mentioned in the question
    - Use DBpedia-friendly format: Title_Case_With_Underscores (e.g., "movies" -> "Film", "Movie")
    - For acronyms/orgs: ALWAYS include both short form AND canonical expansion variants
    - Examples: "IBM" -> include both "IBM" and "IBM_Corporation", "UN" -> include both "UN" and "United_Nations"
    - For company/publisher acronyms in publishing/creation contexts: include both acronym AND common DBpedia variants with suffixes like "_Games", "_Press", "_Publishing", etc.
 
-2. RELATED CONCEPTS (importance: 2):
-   - When a concept is mentioned, include related DBpedia categories/types
-   - Example: "movies" -> include "Film", "Movie", "Motion_Picture", "Work", "CreativeWork"
-   - Example: "created" -> include related concepts if contextually relevant
+2. KEY RELATIONSHIPS/PROPERTIES (importance: 4-5):
+   - Extract predicates/properties directly implied by the question
+   - Patterns: "X by Y" -> include "director", "author", "publisher", or "creator" property (importance: 5)
+   - Patterns: "Who created X" -> include "creator" or "author" property (importance: 5)
+   - Patterns: "Where was X born" -> include "birthPlace" property (importance: 5)
+   - Use DBpedia property names: "director", "author", "creator", "birthPlace", "capital", "publisher", etc.
 
-3. IMPLIED PROPERTIES/RELATIONS (importance: 2-3):
-   - Extract predicates/properties implied by verbs or question patterns
-   - Patterns: "X by Y" -> include "director", "author", or "creator" property
-   - Patterns: "Who created X" -> include "creator" or "author" property
-   - Patterns: "Where was X born" -> include "birthPlace" property
-   - Use DBpedia property names: "director", "author", "creator", "birthPlace", "capital", etc.
+3. SPECIFIC RELATED CONCEPTS (importance: 3):
+   - When a specific concept is mentioned, include related but SPECIFIC DBpedia categories/types
+   - Example: "board games" -> include "Board_Game", "Boardgame", "Wargame", "Tabletop_game" (importance: 3)
+   - Example: "movies" -> include "Film", "Movie", "Motion_Picture" (importance: 3)
+   - AVOID overly generic terms here - prefer specific categories
 
-4. IMPORTANCE SCORING:
-   - 3 = Core entities directly mentioned (main subject, key organization/person)
-   - 2 = Related concepts, categories, or implied relations
-   - 1 = Background/generic concepts
+4. MODERATELY RELATED CONCEPTS (importance: 2):
+   - Broader but still relevant categories
+   - Example: "Work", "CreativeWork" for creative content questions
+   - Example: "Entertainment" for entertainment-related questions
+   - Still avoid the most generic terms
+
+5. GENERIC/BACKGROUND CONCEPTS (importance: 1):
+   - Only include VERY generic terms if absolutely necessary for retrieval
+   - Examples: "Game", "Thing", "Entity" - these should be RARELY used
+   - CRITICAL: Avoid assigning importance 2 or higher to generic terms like "Game", "Person", "Place", "Thing", "Entity", "Object"
+   - Generic terms should ONLY be used as a last resort when no more specific terms exist
+
+6. IMPORTANCE SCORING (1-5 scale):
+   - 5 = Core entities directly mentioned (main subject, key organization/person, essential properties)
+   - 4 = Important relationships/properties that are central to the question
+   - 3 = Specific related concepts and categories (e.g., "Board_Game" for board game questions)
+   - 2 = Moderately related broader concepts (use sparingly)
+   - 1 = Very generic/background concepts (use only when necessary, avoid if possible)
+   
+   CRITICAL RULE: Generic terms like "Game", "Person", "Place", "Thing", "Entity", "Object", "Work" should almost always be importance 1, never 2 or higher.
 
 5. NAME FORMATTING:
    - Use Title_Case_With_Underscores for DBpedia compatibility
@@ -84,50 +101,52 @@ NOT allowed:
 EXAMPLES:
 Question: "What is the capital of France?"
 Expected entities:
-- {{"name": "France", "type": "resource", "importance": 3}}
-- {{"name": "capital", "type": "property", "importance": 3}}
+- {{"name": "France", "type": "resource", "importance": 5}}
+- {{"name": "capital", "type": "property", "importance": 5}}
 - {{"name": "Country", "type": "resource", "importance": 1}}
 
 Question: "List all movies directed by Christopher Nolan"
 Expected entities:
-- {{"name": "Christopher_Nolan", "type": "resource", "importance": 3}}
-- {{"name": "Movie", "type": "resource", "importance": 2}}
-- {{"name": "Film", "type": "resource", "importance": 2}}
-- {{"name": "director", "type": "property", "importance": 3}}
+- {{"name": "Christopher_Nolan", "type": "resource", "importance": 5}}
+- {{"name": "Movie", "type": "resource", "importance": 3}}
+- {{"name": "Film", "type": "resource", "importance": 3}}
+- {{"name": "Motion_Picture", "type": "resource", "importance": 3}}
+- {{"name": "director", "type": "property", "importance": 5}}
 - {{"name": "Work", "type": "resource", "importance": 1}}
 
 Question: "When was the Eiffel Tower built?"
 Expected entities:
-- {{"name": "Eiffel_Tower", "type": "resource", "importance": 3}}
-- {{"name": "completionDate", "type": "property", "importance": 3}}
-- {{"name": "openingDate", "type": "property", "importance": 2}}
+- {{"name": "Eiffel_Tower", "type": "resource", "importance": 5}}
+- {{"name": "completionDate", "type": "property", "importance": 5}}
+- {{"name": "openingDate", "type": "property", "importance": 3}}
 - {{"name": "Building", "type": "resource", "importance": 1}}
 
 Question: "What is the population of Tokyo?"
 Expected entities:
-- {{"name": "Tokyo", "type": "resource", "importance": 3}}
-- {{"name": "populationTotal", "type": "property", "importance": 3}}
+- {{"name": "Tokyo", "type": "resource", "importance": 5}}
+- {{"name": "populationTotal", "type": "property", "importance": 5}}
 - {{"name": "City", "type": "resource", "importance": 1}}
 - {{"name": "Settlement", "type": "resource", "importance": 1}}
 
 Question: "List all books published by MIT Press"
 Expected entities:
-- {{"name": "MIT_Press", "type": "resource", "importance": 3}}
-- {{"name": "MIT", "type": "resource", "importance": 3}}
-- {{"name": "Book", "type": "resource", "importance": 2}}
+- {{"name": "MIT_Press", "type": "resource", "importance": 5}}
+- {{"name": "MIT", "type": "resource", "importance": 5}}
+- {{"name": "Book", "type": "resource", "importance": 3}}
 - {{"name": "WrittenWork", "type": "resource", "importance": 2}}
-- {{"name": "publisher", "type": "property", "importance": 3}}
+- {{"name": "publisher", "type": "property", "importance": 5}}
 - {{"name": "Work", "type": "resource", "importance": 1}}
 
-Question: "Show me all games by EA"
+Question: "List all board games by GMT"
 Expected entities:
-- {{"name": "EA", "type": "resource", "importance": 3}}
-- {{"name": "Electronic_Arts", "type": "resource", "importance": 3}}
-- {{"name": "EA_Games", "type": "resource", "importance": 3}}
-- {{"name": "Game", "type": "resource", "importance": 2}}
-- {{"name": "Video_Game", "type": "resource", "importance": 2}}
-- {{"name": "publisher", "type": "property", "importance": 3}}
-- {{"name": "developer", "type": "property", "importance": 2}}
+- {{"name": "GMT_Games", "type": "resource", "importance": 5}}
+- {{"name": "GMT", "type": "resource", "importance": 5}}
+- {{"name": "publisher", "type": "property", "importance": 5}}
+- {{"name": "Board_Game", "type": "resource", "importance": 3}}
+- {{"name": "Boardgame", "type": "resource", "importance": 3}}
+- {{"name": "Wargame", "type": "resource", "importance": 3}}
+- {{"name": "Tabletop_game", "type": "resource", "importance": 3}}
+- {{"name": "Game", "type": "resource", "importance": 1}}
 
 Question: "{query}"
 """
@@ -146,10 +165,14 @@ Question: "{query}"
             for entity in result["entities"]:
                 if isinstance(entity, dict):
                     # Already in correct format, ensure required fields
+                    # Ensure importance is in valid range 1-5, default to 1
+                    importance = entity.get("importance", 1)
+                    if not isinstance(importance, int) or importance < 1 or importance > 5:
+                        importance = 1
                     formatted_entities.append({
                         "name": entity.get("name", ""),
                         "type": entity.get("type", "resource"),
-                        "importance": entity.get("importance", 1)
+                        "importance": importance
                     })
                 else:
                     # Legacy string format, convert to dict

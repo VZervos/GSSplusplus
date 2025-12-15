@@ -17,15 +17,16 @@ def _calculate_importance_multiplier(importance_weight: int) -> float:
     return 1.0 + (importance_weight - 1) * 0.5
 
 
-def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None, triples_per_entity_limit: int = 200) -> None:
+def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None, triples_per_entity_limit: int = 1000) -> None:
     """
-    Computes importance scores for entities with optional importance weighting.
+    Computes importance scores for entities using only initial importance weights (1-5).
+    Does not use in/out degree computation.
     
     Args:
         all_triples: List to store retrieved triples
         entity_uris: Dict mapping entity names to URIs
         uri_importance_map: Dict to store importance scores for URIs
-        entity_importance: Dict mapping URIs to importance values (1, 2, or 3)
+        entity_importance: Dict mapping URIs to importance values (1, 2, 3, 4, or 5)
         triples_per_entity_limit: Limit for triples per entity
     """
     if entity_importance is None:
@@ -47,7 +48,7 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
     all_triples.extend(batch_triples)
     print(f"    Retrieved {len(batch_triples)} triples from batch query")
     
-    # Count predicate usage with our resources
+    # Count predicate usage with our resources (for reporting only)
     predicate_triple_counts = {}
     if predicate_uris and resource_uris:
         resource_set = set(resource_uris)
@@ -59,34 +60,43 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
                 if subject in resource_set or object_uri in resource_set:
                     predicate_triple_counts[predicate_uri] = predicate_triple_counts.get(predicate_uri, 0) + 1
     
-    # Compute importance for each URI
+    # Compute importance for each URI using only initial importance (1-5)
+    # Use power function: importance^2, then normalize to 0-10 range
+    # 1^2=1, 2^2=4, 3^2=9, 4^2=16, 5^2=25 -> normalized: (value/25)*10
+    # Map: 1 -> 0.4, 2 -> 1.6, 3 -> 3.6, 4 -> 6.4, 5 -> 10.0, 0 (not found) -> 0.0
     for entity, uri in entity_uris.items():
         print(f"  Computing importance for: {entity}")
         
-        importance_weight = entity_importance.get(uri, 1)
+        importance_weight = entity_importance.get(uri, 0)  # 0 if not found
         
-        if is_predicate_uri(uri):
-            total_degree = predicate_triple_counts.get(uri, 0)
-            out_degree = total_degree
-            in_degree = 0
+        if importance_weight == 0:
+            # URI doesn't exist or wasn't in initial keywords
+            score = 0.0
+            out_degree = in_degree = total_degree = 0
         else:
-            out_degree, in_degree, total_degree = compute_weighted_degree(uri)
-        
-        normalized_score = _normalize_importance_score(total_degree)
-        importance_multiplier = _calculate_importance_multiplier(importance_weight)
-        weighted_score = min(10.0, normalized_score * importance_multiplier)
+            # Use power function: importance^2, then normalize to 0-10
+            # Max value is 5^2 = 25, so normalize by (value / 25) * 10
+            squared_value = importance_weight ** 2
+            score = (squared_value / 25.0) * 10.0
+            # Still compute degrees for reporting, but don't use them for score
+            if is_predicate_uri(uri):
+                total_degree = predicate_triple_counts.get(uri, 0)
+                out_degree = total_degree
+                in_degree = 0
+            else:
+                out_degree, in_degree, total_degree = compute_weighted_degree(uri)
         
         uri_importance_map[uri] = {
-            "method": "weighted_degree",
-            "score": weighted_score,
-            "base_score": normalized_score,
+            "method": "initial_importance_only",
+            "score": score,
+            "base_score": score,
             "importance_weight": importance_weight,
             "out_degree": out_degree,
             "in_degree": in_degree,
             "total_degree": total_degree
         }
         
-        print(f"    Importance: {weighted_score:.2f} (base: {normalized_score:.2f}, weight: {importance_weight}x{importance_multiplier:.1f}, degree: {total_degree})")
+        print(f"    Importance: {score:.2f} (weight: {importance_weight}, degree: {total_degree})")
 
 
 def assign_importance_scores(all_triples: list, query_keywords: set, uri_importance_map: dict) -> None:

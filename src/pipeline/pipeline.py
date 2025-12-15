@@ -1,7 +1,8 @@
 from collections import defaultdict
 from utils.dataset import extract_query_keywords
 from utils.dbpedia import (
-    lookup_entity_uri, get_uris_from_triples
+    lookup_entity_uri, get_uris_from_triples, fetch_triples_batch,
+    is_predicate_uri, is_resource_uri, extract_entity_name_from_uri
 )
 from utils.scoring import compute_importance, assign_importance_scores
 from utils.parser import extract_entities, filter_keywords
@@ -86,6 +87,70 @@ def pipeline(query: str) -> tuple[list, dict]:
     compute_importance(all_triples, entity_uris, uri_importance_map, entity_importance)
     print(f"  Total: {len(all_triples)} triples, {len(uri_importance_map)} URIs with importance scores")
     
+    # Expansion step: Extract URIs from triples and fetch their triples (1-hop expansion)
+    print("  Expanding to 1-hop neighbors...")
+    expansion_uris = get_uris_from_triples(all_triples)
+    # Exclude original query entity URIs to avoid duplicates
+    original_uris = set(entity_uris.values())
+    expansion_uris = expansion_uris - original_uris
+    
+    if expansion_uris:
+        # Count URI frequency in triples and compute priority scores
+        uri_frequency = {}
+        uri_priority = {}  # Combined priority: frequency + importance of connected entities
+        
+        for triple in all_triples:
+            for key in ["s", "o", "p"]:
+                uri = triple.get(key, "")
+                if uri in expansion_uris:
+                    uri_frequency[uri] = uri_frequency.get(uri, 0) + 1
+                    
+                    # Calculate priority: check if this URI is connected to high-importance entities
+                    # Priority = frequency + max importance of entities in the same triple
+                    max_importance_in_triple = 0
+                    for other_key in ["s", "o", "p"]:
+                        other_uri = triple.get(other_key, "")
+                        if other_uri in entity_importance:
+                            max_importance_in_triple = max(max_importance_in_triple, entity_importance[other_uri])
+                    
+                    # Priority score: frequency * 10 + importance * 200 (importance weighted more, scale 1-5)
+                    current_priority = uri_priority.get(uri, 0)
+                    new_priority = uri_frequency[uri] * 10 + max_importance_in_triple * 200
+                    uri_priority[uri] = max(current_priority, new_priority)
+        
+        # Separate into resources and predicates, sorted by priority
+        expansion_resource_uris = [uri for uri in expansion_uris if is_resource_uri(uri)]
+        expansion_predicate_uris = [uri for uri in expansion_uris if is_predicate_uri(uri)]
+        
+        # Sort by priority (highest first) and limit to top ones
+        expansion_resource_uris.sort(key=lambda u: uri_priority.get(u, 0), reverse=True)
+        expansion_predicate_uris.sort(key=lambda u: uri_priority.get(u, 0), reverse=True)
+        
+        # Limit expansion to avoid query size issues (smaller batches)
+        # Process in smaller batches to avoid 413 errors
+        batch_size = 20  # Process 20 resources at a time
+        expansion_triples = []
+        
+        # Show top prioritized URIs
+        top_resources = expansion_resource_uris[:10]
+        print(f"    Top prioritized resources: {[extract_entity_name_from_uri(u) for u in top_resources]}")
+        
+        # Increase expansion limit to get more triples
+        max_expansion_resources = 100  # Increased from 50
+        for i in range(0, min(max_expansion_resources, len(expansion_resource_uris)), batch_size):
+            batch_resources = expansion_resource_uris[i:i+batch_size]
+            batch_predicates = expansion_predicate_uris[:10] if i == 0 else []  # Only include predicates in first batch
+            
+            print(f"    Expanding batch {i//batch_size + 1}: {len(batch_resources)} resources, {len(batch_predicates)} predicates")
+            batch_limit = 500 * max(len(batch_resources), len(batch_predicates), 1)  # Increased from 300
+            batch_triples = fetch_triples_batch(batch_resources, batch_predicates, limit=batch_limit)
+            expansion_triples.extend(batch_triples)
+            print(f"      Retrieved {len(batch_triples)} triples from this batch")
+        
+        all_triples.extend(expansion_triples)
+        print(f"    Retrieved {len(expansion_triples)} total additional triples from expansion")
+        print(f"  Total after expansion: {len(all_triples)} triples")
+    
     print("Pruning bad URIs...")
     uri_map, uri_importance_map, all_triples = prune_bad_uris(uri_map, uri_importance_map, all_triples)
     clean_triples_from_importance_map(uri_importance_map)  # Clean up stored triples
@@ -105,7 +170,7 @@ def pipeline(query: str) -> tuple[list, dict]:
     # STEP 8: Final scoring and ranking
     print("Step 8: Ranking triples...")
     compute_final_scores(all_triples)
-    top_triples = rank_and_select(all_triples, k=20)
+    top_triples = rank_and_select(all_triples, k=1000)
     print(f"  Selected top {len(top_triples)} triples")    
     
     # STEP 9: Deduplicate equivalent triples
