@@ -10,7 +10,7 @@ from utils.pruning import prune_bad_uris, clean_triples_from_importance_map
 from utils.similarity import compute_similarity_scores
 from utils.ranking import (
     compute_final_scores,
-    select_subgraph_triples, rank_and_select
+    select_subgraph_triples
 )
 from utils.deduplication import deduplicate_triples
 
@@ -127,22 +127,26 @@ def pipeline(query: str) -> tuple[list, dict]:
         expansion_predicate_uris.sort(key=lambda u: uri_priority.get(u, 0), reverse=True)
 
         # Limit expansion to avoid query size issues (smaller batches)
-        # Process in smaller batches to avoid 413 errors
-        batch_size = 20  # Process 20 resources at a time
+        # Process in smaller batches to avoid 405/500 errors
+        batch_size = 5  # Reduced from 20 to avoid query size issues
         expansion_triples = []
 
         # Show top prioritized URIs
         top_resources = expansion_resource_uris[:10]
         print(f"    Top prioritized resources: {[extract_entity_name_from_uri(u) for u in top_resources]}")
 
-        # Increase expansion limit to get more triples
-        max_expansion_resources = 100  # Increased from 50
+        # Limit expansion to avoid query size issues
+        max_expansion_resources = 50  # Reduced from 100
+        max_expansion_batches = 10  # Limit number of batches
         for i in range(0, min(max_expansion_resources, len(expansion_resource_uris)), batch_size):
+            if i // batch_size >= max_expansion_batches:
+                break
             batch_resources = expansion_resource_uris[i:i+batch_size]
-            batch_predicates = expansion_predicate_uris[:10] if i == 0 else []  # Only include predicates in first batch
+            # Don't include predicates in expansion batches to keep queries simpler
+            batch_predicates = []
 
             print(f"    Expanding batch {i//batch_size + 1}: {len(batch_resources)} resources, {len(batch_predicates)} predicates")
-            batch_limit = 500 * max(len(batch_resources), len(batch_predicates), 1)  # Increased from 300
+            batch_limit = 200  # Reduced limit per batch
             batch_triples = fetch_triples_batch(batch_resources, batch_predicates, limit=batch_limit)
             expansion_triples.extend(batch_triples)
             print(f"      Retrieved {len(batch_triples)} triples from this batch")
@@ -178,8 +182,6 @@ def pipeline(query: str) -> tuple[list, dict]:
         max_total=350
     )
     print(f"  Subgraph size: {len(subgraph_triples)} triples")
-    top_triples = rank_and_select(all_triples, k=1000)
-    print(f"  Selected top {len(top_triples)} triples")
 
     # STEP 9: Deduplicate equivalent triples
     print("Step 9: Deduplicating triples...")
@@ -187,5 +189,5 @@ def pipeline(query: str) -> tuple[list, dict]:
     print(f"  After deduplication: {len(subgraph_triples)} triples")
 
     print("Pipeline completed")
-    
+
     return subgraph_triples, uri_importance_map

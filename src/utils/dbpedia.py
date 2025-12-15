@@ -46,6 +46,16 @@ def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = 2, ini
                 print(f"    Timeout after {max_retries} attempts")
                 return None
                 
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 405:
+                print(f"    Error 405: Query too large or method not allowed. Try reducing batch size.")
+            elif e.response.status_code == 500:
+                print(f"    Error 500: Server error. Query may be too complex.")
+            elif e.response.status_code == 413:
+                print(f"    Error 413: Request entity too large. Try reducing batch size.")
+            else:
+                print(f"    HTTP Error {e.response.status_code}: {str(e)}")
+            return None
         except requests.exceptions.RequestException as e:
             print(f"    Error: {str(e)}")
             return None
@@ -281,30 +291,56 @@ def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, lim
         resource_uris: List of resource URIs (can be empty)
         predicate_uris: List of predicate URIs (can be empty)
         limit: Maximum number of triples to return
+    
+    Note: Limits query complexity to avoid 405/500 errors from DBpedia.
+    When both resources and predicates are present, prioritizes resource+predicate combinations
+    and limits the number of UNION clauses.
     """
     if not resource_uris and not predicate_uris:
         return None
     
     union_patterns = []
+    MAX_UNION_CLAUSES = 100  # Limit to avoid query size issues
     
     if resource_uris and predicate_uris:
-        # Case 1: Resources as subject/object WITH our predicates
-        for resource in resource_uris:
-            for predicate in predicate_uris:
+        # When both are present, prioritize resource+predicate combinations
+        # Limit to avoid too many UNION clauses
+        max_resources = min(len(resource_uris), 10)  # Limit resources when predicates present
+        max_predicates = min(len(predicate_uris), 5)  # Limit predicates
+        
+        # Case 1: Resources as subject/object WITH our predicates (prioritized)
+        for resource in resource_uris[:max_resources]:
+            for predicate in predicate_uris[:max_predicates]:
+                if len(union_patterns) >= MAX_UNION_CLAUSES:
+                    break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=True, predicate=predicate))
+                if len(union_patterns) >= MAX_UNION_CLAUSES:
+                    break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=False, predicate=predicate))
-        # Case 2: Resources as subject/object with ANY predicate (excluding noisy ones)
-        for resource in resource_uris:
-            union_patterns.append(_build_resource_pattern(resource, as_subject=True))
-            union_patterns.append(_build_resource_pattern(resource, as_subject=False))
+            if len(union_patterns) >= MAX_UNION_CLAUSES:
+                break
+        
+        # Case 2: If we have room, add resources with ANY predicate (but limit)
+        if len(union_patterns) < MAX_UNION_CLAUSES:
+            remaining = MAX_UNION_CLAUSES - len(union_patterns)
+            for resource in resource_uris[:min(len(resource_uris), remaining // 2)]:
+                if len(union_patterns) >= MAX_UNION_CLAUSES:
+                    break
+                union_patterns.append(_build_resource_pattern(resource, as_subject=True))
+                if len(union_patterns) >= MAX_UNION_CLAUSES:
+                    break
+                union_patterns.append(_build_resource_pattern(resource, as_subject=False))
     elif resource_uris:
         # Only resources: find triples where resource is subject or object
-        for resource in resource_uris:
+        # Limit to avoid too many UNION clauses
+        max_resources = min(len(resource_uris), MAX_UNION_CLAUSES // 2)
+        for resource in resource_uris[:max_resources]:
             union_patterns.append(_build_resource_pattern(resource, as_subject=True))
             union_patterns.append(_build_resource_pattern(resource, as_subject=False))
     else:
         # Only predicates: find triples using any of these predicates
-        for predicate in predicate_uris:
+        max_predicates = min(len(predicate_uris), MAX_UNION_CLAUSES)
+        for predicate in predicate_uris[:max_predicates]:
             union_patterns.append(_build_predicate_pattern(predicate))
     
     if not union_patterns:

@@ -42,19 +42,40 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
             resource_uris.append(uri)
     
     # Fetch triples in batch
+    # If we have many resources/predicates, split into smaller batches to avoid query size issues
     print(f"  Fetching triples batch: {len(resource_uris)} resources, {len(predicate_uris)} predicates")
-    limit = triples_per_entity_limit * max(len(resource_uris), len(predicate_uris), 1)
-    batch_triples = fetch_triples_batch(resource_uris, predicate_uris, limit=limit)
+    
+    batch_triples = []
+    if len(resource_uris) > 10 or (len(resource_uris) > 5 and len(predicate_uris) > 3):
+        # Split into smaller batches to avoid query size issues
+        print(f"    Splitting into smaller batches to avoid query size limits...")
+        # Process resources in smaller chunks
+        resource_batch_size = 5
+        predicate_batch_size = 3
+        for i in range(0, len(resource_uris), resource_batch_size):
+            batch_resources = resource_uris[i:i+resource_batch_size]
+            for j in range(0, len(predicate_uris), predicate_batch_size):
+                batch_predicates = predicate_uris[j:j+predicate_batch_size]
+                limit = triples_per_entity_limit * max(len(batch_resources), len(batch_predicates), 1)
+                sub_batch = fetch_triples_batch(batch_resources, batch_predicates, limit=limit)
+                batch_triples.extend(sub_batch)
+                print(f"      Batch {i//resource_batch_size + 1}-{j//predicate_batch_size + 1}: {len(sub_batch)} triples")
+    else:
+        # Small enough to query in one go
+        limit = triples_per_entity_limit * max(len(resource_uris), len(predicate_uris), 1)
+        batch_triples = fetch_triples_batch(resource_uris, predicate_uris, limit=limit)
+        print(f"    Retrieved {len(batch_triples)} triples from batch query")
+    
     all_triples.extend(batch_triples)
-    print(f"    Retrieved {len(batch_triples)} triples from batch query")
     
     # Count predicate usage with our resources (for reporting only)
     predicate_triple_counts = {}
     if predicate_uris and resource_uris:
         resource_set = set(resource_uris)
+        predicate_set = set(predicate_uris)
         for triple in batch_triples:
             predicate_uri = triple.get("p", "")
-            if predicate_uri in predicate_uris:
+            if predicate_uri in predicate_set:
                 subject = triple.get("s", "")
                 object_uri = triple.get("o", "")
                 if subject in resource_set or object_uri in resource_set:
