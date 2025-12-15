@@ -12,11 +12,6 @@ def _normalize_importance_score(degree: int) -> float:
     return min(10.0, 1.0 + (degree ** 0.5) / 10.0) if degree > 0 else 0.0
 
 
-def _calculate_importance_multiplier(importance_weight: int) -> float:
-    """Calculates multiplier based on importance weight (1, 2, or 3)."""
-    return 1.0 + (importance_weight - 1) * 0.5
-
-
 def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None, triples_per_entity_limit: int = 1000) -> None:
     """
     Computes importance scores for entities using only initial importance weights (1-5).
