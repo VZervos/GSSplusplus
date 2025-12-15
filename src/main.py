@@ -42,14 +42,21 @@ def main() -> None:
             print(f"  {len(uri_importance_map)} URIs with importance scores")
             
             # Print the final list of triples with importance scores
-            if top_triples:
-                print(f"\nFinal triples with importance scores:")
-                for triple in top_triples:
-                    s = triple.get('s', '')
-                    p = triple.get('p', '')
-                    o = triple.get('o', '')
-                    importance = triple.get('importance', 0.0)
-                    print(f"  {s} {p} {o} -> importance: {importance:.4f}")
+            for triple in top_triples:
+                s = triple.get('s', '')
+                p = triple.get('p', '')
+                o = triple.get('o', '')
+
+                importance = triple.get('importance', 0.0)
+                similarity = triple.get('similarity', 0.0)
+                final_score = triple.get('final_score', 0.0)
+
+                print(
+                    f"  {s} {p} {o} "
+                    f"| importance={importance:.4f} "
+                    f"| similarity={similarity:.4f} "
+                    f"| final={final_score:.4f}"
+                )
             
         except Exception as e:
             print(f"Error processing question {question_id}: {str(e)}")

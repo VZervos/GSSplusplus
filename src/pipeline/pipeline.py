@@ -9,7 +9,7 @@ from utils.pruning import prune_bad_uris, clean_triples_from_importance_map
 from utils.similarity import compute_similarity_scores
 from utils.ranking import (
     compute_final_scores,
-    rank_and_select
+    select_subgraph_triples
 )
 from utils.deduplication import deduplicate_triples
 
@@ -105,14 +105,20 @@ def pipeline(query: str) -> tuple[list, dict]:
     # STEP 8: Final scoring and ranking
     print("Step 8: Ranking triples...")
     compute_final_scores(all_triples)
-    top_triples = rank_and_select(all_triples, k=20)
-    print(f"  Selected top {len(top_triples)} triples")    
+    subgraph_triples = select_subgraph_triples(
+        all_triples,
+        uri_importance_map,
+        per_entity_limit=45,
+        min_score=0.1,
+        max_total=350
+    )
+    print(f"  Subgraph size: {len(subgraph_triples)} triples")
     
     # STEP 9: Deduplicate equivalent triples
     print("Step 9: Deduplicating triples...")
-    top_triples = deduplicate_triples(top_triples)
-    print(f"  After deduplication: {len(top_triples)} triples")
+    subgraph_triples = deduplicate_triples(subgraph_triples)
+    print(f"  After deduplication: {len(subgraph_triples)} triples")
 
     print("Pipeline completed")
     
-    return top_triples, uri_importance_map
+    return subgraph_triples, uri_importance_map
