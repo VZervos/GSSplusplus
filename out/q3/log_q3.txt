@@ -7,68 +7,65 @@ Sending request to Gemini API...
 Prompt: 
 Extract entities, verbs, and safe DBpedia lookup ...
 Response status: 200
-  Extracted 5 entities: [{'name': 'Heraklion', 'type': 'resource', 'importance': 5}, {'name': 'birthPlace', 'type': 'property', 'importance': 5}, {'name': 'Person', 'type': 'resource', 'importance': 1}, {'name': 'City', 'type': 'resource', 'importance': 1}, {'name': 'Settlement', 'type': 'resource', 'importance': 1}]
+  Extracted 4 entities: [{'name': 'Heraklion', 'type': 'resource', 'importance': 5}, {'name': 'birthPlace', 'type': 'property', 'importance': 5}, {'name': 'Person', 'type': 'resource', 'importance': 1}, {'name': 'Place', 'type': 'resource', 'importance': 1}]
 Step 3: Looking up entity URIs...
   Heraklion (resource) -> http://dbpedia.org/resource/Heraklion [importance: 5]
   birthPlace (property) -> http://dbpedia.org/property/birthPlace [importance: 5]
   Person (resource) -> http://dbpedia.org/resource/Person [importance: 1]
-  City (resource) -> http://dbpedia.org/resource/City [importance: 1]
-  Settlement (resource) -> http://dbpedia.org/resource/Settlement [importance: 1]
-  Deduplicated: 5 keywords -> 5 unique URIs
+  Place (resource) -> http://dbpedia.org/resource/Place [importance: 1]
+  Deduplicated: 4 keywords -> 4 unique URIs
 Step 4: Retrieving triples and computing importance...
-  Fetching triples batch: 4 resources, 1 predicates
-    Retrieved 4000 triples from batch query
+  Fetching triples batch: 3 resources, 1 predicates
+    Retrieved 805 triples from batch query
   Computing importance for: Heraklion
     Importance: 1.00 (weight: 5, degree: 568)
   Computing importance for: birthPlace
-    Importance: 1.00 (weight: 5, degree: 112)
+    Importance: 1.00 (weight: 5, degree: 110)
   Computing importance for: Person
     Importance: 0.04 (weight: 1, degree: 1)
-  Computing importance for: City
-    Importance: 0.04 (weight: 1, degree: 9257)
-  Computing importance for: Settlement
-    Importance: 0.04 (weight: 1, degree: 1)
-  Total: 4000 triples, 5 URIs with importance scores
+  Computing importance for: Place
+    Importance: 0.04 (weight: 1, degree: 0)
+  Total: 805 triples, 4 URIs with importance scores
 Step 5: Expanding to 1-hop neighbors...
-    Top prioritized resources: ['giorgos grammatikakis', 'theophanes the cretan', 'theocharis silvestros', 'georgios kortezas', 'ieremias palladas', 'petros lambardos', 'nikolaos ritzos', 'georgios kastrofylakas', 'franghias kavertzas', 'georgios klontzas']
+    Top prioritized resources: ['nikolaos ritzos', 'ieremias palladas', 'franghias kavertzas', 'petros lambardos', 'georgios klontzas', 'theophanes the cretan', 'georgios kortezas', 'theocharis silvestros', 'giorgos grammatikakis', 'georgios kastrofylakas']
     Expanding batch 1: 5 resources, 0 predicates
-      Retrieved 59 triples from this batch
+      Retrieved 73 triples from this batch
     Expanding batch 2: 5 resources, 0 predicates
-      Retrieved 62 triples from this batch
+      Retrieved 48 triples from this batch
     Expanding batch 3: 5 resources, 0 predicates
-      Retrieved 191 triples from this batch
+      Retrieved 179 triples from this batch
     Expanding batch 4: 5 resources, 0 predicates
-      Retrieved 93 triples from this batch
+      Retrieved 184 triples from this batch
     Expanding batch 5: 5 resources, 0 predicates
-      Retrieved 126 triples from this batch
+      Retrieved 118 triples from this batch
     Expanding batch 6: 5 resources, 0 predicates
-      Retrieved 200 triples from this batch
+      Retrieved 144 triples from this batch
     Expanding batch 7: 5 resources, 0 predicates
-      Retrieved 170 triples from this batch
+      Retrieved 91 triples from this batch
     Expanding batch 8: 5 resources, 0 predicates
-      Retrieved 150 triples from this batch
+      Retrieved 139 triples from this batch
     Expanding batch 9: 5 resources, 0 predicates
-      Retrieved 143 triples from this batch
+      Retrieved 64 triples from this batch
     Expanding batch 10: 5 resources, 0 predicates
-      Retrieved 163 triples from this batch
-    Retrieved 1357 total additional triples from expansion
-  Total after expansion: 5357 triples
+      Retrieved 159 triples from this batch
+    Retrieved 1199 total additional triples from expansion
+  Total after expansion: 2004 triples
 Step 6: Pruning bad URIs...
-  Pruning Settlement: total_degree=1, triples=0
-  After pruning: 4 URIs, 4181 triples
+  Pruning Place: total_degree=0, triples=0
+  After pruning: 3 URIs, 989 triples
 Step 7: Assigning importance scores to triples...
-  Assigned importance scores to 4181 triples
+  Assigned importance scores to 989 triples
 Step 8: Computing similarity scores...
-  Computed similarity scores for 4181 triples
+  Computed similarity scores for 989 triples
 Step 9: Ranking triples...
-  Subgraph size: 91 triples
+  Subgraph size: 46 triples
 Step 10: Deduplicating triples...
-  After deduplication: 65 triples
+  After deduplication: 18 triples
 Pipeline completed
 
 Results for question 3:
-  65 triples found
-  4 URIs with importance scores
+  18 triples found
+  3 URIs with importance scores
   http://dbpedia.org/resource/Konstanty_Korniakt http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8784 | final=0.7514
   http://dbpedia.org/resource/Ntinos_Konstantakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8709 | final=0.7484
   http://dbpedia.org/resource/Victor_(iconographer) http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8707 | final=0.7483
@@ -86,51 +83,4 @@ Results for question 3:
   http://dbpedia.org/resource/Theophanes_the_Cretan http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8533 | final=0.7413
   http://dbpedia.org/resource/Christoforos_Liontakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8517 | final=0.7407
   http://dbpedia.org/resource/Notis_Sfakianakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8513 | final=0.7405
-  http://dbpedia.org/resource/Eleftherios_Goulielmakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8513 | final=0.7405
-  http://dbpedia.org/resource/Giorgos_Grammatikakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8512 | final=0.7405
   http://dbpedia.org/resource/KBS_Radio_3 http://dbpedia.org/ontology/programmeFormat http://dbpedia.org/resource/Person | importance=0.0133 | similarity=0.5644 | final=0.2338
-  http://dbpedia.org/resource/Nouzad_Ja'adan http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/City | importance=0.3467 | similarity=0.6735 | final=0.4774
-  http://dbpedia.org/resource/Adam_Rizwee http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/City | importance=0.3467 | similarity=0.6176 | final=0.4550
-  http://dbpedia.org/resource/Hernando,_Mississippi http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.7395 | final=0.3038
-  http://dbpedia.org/resource/Sheyenne,_North_Dakota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.7318 | final=0.3007
-  http://dbpedia.org/resource/Athens,_Tennessee http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.7158 | final=0.2943
-  http://dbpedia.org/resource/Shelbina,_Missouri http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.7066 | final=0.2907
-  http://dbpedia.org/resource/Sheboygan,_Wisconsin__Sheboygan,_Wisconsin__1 http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.7008 | final=0.2883
-  http://dbpedia.org/resource/Pulaski,_Tennessee http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6973 | final=0.2869
-  http://dbpedia.org/resource/Waseca,_Minnesota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6967 | final=0.2867
-  http://dbpedia.org/resource/Namakkal http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6966 | final=0.2866
-  http://dbpedia.org/resource/Oneida,_Kansas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6915 | final=0.2846
-  http://dbpedia.org/resource/Itapissuma http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6911 | final=0.2845
-  http://dbpedia.org/resource/Dijkot http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6901 | final=0.2841
-  http://dbpedia.org/resource/Bemidji,_Minnesota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6898 | final=0.2839
-  http://dbpedia.org/resource/Marietta,_Minnesota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6884 | final=0.2834
-  http://dbpedia.org/resource/Itta_Bena,_Mississippi http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6884 | final=0.2834
-  http://dbpedia.org/resource/Niota,_Tennessee http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6876 | final=0.2831
-  http://dbpedia.org/resource/Cyrus,_Minnesota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6864 | final=0.2826
-  http://dbpedia.org/resource/Kiel,_Wisconsin http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6863 | final=0.2825
-  http://dbpedia.org/resource/Indianola,_Mississippi http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6855 | final=0.2822
-  http://dbpedia.org/resource/Sunyani http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6854 | final=0.2822
-  http://dbpedia.org/resource/Belzoni,_Mississippi http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6836 | final=0.2814
-  http://dbpedia.org/resource/Karauli http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6832 | final=0.2813
-  http://dbpedia.org/resource/Dūkštas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6830 | final=0.2812
-  http://dbpedia.org/resource/Thayer,_Kansas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6824 | final=0.2809
-  http://dbpedia.org/resource/Abengourou http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6809 | final=0.2804
-  http://dbpedia.org/resource/Sparta,_Wisconsin http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6808 | final=0.2803
-  http://dbpedia.org/resource/Wyandotte,_Michigan http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6792 | final=0.2797
-  http://dbpedia.org/resource/Loretto,_Tennessee http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6790 | final=0.2796
-  http://dbpedia.org/resource/Artesia,_New_Mexico http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6789 | final=0.2796
-  http://dbpedia.org/resource/Krasnoperekopsk http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6779 | final=0.2792
-  http://dbpedia.org/resource/Skikda http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6771 | final=0.2789
-  http://dbpedia.org/resource/Cherokee,_Iowa http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6763 | final=0.2785
-  http://dbpedia.org/resource/Hisar_(city) http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6763 | final=0.2785
-  http://dbpedia.org/resource/Thayer,_Missouri http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6762 | final=0.2785
-  http://dbpedia.org/resource/Florence,_Kansas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6758 | final=0.2783
-  http://dbpedia.org/resource/Lakota,_Iowa http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6750 | final=0.2780
-  http://dbpedia.org/resource/Hallock,_Minnesota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6750 | final=0.2780
-  http://dbpedia.org/resource/Medon,_Tennessee http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6744 | final=0.2778
-  http://dbpedia.org/resource/Eunice,_New_Mexico http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6743 | final=0.2777
-  http://dbpedia.org/resource/Monango,_North_Dakota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6741 | final=0.2776
-  http://dbpedia.org/resource/Hambantota http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6739 | final=0.2776
-  http://dbpedia.org/resource/Verona,_Mississippi http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6738 | final=0.2775
-  http://dbpedia.org/resource/Oskaloosa,_Kansas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6736 | final=0.2774
-  http://dbpedia.org/resource/Iuka,_Kansas http://dbpedia.org/ontology/type http://dbpedia.org/resource/City | importance=0.0133 | similarity=0.6732 | final=0.2773

@@ -39,40 +39,40 @@ Step 4: Retrieving triples and computing importance...
     Importance: 0.04 (weight: 1, degree: 83)
   Total: 298 triples, 8 URIs with importance scores
 Step 5: Expanding to 1-hop neighbors...
-    Top prioritized resources: ['labyrinth: the war on terror, 2001 – %3f', '1989: dawn of freedom', 'chandragupta (board game)', 'twilight struggle', 'space empires 4x', "washington's war", 'paths of glory (board game)', 'fields of fire (game)', 'commands & colors: ancients', 'sword of rome']
+    Top prioritized resources: ['twilight struggle', 'paths of glory (board game)', 'fields of fire (game)', "washington's war", 'labyrinth: the war on terror, 2001 – %3f', 'space empires 4x', 'chandragupta (board game)', 'sword of rome', 'commands & colors: ancients', '1989: dawn of freedom']
     Expanding batch 1: 5 resources, 0 predicates
-      Retrieved 29 triples from this batch
+      Retrieved 40 triples from this batch
     Expanding batch 2: 5 resources, 0 predicates
-      Retrieved 31 triples from this batch
+      Retrieved 20 triples from this batch
     Expanding batch 3: 5 resources, 0 predicates
-      Retrieved 73 triples from this batch
+      Retrieved 59 triples from this batch
     Expanding batch 4: 5 resources, 0 predicates
-      Retrieved 85 triples from this batch
+      Retrieved 56 triples from this batch
     Expanding batch 5: 5 resources, 0 predicates
-      Retrieved 34 triples from this batch
+      Retrieved 124 triples from this batch
     Expanding batch 6: 5 resources, 0 predicates
-      Retrieved 44 triples from this batch
+      Retrieved 41 triples from this batch
     Expanding batch 7: 5 resources, 0 predicates
-      Retrieved 34 triples from this batch
+      Retrieved 28 triples from this batch
     Expanding batch 8: 5 resources, 0 predicates
       Retrieved 37 triples from this batch
     Expanding batch 9: 5 resources, 0 predicates
-      Retrieved 48 triples from this batch
+      Retrieved 77 triples from this batch
     Expanding batch 10: 5 resources, 0 predicates
-      Retrieved 47 triples from this batch
-    Retrieved 462 total additional triples from expansion
-  Total after expansion: 760 triples
+      Retrieved 39 triples from this batch
+    Retrieved 521 total additional triples from expansion
+  Total after expansion: 819 triples
 Step 6: Pruning bad URIs...
   Pruning GMT: total_degree=0, triples=0
   Pruning Board_Game: total_degree=0, triples=0
   Pruning Boardgame: total_degree=0, triples=0
-  After pruning: 5 URIs, 433 triples
+  After pruning: 5 URIs, 461 triples
 Step 7: Assigning importance scores to triples...
-  Assigned importance scores to 433 triples
+  Assigned importance scores to 461 triples
 Step 8: Computing similarity scores...
-  Computed similarity scores for 433 triples
+  Computed similarity scores for 461 triples
 Step 9: Ranking triples...
-  Subgraph size: 173 triples
+  Subgraph size: 171 triples
 Step 10: Deduplicating triples...
   After deduplication: 90 triples
 Pipeline completed

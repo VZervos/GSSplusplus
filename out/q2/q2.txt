@@ -2,7 +2,7 @@ triple,importance,similarity,final
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/license http://dbpedia.org/resource/Proprietary_software",0.333333,0.832572,0.533029
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Microsoft_Windows",0.333333,0.821803,0.528721
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Linux",0.333333,0.820201,0.528080
-"http://dbpedia.org/resource/Skype http://dbpedia.org/property/operatingSystem http://dbpedia.org/resource/IOS",0.333333,0.819166,0.527666
+"http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/IOS",0.333333,0.819166,0.527666
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Videotelephony",0.333333,0.815858,0.526343
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Android_(operating_system)",0.333333,0.815324,0.526130
 "http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/IPadOS",0.333333,0.811570,0.524628
@@ -26,9 +26,9 @@ triple,importance,similarity,final
 "http://dbpedia.org/resource/Smarterphone http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.734239,0.325696
 "http://dbpedia.org/resource/Skyles_Electric_Works http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software",0.053333,0.733206,0.325283
 "http://dbpedia.org/resource/Skyles_Electric_Works http://dbpedia.org/property/products http://dbpedia.org/resource/Software",0.053333,0.728127,0.323251
-"http://dbpedia.org/resource/TeleMessage http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.721600,0.320640
+"http://dbpedia.org/resource/TeleMessage http://dbpedia.org/property/industry http://dbpedia.org/resource/Software",0.053333,0.721601,0.320640
 "http://dbpedia.org/resource/CloudSight http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.712153,0.316861
-"http://dbpedia.org/resource/Callware http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.711455,0.316582
+"http://dbpedia.org/resource/Callware http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.711456,0.316582
 "http://dbpedia.org/resource/Gazelle_(software_company) http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software",0.053333,0.711365,0.316546
 "http://dbpedia.org/resource/Gazelle_(software_company) http://dbpedia.org/property/products http://dbpedia.org/resource/Software",0.053333,0.709210,0.315684
 "http://dbpedia.org/resource/NetScreen_Technologies http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software",0.053333,0.701259,0.312504

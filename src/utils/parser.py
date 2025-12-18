@@ -1,4 +1,5 @@
 import json
+
 from services.gemini_client import call_gemini_api
 
 ENGLISH_STOPWORDS = {
@@ -17,12 +18,14 @@ ENGLISH_STOPWORDS = {
 
 CUSTOM_DROP = {"who", "what", "which", "where", "when", "why", "how"}
 
+
 def extract_entities(query: str) -> dict:
     """
     Extract entities from query using LLM-based extraction.
     All entity extraction is now handled by the Gemini API.
     """
     return refine_with_llm(query)
+
 
 def refine_with_llm(query: str) -> dict:
     prompt = f"""
@@ -190,13 +193,15 @@ Question: "{query}"
             "verbs": ["unknownVerb"],
             "synonyms": []
         }
-        
+
+
 def extract_response_text(api_response: dict) -> str:
     try:
         return api_response["candidates"][0]["content"]["parts"][0]["text"]
     except (KeyError, IndexError) as e:
         # If structure is different, return formatted JSON
         return json.dumps(api_response, indent=2)
+
 
 def filter_keywords(keywords) -> list:
     filtered_keywords = []

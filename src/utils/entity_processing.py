@@ -1,6 +1,7 @@
 """Helper functions for processing entities and URIs."""
 
 from collections import defaultdict
+
 from utils.dbpedia import lookup_entity_uri
 
 
@@ -57,6 +58,3 @@ def deduplicate_entity_uris(entity_uris: dict) -> dict:
         uri_map[uri] = display_name
 
     return uri_map
-
-
-

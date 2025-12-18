@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+
 from utils.dbpedia import extract_entity_name_from_uri
 
 # Model for semantic similarity on short texts

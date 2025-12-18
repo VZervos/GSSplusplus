@@ -1,6 +1,15 @@
 from collections import defaultdict
 
-def compute_final_scores(triples, importance_weight=0.6, similarity_weight=0.4) -> None:
+from config.settings import (
+    SCORING_IMPORTANCE_WEIGHT,
+    SCORING_SIMILARITY_WEIGHT,
+    RANKING_PER_ENTITY_LIMIT,
+    RANKING_MIN_SCORE,
+    RANKING_MAX_TOTAL
+)
+
+
+def compute_final_scores(triples, importance_weight=None, similarity_weight=None) -> None:
     """
     Combine graph-based importance and semantic similarity into a single final score.
     
@@ -9,25 +18,31 @@ def compute_final_scores(triples, importance_weight=0.6, similarity_weight=0.4) 
     
     Args:
         triples: List of triples to score
-        importance_weight: Weight for importance score (default: 0.6)
-        similarity_weight: Weight for similarity score (default: 0.4)
+        importance_weight: Weight for importance score (default: from settings)
+        similarity_weight: Weight for similarity score (default: from settings)
     """
+    if importance_weight is None:
+        importance_weight = SCORING_IMPORTANCE_WEIGHT
+    if similarity_weight is None:
+        similarity_weight = SCORING_SIMILARITY_WEIGHT
+
     for t in triples:
         importance = t.get("importance", 0.0)
         similarity = t.get("similarity", 0.0)
 
         # Both importance and similarity are in [0, 1], so final score is in [0, 1]
         t["final_score"] = (
-            importance_weight * importance +
-            similarity_weight * similarity
+                importance_weight * importance +
+                similarity_weight * similarity
         )
 
+
 def select_subgraph_triples(
-    triples: list,
-    uri_importance_map: dict,
-    per_entity_limit: int = 45, # How many triples is each entity allowed to contribute?
-    min_score: float = 0.1, # Minimum score to include a triple
-    max_total: int = 350 # Maximum total number of triples to include
+        triples: list,
+        uri_importance_map: dict,
+        per_entity_limit: int = None,
+        min_score: float = None,
+        max_total: int = None
 ) -> list:
     """
     Build a query-focused subgraph instead of a Top-K answer list.
@@ -36,11 +51,23 @@ def select_subgraph_triples(
     - Group triples by involved entities
     - For each important entity, keep its best triples
     - Apply light pruning to remove pure noise
+    
+    Args:
+        triples: List of triples to select from
+        uri_importance_map: Dict mapping URIs to importance information
+        per_entity_limit: How many triples each entity can contribute (default: from settings)
+        min_score: Minimum final score to include a triple (default: from settings)
+        max_total: Maximum total number of triples in subgraph (default: from settings)
     """
+    if per_entity_limit is None:
+        per_entity_limit = RANKING_PER_ENTITY_LIMIT
+    if min_score is None:
+        min_score = RANKING_MIN_SCORE
+    if max_total is None:
+        max_total = RANKING_MAX_TOTAL
 
     triples_by_entity = defaultdict(list)
 
-    # Group triples by subject and object
     for t in triples:
         if t.get("s"):
             triples_by_entity[t["s"]].append(t)
@@ -50,11 +77,10 @@ def select_subgraph_triples(
     selected = []
     seen = set()
 
-    # Process entities in order of importance
     for uri, _info in sorted(
-        uri_importance_map.items(),
-        key=lambda x: x[1].get("score", 0.0),
-        reverse=True
+            uri_importance_map.items(),
+            key=lambda x: x[1].get("score", 0.0),
+            reverse=True
     ):
         candidates = sorted(
             triples_by_entity.get(uri, []),
@@ -78,7 +104,6 @@ def select_subgraph_triples(
             if kept >= per_entity_limit:
                 break
 
-    # cap the subgraph size
     if len(selected) > max_total:
         selected = sorted(
             selected,
