@@ -2,16 +2,24 @@ from collections import defaultdict
 
 def compute_final_scores(triples, importance_weight=0.6, similarity_weight=0.4) -> None:
     """
-    Combine graph-based importance and semantic similarity
-    into a single final score.
+    Combine graph-based importance and semantic similarity into a single final score.
+    
+    Both importance and similarity are in [0, 1] range, so the final score
+    is also in [0, 1] range: IMPORTANCE_WEIGHT * importance + SIMILARITY_WEIGHT * similarity
+    
+    Args:
+        triples: List of triples to score
+        importance_weight: Weight for importance score (default: 0.6)
+        similarity_weight: Weight for similarity score (default: 0.4)
     """
     for t in triples:
         importance = t.get("importance", 0.0)
         similarity = t.get("similarity", 0.0)
 
+        # Both importance and similarity are in [0, 1], so final score is in [0, 1]
         t["final_score"] = (
             importance_weight * importance +
-            similarity_weight * similarity * 10.0
+            similarity_weight * similarity
         )
 
 def select_subgraph_triples(

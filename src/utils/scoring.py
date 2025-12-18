@@ -7,9 +7,19 @@ from utils.dbpedia import (
 )
 
 
-def _normalize_importance_score(degree: int) -> float:
-    """Normalizes degree to importance score in 0-10 range."""
-    return min(10.0, 1.0 + (degree ** 0.5) / 10.0) if degree > 0 else 0.0
+def _normalize_triple_importance(score_sum: float) -> float:
+    """Normalizes triple importance score sum to [0, 1] range.
+    
+    Args:
+        score_sum: Sum of entity importance scores (subject + object + predicate)
+                   Each entity score is in [0, 1], so max sum is 3.0
+    
+    Returns:
+        Normalized importance score in [0, 1] range
+    """
+    # Maximum possible sum is 3.0 (if all three entities have max importance of 1.0)
+    max_sum = 3.0
+    return min(1.0, score_sum / max_sum) if max_sum > 0 else 0.0
 
 
 def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None, triples_per_entity_limit: int = 1000) -> None:
@@ -77,9 +87,9 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
                     predicate_triple_counts[predicate_uri] = predicate_triple_counts.get(predicate_uri, 0) + 1
     
     # Compute importance for each URI using only initial importance (1-5)
-    # Use power function: importance^2, then normalize to 0-10 range
-    # 1^2=1, 2^2=4, 3^2=9, 4^2=16, 5^2=25 -> normalized: (value/25)*10
-    # Map: 1 -> 0.4, 2 -> 1.6, 3 -> 3.6, 4 -> 6.4, 5 -> 10.0, 0 (not found) -> 0.0
+    # Use power function: importance^2, then normalize to [0, 1] range
+    # 1^2=1, 2^2=4, 3^2=9, 4^2=16, 5^2=25 -> normalized: (value/25)
+    # Map: 1 -> 0.04, 2 -> 0.16, 3 -> 0.36, 4 -> 0.64, 5 -> 1.0, 0 (not found) -> 0.0
     for entity, uri in entity_uris.items():
         print(f"  Computing importance for: {entity}")
         
@@ -90,10 +100,10 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
             score = 0.0
             out_degree = in_degree = total_degree = 0
         else:
-            # Use power function: importance^2, then normalize to 0-10
-            # Max value is 5^2 = 25, so normalize by (value / 25) * 10
+            # Use power function: importance^2, then normalize to [0, 1]
+            # Max value is 5^2 = 25, so normalize by (value / 25)
             squared_value = importance_weight ** 2
-            score = (squared_value / 25.0) * 10.0
+            score = squared_value / 25.0
             # Still compute degrees for reporting, but don't use them for score
             if is_predicate_uri(uri):
                 total_degree = predicate_triple_counts.get(uri, 0)
@@ -116,7 +126,7 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
 
 
 def assign_importance_scores(all_triples: list, query_keywords: set, uri_importance_map: dict) -> None:
-    """Assigns importance scores to triples based on the sum of entity scores, normalized."""
+    """Assigns importance scores to triples based on the sum of entity scores, normalized to [0, 1]."""
     for triple in all_triples:
         # Sum scores of subject, object, and predicate
         score_sum = 0.0
@@ -125,7 +135,8 @@ def assign_importance_scores(all_triples: list, query_keywords: set, uri_importa
             if uri.startswith("http://dbpedia.org/") and uri in uri_importance_map:
                 score_sum += uri_importance_map[uri]["score"]
         
-        triple["importance"] = _normalize_importance_score(score_sum)
+        # Normalize to [0, 1] range (max sum is 3.0 if all entities have max importance)
+        triple["importance"] = _normalize_triple_importance(score_sum)
         triple["_s_name"] = extract_entity_name_from_uri(triple.get("s", ""))
         triple["_o_name"] = extract_entity_name_from_uri(triple.get("o", ""))
         triple["_query_keywords"] = query_keywords
