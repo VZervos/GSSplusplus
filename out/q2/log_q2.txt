@@ -1,0 +1,121 @@
+Question 2/3 (ID: 2)
+  Who developed Skype?
+
+Starting pipeline...
+Step 2: Extracting entities...
+Sending request to Gemini API...
+Prompt: 
+Extract entities, verbs, and safe DBpedia lookup ...
+Response status: 200
+  Extracted 4 entities: [{'name': 'Skype', 'type': 'resource', 'importance': 5}, {'name': 'developer', 'type': 'property', 'importance': 5}, {'name': 'Software', 'type': 'resource', 'importance': 2}, {'name': 'Product', 'type': 'resource', 'importance': 1}]
+Step 3: Looking up entity URIs...
+  Skype (resource) -> http://dbpedia.org/resource/Skype [importance: 5]
+  developer (property) -> http://dbpedia.org/property/developer [importance: 5]
+  Software (resource) -> http://dbpedia.org/resource/Software [importance: 2]
+  Product (resource) -> http://dbpedia.org/resource/Product [importance: 1]
+  Deduplicated: 4 keywords -> 4 unique URIs
+Step 4: Retrieving triples and computing importance...
+  Fetching triples batch: 3 resources, 1 predicates
+    Retrieved 2607 triples from batch query
+  Computing importance for: Skype
+    Importance: 1.00 (weight: 5, degree: 31)
+  Computing importance for: developer
+    Importance: 1.00 (weight: 5, degree: 0)
+  Computing importance for: Software
+    Importance: 0.16 (weight: 2, degree: 1433)
+  Computing importance for: Product
+    Importance: 0.04 (weight: 1, degree: 0)
+  Total: 2607 triples, 4 URIs with importance scores
+Step 5: Expanding to 1-hop neighbors...
+    Top prioritized resources: ['jaan tallinn', 'ipados', 'macos', 'microsoft teams', 'windows server', 'xbox series x and series s', 'proprietary software', 'msn messenger', 'microsoft windows', 'microsoft hololens']
+    Expanding batch 1: 5 resources, 0 predicates
+      Retrieved 200 triples from this batch
+    Expanding batch 2: 5 resources, 0 predicates
+      Retrieved 200 triples from this batch
+    Expanding batch 3: 5 resources, 0 predicates
+      Retrieved 200 triples from this batch
+    Expanding batch 4: 5 resources, 0 predicates
+      Retrieved 200 triples from this batch
+    Expanding batch 5: 5 resources, 0 predicates
+      Retrieved 200 triples from this batch
+    Expanding batch 6: 5 resources, 0 predicates
+      Retrieved 153 triples from this batch
+    Expanding batch 7: 5 resources, 0 predicates
+      Retrieved 76 triples from this batch
+    Expanding batch 8: 5 resources, 0 predicates
+      Retrieved 62 triples from this batch
+    Expanding batch 9: 5 resources, 0 predicates
+      Retrieved 72 triples from this batch
+    Expanding batch 10: 5 resources, 0 predicates
+      Retrieved 67 triples from this batch
+    Retrieved 1430 total additional triples from expansion
+  Total after expansion: 4037 triples
+Step 6: Pruning bad URIs...
+  Pruning developer: total_degree=0, triples=12
+  Pruning Product: total_degree=0, triples=0
+  After pruning: 2 URIs, 2695 triples
+Step 7: Assigning importance scores to triples...
+  Assigned importance scores to 2695 triples
+Step 8: Computing similarity scores...
+  Computed similarity scores for 2695 triples
+Step 9: Ranking triples...
+  Subgraph size: 90 triples
+Step 10: Deduplicating triples...
+  After deduplication: 52 triples
+Pipeline completed
+
+Results for question 2:
+  52 triples found
+  2 URIs with importance scores
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/license http://dbpedia.org/resource/Proprietary_software | importance=0.3333 | similarity=0.8326 | final=0.5330
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Microsoft_Windows | importance=0.3333 | similarity=0.8218 | final=0.5287
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Linux | importance=0.3333 | similarity=0.8202 | final=0.5281
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/IOS | importance=0.3333 | similarity=0.8192 | final=0.5277
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Videotelephony | importance=0.3333 | similarity=0.8159 | final=0.5263
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Android_(operating_system) | importance=0.3333 | similarity=0.8153 | final=0.5261
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/IPadOS | importance=0.3333 | similarity=0.8116 | final=0.5246
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Windows_Phone | importance=0.3333 | similarity=0.8108 | final=0.5243
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Instant_messaging | importance=0.3333 | similarity=0.8104 | final=0.5242
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/MacOS | importance=0.3333 | similarity=0.8094 | final=0.5238
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/author http://dbpedia.org/resource/Jaan_Tallinn | importance=0.3333 | similarity=0.8089 | final=0.5236
+  http://dbpedia.org/resource/21Vianet http://dbpedia.org/ontology/service http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.8032 | final=0.5213
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Windows_Server | importance=0.3333 | similarity=0.8024 | final=0.5210
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Microsoft_HoloLens | importance=0.3333 | similarity=0.8017 | final=0.5207
+  http://dbpedia.org/resource/Jaan_Tallinn http://dbpedia.org/ontology/knownFor http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.8013 | final=0.5205
+  http://dbpedia.org/resource/3_Skypephone_Series http://dbpedia.org/ontology/parentCompany http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.8009 | final=0.5204
+  http://dbpedia.org/resource/Janus_Friis http://dbpedia.org/ontology/knownFor http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.7927 | final=0.5171
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/WatchOS | importance=0.3333 | similarity=0.7899 | final=0.5159
+  http://dbpedia.org/resource/Cortana_(virtual_assistant) http://dbpedia.org/ontology/computingPlatform http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.7894 | final=0.5158
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/author http://dbpedia.org/resource/Priit_Kasesalu | importance=0.3333 | similarity=0.7876 | final=0.5150
+  http://dbpedia.org/resource/Skype http://dbpedia.org/ontology/operatingSystem http://dbpedia.org/resource/Xbox_One | importance=0.3333 | similarity=0.7868 | final=0.5147
+  http://dbpedia.org/resource/Mark_Tluszcz http://dbpedia.org/ontology/knownFor http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.7857 | final=0.5143
+  http://dbpedia.org/resource/Microsoft_Teams http://dbpedia.org/property/replaces http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.7761 | final=0.5104
+  http://dbpedia.org/resource/Mark_Gillett http://dbpedia.org/property/knownFor http://dbpedia.org/resource/Skype | importance=0.3333 | similarity=0.7758 | final=0.5103
+  http://dbpedia.org/resource/Smarterphone http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7342 | final=0.3257
+  http://dbpedia.org/resource/Skyles_Electric_Works http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7332 | final=0.3253
+  http://dbpedia.org/resource/Skyles_Electric_Works http://dbpedia.org/property/products http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7281 | final=0.3233
+  http://dbpedia.org/resource/TeleMessage http://dbpedia.org/property/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7216 | final=0.3206
+  http://dbpedia.org/resource/CloudSight http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7122 | final=0.3169
+  http://dbpedia.org/resource/Callware http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7115 | final=0.3166
+  http://dbpedia.org/resource/Gazelle_(software_company) http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7114 | final=0.3165
+  http://dbpedia.org/resource/Gazelle_(software_company) http://dbpedia.org/property/products http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7092 | final=0.3157
+  http://dbpedia.org/resource/NetScreen_Technologies http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.7013 | final=0.3125
+  http://dbpedia.org/resource/Telestream http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6986 | final=0.3114
+  http://dbpedia.org/resource/Canopy_Labs http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6929 | final=0.3092
+  http://dbpedia.org/resource/Teledata_Networks http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6929 | final=0.3091
+  http://dbpedia.org/resource/Razer_Inc. http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6927 | final=0.3091
+  http://dbpedia.org/resource/Ripple_Labs http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6916 | final=0.3087
+  http://dbpedia.org/resource/Braze,_Inc. http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6915 | final=0.3086
+  http://dbpedia.org/resource/Surfshark_B.V. http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6911 | final=0.3084
+  http://dbpedia.org/resource/Nuance_Communications http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6908 | final=0.3083
+  http://dbpedia.org/resource/Vivo_(technology_company)__Vivo_Mobile_Communication_Co.,_Ltd.__1 http://dbpedia.org/ontology/product http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6899 | final=0.3079
+  http://dbpedia.org/resource/Surfware http://dbpedia.org/property/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6891 | final=0.3076
+  http://dbpedia.org/resource/Software_Spectrum http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6876 | final=0.3070
+  http://dbpedia.org/resource/Wacom http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6875 | final=0.3070
+  http://dbpedia.org/resource/INCA_Internet http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6865 | final=0.3066
+  http://dbpedia.org/resource/Citrix_Systems__,_Inc.__1 http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6862 | final=0.3065
+  http://dbpedia.org/resource/Gavin_Andresen http://dbpedia.org/ontology/knownFor http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6848 | final=0.3059
+  http://dbpedia.org/resource/Panopticon_Software http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6847 | final=0.3059
+  http://dbpedia.org/resource/Internet_Co.,_Ltd. http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6846 | final=0.3058
+  http://dbpedia.org/resource/Avatier http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6843 | final=0.3057
+  http://dbpedia.org/resource/Razer_Inc. http://dbpedia.org/property/products http://dbpedia.org/resource/Software | importance=0.0533 | similarity=0.6842 | final=0.3057

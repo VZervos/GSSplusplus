@@ -1,0 +1,86 @@
+Question 3/3 (ID: 3)
+  Which people were born in Heraklion?
+
+Starting pipeline...
+Step 2: Extracting entities...
+Sending request to Gemini API...
+Prompt: 
+Extract entities, verbs, and safe DBpedia lookup ...
+Response status: 200
+  Extracted 4 entities: [{'name': 'Heraklion', 'type': 'resource', 'importance': 5}, {'name': 'birthPlace', 'type': 'property', 'importance': 5}, {'name': 'Person', 'type': 'resource', 'importance': 1}, {'name': 'Place', 'type': 'resource', 'importance': 1}]
+Step 3: Looking up entity URIs...
+  Heraklion (resource) -> http://dbpedia.org/resource/Heraklion [importance: 5]
+  birthPlace (property) -> http://dbpedia.org/property/birthPlace [importance: 5]
+  Person (resource) -> http://dbpedia.org/resource/Person [importance: 1]
+  Place (resource) -> http://dbpedia.org/resource/Place [importance: 1]
+  Deduplicated: 4 keywords -> 4 unique URIs
+Step 4: Retrieving triples and computing importance...
+  Fetching triples batch: 3 resources, 1 predicates
+    Retrieved 805 triples from batch query
+  Computing importance for: Heraklion
+    Importance: 1.00 (weight: 5, degree: 568)
+  Computing importance for: birthPlace
+    Importance: 1.00 (weight: 5, degree: 110)
+  Computing importance for: Person
+    Importance: 0.04 (weight: 1, degree: 1)
+  Computing importance for: Place
+    Importance: 0.04 (weight: 1, degree: 0)
+  Total: 805 triples, 4 URIs with importance scores
+Step 5: Expanding to 1-hop neighbors...
+    Top prioritized resources: ['nikolaos ritzos', 'ieremias palladas', 'franghias kavertzas', 'petros lambardos', 'georgios klontzas', 'theophanes the cretan', 'georgios kortezas', 'theocharis silvestros', 'giorgos grammatikakis', 'georgios kastrofylakas']
+    Expanding batch 1: 5 resources, 0 predicates
+      Retrieved 73 triples from this batch
+    Expanding batch 2: 5 resources, 0 predicates
+      Retrieved 48 triples from this batch
+    Expanding batch 3: 5 resources, 0 predicates
+      Retrieved 179 triples from this batch
+    Expanding batch 4: 5 resources, 0 predicates
+      Retrieved 184 triples from this batch
+    Expanding batch 5: 5 resources, 0 predicates
+      Retrieved 118 triples from this batch
+    Expanding batch 6: 5 resources, 0 predicates
+      Retrieved 144 triples from this batch
+    Expanding batch 7: 5 resources, 0 predicates
+      Retrieved 91 triples from this batch
+    Expanding batch 8: 5 resources, 0 predicates
+      Retrieved 139 triples from this batch
+    Expanding batch 9: 5 resources, 0 predicates
+      Retrieved 64 triples from this batch
+    Expanding batch 10: 5 resources, 0 predicates
+      Retrieved 159 triples from this batch
+    Retrieved 1199 total additional triples from expansion
+  Total after expansion: 2004 triples
+Step 6: Pruning bad URIs...
+  Pruning Place: total_degree=0, triples=0
+  After pruning: 3 URIs, 989 triples
+Step 7: Assigning importance scores to triples...
+  Assigned importance scores to 989 triples
+Step 8: Computing similarity scores...
+  Computed similarity scores for 989 triples
+Step 9: Ranking triples...
+  Subgraph size: 46 triples
+Step 10: Deduplicating triples...
+  After deduplication: 18 triples
+Pipeline completed
+
+Results for question 3:
+  18 triples found
+  3 URIs with importance scores
+  http://dbpedia.org/resource/Konstanty_Korniakt http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8784 | final=0.7514
+  http://dbpedia.org/resource/Ntinos_Konstantakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8709 | final=0.7484
+  http://dbpedia.org/resource/Victor_(iconographer) http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8707 | final=0.7483
+  http://dbpedia.org/resource/Ioannis_Apakas http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8669 | final=0.7468
+  http://dbpedia.org/resource/Theocharis_Silvestros http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8668 | final=0.7467
+  http://dbpedia.org/resource/Myron_Michailidis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8649 | final=0.7459
+  http://dbpedia.org/resource/Christos_Belevonis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8624 | final=0.7450
+  http://dbpedia.org/resource/Stavros_Arnaoutakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8600 | final=0.7440
+  http://dbpedia.org/resource/Nikos_Androulakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8570 | final=0.7428
+  http://dbpedia.org/resource/Nektarios_Tavernarakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8566 | final=0.7426
+  http://dbpedia.org/resource/Nikonas_Spiliotakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8560 | final=0.7424
+  http://dbpedia.org/resource/Manolis_Roubakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8550 | final=0.7420
+  http://dbpedia.org/resource/Nicholas_Kalliakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8542 | final=0.7417
+  http://dbpedia.org/resource/Ieremias_Palladas http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8534 | final=0.7414
+  http://dbpedia.org/resource/Theophanes_the_Cretan http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8533 | final=0.7413
+  http://dbpedia.org/resource/Christoforos_Liontakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8517 | final=0.7407
+  http://dbpedia.org/resource/Notis_Sfakianakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion | importance=0.6667 | similarity=0.8513 | final=0.7405
+  http://dbpedia.org/resource/KBS_Radio_3 http://dbpedia.org/ontology/programmeFormat http://dbpedia.org/resource/Person | importance=0.0133 | similarity=0.5644 | final=0.2338

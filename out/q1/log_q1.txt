@@ -1,0 +1,172 @@
+Question 1/3 (ID: 1)
+  List all boardgames by GMT.
+
+Starting pipeline...
+Step 2: Extracting entities...
+Sending request to Gemini API...
+Prompt: 
+Extract entities, verbs, and safe DBpedia lookup ...
+Response status: 200
+  Extracted 8 entities: [{'name': 'GMT_Games', 'type': 'resource', 'importance': 5}, {'name': 'GMT', 'type': 'resource', 'importance': 5}, {'name': 'publisher', 'type': 'property', 'importance': 5}, {'name': 'Board_Game', 'type': 'resource', 'importance': 3}, {'name': 'Boardgame', 'type': 'resource', 'importance': 3}, {'name': 'Wargame', 'type': 'resource', 'importance': 3}, {'name': 'Tabletop_game', 'type': 'resource', 'importance': 3}, {'name': 'Game', 'type': 'resource', 'importance': 1}]
+Step 3: Looking up entity URIs...
+  GMT_Games (resource) -> http://dbpedia.org/resource/GMT_Games [importance: 5]
+  GMT (resource) -> http://dbpedia.org/resource/GMT [importance: 5]
+  publisher (property) -> http://dbpedia.org/property/publisher [importance: 5]
+  Board_Game (resource) -> http://dbpedia.org/resource/Board_Game [importance: 3]
+  Boardgame (resource) -> http://dbpedia.org/resource/Boardgame [importance: 3]
+  Wargame (resource) -> http://dbpedia.org/resource/Wargame [importance: 3]
+  Tabletop_game (resource) -> http://dbpedia.org/resource/Tabletop_game [importance: 3]
+  Game (resource) -> http://dbpedia.org/resource/Game [importance: 1]
+  Deduplicated: 8 keywords -> 8 unique URIs
+Step 4: Retrieving triples and computing importance...
+  Fetching triples batch: 7 resources, 1 predicates
+    Retrieved 298 triples from batch query
+  Computing importance for: GMT_Games
+    Importance: 1.00 (weight: 5, degree: 12)
+  Computing importance for: GMT
+    Importance: 1.00 (weight: 5, degree: 0)
+  Computing importance for: publisher
+    Importance: 1.00 (weight: 5, degree: 20)
+  Computing importance for: Board_Game
+    Importance: 0.36 (weight: 3, degree: 0)
+  Computing importance for: Boardgame
+    Importance: 0.36 (weight: 3, degree: 0)
+  Computing importance for: Wargame
+    Importance: 0.36 (weight: 3, degree: 82)
+  Computing importance for: Tabletop_game
+    Importance: 0.36 (weight: 3, degree: 18)
+  Computing importance for: Game
+    Importance: 0.04 (weight: 1, degree: 83)
+  Total: 298 triples, 8 URIs with importance scores
+Step 5: Expanding to 1-hop neighbors...
+    Top prioritized resources: ['twilight struggle', 'paths of glory (board game)', 'fields of fire (game)', "washington's war", 'labyrinth: the war on terror, 2001 – %3f', 'space empires 4x', 'chandragupta (board game)', 'sword of rome', 'commands & colors: ancients', '1989: dawn of freedom']
+    Expanding batch 1: 5 resources, 0 predicates
+      Retrieved 40 triples from this batch
+    Expanding batch 2: 5 resources, 0 predicates
+      Retrieved 20 triples from this batch
+    Expanding batch 3: 5 resources, 0 predicates
+      Retrieved 59 triples from this batch
+    Expanding batch 4: 5 resources, 0 predicates
+      Retrieved 56 triples from this batch
+    Expanding batch 5: 5 resources, 0 predicates
+      Retrieved 124 triples from this batch
+    Expanding batch 6: 5 resources, 0 predicates
+      Retrieved 41 triples from this batch
+    Expanding batch 7: 5 resources, 0 predicates
+      Retrieved 28 triples from this batch
+    Expanding batch 8: 5 resources, 0 predicates
+      Retrieved 37 triples from this batch
+    Expanding batch 9: 5 resources, 0 predicates
+      Retrieved 77 triples from this batch
+    Expanding batch 10: 5 resources, 0 predicates
+      Retrieved 39 triples from this batch
+    Retrieved 521 total additional triples from expansion
+  Total after expansion: 819 triples
+Step 6: Pruning bad URIs...
+  Pruning GMT: total_degree=0, triples=0
+  Pruning Board_Game: total_degree=0, triples=0
+  Pruning Boardgame: total_degree=0, triples=0
+  After pruning: 5 URIs, 461 triples
+Step 7: Assigning importance scores to triples...
+  Assigned importance scores to 461 triples
+Step 8: Computing similarity scores...
+  Computed similarity scores for 461 triples
+Step 9: Ranking triples...
+  Subgraph size: 171 triples
+Step 10: Deduplicating triples...
+  After deduplication: 90 triples
+Pipeline completed
+
+Results for question 1:
+  90 triples found
+  5 URIs with importance scores
+  http://dbpedia.org/resource/Paths_of_Glory_(board_game) http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8412 | final=0.7365
+  http://dbpedia.org/resource/Sword_of_Rome http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8203 | final=0.7281
+  http://dbpedia.org/resource/Chandragupta_(board_game) http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8179 | final=0.7272
+  http://dbpedia.org/resource/Commands_&_Colors:_Ancients http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8101 | final=0.7240
+  http://dbpedia.org/resource/1989:_Dawn_of_Freedom http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8032 | final=0.7213
+  http://dbpedia.org/resource/Washington's_War http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.8021 | final=0.7209
+  http://dbpedia.org/resource/Space_Empires_4X http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.7920 | final=0.7168
+  http://dbpedia.org/resource/Twilight_Struggle http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.7842 | final=0.7137
+  http://dbpedia.org/resource/Fields_of_Fire_(game) http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.7499 | final=0.6999
+  http://dbpedia.org/resource/Labyrinth:_The_War_on_Terror,_2001_–_%3F http://dbpedia.org/property/publisher http://dbpedia.org/resource/GMT_Games | importance=0.6667 | similarity=0.7341 | final=0.6936
+  http://dbpedia.org/resource/The_Complete_Wargames_Handbook http://dbpedia.org/property/subject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7640 | final=0.3776
+  http://dbpedia.org/resource/The_Comprehensive_Guide_to_Board_Wargaming http://dbpedia.org/property/subject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7595 | final=0.3758
+  http://dbpedia.org/resource/The_Best_of_Board_Wargaming http://dbpedia.org/property/subject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7469 | final=0.3707
+  http://dbpedia.org/resource/The_Complete_Wargames_Handbook http://dbpedia.org/ontology/nonFictionSubject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7401 | final=0.3680
+  http://dbpedia.org/resource/Outreach_(board_game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7330 | final=0.3652
+  http://dbpedia.org/resource/The_Comprehensive_Guide_to_Board_Wargaming http://dbpedia.org/ontology/nonFictionSubject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7320 | final=0.3648
+  http://dbpedia.org/resource/The_Best_of_Board_Wargaming http://dbpedia.org/ontology/nonFictionSubject http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7298 | final=0.3639
+  http://dbpedia.org/resource/Don_Turnbull_(game_designer) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7138 | final=0.3575
+  http://dbpedia.org/resource/Gary_Gygax http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7101 | final=0.3560
+  http://dbpedia.org/resource/John_Hill_(game_designer) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7039 | final=0.3536
+  http://dbpedia.org/resource/S._John_Ross_(game_designer) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7033 | final=0.3533
+  http://dbpedia.org/resource/Battle_Games_in_Middle-earth http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7031 | final=0.3533
+  http://dbpedia.org/resource/C._A._L._Totten http://dbpedia.org/ontology/knownFor http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7018 | final=0.3527
+  http://dbpedia.org/resource/Dawn_of_the_Ancients http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.7012 | final=0.3525
+  http://dbpedia.org/resource/Battle_Games_in_Middle-earth http://dbpedia.org/property/category http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6989 | final=0.3516
+  http://dbpedia.org/resource/Company_Commander_(play-by-mail_game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6982 | final=0.3513
+  http://dbpedia.org/resource/Mike_Carr_(game_designer) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6956 | final=0.3502
+  http://dbpedia.org/resource/Space_Empires_4X http://dbpedia.org/property/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6950 | final=0.3500
+  http://dbpedia.org/resource/Guidon_Games http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6950 | final=0.3500
+  http://dbpedia.org/resource/The_General_(magazine) http://dbpedia.org/property/category http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6935 | final=0.3494
+  http://dbpedia.org/resource/The_General_(magazine) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6933 | final=0.3493
+  http://dbpedia.org/resource/Middle-earth_Strategy_Battle_Game http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6903 | final=0.3481
+  http://dbpedia.org/resource/Krahlizek_(game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6900 | final=0.3480
+  http://dbpedia.org/resource/Brian_Blume http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6899 | final=0.3479
+  http://dbpedia.org/resource/Simulations_Canada http://dbpedia.org/property/products http://dbpedia.org/resource/Wargame | importance=0.1200 | similarity=0.6896 | final=0.3479
+  http://dbpedia.org/resource/Clubhouse_Games:_51_Worldwide_Classics http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7738 | final=0.3815
+  http://dbpedia.org/resource/Clubhouse_Games http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7628 | final=0.3771
+  http://dbpedia.org/resource/Mahjong_Soul http://dbpedia.org/property/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7358 | final=0.3663
+  http://dbpedia.org/resource/EN_World http://dbpedia.org/ontology/type http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7352 | final=0.3661
+  http://dbpedia.org/resource/Card_Hunter http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7305 | final=0.3642
+  http://dbpedia.org/resource/Thy_Geekdom_Con http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7141 | final=0.3577
+  http://dbpedia.org/resource/The_Game_Crafter http://dbpedia.org/ontology/product http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7139 | final=0.3576
+  http://dbpedia.org/resource/Crafty_Games http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7100 | final=0.3560
+  http://dbpedia.org/resource/Beasts_of_Balance http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7083 | final=0.3553
+  http://dbpedia.org/resource/Mr._Bucket http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7060 | final=0.3544
+  http://dbpedia.org/resource/PAX_(event) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7051 | final=0.3540
+  http://dbpedia.org/resource/Knock_Out_(tabletop_game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7040 | final=0.3536
+  http://dbpedia.org/resource/VCON http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7022 | final=0.3529
+  http://dbpedia.org/resource/Tabletop_Simulator http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.7019 | final=0.3528
+  http://dbpedia.org/resource/Tigris_and_Euphrates http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.6973 | final=0.3509
+  http://dbpedia.org/resource/Warpcon http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.6806 | final=0.3442
+  http://dbpedia.org/resource/Critical_Role_Productions http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.6624 | final=0.3370
+  http://dbpedia.org/resource/Dwarven_Forge http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Tabletop_game | importance=0.1200 | similarity=0.6577 | final=0.3351
+  http://dbpedia.org/resource/CanGames http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7662 | final=0.3145
+  http://dbpedia.org/resource/Inside_the_Box_Board_Games http://dbpedia.org/ontology/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7524 | final=0.3089
+  http://dbpedia.org/resource/Perfection_(board_game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7342 | final=0.3017
+  http://dbpedia.org/resource/GGWP http://dbpedia.org/ontology/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7321 | final=0.3008
+  http://dbpedia.org/resource/Fastpoint_Games http://dbpedia.org/ontology/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7280 | final=0.2992
+  http://dbpedia.org/resource/TableTop http://dbpedia.org/property/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7246 | final=0.2978
+  http://dbpedia.org/resource/Entertainment_UK http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7221 | final=0.2968
+  http://dbpedia.org/resource/North_Star_Games http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7175 | final=0.2950
+  http://dbpedia.org/resource/Romics http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7103 | final=0.2921
+  http://dbpedia.org/resource/171_(video_game) http://dbpedia.org/property/modes http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7049 | final=0.2900
+  http://dbpedia.org/resource/Iconary http://dbpedia.org/ontology/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7041 | final=0.2897
+  http://dbpedia.org/resource/Renegade_Game_Studios http://dbpedia.org/property/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7037 | final=0.2895
+  http://dbpedia.org/resource/Flagship_(magazine) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.7010 | final=0.2884
+  http://dbpedia.org/resource/Pyramid_(magazine) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6967 | final=0.2867
+  http://dbpedia.org/resource/Hamleys http://dbpedia.org/property/products http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6949 | final=0.2859
+  http://dbpedia.org/resource/U.S._Games_Systems http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6944 | final=0.2857
+  http://dbpedia.org/resource/Monstermob http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6928 | final=0.2851
+  http://dbpedia.org/resource/Monstermob http://dbpedia.org/property/products http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6914 | final=0.2846
+  http://dbpedia.org/resource/Gothcon http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6909 | final=0.2844
+  http://dbpedia.org/resource/Viacom_(2005–2019) http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6874 | final=0.2830
+  http://dbpedia.org/resource/Music_Zone http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6874 | final=0.2830
+  http://dbpedia.org/resource/Ants_in_the_Pants_(game) http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6853 | final=0.2821
+  http://dbpedia.org/resource/South_Park:_Snow_Day! http://dbpedia.org/property/modes http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6846 | final=0.2818
+  http://dbpedia.org/resource/Hamleys http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6837 | final=0.2815
+  http://dbpedia.org/resource/Nuremberg_International_Toy_Fair http://dbpedia.org/ontology/genre http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6830 | final=0.2812
+  http://dbpedia.org/resource/Sam_Labs http://dbpedia.org/property/products http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6827 | final=0.2811
+  http://dbpedia.org/resource/Pyramid_(magazine) http://dbpedia.org/property/category http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6820 | final=0.2808
+  http://dbpedia.org/resource/Playskool http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6818 | final=0.2807
+  http://dbpedia.org/resource/Sokobond_Express http://dbpedia.org/property/modes http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6817 | final=0.2807
+  http://dbpedia.org/resource/Carl_Loebner_Torgau http://dbpedia.org/property/products http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6794 | final=0.2797
+  http://dbpedia.org/resource/Bluebird_Toys http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6770 | final=0.2788
+  http://dbpedia.org/resource/Chromaroma http://dbpedia.org/ontology/type http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6767 | final=0.2787
+  http://dbpedia.org/resource/Carl_Loebner_Torgau http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6766 | final=0.2786
+  http://dbpedia.org/resource/Elebits http://dbpedia.org/property/modes http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6762 | final=0.2785
+  http://dbpedia.org/resource/Sam_Labs http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6760 | final=0.2784
+  http://dbpedia.org/resource/Barnes_&_Noble http://dbpedia.org/ontology/product http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6759 | final=0.2784
+  http://dbpedia.org/resource/Modiphius_Entertainment http://dbpedia.org/ontology/industry http://dbpedia.org/resource/Game | importance=0.0133 | similarity=0.6747 | final=0.2779

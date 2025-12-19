@@ -2,7 +2,7 @@ import json
 import sys
 
 
-def loadDataset(dataset_path: str):
+def loadDataset(dataset_path: str) -> list:
     try:
         with open(dataset_path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -32,21 +32,21 @@ def loadDataset(dataset_path: str):
     return english_questions
 
 
-def extract_query_keywords(extraction: dict, query):
+def extract_query_keywords(extraction: dict, query: str) -> set:
     """Extracts keywords from extraction and query for similarity computation."""
     query_keywords = set()
-    
+
     # Handle both new format (list of dicts) and legacy format (list of strings)
     for entity in extraction["entities"]:
         if isinstance(entity, dict):
             entity_name = entity.get("name", "")
         else:
             entity_name = entity
-        
+
         query_keywords.add(entity_name.lower())
         query_keywords.update(entity_name.lower().split("_"))
         query_keywords.update(entity_name.lower().replace("_", " ").split())
-    
+
     query_keywords.add(query.lower())
     query_keywords.update(query.lower().split())
     return query_keywords
