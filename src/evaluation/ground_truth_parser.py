@@ -27,7 +27,6 @@ def extract_answers(answers_block):
     return values
 
 
-
 def main():
     with open(INPUT_JSON, "r", encoding="utf-8") as f:
         data = json.load(f)
