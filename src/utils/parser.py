@@ -1,6 +1,7 @@
 import json
 
-from services.gemini_client import call_gemini_api
+from config.settings import DATASET
+from services.llm_client import call_llm_api, extract_response_text as llm_extract_response_text
 
 ENGLISH_STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "been", "by", "for", "from",
@@ -20,16 +21,17 @@ CUSTOM_DROP = {"who", "what", "which", "where", "when", "why", "how"}
 
 
 def extract_entities(query: str) -> dict:
-    """
-    Extract entities from query using LLM-based extraction.
-    All entity extraction is now handled by the Gemini API.
-    """
     return refine_with_llm(query)
 
 
 def refine_with_llm(query: str) -> dict:
+    dataset_name = "Wikidata" if DATASET == "wikidata" else "DBpedia"
+    dataset_format = "Q/P numbers (e.g., Q30 for United States, P31 for 'instance of')" if DATASET == "wikidata" else "Title_Case_With_Underscores (e.g., 'movies' -> 'Film', 'Movie')"
+    dataset_example = "Q30" if DATASET == "wikidata" else "France"
+    dataset_property_example = "P31" if DATASET == "wikidata" else "director"
+    
     prompt = f"""
-Extract entities, verbs, and safe DBpedia lookup variants from the question.
+Extract entities, verbs, and safe {dataset_name} lookup variants from the question.
 
 Return ONLY valid JSON (no markdown).
 
@@ -47,50 +49,51 @@ ENTITY EXTRACTION RULES - BE COMPREHENSIVE:
 
 1. DIRECT ENTITIES (importance: 5):
    - Extract all entities directly mentioned in the question
-   - Use DBpedia-friendly format: Title_Case_With_Underscores (e.g., "movies" -> "Film", "Movie")
+   - Use {dataset_name}-friendly format: {dataset_format}
+   - For {dataset_name}: {"Use Q numbers for entities (e.g., Q30 for United States) and P numbers for properties (e.g., P31 for 'instance of'). If you don't know the exact Q/P number, use the entity name in a format that can be looked up." if DATASET == "wikidata" else "Use Title_Case_With_Underscores (e.g., 'movies' -> 'Film', 'Movie')"}
    - For acronyms/orgs: ALWAYS include both short form AND canonical expansion variants
-   - Examples: "IBM" -> include both "IBM" and "IBM_Corporation", "UN" -> include both "UN" and "United_Nations"
-   - For company/publisher acronyms in publishing/creation contexts: include both acronym AND common DBpedia variants with suffixes like "_Games", "_Press", "_Publishing", etc.
+   - Examples: {"'IBM' -> include both 'Q312' (if known) or 'IBM' and 'IBM_Corporation', 'UN' -> include both 'Q1065' (if known) or 'UN' and 'United_Nations'" if DATASET == "wikidata" else "'IBM' -> include both 'IBM' and 'IBM_Corporation', 'UN' -> include both 'UN' and 'United_Nations'"}
+   - For company/publisher acronyms in publishing/creation contexts: include both acronym AND common variants with suffixes like "_Games", "_Press", "_Publishing", etc.
 
 2. KEY RELATIONSHIPS/PROPERTIES (importance: 4-5):
    - Extract predicates/properties directly implied by the question
    - Patterns: "X by Y" -> include "director", "author", "publisher", or "creator" property (importance: 5)
    - Patterns: "Who created X" -> include "creator" or "author" property (importance: 5)
    - Patterns: "Where was X born" -> include "birthPlace" property (importance: 5)
-   - Use DBpedia property names: "director", "author", "creator", "birthPlace", "capital", "publisher", etc.
+   - Use {dataset_name} property names: {"P31 (instance of), P27 (country of citizenship), P569 (date of birth), P19 (place of birth), P50 (author), P57 (director), P123 (publisher), etc." if DATASET == "wikidata" else "'director', 'author', 'creator', 'birthPlace', 'capital', 'publisher', etc."}
 
 3. SPECIFIC RELATED CONCEPTS (importance: 3):
-   - When a specific concept is mentioned, include related but SPECIFIC DBpedia categories/types
-   - Example: "board games" -> include "Board_Game", "Boardgame", "Wargame", "Tabletop_game" (importance: 3)
-   - Example: "movies" -> include "Film", "Movie", "Motion_Picture" (importance: 3)
+   - When a specific concept is mentioned, include related but SPECIFIC {dataset_name} categories/types
+   - Example: "board games" -> {"include Q11019 (board game), Q131894 (tabletop game) if known, or 'Board_Game', 'Boardgame', 'Wargame', 'Tabletop_game'" if DATASET == "wikidata" else "include 'Board_Game', 'Boardgame', 'Wargame', 'Tabletop_game'"} (importance: 3)
+   - Example: "movies" -> {"include Q11424 (film) if known, or 'Film', 'Movie', 'Motion_Picture'" if DATASET == "wikidata" else "include 'Film', 'Movie', 'Motion_Picture'"} (importance: 3)
    - AVOID overly generic terms here - prefer specific categories
 
 4. MODERATELY RELATED CONCEPTS (importance: 2):
    - Broader but still relevant categories
-   - Example: "Work", "CreativeWork" for creative content questions
-   - Example: "Entertainment" for entertainment-related questions
+   - Example: {"Q17537576 (creative work) or 'Work', 'CreativeWork'" if DATASET == "wikidata" else "'Work', 'CreativeWork'"} for creative content questions
+   - Example: {"Q7889 (entertainment) or 'Entertainment'" if DATASET == "wikidata" else "'Entertainment'"} for entertainment-related questions
    - Still avoid the most generic terms
 
 5. GENERIC/BACKGROUND CONCEPTS (importance: 1):
    - Only include VERY generic terms if absolutely necessary for retrieval
-   - Examples: "Game", "Thing", "Entity" - these should be RARELY used
+   - Examples: {"Q11424 (film), Q11410 (game), Q35120 (entity) if known, or 'Game', 'Thing', 'Entity'" if DATASET == "wikidata" else "'Game', 'Thing', 'Entity'"} - these should be RARELY used
    - CRITICAL: Avoid assigning importance 2 or higher to generic terms like "Game", "Person", "Place", "Thing", "Entity", "Object"
    - Generic terms should ONLY be used as a last resort when no more specific terms exist
 
 6. IMPORTANCE SCORING (1-5 scale):
    - 5 = Core entities directly mentioned (main subject, key organization/person, essential properties)
    - 4 = Important relationships/properties that are central to the question
-   - 3 = Specific related concepts and categories (e.g., "Board_Game" for board game questions)
+   - 3 = Specific related concepts and categories (e.g., {"'Q11019' (board game) or 'Board_Game'" if DATASET == "wikidata" else "'Board_Game'"} for board game questions)
    - 2 = Moderately related broader concepts (use sparingly)
    - 1 = Very generic/background concepts (use only when necessary, avoid if possible)
    
    CRITICAL RULE: Generic terms like "Game", "Person", "Place", "Thing", "Entity", "Object", "Work" should almost always be importance 1, never 2 or higher.
 
-5. NAME FORMATTING:
-   - Use Title_Case_With_Underscores for DBpedia compatibility
-   - Keep original text spans when possible, but convert to DBpedia format
-   - Examples: "movies" -> "Film" or "Movie", "IBM" -> "IBM" and "IBM_Corporation"
-   - For company/publisher acronyms: include both acronym AND full name variant (e.g., "MIT Press" -> "MIT" and "MIT_Press")
+7. NAME FORMATTING:
+   - Use {dataset_format} for {dataset_name} compatibility
+   - Keep original text spans when possible, but convert to {dataset_name} format
+   - Examples: {"'movies' -> 'Q11424' (if known) or 'Film'/'Movie', 'IBM' -> 'Q312' (if known) or 'IBM' and 'IBM_Corporation'" if DATASET == "wikidata" else "'movies' -> 'Film' or 'Movie', 'IBM' -> 'IBM' and 'IBM_Corporation'"}
+   - For company/publisher acronyms: include both acronym AND full name variant (e.g., "MIT Press" -> {"'Q29133' (if known) or 'MIT' and 'MIT_Press'" if DATASET == "wikidata" else "'MIT' and 'MIT_Press'"})
 
 SYNONYM RULES (optional, for additional lookup help):
 - Include alternative spellings, casing variants, or lookup hints
@@ -102,73 +105,68 @@ NOT allowed:
 - Adding completely unrelated concepts
 
 EXAMPLES:
-Question: "What is the capital of France?"
+Question: "What is the capital of {dataset_example}?"
 Expected entities:
-- {{"name": "France", "type": "resource", "importance": 5}}
-- {{"name": "capital", "type": "property", "importance": 5}}
-- {{"name": "Country", "type": "resource", "importance": 1}}
+- {{"name": "{dataset_example}", "type": "resource", "importance": 5}}
+- {{"name": {"P36" if DATASET == "wikidata" else "'capital'"}, "type": "property", "importance": 5}}
+- {{"name": {"Q6256" if DATASET == "wikidata" else "'Country'"}, "type": "resource", "importance": 1}}
 
 Question: "List all movies directed by Christopher Nolan"
 Expected entities:
-- {{"name": "Christopher_Nolan", "type": "resource", "importance": 5}}
-- {{"name": "Movie", "type": "resource", "importance": 3}}
-- {{"name": "Film", "type": "resource", "importance": 3}}
-- {{"name": "Motion_Picture", "type": "resource", "importance": 3}}
-- {{"name": "director", "type": "property", "importance": 5}}
-- {{"name": "Work", "type": "resource", "importance": 1}}
+- {{"name": {"Q2513" if DATASET == "wikidata" else "'Christopher_Nolan'"}, "type": "resource", "importance": 5}}
+- {{"name": {"Q11424" if DATASET == "wikidata" else "'Movie'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q11424" if DATASET == "wikidata" else "'Film'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q11424" if DATASET == "wikidata" else "'Motion_Picture'"}, "type": "resource", "importance": 3}}
+- {{"name": {"P57" if DATASET == "wikidata" else "'director'"}, "type": "property", "importance": 5}}
+- {{"name": {"Q17537576" if DATASET == "wikidata" else "'Work'"}, "type": "resource", "importance": 1}}
 
 Question: "When was the Eiffel Tower built?"
 Expected entities:
-- {{"name": "Eiffel_Tower", "type": "resource", "importance": 5}}
-- {{"name": "completionDate", "type": "property", "importance": 5}}
-- {{"name": "openingDate", "type": "property", "importance": 3}}
-- {{"name": "Building", "type": "resource", "importance": 1}}
+- {{"name": {"Q243" if DATASET == "wikidata" else "'Eiffel_Tower'"}, "type": "resource", "importance": 5}}
+- {{"name": {"P571" if DATASET == "wikidata" else "'completionDate'"}, "type": "property", "importance": 5}}
+- {{"name": {"P1619" if DATASET == "wikidata" else "'openingDate'"}, "type": "property", "importance": 3}}
+- {{"name": {"Q41176" if DATASET == "wikidata" else "'Building'"}, "type": "resource", "importance": 1}}
 
 Question: "What is the population of Tokyo?"
 Expected entities:
-- {{"name": "Tokyo", "type": "resource", "importance": 5}}
-- {{"name": "populationTotal", "type": "property", "importance": 5}}
-- {{"name": "City", "type": "resource", "importance": 1}}
-- {{"name": "Settlement", "type": "resource", "importance": 1}}
+- {{"name": {"Q1490" if DATASET == "wikidata" else "'Tokyo'"}, "type": "resource", "importance": 5}}
+- {{"name": {"P1082" if DATASET == "wikidata" else "'populationTotal'"}, "type": "property", "importance": 5}}
+- {{"name": {"Q515" if DATASET == "wikidata" else "'City'"}, "type": "resource", "importance": 1}}
+- {{"name": {"Q3957" if DATASET == "wikidata" else "'Settlement'"}, "type": "resource", "importance": 1}}
 
 Question: "List all books published by MIT Press"
 Expected entities:
-- {{"name": "MIT_Press", "type": "resource", "importance": 5}}
-- {{"name": "MIT", "type": "resource", "importance": 5}}
-- {{"name": "Book", "type": "resource", "importance": 3}}
-- {{"name": "WrittenWork", "type": "resource", "importance": 2}}
-- {{"name": "publisher", "type": "property", "importance": 5}}
-- {{"name": "Work", "type": "resource", "importance": 1}}
+- {{"name": {"Q29133" if DATASET == "wikidata" else "'MIT_Press'"}, "type": "resource", "importance": 5}}
+- {{"name": {"Q29133" if DATASET == "wikidata" else "'MIT'"}, "type": "resource", "importance": 5}}
+- {{"name": {"Q571" if DATASET == "wikidata" else "'Book'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q47461344" if DATASET == "wikidata" else "'WrittenWork'"}, "type": "resource", "importance": 2}}
+- {{"name": {"P123" if DATASET == "wikidata" else "'publisher'"}, "type": "property", "importance": 5}}
+- {{"name": {"Q17537576" if DATASET == "wikidata" else "'Work'"}, "type": "resource", "importance": 1}}
 
 Question: "List all board games by GMT"
 Expected entities:
-- {{"name": "GMT_Games", "type": "resource", "importance": 5}}
-- {{"name": "GMT", "type": "resource", "importance": 5}}
-- {{"name": "publisher", "type": "property", "importance": 5}}
-- {{"name": "Board_Game", "type": "resource", "importance": 3}}
-- {{"name": "Boardgame", "type": "resource", "importance": 3}}
-- {{"name": "Wargame", "type": "resource", "importance": 3}}
-- {{"name": "Tabletop_game", "type": "resource", "importance": 3}}
-- {{"name": "Game", "type": "resource", "importance": 1}}
+- {{"name": {"Q5517890" if DATASET == "wikidata" else "'GMT_Games'"}, "type": "resource", "importance": 5}}
+- {{"name": {"Q5517890" if DATASET == "wikidata" else "'GMT'"}, "type": "resource", "importance": 5}}
+- {{"name": {"P123" if DATASET == "wikidata" else "'publisher'"}, "type": "property", "importance": 5}}
+- {{"name": {"Q11019" if DATASET == "wikidata" else "'Board_Game'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q11019" if DATASET == "wikidata" else "'Boardgame'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q131894" if DATASET == "wikidata" else "'Wargame'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q131894" if DATASET == "wikidata" else "'Tabletop_game'"}, "type": "resource", "importance": 3}}
+- {{"name": {"Q11410" if DATASET == "wikidata" else "'Game'"}, "type": "resource", "importance": 1}}
 
 Question: "{query}"
 """
 
-    response = call_gemini_api(prompt)
-    text = extract_response_text(response).strip()
-
-    # Clean JSON → sometimes Gemini adds ```json ...``` wrappers
+    response = call_llm_api(prompt)
+    text = llm_extract_response_text(response).strip()
     text = text.replace("```json", "").replace("```", "").strip()
 
     try:
         result = json.loads(text)
-        # Ensure entities are in the correct format
         if "entities" in result and result["entities"]:
             formatted_entities = []
             for entity in result["entities"]:
                 if isinstance(entity, dict):
-                    # Already in correct format, ensure required fields
-                    # Ensure importance is in valid range 1-5, default to 1
                     importance = entity.get("importance", 1)
                     if not isinstance(importance, int) or importance < 1 or importance > 5:
                         importance = 1
@@ -178,7 +176,6 @@ Question: "{query}"
                         "importance": importance
                     })
                 else:
-                    # Legacy string format, convert to dict
                     formatted_entities.append({
                         "name": entity,
                         "type": "resource",
@@ -195,12 +192,6 @@ Question: "{query}"
         }
 
 
-def extract_response_text(api_response: dict) -> str:
-    try:
-        return api_response["candidates"][0]["content"]["parts"][0]["text"]
-    except (KeyError, IndexError) as e:
-        # If structure is different, return formatted JSON
-        return json.dumps(api_response, indent=2)
 
 
 def filter_keywords(keywords) -> list:
@@ -213,16 +204,13 @@ def filter_keywords(keywords) -> list:
 
         keyword_lower = cleaned_keyword.lower()
 
-        # dedupe case-insensitive
         if keyword_lower in seen_keywords:
             continue
         seen_keywords.add(keyword_lower)
 
-        # drop interrogatives (always, if single-word)
         if len(cleaned_keyword.split()) == 1 and keyword_lower in CUSTOM_DROP:
             continue
 
-        # drop English stopwords (single-word only)
         if len(cleaned_keyword.split()) == 1 and keyword_lower in ENGLISH_STOPWORDS:
             continue
 

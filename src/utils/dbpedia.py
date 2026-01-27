@@ -3,6 +3,17 @@ import time
 import requests
 
 from config.settings import (
+    DATASET,
+    SPARQL_ENDPOINT,
+    RESOURCE_URI_PREFIX,
+    PROPERTY_URI_PREFIX,
+    ONTOLOGY_URI_PREFIX,
+    KG_MAX_RETRIES,
+    KG_INITIAL_TIMEOUT,
+    KG_MAX_TIMEOUT,
+    KG_MAX_UNION_CLAUSES,
+    KG_DEFAULT_TRIPLE_LIMIT,
+    # Backward compatibility
     DBPEDIA_MAX_RETRIES,
     DBPEDIA_INITIAL_TIMEOUT,
     DBPEDIA_MAX_TIMEOUT,
@@ -13,26 +24,14 @@ from config.settings import (
 
 def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = None, initial_timeout: int = None,
                                     max_timeout: int = None) -> dict:
-    """
-    Executes a SPARQL query with retry logic and exponential backoff.
-    Only retries on timeouts (transient issues), not on other errors.
-    
-    Args:
-        sparql_query: The SPARQL query string
-        max_retries: Maximum number of retry attempts (default: from settings)
-        initial_timeout: Initial timeout in seconds (default: from settings)
-        max_timeout: Maximum timeout in seconds (default: from settings)
-    
-    Returns:
-        dict: JSON response from SPARQL endpoint, or None if all retries fail
-    """
+    """Executes a SPARQL query with retry logic and exponential backoff."""
     if max_retries is None:
-        max_retries = DBPEDIA_MAX_RETRIES
+        max_retries = KG_MAX_RETRIES
     if initial_timeout is None:
-        initial_timeout = DBPEDIA_INITIAL_TIMEOUT
+        initial_timeout = KG_INITIAL_TIMEOUT
     if max_timeout is None:
-        max_timeout = DBPEDIA_MAX_TIMEOUT
-    sparql_endpoint = "https://dbpedia.org/sparql"
+        max_timeout = KG_MAX_TIMEOUT
+    
     headers = {
         "Accept": "application/sparql-results+json",
         "Content-Type": "application/x-www-form-urlencoded",
@@ -50,7 +49,7 @@ def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = None, 
                 print(f"    Retrying after {wait_time}s...")
                 time.sleep(wait_time)
 
-            response = requests.post(sparql_endpoint, headers=headers, data=data, timeout=timeout)
+            response = requests.post(SPARQL_ENDPOINT, headers=headers, data=data, timeout=timeout)
             response.raise_for_status()
             return response.json()
 
@@ -80,76 +79,126 @@ def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = None, 
 
 
 def _format_entity_name(name: str) -> str:
-    """Formats entity name for DBpedia URI (handles spaces and underscores)."""
-    return "_".join(part for part in name.replace(" ", "_").split("_") if part)
+    """Formats entity name for URI generation."""
+    if DATASET == "wikidata":
+        # For Wikidata, entity names should be Q/P numbers (e.g., "Q30" or "P31")
+        # If it's already a Q/P number, return as is
+        name_upper = name.upper().strip()
+        if name_upper.startswith("Q") or name_upper.startswith("P"):
+            # Check if it's a valid format (Q/P followed by digits)
+            if len(name_upper) > 1 and name_upper[1:].isdigit():
+                return name_upper
+        # Otherwise, try to extract Q/P number from the name
+        # This is a fallback - ideally the LLM should provide Q/P numbers
+        return "_".join(part for part in name.replace(" ", "_").split("_") if part)
+    else:
+        # DBpedia: Title_Case_With_Underscores
+        return "_".join(part for part in name.replace(" ", "_").split("_") if part)
 
 
 def lookup_entity_uri(entity: str, entity_type: str = None) -> str:
-    """Converts an entity name to a DBpedia URI.
-    
-    Args:
-        entity: Entity name (e.g., "GMT_Games" or "resource/GMT_Games")
-        entity_type: Type of entity ("resource", "property", "ontology") - optional if entity contains type prefix
-    
-    Returns:
-        DBpedia URI string
-    """
+    """Converts an entity name to a URI based on the configured dataset."""
+    # If entity already contains a full URI, try to parse it
     if "/" in entity and entity_type is None:
         parts = entity.split("/", 1)
         if len(parts) == 2:
             uri_type, name = parts
-            return f"http://dbpedia.org/{uri_type}/{_format_entity_name(name)}"
+            if DATASET == "wikidata":
+                # For Wikidata, if it's already a full URI, return as is
+                if entity.startswith("http://www.wikidata.org/"):
+                    return entity
+                # Otherwise construct from parts
+                formatted = _format_entity_name(name)
+                if uri_type == "entity" or uri_type == "resource":
+                    return f"{RESOURCE_URI_PREFIX}{formatted}"
+                elif uri_type == "property" or uri_type == "prop/direct":
+                    return f"{PROPERTY_URI_PREFIX}{formatted}"
+            else:
+                # DBpedia
+                return f"http://dbpedia.org/{uri_type}/{_format_entity_name(name)}"
 
+    # Determine URI type
     if entity_type == "property":
-        uri_type = "property"
+        uri_prefix = PROPERTY_URI_PREFIX
     elif entity_type == "ontology":
-        uri_type = "ontology"
+        uri_prefix = ONTOLOGY_URI_PREFIX
     else:
-        uri_type = "resource"
+        uri_prefix = RESOURCE_URI_PREFIX
 
-    return f"http://dbpedia.org/{uri_type}/{_format_entity_name(entity)}"
+    formatted_name = _format_entity_name(entity)
+    return f"{uri_prefix}{formatted_name}"
 
 
 def is_predicate_uri(uri: str) -> bool:
     """Checks if a URI is a predicate (property or ontology)."""
-    return uri.startswith("http://dbpedia.org/property/") or uri.startswith("http://dbpedia.org/ontology/")
+    if DATASET == "wikidata":
+        return uri.startswith(PROPERTY_URI_PREFIX) or uri.startswith("http://www.wikidata.org/prop/")
+    else:
+        return uri.startswith("http://dbpedia.org/property/") or uri.startswith("http://dbpedia.org/ontology/")
 
 
 def is_resource_uri(uri: str) -> bool:
     """Checks if a URI is a resource."""
-    return uri.startswith("http://dbpedia.org/resource/")
+    if DATASET == "wikidata":
+        return uri.startswith(RESOURCE_URI_PREFIX) or uri.startswith("http://www.wikidata.org/entity/")
+    else:
+        return uri.startswith("http://dbpedia.org/resource/")
 
 
 def extract_entity_name_from_uri(uri: str) -> str:
-    """Extracts a readable entity name from a DBpedia URI."""
-    if not uri or not uri.startswith("http://dbpedia.org/"):
+    """Extracts a readable entity name from a URI."""
+    if not uri:
         return None
-
-    if uri.startswith("http://dbpedia.org/resource/"):
-        return uri.replace("http://dbpedia.org/resource/", "").replace("_", " ").lower()
-    elif uri.startswith("http://dbpedia.org/property/"):
-        return uri.replace("http://dbpedia.org/property/", "").replace("_", " ").lower()
-    elif uri.startswith("http://dbpedia.org/ontology/"):
-        return uri.replace("http://dbpedia.org/ontology/", "").replace("_", " ").lower()
+    
+    if DATASET == "wikidata":
+        if uri.startswith(RESOURCE_URI_PREFIX) or uri.startswith("http://www.wikidata.org/entity/"):
+            name = uri.replace(RESOURCE_URI_PREFIX, "").replace("http://www.wikidata.org/entity/", "")
+            return name.replace("_", " ").lower()
+        elif uri.startswith(PROPERTY_URI_PREFIX) or uri.startswith("http://www.wikidata.org/prop/"):
+            name = uri.replace(PROPERTY_URI_PREFIX, "").replace("http://www.wikidata.org/prop/direct/", "").replace("http://www.wikidata.org/prop/", "")
+            return name.replace("_", " ").lower()
+    else:
+        if uri.startswith("http://dbpedia.org/resource/"):
+            return uri.replace("http://dbpedia.org/resource/", "").replace("_", " ").lower()
+        elif uri.startswith("http://dbpedia.org/property/"):
+            return uri.replace("http://dbpedia.org/property/", "").replace("_", " ").lower()
+        elif uri.startswith("http://dbpedia.org/ontology/"):
+            return uri.replace("http://dbpedia.org/ontology/", "").replace("_", " ").lower()
 
     return None
 
 
-_NOISY_PREDICATES = [
-    "rdf:type",
-    "rdfs:label",
-    "dbo:wikiPageID",
-    "<http://dbpedia.org/ontology/wikiPageWikiLink>",
-    "<http://xmlns.com/foaf/0.1/name>",
-    "<http://www.w3.org/2000/01/rdf-schema#comment>",
-    "<http://dbpedia.org/ontology/wikiPageRedirects>",
-    "<http://dbpedia.org/ontology/wikiPageDisambiguates>",
-    "<http://dbpedia.org/property/wikiPageUsesTemplate>",
-    "<http://purl.org/linguistics/gold/hypernym>",
-    "<http://purl.org/dc/terms/subject>",
-    "<http://www.w3.org/2000/01/rdf-schema#seeAlso>",
-    "<http://www.w3.org/2002/07/owl#differentFrom>"
-]
+def _get_noisy_predicates():
+    """Returns list of noisy predicates to filter based on dataset."""
+    if DATASET == "wikidata":
+        return [
+            "rdf:type",
+            "rdfs:label",
+            "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+            "<http://www.w3.org/2000/01/rdf-schema#label>",
+            "<http://schema.org/description>",
+            "<http://www.w3.org/2000/01/rdf-schema#comment>",
+            "<http://www.w3.org/2000/01/rdf-schema#seeAlso>",
+        ]
+    else:
+        return [
+            "rdf:type",
+            "rdfs:label",
+            "dbo:wikiPageID",
+            "<http://dbpedia.org/ontology/wikiPageWikiLink>",
+            "<http://xmlns.com/foaf/0.1/name>",
+            "<http://www.w3.org/2000/01/rdf-schema#comment>",
+            "<http://dbpedia.org/ontology/wikiPageRedirects>",
+            "<http://dbpedia.org/ontology/wikiPageDisambiguates>",
+            "<http://dbpedia.org/property/wikiPageUsesTemplate>",
+            "<http://purl.org/linguistics/gold/hypernym>",
+            "<http://purl.org/dc/terms/subject>",
+            "<http://www.w3.org/2000/01/rdf-schema#seeAlso>",
+            "<http://www.w3.org/2002/07/owl#differentFrom>"
+        ]
+
+
+_NOISY_PREDICATES = _get_noisy_predicates()
 
 
 def _parse_triples_from_bindings(bindings: list) -> list:
@@ -162,16 +211,40 @@ def _parse_triples_from_bindings(bindings: list) -> list:
     return triples
 
 
+def _get_resource_uri_filter() -> str:
+    """Returns the resource URI filter string for SPARQL queries."""
+    if DATASET == "wikidata":
+        return f'STRSTARTS(STR(?uri), "{RESOURCE_URI_PREFIX}")'
+    else:
+        return 'STRSTARTS(STR(?uri), "http://dbpedia.org/resource/")'
+
+
 def generate_degree_query(uri: str) -> str:
-    """Generates a SPARQL query to compute both out-degree and in-degree for a URI.
-    
-    For predicates: counts how many triples use this predicate.
-    For resources: counts connections as subject (out-degree) and object (in-degree).
-    """
+    """Generates a SPARQL query to compute both out-degree and in-degree for a URI."""
     predicate_filter = _get_predicate_filter_string()
+    resource_filter = _get_resource_uri_filter().replace("?uri", "?s").replace("?uri", "?o")
 
     if is_predicate_uri(uri):
-        sparql_query = f"""
+        if DATASET == "wikidata":
+            sparql_query = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX wd: <http://www.wikidata.org/entity/>
+        PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+        
+        SELECT 
+            (COUNT(DISTINCT ?s) AS ?out_degree)
+            (COUNT(DISTINCT ?o) AS ?in_degree)
+        WHERE {{
+            ?s <{uri}> ?o .
+            FILTER(isIRI(?s))
+            FILTER(isIRI(?o))
+            FILTER(STRSTARTS(STR(?s), "{RESOURCE_URI_PREFIX}"))
+            FILTER(STRSTARTS(STR(?o), "{RESOURCE_URI_PREFIX}"))
+        }}
+        """
+        else:
+            sparql_query = f"""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -188,7 +261,37 @@ def generate_degree_query(uri: str) -> str:
         }}
         """
     else:
-        sparql_query = f"""
+        if DATASET == "wikidata":
+            sparql_query = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX wd: <http://www.wikidata.org/entity/>
+        PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+        
+        SELECT 
+            (COUNT(DISTINCT ?o_out) AS ?out_degree)
+            (COUNT(DISTINCT ?s_in) AS ?in_degree)
+        WHERE {{
+            OPTIONAL {{
+                <{uri}> ?p_out ?o_out .
+                FILTER(isIRI(?o_out))
+                FILTER(STRSTARTS(STR(?o_out), "{RESOURCE_URI_PREFIX}"))
+                FILTER(?p_out NOT IN (
+                    {predicate_filter}
+                ))
+            }}
+            OPTIONAL {{
+                ?s_in ?p_in <{uri}> .
+                FILTER(isIRI(?s_in))
+                FILTER(STRSTARTS(STR(?s_in), "{RESOURCE_URI_PREFIX}"))
+                FILTER(?p_in NOT IN (
+                    {predicate_filter}
+                ))
+            }}
+        }}
+        """
+        else:
+            sparql_query = f"""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -219,7 +322,7 @@ def generate_degree_query(uri: str) -> str:
 
 
 def compute_weighted_degree(uri: str) -> tuple:
-    """Computes weighted degree centrality for a URI. Returns (out_degree, in_degree, total_degree)."""
+    """Computes weighted degree centrality for a URI."""
     result_data = execute_sparql_query_with_retry(generate_degree_query(uri), max_retries=2, initial_timeout=45)
 
     out_degree = in_degree = 0
@@ -232,12 +335,14 @@ def compute_weighted_degree(uri: str) -> tuple:
 
 
 def _get_predicate_filter_string() -> str:
-    """Returns formatted predicate filter string for SPARQL queries."""
+    """Returns formatted predicate filter string."""
     return ",\n                ".join(_NOISY_PREDICATES)
 
 
 def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: str = None) -> str:
-    """Builds a SPARQL pattern for a resource as subject or object."""
+    """Builds a SPARQL pattern for a resource."""
+    resource_filter_prefix = RESOURCE_URI_PREFIX if DATASET == "wikidata" else "http://dbpedia.org/resource/"
+    
     if as_subject:
         if predicate:
             return f"""
@@ -246,7 +351,7 @@ def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: s
                     BIND(<{resource}> AS ?s)
                     BIND(<{predicate}> AS ?p)
                     FILTER(isIRI(?o))
-                    FILTER(STRSTARTS(STR(?o), "http://dbpedia.org/resource/"))
+                    FILTER(STRSTARTS(STR(?o), "{resource_filter_prefix}"))
                 }}"""
         else:
             predicate_filter = _get_predicate_filter_string()
@@ -255,7 +360,7 @@ def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: s
                 <{resource}> ?p ?o .
                 BIND(<{resource}> AS ?s)
                 FILTER(isIRI(?o))
-                FILTER(STRSTARTS(STR(?o), "http://dbpedia.org/resource/"))
+                FILTER(STRSTARTS(STR(?o), "{resource_filter_prefix}"))
                 FILTER(?p NOT IN (
                     {predicate_filter}
                 ))
@@ -268,7 +373,7 @@ def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: s
                     BIND(<{predicate}> AS ?p)
                     BIND(<{resource}> AS ?o)
                     FILTER(isIRI(?s))
-                    FILTER(STRSTARTS(STR(?s), "http://dbpedia.org/resource/"))
+                    FILTER(STRSTARTS(STR(?s), "{resource_filter_prefix}"))
                 }}"""
         else:
             predicate_filter = _get_predicate_filter_string()
@@ -277,7 +382,7 @@ def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: s
                 ?s ?p <{resource}> .
                 BIND(<{resource}> AS ?o)
                 FILTER(isIRI(?s))
-                FILTER(STRSTARTS(STR(?s), "http://dbpedia.org/resource/"))
+                FILTER(STRSTARTS(STR(?s), "{resource_filter_prefix}"))
                 FILTER(?p NOT IN (
                     {predicate_filter}
                 ))
@@ -286,31 +391,22 @@ def _build_resource_pattern(resource: str, as_subject: bool = True, predicate: s
 
 def _build_predicate_pattern(predicate: str) -> str:
     """Builds a SPARQL pattern for a predicate."""
+    resource_filter_prefix = RESOURCE_URI_PREFIX if DATASET == "wikidata" else "http://dbpedia.org/resource/"
     return f"""
             {{
                 ?s <{predicate}> ?o .
                 BIND(<{predicate}> AS ?p)
                 FILTER(isIRI(?s))
                 FILTER(isIRI(?o))
-                FILTER(STRSTARTS(STR(?s), "http://dbpedia.org/resource/"))
-                FILTER(STRSTARTS(STR(?o), "http://dbpedia.org/resource/"))
+                FILTER(STRSTARTS(STR(?s), "{resource_filter_prefix}"))
+                FILTER(STRSTARTS(STR(?o), "{resource_filter_prefix}"))
             }}"""
 
 
 def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, limit: int = None) -> str:
-    """Generates a SPARQL query to retrieve triples using resources and/or predicates.
-    
-    Args:
-        resource_uris: List of resource URIs (can be empty)
-        predicate_uris: List of predicate URIs (can be empty)
-        limit: Maximum number of triples to return
-    
-    Note: Limits query complexity to avoid 405/500 errors from DBpedia.
-    When both resources and predicates are present, prioritizes resource+predicate combinations
-    and limits the number of UNION clauses.
-    """
+    """Generates a SPARQL query to retrieve triples using resources and/or predicates."""
     if limit is None:
-        limit = DBPEDIA_DEFAULT_TRIPLE_LIMIT
+        limit = KG_DEFAULT_TRIPLE_LIMIT
 
     if not resource_uris and not predicate_uris:
         return None
@@ -321,35 +417,33 @@ def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, lim
         max_resources = min(len(resource_uris), 10)
         max_predicates = min(len(predicate_uris), 5)
 
-        # Case 1: Resources with predicates (prioritized)
         for resource in resource_uris[:max_resources]:
             for predicate in predicate_uris[:max_predicates]:
-                if len(union_patterns) >= DBPEDIA_MAX_UNION_CLAUSES:
+                if len(union_patterns) >= KG_MAX_UNION_CLAUSES:
                     break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=True, predicate=predicate))
-                if len(union_patterns) >= DBPEDIA_MAX_UNION_CLAUSES:
+                if len(union_patterns) >= KG_MAX_UNION_CLAUSES:
                     break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=False, predicate=predicate))
-            if len(union_patterns) >= DBPEDIA_MAX_UNION_CLAUSES:
+            if len(union_patterns) >= KG_MAX_UNION_CLAUSES:
                 break
 
-        # Case 2: Add resources with any predicate if room available
-        if len(union_patterns) < DBPEDIA_MAX_UNION_CLAUSES:
-            remaining = DBPEDIA_MAX_UNION_CLAUSES - len(union_patterns)
+        if len(union_patterns) < KG_MAX_UNION_CLAUSES:
+            remaining = KG_MAX_UNION_CLAUSES - len(union_patterns)
             for resource in resource_uris[:min(len(resource_uris), remaining // 2)]:
-                if len(union_patterns) >= DBPEDIA_MAX_UNION_CLAUSES:
+                if len(union_patterns) >= KG_MAX_UNION_CLAUSES:
                     break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=True))
-                if len(union_patterns) >= DBPEDIA_MAX_UNION_CLAUSES:
+                if len(union_patterns) >= KG_MAX_UNION_CLAUSES:
                     break
                 union_patterns.append(_build_resource_pattern(resource, as_subject=False))
     elif resource_uris:
-        max_resources = min(len(resource_uris), DBPEDIA_MAX_UNION_CLAUSES // 2)
+        max_resources = min(len(resource_uris), KG_MAX_UNION_CLAUSES // 2)
         for resource in resource_uris[:max_resources]:
             union_patterns.append(_build_resource_pattern(resource, as_subject=True))
             union_patterns.append(_build_resource_pattern(resource, as_subject=False))
     else:
-        max_predicates = min(len(predicate_uris), DBPEDIA_MAX_UNION_CLAUSES)
+        max_predicates = min(len(predicate_uris), KG_MAX_UNION_CLAUSES)
         for predicate in predicate_uris[:max_predicates]:
             union_patterns.append(_build_predicate_pattern(predicate))
 
@@ -358,7 +452,20 @@ def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, lim
 
     union_clauses = "\n            UNION".join(union_patterns)
 
-    return f"""
+    if DATASET == "wikidata":
+        return f"""
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    SELECT ?s ?p ?o
+    WHERE {{
+        {union_clauses}
+    }}
+    LIMIT {limit}
+    """
+    else:
+        return f"""
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -371,18 +478,9 @@ def generate_batch_retrieve_query(resource_uris: list, predicate_uris: list, lim
 
 
 def fetch_triples_batch(resource_uris: list, predicate_uris: list, limit: int = None) -> list:
-    """Fetches triples in batch where subject/object is any resource or predicate is any predicate.
-    
-    Args:
-        resource_uris: List of resource URIs
-        predicate_uris: List of predicate URIs
-        limit: Maximum number of triples to return (default: from settings)
-    
-    Returns:
-        List of triples
-    """
+    """Fetches triples in batch where subject/object is any resource or predicate is any predicate."""
     if limit is None:
-        limit = DBPEDIA_DEFAULT_TRIPLE_LIMIT
+        limit = KG_DEFAULT_TRIPLE_LIMIT
 
     if not resource_uris and not predicate_uris:
         return []
@@ -399,11 +497,15 @@ def fetch_triples_batch(resource_uris: list, predicate_uris: list, limit: int = 
 
 
 def get_uris_from_triples(all_triples: list) -> set:
-    """Extracts all DBpedia URIs (resources, properties, ontologies) from triples."""
+    """Extracts all URIs (resources, properties, ontologies) from triples."""
     all_uris_in_triples = set()
     for triple in all_triples:
         for key in ["s", "o", "p"]:
             uri = triple.get(key, "")
-            if uri.startswith("http://dbpedia.org/"):
-                all_uris_in_triples.add(uri)
+            if DATASET == "wikidata":
+                if uri.startswith("http://www.wikidata.org/"):
+                    all_uris_in_triples.add(uri)
+            else:
+                if uri.startswith("http://dbpedia.org/"):
+                    all_uris_in_triples.add(uri)
     return all_uris_in_triples

@@ -1,3 +1,4 @@
+import argparse
 import io
 import os
 import sys
@@ -21,20 +22,137 @@ if _parent_dir not in sys.path:
     sys.path.insert(0, _parent_dir)
 
 
-def main() -> None:
-    out_dir = os.path.join(_parent_dir, "out")
-    out_dir = os.path.abspath(out_dir)
+def parse_arguments():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description='Graph Semantic Summarizer - Process QALD dataset questions',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Use default test file
+  python src/main.py
+  
+  # Specify input file
+  python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_dbpedia.json
+  
+  # Specify input file and dataset
+  python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_wikidata.json --dataset wikidata
+  
+  # Specify LLM provider
+  python src/main.py -i src/test/small.json --llm openai
+  
+  # Specify both dataset and LLM provider
+  python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_wikidata.json --dataset wikidata --llm anthropic
+  
+  # Use relative or absolute paths
+  python src/main.py -i ./src/test/small.json
+        """
+    )
+    
+    default_dataset_path = os.path.join(os.path.dirname(__file__), "test", "small.json")
+    
+    parser.add_argument(
+        '-i', '--input',
+        type=str,
+        default=default_dataset_path,
+        help=f'Path to input JSON dataset file (default: {default_dataset_path})'
+    )
+    
+    parser.add_argument(
+        '--dataset',
+        type=str,
+        choices=['dbpedia', 'wikidata'],
+        default=None,
+        help='Knowledge graph dataset to use: "dbpedia" or "wikidata" (default: from settings.py or environment variable)'
+    )
+    
+    parser.add_argument(
+        '--llm',
+        type=str,
+        choices=['gemini', 'openai', 'anthropic'],
+        default=None,
+        help='LLM provider to use: "gemini", "openai", or "anthropic" (default: from settings.py or environment variable)'
+    )
+    
+    parser.add_argument(
+        '-o', '--output',
+        type=str,
+        default=None,
+        help='Output directory for results (default: ./out)'
+    )
+    
+    return parser.parse_args()
 
+
+def main() -> None:
+    args = parse_arguments()
+    
+    # Set dataset if provided via command-line
+    if args.dataset:
+        os.environ['DATASET'] = args.dataset.lower()
+    
+    # Set LLM provider if provided via command-line
+    if args.llm:
+        os.environ['LLM_PROVIDER'] = args.llm.lower()
+    
+    # Reload settings and dependent modules if any configuration changed
+    if args.dataset or args.llm:
+        import importlib
+        from config import settings
+        importlib.reload(settings)
+        # Reload modules that use DATASET or LLM_PROVIDER
+        from utils import dbpedia, parser
+        from evaluation import evaluate
+        from services import llm_client
+        importlib.reload(dbpedia)
+        importlib.reload(parser)
+        importlib.reload(evaluate)
+        importlib.reload(llm_client)
+    
+    # Read current configuration values
+    from config.settings import DATASET as current_dataset, LLM_PROVIDER as current_llm_provider
+    
+    # Resolve input file path
+    if os.path.isabs(args.input):
+        dataset_path = args.input
+    else:
+        # Try relative to current working directory first
+        if os.path.exists(args.input):
+            dataset_path = os.path.abspath(args.input)
+        else:
+            # Try relative to script directory
+            dataset_path = os.path.join(os.path.dirname(__file__), args.input)
+            if not os.path.exists(dataset_path):
+                # Try relative to parent directory
+                dataset_path = os.path.join(_parent_dir, args.input)
+    
+    if not os.path.exists(dataset_path):
+        print(f"ERROR: Input file not found: {args.input}")
+        print(f"  Tried: {dataset_path}")
+        sys.exit(1)
+    
+    dataset_path = os.path.abspath(dataset_path)
+    
+    # Set output directory
+    if args.output:
+        out_dir = os.path.abspath(args.output)
+    else:
+        out_dir = os.path.join(_parent_dir, "out")
+        out_dir = os.path.abspath(out_dir)
+    
     print("=" * 60)
-    print("GEMINI SEMANTIC SUMMARIZER - Dataset Processing")
+    print("GRAPH SEMANTIC SUMMARIZER - Dataset Processing")
     print("=" * 60)
     print()
-
-    dataset_path = os.path.join(os.path.dirname(__file__), "test", "small.json")
+    print(f"Knowledge Graph: {current_dataset.upper()}")
+    print(f"LLM Provider: {current_llm_provider.upper()}")
+    print(f"Input file: {dataset_path}")
+    print(f"Output directory: {out_dir}")
+    print()
+    
     print(f"Loading dataset: {dataset_path}")
     english_questions = loadDataset(dataset_path)
     print(f"Found {len(english_questions)} English questions")
-    print(f"Output directory: {out_dir}")
     print()
 
     for idx, q_data in enumerate(english_questions, 1):

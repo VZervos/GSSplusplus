@@ -13,7 +13,6 @@ def loadDataset(dataset_path: str) -> list:
         print(f"ERROR: Invalid JSON in dataset file: {str(e)}")
         sys.exit(1)
 
-    # Extract English questions
     questions = data.get("questions", [])
     english_questions = []
 
@@ -21,14 +20,13 @@ def loadDataset(dataset_path: str) -> list:
         question_id = question_item.get("id", "unknown")
         question_list = question_item.get("question", [])
 
-        # Find the English question
         for q in question_list:
             if q.get("language") == "en":
                 english_questions.append({
                     "id": question_id,
                     "question": q.get("string", "")
                 })
-                break  # Take only the first English question if multiple exist
+                break
     return english_questions
 
 
@@ -36,7 +34,6 @@ def extract_query_keywords(extraction: dict, query: str) -> set:
     """Extracts keywords from extraction and query for similarity computation."""
     query_keywords = set()
 
-    # Handle both new format (list of dicts) and legacy format (list of strings)
     for entity in extraction["entities"]:
         if isinstance(entity, dict):
             entity_name = entity.get("name", "")

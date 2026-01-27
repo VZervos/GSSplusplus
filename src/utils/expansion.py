@@ -20,7 +20,7 @@ def compute_expansion_priorities(
         expansion_uris: set,
         entity_importance: dict
 ) -> dict:
-    """Computes priority scores for expansion URIs based on frequency and connected entity importance."""
+    """Computes priority scores for expansion URIs."""
     uri_frequency = {}
     uri_priority = {}
 
@@ -53,20 +53,7 @@ def expand_to_one_hop(
         batch_size: int = None,
         batch_limit: int = None
 ) -> list:
-    """Expands triples by fetching 1-hop neighbors of entities found in initial triples.
-    
-    Args:
-        all_triples: Current list of triples
-        original_uris: Set of original query entity URIs to exclude
-        entity_importance: Dict mapping URIs to their importance values
-        max_expansion_resources: Maximum number of resources to expand
-        max_batches: Maximum number of batches to process
-        batch_size: Number of resources per batch
-        batch_limit: Maximum triples per batch query
-    
-    Returns:
-        List of additional triples from expansion
-    """
+    """Expands triples by fetching 1-hop neighbors of entities found in initial triples."""
     if max_expansion_resources is None:
         max_expansion_resources = EXPANSION_MAX_RESOURCES
     if max_batches is None:

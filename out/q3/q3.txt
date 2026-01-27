@@ -1,19 +1,1 @@
 triple,importance,similarity,final
-"http://dbpedia.org/resource/Konstanty_Korniakt http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.878390,0.751356
-"http://dbpedia.org/resource/Ntinos_Konstantakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.870875,0.748350
-"http://dbpedia.org/resource/Victor_(iconographer) http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.870653,0.748261
-"http://dbpedia.org/resource/Ioannis_Apakas http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.866901,0.746761
-"http://dbpedia.org/resource/Theocharis_Silvestros http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.866801,0.746720
-"http://dbpedia.org/resource/Myron_Michailidis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.864853,0.745941
-"http://dbpedia.org/resource/Christos_Belevonis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.862396,0.744959
-"http://dbpedia.org/resource/Stavros_Arnaoutakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.860006,0.744002
-"http://dbpedia.org/resource/Nikos_Androulakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.857024,0.742809
-"http://dbpedia.org/resource/Nektarios_Tavernarakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.856593,0.742637
-"http://dbpedia.org/resource/Nikonas_Spiliotakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.855991,0.742396
-"http://dbpedia.org/resource/Manolis_Roubakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.855004,0.742001
-"http://dbpedia.org/resource/Nicholas_Kalliakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.854218,0.741687
-"http://dbpedia.org/resource/Ieremias_Palladas http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.853393,0.741357
-"http://dbpedia.org/resource/Theophanes_the_Cretan http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.853256,0.741303
-"http://dbpedia.org/resource/Christoforos_Liontakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.851671,0.740668
-"http://dbpedia.org/resource/Notis_Sfakianakis http://dbpedia.org/property/birthPlace http://dbpedia.org/resource/Heraklion",0.666667,0.851320,0.740528
-"http://dbpedia.org/resource/KBS_Radio_3 http://dbpedia.org/ontology/programmeFormat http://dbpedia.org/resource/Person",0.013333,0.564429,0.233772

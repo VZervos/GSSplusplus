@@ -65,10 +65,7 @@ def visualize_knowledge_graph(
         print("  No triples to visualize")
         return
 
-    # Create directed graph
     G = nx.DiGraph()
-
-    # Add nodes and edges from triples
     node_importance = {}
     for triple in triples:
         s = triple.get('s', '')

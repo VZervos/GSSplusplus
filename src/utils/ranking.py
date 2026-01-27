@@ -10,17 +10,7 @@ from config.settings import (
 
 
 def compute_final_scores(triples, importance_weight=None, similarity_weight=None) -> None:
-    """
-    Combine graph-based importance and semantic similarity into a single final score.
-    
-    Both importance and similarity are in [0, 1] range, so the final score
-    is also in [0, 1] range: IMPORTANCE_WEIGHT * importance + SIMILARITY_WEIGHT * similarity
-    
-    Args:
-        triples: List of triples to score
-        importance_weight: Weight for importance score (default: from settings)
-        similarity_weight: Weight for similarity score (default: from settings)
-    """
+    """Combine graph-based importance and semantic similarity into a single final score."""
     if importance_weight is None:
         importance_weight = SCORING_IMPORTANCE_WEIGHT
     if similarity_weight is None:
@@ -29,8 +19,6 @@ def compute_final_scores(triples, importance_weight=None, similarity_weight=None
     for t in triples:
         importance = t.get("importance", 0.0)
         similarity = t.get("similarity", 0.0)
-
-        # Both importance and similarity are in [0, 1], so final score is in [0, 1]
         t["final_score"] = (
                 importance_weight * importance +
                 similarity_weight * similarity
@@ -44,21 +32,7 @@ def select_subgraph_triples(
         min_score: float = None,
         max_total: int = None
 ) -> list:
-    """
-    Build a query-focused subgraph instead of a Top-K answer list.
-
-    Strategy:
-    - Group triples by involved entities
-    - For each important entity, keep its best triples
-    - Apply light pruning to remove pure noise
-    
-    Args:
-        triples: List of triples to select from
-        uri_importance_map: Dict mapping URIs to importance information
-        per_entity_limit: How many triples each entity can contribute (default: from settings)
-        min_score: Minimum final score to include a triple (default: from settings)
-        max_total: Maximum total number of triples in subgraph (default: from settings)
-    """
+    """Build a query-focused subgraph from triples."""
     if per_entity_limit is None:
         per_entity_limit = RANKING_PER_ENTITY_LIMIT
     if min_score is None:

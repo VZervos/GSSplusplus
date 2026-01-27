@@ -19,33 +19,14 @@ from utils.dbpedia import (
 
 
 def _normalize_triple_importance(score_sum: float) -> float:
-    """Normalizes triple importance score sum to [0, 1] range.
-    
-    Args:
-        score_sum: Sum of entity importance scores (subject + object + predicate)
-                   Each entity score is in [0, 1], so max sum is from settings
-    
-    Returns:
-        Normalized importance score in [0, 1] range
-    """
-    # Maximum possible sum from settings
+    """Normalizes triple importance score sum to [0, 1] range."""
     max_sum = SCORING_TRIPLE_IMPORTANCE_MAX_SUM
     return min(1.0, score_sum / max_sum) if max_sum > 0 else 0.0
 
 
 def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map: dict, entity_importance: dict = None,
                        triples_per_entity_limit: int = None) -> None:
-    """
-    Computes importance scores for entities using only initial importance weights (1-5).
-    Does not use in/out degree computation.
-    
-    Args:
-        all_triples: List to store retrieved triples
-        entity_uris: Dict mapping entity names to URIs
-        uri_importance_map: Dict to store importance scores for URIs
-        entity_importance: Dict mapping URIs to importance values (1, 2, 3, 4, or 5)
-        triples_per_entity_limit: Limit for triples per entity (default: from settings)
-    """
+    """Computes importance scores for entities using only initial importance weights (1-5)."""
     if triples_per_entity_limit is None:
         triples_per_entity_limit = SCORING_TRIPLES_PER_ENTITY_LIMIT
 
@@ -66,7 +47,7 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
     if (len(resource_uris) > DBPEDIA_SPLIT_RESOURCE_THRESHOLD or
             (len(resource_uris) > DBPEDIA_SPLIT_RESOURCE_SMALL_THRESHOLD and len(
                 predicate_uris) > DBPEDIA_SPLIT_PREDICATE_THRESHOLD)):
-        print(f"    Splitting into smaller batches to avoid query size limits...")
+        print(f"    Splitting into smaller batches...")
         resource_batch_size = DBPEDIA_BATCH_RESOURCE_SIZE
         predicate_batch_size = DBPEDIA_BATCH_PREDICATE_SIZE
         for i in range(0, len(resource_uris), resource_batch_size):
@@ -129,12 +110,19 @@ def compute_importance(all_triples: list, entity_uris: dict, uri_importance_map:
 
 
 def assign_importance_scores(all_triples: list, query_keywords: set, uri_importance_map: dict) -> None:
-    """Assigns importance scores to triples based on the sum of entity scores, normalized to [0, 1]."""
+    """Assigns importance scores to triples based on entity scores."""
     for triple in all_triples:
         score_sum = 0.0
         for key in ["s", "o", "p"]:
             uri = triple.get(key, "")
-            if uri.startswith("http://dbpedia.org/") and uri in uri_importance_map:
+            # Check if URI matches the configured dataset
+            from config.settings import DATASET, RESOURCE_URI_PREFIX, PROPERTY_URI_PREFIX, ONTOLOGY_URI_PREFIX
+            if DATASET == "wikidata":
+                uri_matches = (uri.startswith("http://www.wikidata.org/") and uri in uri_importance_map)
+            else:
+                uri_matches = (uri.startswith("http://dbpedia.org/") and uri in uri_importance_map)
+            
+            if uri_matches:
                 score_sum += uri_importance_map[uri]["score"]
 
         triple["importance"] = _normalize_triple_importance(score_sum)
