@@ -1,6 +1,6 @@
 # Graph Semantic Summarizer
 
-A Python application that uses LLMs (Gemini, OpenAI, or Anthropic) to extract entities and process semantic queries for graph-based knowledge summarization.
+A Python application that uses the Gemini API to extract entities and process semantic queries for graph-based knowledge summarization.
 
 ## Project Structure
 
@@ -85,36 +85,13 @@ sudo apt install python3-pip
 pip3 install -r requirements.txt
 ```
 
-2. Set up your LLM API key:
+2. Set up your Gemini API key (optional - defaults to hardcoded key):
 
-**For Gemini (default):**
 ```bash
 export GEMINI_API_KEY="your-api-key-here"
 ```
 
-**For OpenAI:**
-```bash
-export OPENAI_API_KEY="your-api-key-here"
-```
-
-**For Anthropic (Claude):**
-```bash
-export ANTHROPIC_API_KEY="your-api-key-here"
-```
-
-Or modify `src/config/settings.py` directly.
-
-3. (Optional) Configure LLM provider and model:
-
-You can set the LLM provider via environment variable:
-```bash
-export LLM_PROVIDER="gemini"    # or "openai" or "anthropic"
-export GEMINI_MODEL="gemini-2.5-flash-lite"  # For Gemini
-export OPENAI_MODEL="gpt-4o-mini"  # For OpenAI
-export ANTHROPIC_MODEL="claude-3-5-sonnet-20241022"  # For Anthropic
-```
-
-Or modify `src/config/settings.py` directly (see LLM Configuration section).
+Or modify `config/settings.py` directly.
 
 ## Usage
 
@@ -157,7 +134,6 @@ python src/main.py --help
 
 - `-i, --input`: Path to input JSON dataset file (default: `src/test/small.json`)
 - `--dataset`: Knowledge graph dataset to use: `"dbpedia"` or `"wikidata"` (default: from `settings.py` or `DATASET` environment variable)
-- `--llm`: LLM provider to use: `"gemini"`, `"openai"`, or `"anthropic"` (default: from `settings.py` or `LLM_PROVIDER` environment variable)
 - `-o, --output`: Output directory for results (default: `./out`)
 
 The script processes questions from the specified dataset file and runs each through the complete pipeline:
@@ -182,18 +158,17 @@ Results are displayed for each question showing the number of triples found and 
 
 ### Implemented Features
 
-- ✅ LLM integration (`src/services/llm_client.py`)
-  - Supports multiple LLM providers: Gemini, OpenAI, Anthropic
-  - HTTP POST requests to LLM APIs
+- ✅ Gemini API integration (`src/services/gemini_client.py`)
+  - HTTP POST requests to Gemini API
   - Error handling for timeouts and network errors
   - Response status code validation
-- ✅ Entity extraction using LLM (`src/utils/parser.py`)
-  - LLM-based entity extraction - uses configured LLM to extract entities, verbs, and synonyms
+- ✅ Entity extraction using Gemini API (`src/utils/parser.py`)
+  - LLM-based entity extraction - uses Gemini API to extract entities, verbs, and synonyms
   - Comprehensive entity extraction including direct entities, related concepts, and implied properties
-  - DBpedia/Wikidata-friendly formatting with importance scoring
+  - DBpedia-friendly formatting with importance scoring
   - Keyword filtering with stopword removal
-- ✅ Response parsing from LLM (`src/utils/parser.py`)
-  - Extracts text from LLM API response structure (supports multiple providers)
+- ✅ Response parsing from Gemini API (`src/utils/parser.py`)
+  - Extracts text from Gemini API response structure
   - Handles malformed responses gracefully
 - ✅ DBpedia integration (`src/utils/dbpedia.py`)
   - SPARQL queries for entity URI lookup
@@ -213,7 +188,7 @@ The complete pipeline (`src/pipeline/pipeline.py`) includes all 9 steps:
 
 1. **STEP 1**: Pipeline initialization [x]
 2. **STEP 2**: Entity extraction [x]
-   - Uses the configured LLM to extract entities, verbs, and synonyms
+   - Uses Gemini API to extract entities, verbs, and synonyms
    - Extracts direct entities, related concepts, and implied properties
    - Formats entities with DBpedia-friendly naming and importance scores
 3. **STEP 3**: Entity URI lookup [x]
@@ -238,9 +213,9 @@ The complete pipeline (`src/pipeline/pipeline.py`) includes all 9 steps:
 
 ### Entity Extraction Logic
 
-The entity extraction (`src/utils/parser.py`) uses the configured LLM (Gemini, OpenAI, or Anthropic) for comprehensive extraction:
+The entity extraction (`src/utils/parser.py`) uses Gemini API for comprehensive extraction:
 
-1. **LLM-based extraction**: Uses the configured LLM to extract:
+1. **LLM-based extraction**: Uses Gemini API to extract:
 
    - Direct entities (importance: 3) - entities directly mentioned in the question
    - Related concepts (importance: 2) - related DBpedia categories/types

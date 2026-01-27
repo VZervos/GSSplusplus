@@ -1,7 +1,7 @@
 import json
 
 from config.settings import DATASET
-from services.llm_client import call_llm_api, extract_response_text as llm_extract_response_text
+from services.gemini_client import call_gemini_api
 
 ENGLISH_STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "been", "by", "for", "from",
@@ -157,8 +157,8 @@ Expected entities:
 Question: "{query}"
 """
 
-    response = call_llm_api(prompt)
-    text = llm_extract_response_text(response).strip()
+    response = call_gemini_api(prompt)
+    text = extract_response_text(response).strip()
     text = text.replace("```json", "").replace("```", "").strip()
 
     try:
@@ -192,6 +192,11 @@ Question: "{query}"
         }
 
 
+def extract_response_text(api_response: dict) -> str:
+    try:
+        return api_response["candidates"][0]["content"]["parts"][0]["text"]
+    except (KeyError, IndexError) as e:
+        return json.dumps(api_response, indent=2)
 
 
 def filter_keywords(keywords) -> list:

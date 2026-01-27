@@ -20,37 +20,14 @@ else:  # Default to DBpedia
     ONTOLOGY_URI_PREFIX = "http://dbpedia.org/ontology/"
 
 # ============================================================================
-# LLM Configuration
+# API Configuration
 # ============================================================================
 
-# LLM Provider: "gemini", "openai", "anthropic"
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
+API_KEY = os.getenv("GEMINI_API_KEY", "YOUR KEY")
+MODEL_NAME = "gemini-2.5-flash-lite"  # Change this to use different models
 
-# Provider-specific configurations
-if LLM_PROVIDER == "openai":
-    # OpenAI Configuration
-    LLM_API_KEY = os.getenv("OPENAI_API_KEY", os.getenv("API_KEY", "YOUR KEY"))
-    LLM_MODEL_NAME = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Options: gpt-4o, gpt-4o-mini, gpt-4-turbo, gpt-3.5-turbo
-    LLM_BASE_URL = "https://api.openai.com/v1"
-    LLM_API_URL = f"{LLM_BASE_URL}/chat/completions"
-elif LLM_PROVIDER == "anthropic":
-    # Anthropic (Claude) Configuration
-    LLM_API_KEY = os.getenv("ANTHROPIC_API_KEY", os.getenv("API_KEY", "YOUR KEY"))
-    LLM_MODEL_NAME = os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-20241022")  # Options: claude-3-5-sonnet-20241022, claude-3-opus-20240229, claude-3-sonnet-20240229
-    LLM_BASE_URL = "https://api.anthropic.com/v1"
-    LLM_API_URL = f"{LLM_BASE_URL}/messages"
-else:
-    # Gemini Configuration (default)
-    LLM_API_KEY = os.getenv("GEMINI_API_KEY", os.getenv("API_KEY", "YOUR KEY"))
-    LLM_MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")  # Options: gemini-2.5-flash-lite, gemini-pro, gemini-1.5-pro
-    LLM_BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
-    LLM_API_URL = f"{LLM_BASE_URL}/models/{LLM_MODEL_NAME}:generateContent"
-
-# Backward compatibility aliases
-API_KEY = LLM_API_KEY
-MODEL_NAME = LLM_MODEL_NAME
-BASE_URL = LLM_BASE_URL
-API_URL = LLM_API_URL
+BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
+API_URL = f"{BASE_URL}/models/{MODEL_NAME}:generateContent"
 
 # ============================================================================
 # Scoring & Ranking Configuration

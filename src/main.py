@@ -38,12 +38,6 @@ Examples:
   # Specify input file and dataset
   python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_wikidata.json --dataset wikidata
   
-  # Specify LLM provider
-  python src/main.py -i src/test/small.json --llm openai
-  
-  # Specify both dataset and LLM provider
-  python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_wikidata.json --dataset wikidata --llm anthropic
-  
   # Use relative or absolute paths
   python src/main.py -i ./src/test/small.json
         """
@@ -67,14 +61,6 @@ Examples:
     )
     
     parser.add_argument(
-        '--llm',
-        type=str,
-        choices=['gemini', 'openai', 'anthropic'],
-        default=None,
-        help='LLM provider to use: "gemini", "openai", or "anthropic" (default: from settings.py or environment variable)'
-    )
-    
-    parser.add_argument(
         '-o', '--output',
         type=str,
         default=None,
@@ -90,27 +76,21 @@ def main() -> None:
     # Set dataset if provided via command-line
     if args.dataset:
         os.environ['DATASET'] = args.dataset.lower()
-    
-    # Set LLM provider if provided via command-line
-    if args.llm:
-        os.environ['LLM_PROVIDER'] = args.llm.lower()
-    
-    # Reload settings and dependent modules if any configuration changed
-    if args.dataset or args.llm:
+        # Reload settings and dependent modules to pick up the new DATASET value
         import importlib
         from config import settings
         importlib.reload(settings)
-        # Reload modules that use DATASET or LLM_PROVIDER
+        # Reload modules that use DATASET
         from utils import dbpedia, parser
         from evaluation import evaluate
-        from services import llm_client
         importlib.reload(dbpedia)
         importlib.reload(parser)
         importlib.reload(evaluate)
-        importlib.reload(llm_client)
-    
-    # Read current configuration values
-    from config.settings import DATASET as current_dataset, LLM_PROVIDER as current_llm_provider
+        # Re-import to get updated values
+        from config.settings import DATASET as current_dataset
+    else:
+        # Read from settings (which reads from env var or defaults to "dbpedia")
+        from config.settings import DATASET as current_dataset
     
     # Resolve input file path
     if os.path.isabs(args.input):
@@ -141,11 +121,10 @@ def main() -> None:
         out_dir = os.path.abspath(out_dir)
     
     print("=" * 60)
-    print("GRAPH SEMANTIC SUMMARIZER - Dataset Processing")
+    print("GEMINI SEMANTIC SUMMARIZER - Dataset Processing")
     print("=" * 60)
     print()
-    print(f"Knowledge Graph: {current_dataset.upper()}")
-    print(f"LLM Provider: {current_llm_provider.upper()}")
+    print(f"Dataset: {current_dataset.upper()}")
     print(f"Input file: {dataset_path}")
     print(f"Output directory: {out_dir}")
     print()
