@@ -5,7 +5,7 @@ import os
 # ============================================================================
 
 # Choose the knowledge graph dataset: "dbpedia" or "wikidata"
-DATASET = os.getenv("DATASET", "wikipedia").lower()
+DATASET = os.getenv("DATASET", "dbpedia").lower()
 
 # Dataset-specific endpoints and URI patterns
 if DATASET == "wikidata":
@@ -23,8 +23,16 @@ else:  # Default to DBpedia
 # API Configuration
 # ============================================================================
 
-API_KEY = os.getenv("GEMINI_API_KEY", "YOUR KEY")
+# LLM Provider Selection
+LLM_PROVIDER = "groq"  # Options: "gemini", "groq"
+
+# Gemini Configuration
+API_KEY = "YOUR KEY"
 MODEL_NAME = "gemini-2.5-flash-lite"  # Change this to use different models
+
+# Groq Configuration
+GROQ_API_KEY = "YOUR KEY"
+GROQ_MODEL = "llama-3.1-8b-instant"
 
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
 API_URL = f"{BASE_URL}/models/{MODEL_NAME}:generateContent"

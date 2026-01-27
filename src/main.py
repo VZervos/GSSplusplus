@@ -7,7 +7,10 @@ from io import StringIO
 
 from config.settings import (
     VIS_MAX_NODES,
-    OUTPUT_GRAPH_FILENAME
+    OUTPUT_GRAPH_FILENAME,
+    LLM_PROVIDER,
+    DATASET,
+    OUTPUT_BASE_DIR
 )
 from pipeline.pipeline import pipeline
 from utils.dataset import loadDataset
@@ -24,6 +27,15 @@ if _parent_dir not in sys.path:
 
 def parse_arguments():
     """Parse command-line arguments."""
+    # Determine default test file based on current dataset setting
+    from config.settings import DATASET as current_dataset
+    if current_dataset.lower() == "wikidata":
+        default_test_file = "small_wd.json"
+    else:
+        default_test_file = "small_db.json"
+    
+    default_dataset_path = os.path.join(os.path.dirname(__file__), "test", default_test_file)
+    
     parser = argparse.ArgumentParser(
         description='Graph Semantic Summarizer - Process QALD dataset questions',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -39,11 +51,9 @@ Examples:
   python src/main.py -i dataset/QALD_9_plus-main/data/qald_9_plus_test_wikidata.json --dataset wikidata
   
   # Use relative or absolute paths
-  python src/main.py -i ./src/test/small.json
+  python src/main.py -i ./src/test/small_db.json
         """
     )
-    
-    default_dataset_path = os.path.join(os.path.dirname(__file__), "test", "small.json")
     
     parser.add_argument(
         '-i', '--input',
@@ -92,6 +102,9 @@ def main() -> None:
         # Read from settings (which reads from env var or defaults to "dbpedia")
         from config.settings import DATASET as current_dataset
     
+    from config.settings import LLM_PROVIDER
+    provider_name = LLM_PROVIDER.upper()
+    
     # Resolve input file path
     if os.path.isabs(args.input):
         dataset_path = args.input
@@ -121,7 +134,7 @@ def main() -> None:
         out_dir = os.path.abspath(out_dir)
     
     print("=" * 60)
-    print("GEMINI SEMANTIC SUMMARIZER - Dataset Processing")
+    print(f"{provider_name} SEMANTIC SUMMARIZER - Dataset Processing")
     print("=" * 60)
     print()
     print(f"Dataset: {current_dataset.upper()}")

@@ -1,7 +1,6 @@
 import json
-
+from services.llm_client import call_llm_api
 from config.settings import DATASET
-from services.gemini_client import call_gemini_api
 
 ENGLISH_STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "been", "by", "for", "from",
@@ -157,8 +156,9 @@ Expected entities:
 Question: "{query}"
 """
 
-    response = call_gemini_api(prompt)
+    response = call_llm_api(prompt)
     text = extract_response_text(response).strip()
+
     text = text.replace("```json", "").replace("```", "").strip()
 
     try:
