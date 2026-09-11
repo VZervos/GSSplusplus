@@ -35,7 +35,8 @@ def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = None, 
     headers = {
         "Accept": "application/sparql-results+json",
         "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": "Mozilla/5.0"
+        # Wikidata requires an identifying User-Agent (anonymous/generic agents get 403).
+        "User-Agent": "GSSplusplus-research/1.0 (hallucination-pilot; academic use)",
     }
 
     data = {"query": sparql_query, "format": "json"}
@@ -62,14 +63,25 @@ def execute_sparql_query_with_retry(sparql_query: str, max_retries: int = None, 
                 return None
 
         except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 405:
+            status = e.response.status_code if e.response is not None else None
+            # Wikidata often returns 403/429 under load — back off and retry.
+            if status in (403, 429) and attempt < max_retries - 1:
+                wait_time = max(5, 2 ** (attempt + 2))
+                print(
+                    f"    HTTP {status} (rate limit). Waiting {wait_time}s before retry..."
+                )
+                time.sleep(wait_time)
+                continue
+            if status == 405:
                 print(f"    Error 405: Query too large or method not allowed. Try reducing batch size.")
-            elif e.response.status_code == 500:
+            elif status == 500:
                 print(f"    Error 500: Server error. Query may be too complex.")
-            elif e.response.status_code == 413:
+            elif status == 413:
                 print(f"    Error 413: Request entity too large. Try reducing batch size.")
             else:
-                print(f"    HTTP Error {e.response.status_code}: {str(e)}")
+                print(f"    HTTP Error {status}: {str(e)}")
+            if attempt < max_retries - 1 and status in (500, 502, 503):
+                continue
             return None
         except requests.exceptions.RequestException as e:
             print(f"    Error: {str(e)}")
@@ -98,6 +110,21 @@ def _format_entity_name(name: str) -> str:
 
 def lookup_entity_uri(entity: str, entity_type: str = None) -> str:
     """Converts an entity name to a URI based on the configured dataset."""
+    entity = (entity or "").strip()
+    if not entity:
+        return None
+
+    # Bare Wikidata Q/P ids from LAMA or the extractor
+    if DATASET == "wikidata":
+        if entity.startswith("http://www.wikidata.org/"):
+            return entity
+        if entity.startswith("wd:"):
+            return RESOURCE_URI_PREFIX + entity[3:]
+        if len(entity) > 1 and entity[0] in "qQ" and entity[1:].isdigit():
+            return f"{RESOURCE_URI_PREFIX}Q{entity[1:]}"
+        if entity_type == "property" and len(entity) > 1 and entity[0] in "pP" and entity[1:].isdigit():
+            return f"{PROPERTY_URI_PREFIX}P{entity[1:]}"
+
     # If entity already contains a full URI, try to parse it
     if "/" in entity and entity_type is None:
         parts = entity.split("/", 1)
@@ -125,8 +152,55 @@ def lookup_entity_uri(entity: str, entity_type: str = None) -> str:
     else:
         uri_prefix = RESOURCE_URI_PREFIX
 
+    # Wikidata: resolve labels via SPARQL (entity/France is not a valid Q-id)
+    if DATASET == "wikidata" and entity_type != "property":
+        resolved = _wikidata_uri_from_label(entity)
+        if resolved:
+            return resolved
+
     formatted_name = _format_entity_name(entity)
     return f"{uri_prefix}{formatted_name}"
+
+
+_WIKIDATA_LABEL_CACHE = {}
+
+
+def _wikidata_uri_from_label(label: str):
+    """Resolve an English label to a Wikidata entity URI via wbsearchentities (cached)."""
+    key = label.strip().lower()
+    if key in _WIKIDATA_LABEL_CACHE:
+        return _WIKIDATA_LABEL_CACHE[key]
+    uri = None
+    try:
+        resp = requests.get(
+            "https://www.wikidata.org/w/api.php",
+            params={
+                "action": "wbsearchentities",
+                "search": label,
+                "language": "en",
+                "limit": 1,
+                "format": "json",
+            },
+            headers={
+                "User-Agent": "GSSplusplus-research/1.0 (hallucination-pilot; academic use)",
+            },
+            timeout=30,
+        )
+        resp.raise_for_status()
+        hits = resp.json().get("search") or []
+        if hits:
+            qid = hits[0].get("id")
+            if qid:
+                uri = f"{RESOURCE_URI_PREFIX}{qid}"
+    except Exception as e:
+        print(f"    Wikidata label API error for '{label}': {e}")
+    _WIKIDATA_LABEL_CACHE[key] = uri
+    if uri:
+        print(f"    Wikidata label '{label}' -> {uri}")
+    else:
+        print(f"    Wikidata label lookup miss for '{label}'")
+    time.sleep(0.5)
+    return uri
 
 
 def is_predicate_uri(uri: str) -> bool:

@@ -1,0 +1,4454 @@
+{
+  "created_at": "2026-09-01T13:12:31.306159+00:00",
+  "input": "C:\\Valantis\\JetBrains\\projects\\isl\\GSSplusplus\\out\\hallucination\\llm_answers.json",
+  "dataset": "dbpedia",
+  "mode": "answer",
+  "gss": "stock_pipeline",
+  "n": 30,
+  "summary": {
+    "decision": {
+      "supported": 0,
+      "weak_support": 0,
+      "unsupported": 9,
+      "uncertain": 21
+    },
+    "detection": {
+      "not_validated": 3,
+      "true_support": 0,
+      "true_support_granularity": 0,
+      "weak_true_support": 0,
+      "missed_support": 6,
+      "false_support": 0,
+      "weak_false_support": 0,
+      "uncertain": 21
+    },
+    "gold_match": 17,
+    "gold_acceptable": 17,
+    "granularity_match": 0
+  },
+  "results": [
+    {
+      "id": "trex_P19_619d7561-8697-46a0-9465-b6909c3388fb",
+      "mode": "answer",
+      "question": "Where was Anastasia Grymalska born?",
+      "llm_answer": "Poland",
+      "gold_answers": [
+        {
+          "label": "Kiev",
+          "uri": "Q1899"
+        }
+      ],
+      "subject": {
+        "label": "Anastasia Grymalska",
+        "uri": "Q4751868"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Poland",
+      "claim_text": "Anastasia Grymalska was born in Poland.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Poland",
+        "answer_entity": {
+          "name": "Poland",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Anastasia_Grymalska",
+        "relation_id": "P19",
+        "gss_query": "Poland",
+        "claim_text": "Anastasia Grymalska was born in Poland.",
+        "question": "Where was Anastasia Grymalska born?",
+        "llm_answer": "Poland"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P20_b48b4b49-2887-4f5e-a544-ed9fa2af96e5",
+      "mode": "answer",
+      "question": "Where did Penelope Rich, Lady Rich die?",
+      "llm_answer": "Richmond Palace",
+      "gold_answers": [
+        {
+          "label": "London",
+          "uri": "Q84"
+        }
+      ],
+      "subject": {
+        "label": "Penelope Rich, Lady Rich",
+        "uri": "Q4275949"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Richmond Palace",
+      "claim_text": "Penelope Rich, Lady Rich died in Richmond Palace.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Richmond_Palace",
+        "answer_entity": {
+          "name": "Richmond_Palace",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Penelope_Rich,_Lady_Rich",
+        "relation_id": "P20",
+        "gss_query": "Richmond Palace",
+        "claim_text": "Penelope Rich, Lady Rich died in Richmond Palace.",
+        "question": "Where did Penelope Rich, Lady Rich die?",
+        "llm_answer": "Richmond Palace"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P27_f51661b2-2aa6-4dd6-bb06-30d4f4dc2085",
+      "mode": "answer",
+      "question": "What is the country of citizenship of Andre Spitzer?",
+      "llm_answer": "Hungary",
+      "gold_answers": [
+        {
+          "label": "Israel",
+          "uri": "Q801"
+        }
+      ],
+      "subject": {
+        "label": "Andre Spitzer",
+        "uri": "Q522888"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "gss_query": "Hungary",
+      "claim_text": "Andre Spitzer is Hungary citizen.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Hungary",
+        "answer_entity": {
+          "name": "Hungary",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Andre_Spitzer",
+        "relation_id": "P27",
+        "gss_query": "Hungary",
+        "claim_text": "Andre Spitzer is Hungary citizen.",
+        "question": "What is the country of citizenship of Andre Spitzer?",
+        "llm_answer": "Hungary"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P36_3bc51dee-0ae6-40ba-863f-5549382dd210",
+      "mode": "answer",
+      "question": "What is the capital of Nebraska?",
+      "llm_answer": "Lincoln",
+      "gold_answers": [
+        {
+          "label": "Lincoln",
+          "uri": "Q28260"
+        }
+      ],
+      "subject": {
+        "label": "Nebraska",
+        "uri": "Q1553"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "gss_query": "Lincoln",
+      "claim_text": "The capital of Nebraska is Lincoln.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 16,
+        "answer_uri": "http://dbpedia.org/resource/Lincoln",
+        "answer_entity": {
+          "name": "Lincoln",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Nebraska",
+        "relation_id": "P36",
+        "gss_query": "Lincoln",
+        "claim_text": "The capital of Nebraska is Lincoln.",
+        "question": "What is the capital of Nebraska?",
+        "llm_answer": "Lincoln"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Cohoes,_New_York__PoliticalFunction__1",
+          "p": "http://dbpedia.org/ontology/politician",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.34889964771270754,
+          "importance": 0.12,
+          "similarity": 0.6922491192817688
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hagaratagi",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.31990067672729494,
+          "importance": 0.12,
+          "similarity": 0.6197516918182373
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Norte-rio-grandense_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.31910450172424315,
+          "importance": 0.12,
+          "similarity": 0.6177612543106079
+        },
+        {
+          "s": "http://dbpedia.org/resource/Boro_Baptist_Convention",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.3173925609588623,
+          "importance": 0.12,
+          "similarity": 0.6134814023971558
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tuna_Aktürk",
+          "p": "http://dbpedia.org/property/caption",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.31480219078063965,
+          "importance": 0.12,
+          "similarity": 0.6070054769515991
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Matogrossense_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.31355278205871584,
+          "importance": 0.12,
+          "similarity": 0.6038819551467896
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Paraibana_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.3132986755371094,
+          "importance": 0.12,
+          "similarity": 0.6032466888427734
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_de_Futebol_do_Distrito_Federal",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.312849232673645,
+          "importance": 0.12,
+          "similarity": 0.6021230816841125
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Roraimense_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.3113206596374512,
+          "importance": 0.12,
+          "similarity": 0.5983016490936279
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Amapaense_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.3096816987991333,
+          "importance": 0.12,
+          "similarity": 0.5942042469978333
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_Paraense_de_Futebol",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.30965740394592284,
+          "importance": 0.12,
+          "similarity": 0.5941435098648071
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_de_Futebol_do_Acre",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.309351393699646,
+          "importance": 0.12,
+          "similarity": 0.593378484249115
+        },
+        {
+          "s": "http://dbpedia.org/resource/Russian_Mineralogical_Society",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.307632061958313,
+          "importance": 0.12,
+          "similarity": 0.5890801548957825
+        },
+        {
+          "s": "http://dbpedia.org/resource/Surrey_County_Football_Association",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.30555200290679935,
+          "importance": 0.12,
+          "similarity": 0.5838800072669983
+        },
+        {
+          "s": "http://dbpedia.org/resource/Federação_de_Futebol_do_Estado_de_Rondônia",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.30322808933258055,
+          "importance": 0.12,
+          "similarity": 0.5780702233314514
+        },
+        {
+          "s": "http://dbpedia.org/resource/Worcestershire_County_Football_Association",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President",
+          "score": 0.29678218078613283,
+          "importance": 0.12,
+          "similarity": 0.561955451965332
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P106_9a12c429-3773-455a-b84e-70ee28c857f3",
+      "mode": "answer",
+      "question": "What is the occupation of Menachem Mendel Schneerson?",
+      "llm_answer": "Rabbi",
+      "gold_answers": [
+        {
+          "label": "rabbi",
+          "uri": "Q133485"
+        }
+      ],
+      "subject": {
+        "label": "Menachem Mendel Schneerson",
+        "uri": "Q381397"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "gss_query": "Rabbi",
+      "claim_text": "Menachem Mendel Schneerson is a Rabbi by profession.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 33,
+        "answer_uri": "http://dbpedia.org/resource/Rabbi",
+        "answer_entity": {
+          "name": "Rabbi",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Menachem_Mendel_Schneerson",
+        "relation_id": "P106",
+        "gss_query": "Rabbi",
+        "claim_text": "Menachem Mendel Schneerson is a Rabbi by profession.",
+        "question": "What is the occupation of Menachem Mendel Schneerson?",
+        "llm_answer": "Rabbi"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Jason_Miller_(rabbi)",
+          "p": "http://dbpedia.org/property/title",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5391234397888184,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8478085994720459
+        },
+        {
+          "s": "http://dbpedia.org/resource/They_Must_Go",
+          "p": "http://dbpedia.org/ontology/author",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5354637622833252,
+          "importance": 0.3333333333333333,
+          "similarity": 0.838659405708313
+        },
+        {
+          "s": "http://dbpedia.org/resource/Raymond_Apple_(rabbi)",
+          "p": "http://dbpedia.org/property/honorificPrefix",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5344367504119873,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8360918760299683
+        },
+        {
+          "s": "http://dbpedia.org/resource/Michael_Rosen_(rabbi)",
+          "p": "http://dbpedia.org/property/title",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5340166807174682,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8350417017936707
+        },
+        {
+          "s": "http://dbpedia.org/resource/Michael_Lerner_(rabbi)",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5325236797332764,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8313091993331909
+        },
+        {
+          "s": "http://dbpedia.org/resource/Saul_Berman",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5324477672576904,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8311194181442261
+        },
+        {
+          "s": "http://dbpedia.org/resource/Daniel_Stein_(rabbi)",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5319106101989746,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8297765254974365
+        },
+        {
+          "s": "http://dbpedia.org/resource/Louis_Ginzberg",
+          "p": "http://dbpedia.org/property/rabbi",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.531542444229126,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8288561105728149
+        },
+        {
+          "s": "http://dbpedia.org/resource/Simon_Greenberg",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5308412075042724,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8271030187606812
+        },
+        {
+          "s": "http://dbpedia.org/resource/Samuel_Adler_(rabbi)",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5296698570251465,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8241746425628662
+        },
+        {
+          "s": "http://dbpedia.org/resource/The_Jerusalem_Kollel",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5283693552017212,
+          "importance": 0.3333333333333333,
+          "similarity": 0.820923388004303
+        },
+        {
+          "s": "http://dbpedia.org/resource/Abraham_Senior",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.52803955078125,
+          "importance": 0.3333333333333333,
+          "similarity": 0.820098876953125
+        },
+        {
+          "s": "http://dbpedia.org/resource/Danny_Rich_(rabbi)",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5280384063720703,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8200960159301758
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harvey_Belovski",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.526864767074585,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8171619176864624
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tibor_Rosenbaum",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5264080047607422,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8160200119018555
+        },
+        {
+          "s": "http://dbpedia.org/resource/Dovid_Shmidel",
+          "p": "http://dbpedia.org/property/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5262318611145019,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8155796527862549
+        },
+        {
+          "s": "http://dbpedia.org/resource/Society_for_the_Advancement_of_Judaism",
+          "p": "http://dbpedia.org/property/foundedBy",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.526175570487976,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8154389262199402
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tobias_Jakobovits",
+          "p": "http://dbpedia.org/property/honorificPrefix",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5261528968811036,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8153822422027588
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aryeh_Leib_Baron",
+          "p": "http://dbpedia.org/property/synagogueposition",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.525984263420105,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8149606585502625
+        },
+        {
+          "s": "http://dbpedia.org/resource/Reconstructionist_Rabbinical_College",
+          "p": "http://dbpedia.org/ontology/president",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5258595943450928,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8146489858627319
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albert_Chait",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5257961511611938,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8144903779029846
+        },
+        {
+          "s": "http://dbpedia.org/resource/David_M._Posner",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5257503509521484,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8143758773803711
+        },
+        {
+          "s": "http://dbpedia.org/resource/Abraham_Cooper_(rabbi)",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5255505084991455,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8138762712478638
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albert_Friedlander__Albert_H_Friedlander__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5250832796096802,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8127081990242004
+        },
+        {
+          "s": "http://dbpedia.org/resource/Avraham_Mordechai_Gottlieb",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5244193315505982,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8110483288764954
+        },
+        {
+          "s": "http://dbpedia.org/resource/David_Baazov",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5243730545043945,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8109326362609863
+        },
+        {
+          "s": "http://dbpedia.org/resource/Theodore_Friedman",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5239898443222046,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8099746108055115
+        },
+        {
+          "s": "http://dbpedia.org/resource/A._Bruce_Goldman",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5238781690597534,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8096954226493835
+        },
+        {
+          "s": "http://dbpedia.org/resource/Peter_Knobel",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5238641500473022,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8096603751182556
+        },
+        {
+          "s": "http://dbpedia.org/resource/Charlie_Cytron-Walker",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.523829984664917,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8095749616622925
+        },
+        {
+          "s": "http://dbpedia.org/resource/Maurice_Davis",
+          "p": "http://dbpedia.org/property/profession",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5237980365753174,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8094950914382935
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jacob_Hamburger",
+          "p": "http://dbpedia.org/property/occupation",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5237427711486816,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8093569278717041
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jews_for_Judaism",
+          "p": "http://dbpedia.org/ontology/foundedBy",
+          "o": "http://dbpedia.org/resource/Rabbi",
+          "score": 0.5233452796936036,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8083631992340088
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P17_5e99180f-1917-4da8-9acd-3cc7a711a35c",
+      "mode": "answer",
+      "question": "Which country is Munich Residence located in?",
+      "llm_answer": "Austria",
+      "gold_answers": [
+        {
+          "label": "Germany",
+          "uri": "Q183"
+        }
+      ],
+      "subject": {
+        "label": "Munich Residence",
+        "uri": "Q686548"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "gss_query": "Austria",
+      "claim_text": "Munich Residence is located in Austria.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Austria",
+        "answer_entity": {
+          "name": "Austria",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Munich_Residence",
+        "relation_id": "P17",
+        "gss_query": "Austria",
+        "claim_text": "Munich Residence is located in Austria.",
+        "question": "Which country is Munich Residence located in?",
+        "llm_answer": "Austria"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P159_b6bb0745-1697-44c7-a123-f40fa98e4c03",
+      "mode": "answer",
+      "question": "Where is the headquarters of Coventry Climax?",
+      "llm_answer": "Coventry",
+      "gold_answers": [
+        {
+          "label": "Coventry",
+          "uri": "Q6225"
+        }
+      ],
+      "subject": {
+        "label": "Coventry Climax",
+        "uri": "Q173016"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "gss_query": "Coventry",
+      "claim_text": "The headquarter of Coventry Climax is in Coventry.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Coventry",
+        "answer_entity": {
+          "name": "Coventry",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Coventry_Climax",
+        "relation_id": "P159",
+        "gss_query": "Coventry",
+        "claim_text": "The headquarter of Coventry Climax is in Coventry.",
+        "question": "Where is the headquarters of Coventry Climax?",
+        "llm_answer": "Coventry"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P495_ba0c8904-4929-4079-a111-703abb0bad22",
+      "mode": "answer",
+      "question": "In which country was Pulse created?",
+      "llm_answer": "Canada",
+      "gold_answers": [
+        {
+          "label": "Japan",
+          "uri": "Q17"
+        }
+      ],
+      "subject": {
+        "label": "Pulse",
+        "uri": "Q196184"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "gss_query": "Canada",
+      "claim_text": "Pulse was created in Canada.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Canada",
+        "answer_entity": {
+          "name": "Canada",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Pulse",
+        "relation_id": "P495",
+        "gss_query": "Canada",
+        "claim_text": "Pulse was created in Canada.",
+        "question": "In which country was Pulse created?",
+        "llm_answer": "Canada"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P740_5dbd1903-c9aa-4114-9793-f902e39c9885",
+      "mode": "answer",
+      "question": "Where was Grimaldi Group formed?",
+      "llm_answer": "Monaco",
+      "gold_answers": [
+        {
+          "label": "Naples",
+          "uri": "Q2634"
+        }
+      ],
+      "subject": {
+        "label": "Grimaldi Group",
+        "uri": "Q1057367"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "gss_query": "Monaco",
+      "claim_text": "Grimaldi Group was founded in Monaco.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Monaco",
+        "answer_entity": {
+          "name": "Monaco",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Grimaldi_Group",
+        "relation_id": "P740",
+        "gss_query": "Monaco",
+        "claim_text": "Grimaldi Group was founded in Monaco.",
+        "question": "Where was Grimaldi Group formed?",
+        "llm_answer": "Monaco"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P937_dc09dbc8-cb95-4027-9baf-c2e7e17add6a",
+      "mode": "answer",
+      "question": "Where does Carolyn Christov-Bakargiev work?",
+      "llm_answer": "Savelli Gallery",
+      "gold_answers": [
+        {
+          "label": "Turin",
+          "uri": "Q495"
+        }
+      ],
+      "subject": {
+        "label": "Carolyn Christov-Bakargiev",
+        "uri": "Q453538"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "gss_query": "Savelli Gallery",
+      "claim_text": "Carolyn Christov-Bakargiev used to work in Savelli Gallery.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Savelli_Gallery",
+        "answer_entity": {
+          "name": "Savelli_Gallery",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Carolyn_Christov-Bakargiev",
+        "relation_id": "P937",
+        "gss_query": "Savelli Gallery",
+        "claim_text": "Carolyn Christov-Bakargiev used to work in Savelli Gallery.",
+        "question": "Where does Carolyn Christov-Bakargiev work?",
+        "llm_answer": "Savelli Gallery"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P19_5d19de60-e6db-4720-97fe-d80be3bd46d2",
+      "mode": "answer",
+      "question": "Where was Henry Mackenzie born?",
+      "llm_answer": "Edinburgh",
+      "gold_answers": [
+        {
+          "label": "Edinburgh",
+          "uri": "Q23436"
+        }
+      ],
+      "subject": {
+        "label": "Henry Mackenzie",
+        "uri": "Q1276720"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Edinburgh",
+      "claim_text": "Henry Mackenzie was born in Edinburgh.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Edinburgh",
+        "answer_entity": {
+          "name": "Edinburgh",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Henry_Mackenzie",
+        "relation_id": "P19",
+        "gss_query": "Edinburgh",
+        "claim_text": "Henry Mackenzie was born in Edinburgh.",
+        "question": "Where was Henry Mackenzie born?",
+        "llm_answer": "Edinburgh"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P20_084e8e26-0d96-4613-b772-69d456569bfd",
+      "mode": "answer",
+      "question": "Where did Vincent Strambi die?",
+      "llm_answer": "Rome",
+      "gold_answers": [
+        {
+          "label": "Rome",
+          "uri": "Q220"
+        }
+      ],
+      "subject": {
+        "label": "Vincent Strambi",
+        "uri": "Q966615"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Rome",
+      "claim_text": "Vincent Strambi died in Rome.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Rome",
+        "answer_entity": {
+          "name": "Rome",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Vincent_Strambi",
+        "relation_id": "P20",
+        "gss_query": "Rome",
+        "claim_text": "Vincent Strambi died in Rome.",
+        "question": "Where did Vincent Strambi die?",
+        "llm_answer": "Rome"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P27_6748a8e9-b648-4161-a077-33343848ced8",
+      "mode": "answer",
+      "question": "What is the country of citizenship of Serik Akhmetov?",
+      "llm_answer": "Kazakhstan",
+      "gold_answers": [
+        {
+          "label": "Kazakhstan",
+          "uri": "Q232"
+        }
+      ],
+      "subject": {
+        "label": "Serik Akhmetov",
+        "uri": "Q57863"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "gss_query": "Kazakhstan",
+      "claim_text": "Serik Akhmetov is Kazakhstan citizen.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Kazakhstan",
+        "answer_entity": {
+          "name": "Kazakhstan",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Serik_Akhmetov",
+        "relation_id": "P27",
+        "gss_query": "Kazakhstan",
+        "claim_text": "Serik Akhmetov is Kazakhstan citizen.",
+        "question": "What is the country of citizenship of Serik Akhmetov?",
+        "llm_answer": "Kazakhstan"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P36_4705b702-9fec-4c9e-9590-e95de0bda9f2",
+      "mode": "answer",
+      "question": "What is the capital of Grande Lisboa Subregion?",
+      "llm_answer": "Lisbon",
+      "gold_answers": [
+        {
+          "label": "Lisbon",
+          "uri": "Q597"
+        }
+      ],
+      "subject": {
+        "label": "Grande Lisboa Subregion",
+        "uri": "Q241731"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "gss_query": "Lisbon",
+      "claim_text": "The capital of Grande Lisboa Subregion is Lisbon.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 35,
+        "answer_uri": "http://dbpedia.org/resource/Lisbon",
+        "answer_entity": {
+          "name": "Lisbon",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Grande_Lisboa_Subregion",
+        "relation_id": "P36",
+        "gss_query": "Lisbon",
+        "claim_text": "The capital of Grande Lisboa Subregion is Lisbon.",
+        "question": "What is the capital of Grande Lisboa Subregion?",
+        "llm_answer": "Lisbon"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/Portugal",
+          "score": 0.5781885147094726,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9454712867736816
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/Lisbon_District",
+          "score": 0.5508238077163696,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8770595192909241
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/Municipalities_of_Portugal",
+          "score": 0.547808575630188,
+          "importance": 0.3333333333333333,
+          "similarity": 0.86952143907547
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/Lisbon_metropolitan_area",
+          "score": 0.5476857185363769,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8692142963409424
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cesário_Verde",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5475254535675049,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8688136339187622
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eusébio",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5465453624725342,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8663634061813354
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/governingBody",
+          "o": "http://dbpedia.org/resource/Concelho",
+          "score": 0.54611177444458,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8652794361114502
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ana_Hatherly",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5455503463745117,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8638758659362793
+        },
+        {
+          "s": "http://dbpedia.org/resource/Juca",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5449459552764893,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8623648881912231
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Lisbon_District",
+          "score": 0.5447531938552856,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8618829846382141
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Lisbon_metropolitan_area",
+          "score": 0.5434798717498779,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8586996793746948
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/property/source",
+          "o": "http://dbpedia.org/resource/Deutscher_Wetterdienst",
+          "score": 0.5429713249206543,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8574283123016357
+        },
+        {
+          "s": "http://dbpedia.org/resource/Miguel_de_Vasconcelos",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5423587799072266,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8558969497680664
+        },
+        {
+          "s": "http://dbpedia.org/resource/Francisco_Caldeira_Castelo_Branco",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5423322677612304,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8558306694030762
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ribeirinho",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.541738486289978,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8543462157249451
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eusébio_Leão",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.541302752494812,
+          "importance": 0.3333333333333333,
+          "similarity": 0.85325688123703
+        },
+        {
+          "s": "http://dbpedia.org/resource/Carlota_Talassi",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5410452365875245,
+          "importance": 0.3333333333333333,
+          "similarity": 0.852613091468811
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ana_Afonso",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5409042119979859,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8522605299949646
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lisbon",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/Estremadura_Province_(historical)",
+          "score": 0.5407490491867065,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8518726229667664
+        },
+        {
+          "s": "http://dbpedia.org/resource/Columbano_Bordalo_Pinheiro",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5407036781311035,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8517591953277588
+        },
+        {
+          "s": "http://dbpedia.org/resource/Costa_Pereira",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5407004833221436,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8517512083053589
+        },
+        {
+          "s": "http://dbpedia.org/resource/Miguel_António_de_Melo",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5405049800872803,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8512624502182007
+        },
+        {
+          "s": "http://dbpedia.org/resource/Adriana_de_Vecchi",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5403833389282227,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8509583473205566
+        },
+        {
+          "s": "http://dbpedia.org/resource/Almerindo_Marques",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5401961326599121,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8504903316497803
+        },
+        {
+          "s": "http://dbpedia.org/resource/Manuela_Margarido",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5400889635086059,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8502224087715149
+        },
+        {
+          "s": "http://dbpedia.org/resource/Gago_Coutinho",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5400604724884033,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8501511812210083
+        },
+        {
+          "s": "http://dbpedia.org/resource/Vasco_de_Almeida_e_Costa",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5400060415267944,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8500151038169861
+        },
+        {
+          "s": "http://dbpedia.org/resource/José_Policarpo",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5397458076477051,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8493645191192627
+        },
+        {
+          "s": "http://dbpedia.org/resource/Miguel_Bombarda",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5396745443344116,
+          "importance": 0.3333333333333333,
+          "similarity": 0.849186360836029
+        },
+        {
+          "s": "http://dbpedia.org/resource/Francisco_de_São_Luís",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5396068811416626,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8490172028541565
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lauro_António",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5389623880386353,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8474059700965881
+        },
+        {
+          "s": "http://dbpedia.org/resource/Urbano_Tavares_Rodrigues",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5389493942260742,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8473734855651855
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lino_António",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5389199733734131,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8472999334335327
+        },
+        {
+          "s": "http://dbpedia.org/resource/Fernando_José_de_França_Dias_Van-Dúnem",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5387913703918457,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8469784259796143
+        },
+        {
+          "s": "http://dbpedia.org/resource/Raul_Solnado",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Lisbon",
+          "score": 0.5387203454971313,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8468008637428284
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P106_93092075-9ac6-48a1-8e1d-2ac4c3aa7a87",
+      "mode": "answer",
+      "question": "What is the occupation of Reginald Cooray?",
+      "llm_answer": "Sri Lankan politician",
+      "gold_answers": [
+        {
+          "label": "politician",
+          "uri": "Q82955"
+        }
+      ],
+      "subject": {
+        "label": "Reginald Cooray",
+        "uri": "Q7308650"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "gss_query": "Sri Lankan politician",
+      "claim_text": "Reginald Cooray is a Sri Lankan politician by profession.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 38,
+        "answer_uri": "http://dbpedia.org/resource/Sri_Lankan_politician",
+        "answer_entity": {
+          "name": "Sri_Lankan_politician",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Reginald_Cooray",
+        "relation_id": "P106",
+        "gss_query": "Sri Lankan politician",
+        "claim_text": "Reginald Cooray is a Sri Lankan politician by profession.",
+        "question": "What is the occupation of Reginald Cooray?",
+        "llm_answer": "Sri Lankan politician"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Prime_Minister_of_Sri_Lanka",
+          "score": 0.5546742677688599,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8866856694221497
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Speaker_of_the_Parliament_of_Sri_Lanka",
+          "score": 0.5514524221420288,
+          "importance": 0.3333333333333333,
+          "similarity": 0.878631055355072
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/President_of_Sri_Lanka",
+          "score": 0.5497745037078857,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8744362592697144
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Jagath_Wickremerathna",
+          "score": 0.5492719650268555,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8731799125671387
+        },
+        {
+          "s": "http://dbpedia.org/resource/Kumaraswamy_Pulavar",
+          "p": "http://dbpedia.org/ontology/nationality",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.546469783782959,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8661744594573975
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/leaderFunction",
+          "o": "http://dbpedia.org/resource/Sri_Lanka__PersonFunction__1",
+          "score": 0.546419358253479,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8660483956336975
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/leaderFunction",
+          "o": "http://dbpedia.org/resource/Sri_Lanka__PersonFunction__3",
+          "score": 0.5447234630584716,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8618086576461792
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/leaderFunction",
+          "o": "http://dbpedia.org/resource/Sri_Lanka__PersonFunction__2",
+          "score": 0.5447161674499512,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8617904186248779
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/leaderFunction",
+          "o": "http://dbpedia.org/resource/Sri_Lanka__PersonFunction__4",
+          "score": 0.5440147161483765,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8600367903709412
+        },
+        {
+          "s": "http://dbpedia.org/resource/Chandra_Fernando_(priest)",
+          "p": "http://dbpedia.org/ontology/stateOfOrigin",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5429090023040771,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8572725057601929
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Harini_Amarasuriya",
+          "score": 0.5427421569824219,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8568553924560547
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/caption",
+          "o": "http://dbpedia.org/resource/Sirimavo_Bandaranaike",
+          "score": 0.5415404796600342,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8538511991500854
+        },
+        {
+          "s": "http://dbpedia.org/resource/Kumaraswamy_Pulavar",
+          "p": "http://dbpedia.org/ontology/stateOfOrigin",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5408909797668457,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8522274494171143
+        },
+        {
+          "s": "http://dbpedia.org/resource/Polwatte_Buddhadatta_Thera",
+          "p": "http://dbpedia.org/ontology/nationality",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5398733615875244,
+          "importance": 0.3333333333333333,
+          "similarity": 0.849683403968811
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Padman_Surasena",
+          "score": 0.5397260189056396,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8493150472640991
+        },
+        {
+          "s": "http://dbpedia.org/resource/R._Rajamahendran",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.537564754486084,
+          "importance": 0.3333333333333333,
+          "similarity": 0.84391188621521
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Anura_Kumara_Dissanayake",
+          "score": 0.5375271320343018,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8438178300857544
+        },
+        {
+          "s": "http://dbpedia.org/resource/Dharma_Sri_Munasinghe",
+          "p": "http://dbpedia.org/ontology/nationality",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5373074054718018,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8432685136795044
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/governmentType",
+          "o": "http://dbpedia.org/resource/Semi-presidential_republic",
+          "score": 0.5366679430007935,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8416698575019836
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ernest_Perera",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5357651948928833,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8394129872322083
+        },
+        {
+          "s": "http://dbpedia.org/resource/Bernie_Wijesekara",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5354690313339233,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8386725783348083
+        },
+        {
+          "s": "http://dbpedia.org/resource/Priyani_Jayasinghe",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5352176189422607,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8380440473556519
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Vijaya_Rajasinha",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5349235773086548,
+          "importance": 0.3333333333333333,
+          "similarity": 0.837308943271637
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cyril_Fernando",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5347594261169434,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8368985652923584
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Chief_Justice_of_Sri_Lanka",
+          "score": 0.5343498229980469,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8358745574951172
+        },
+        {
+          "s": "http://dbpedia.org/resource/Stanley_Wijesundera",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.534068512916565,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8351712822914124
+        },
+        {
+          "s": "http://dbpedia.org/resource/D._M._Jayaratne",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.533643102645874,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8341077566146851
+        },
+        {
+          "s": "http://dbpedia.org/resource/James_Alfred_Ernest_Corea",
+          "p": "http://dbpedia.org/ontology/stateOfOrigin",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5335973024368286,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8339932560920715
+        },
+        {
+          "s": "http://dbpedia.org/resource/Vijaya_Kumaratunga",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5335696935653687,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8339242339134216
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/legislature",
+          "o": "http://dbpedia.org/resource/Parliament_of_Sri_Lanka",
+          "score": 0.5335368156433106,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8338420391082764
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rajasundaram",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5332928419113159,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8332321047782898
+        },
+        {
+          "s": "http://dbpedia.org/resource/Chandra_Fernando_(priest)",
+          "p": "http://dbpedia.org/ontology/nationality",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5330485820770263,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8326214551925659
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jayantha_Kelegama",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.532667589187622,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8316689729690552
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jeyaraj_Fernandopulle",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.532537841796875,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8313446044921875
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/topLevelDomain",
+          "o": "http://dbpedia.org/resource/.lk",
+          "score": 0.5324533939361572,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8311334848403931
+        },
+        {
+          "s": "http://dbpedia.org/resource/James_T._Rutnam",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Sri_Lanka",
+          "score": 0.5324330806732178,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8310827016830444
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sri_Lanka",
+          "p": "http://dbpedia.org/ontology/language",
+          "o": "http://dbpedia.org/resource/Sri_Lankan_English",
+          "score": 0.5321601867675781,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8304004669189453
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tyronne_Fernando",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Politician",
+          "score": 0.3510749311447144,
+          "importance": 0.12,
+          "similarity": 0.6976873278617859
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P17_7ea5518f-784c-468b-a398-718ac76698c7",
+      "mode": "answer",
+      "question": "Which country is Le Puy Foot 43 Auvergne located in?",
+      "llm_answer": "France",
+      "gold_answers": [
+        {
+          "label": "France",
+          "uri": "Q142"
+        }
+      ],
+      "subject": {
+        "label": "Le Puy Foot 43 Auvergne",
+        "uri": "Q3226092"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "gss_query": "France",
+      "claim_text": "Le Puy Foot 43 Auvergne is located in France.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/France",
+        "answer_entity": {
+          "name": "France",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Le_Puy_Foot_43_Auvergne",
+        "relation_id": "P17",
+        "gss_query": "France",
+        "claim_text": "Le Puy Foot 43 Auvergne is located in France.",
+        "question": "Which country is Le Puy Foot 43 Auvergne located in?",
+        "llm_answer": "France"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P159_7e789775-4a97-4c12-83ea-093af49882a8",
+      "mode": "answer",
+      "question": "Where is the headquarters of Ansaldo STS?",
+      "llm_answer": "Genoa",
+      "gold_answers": [
+        {
+          "label": "Genoa",
+          "uri": "Q1449"
+        }
+      ],
+      "subject": {
+        "label": "Ansaldo STS",
+        "uri": "Q1040139"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "gss_query": "Genoa",
+      "claim_text": "The headquarter of Ansaldo STS is in Genoa.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Genoa",
+        "answer_entity": {
+          "name": "Genoa",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Ansaldo_STS",
+        "relation_id": "P159",
+        "gss_query": "Genoa",
+        "claim_text": "The headquarter of Ansaldo STS is in Genoa.",
+        "question": "Where is the headquarters of Ansaldo STS?",
+        "llm_answer": "Genoa"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P495_5bd88f39-c70f-4dd0-a04b-56c994e2eaae",
+      "mode": "answer",
+      "question": "In which country was Always Greener created?",
+      "llm_answer": "Australia",
+      "gold_answers": [
+        {
+          "label": "Australia",
+          "uri": "Q408"
+        }
+      ],
+      "subject": {
+        "label": "Always Greener",
+        "uri": "Q4738417"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "gss_query": "Australia",
+      "claim_text": "Always Greener was created in Australia.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Australia",
+        "answer_entity": {
+          "name": "Australia",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Always_Greener",
+        "relation_id": "P495",
+        "gss_query": "Australia",
+        "claim_text": "Always Greener was created in Australia.",
+        "question": "In which country was Always Greener created?",
+        "llm_answer": "Australia"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P740_c62cd2ed-5eb9-4eca-a3e5-cbc295337f8a",
+      "mode": "answer",
+      "question": "Where was Revolverheld formed?",
+      "llm_answer": "Hamburg",
+      "gold_answers": [
+        {
+          "label": "Hamburg",
+          "uri": "Q1055"
+        }
+      ],
+      "subject": {
+        "label": "Revolverheld",
+        "uri": "Q692631"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "gss_query": "Hamburg",
+      "claim_text": "Revolverheld was founded in Hamburg.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": true,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 38,
+        "answer_uri": "http://dbpedia.org/resource/Hamburg",
+        "answer_entity": {
+          "name": "Hamburg",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Revolverheld",
+        "relation_id": "P740",
+        "gss_query": "Hamburg",
+        "claim_text": "Revolverheld was founded in Hamburg.",
+        "question": "Where was Revolverheld formed?",
+        "llm_answer": "Hamburg"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/Germany",
+          "score": 0.5747489929199219,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9368724822998047
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/west",
+          "o": "http://dbpedia.org/resource/Bremerhaven",
+          "score": 0.5666135549545288,
+          "importance": 0.3333333333333333,
+          "similarity": 0.916533887386322
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/east",
+          "o": "http://dbpedia.org/resource/Schwerin",
+          "score": 0.5638434648513794,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9096086621284485
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/southwest",
+          "o": "http://dbpedia.org/resource/Bremen",
+          "score": 0.5634139537811279,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9085348844528198
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/south",
+          "o": "http://dbpedia.org/resource/Hanover",
+          "score": 0.5606194019317627,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9015485048294067
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/west",
+          "o": "http://dbpedia.org/resource/Stade",
+          "score": 0.5581111192703248,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8952777981758118
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg,_New_York",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5580463647842407,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8951159119606018
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aby_Warburg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5547810792922974,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8869526982307434
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/north",
+          "o": "http://dbpedia.org/resource/Kiel",
+          "score": 0.5535873413085938,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8839683532714844
+        },
+        {
+          "s": "http://dbpedia.org/resource/K.P._Brehmer",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5526331424713135,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8815828561782837
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/Municipalities_of_Germany",
+          "score": 0.5523863315582276,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8809658288955688
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/governingBody",
+          "o": "http://dbpedia.org/resource/Hamburg_Parliament",
+          "score": 0.5523790836334228,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8809477090835571
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Jürgens",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5523084163665771,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8807710409164429
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Roland",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5522853374481201,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8807133436203003
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Germany",
+          "score": 0.5520352602005005,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8800881505012512
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/States_of_Germany",
+          "score": 0.5520229578018189,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8800573945045471
+        },
+        {
+          "s": "http://dbpedia.org/resource/Götz_George",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.551923131942749,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8798078298568726
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/location",
+          "o": "http://dbpedia.org/resource/Hamburg_Airport",
+          "score": 0.5518394470214844,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8795986175537109
+        },
+        {
+          "s": "http://dbpedia.org/resource/Horst_Skoff",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5506229877471924,
+          "importance": 0.3333333333333333,
+          "similarity": 0.876557469367981
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Lehmann",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5505185127258301,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8762962818145752
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lonny_Kellner",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5500845193862915,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8752112984657288
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans_Weymar",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.550002908706665,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8750072717666626
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans-Jochen_Jaschke",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5496298789978027,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8740746974945068
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg_(village),_New_York",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5476571083068847,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8691427707672119
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/northwest",
+          "o": "http://dbpedia.org/resource/Cuxhaven",
+          "score": 0.5473768234252929,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8684420585632324
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/northeast",
+          "o": "http://dbpedia.org/resource/Lübeck",
+          "score": 0.5473743677139282,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8684359192848206
+        },
+        {
+          "s": "http://dbpedia.org/resource/Erna_Schlüter",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5470919609069824,
+          "importance": 0.3333333333333333,
+          "similarity": 0.867729902267456
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christa_Siems",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.546900749206543,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8672518730163574
+        },
+        {
+          "s": "http://dbpedia.org/resource/Bruno_Koschmider",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5465754747390748,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8664386868476868
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans_Apel",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.54650399684906,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8662599921226501
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christian_Quadflieg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5461392402648926,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8653481006622314
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wilhelm_Berlin",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5455481529235839,
+          "importance": 0.3333333333333333,
+          "similarity": 0.86387038230896
+        },
+        {
+          "s": "http://dbpedia.org/resource/Franz_Pöschl",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5454851150512695,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8637127876281738
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christian_Warlich",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5453822612762451,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8634556531906128
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wolfgang_Klein",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5453053951263428,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8632634878158569
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eric_M._Warburg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5452900886535644,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8632252216339111
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Oesten",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5451343297958374,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8628358244895935
+        },
+        {
+          "s": "http://dbpedia.org/resource/Karl_Klasen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5450809001922607,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8627022504806519
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P937_50a25e45-28b8-46e6-a600-787e4eeda9ca",
+      "mode": "answer",
+      "question": "Where does Gaston d'Audiffret-Pasquier work?",
+      "llm_answer": "Château de Vizille",
+      "gold_answers": [
+        {
+          "label": "Paris",
+          "uri": "Q90"
+        }
+      ],
+      "subject": {
+        "label": "Gaston d'Audiffret-Pasquier",
+        "uri": "Q2600693"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "gss_query": "Château de Vizille",
+      "claim_text": "Gaston d'Audiffret-Pasquier used to work in Château de Vizille.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Château_de_Vizille",
+        "answer_entity": {
+          "name": "Château_de_Vizille",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Gaston_d'Audiffret-Pasquier",
+        "relation_id": "P937",
+        "gss_query": "Château de Vizille",
+        "claim_text": "Gaston d'Audiffret-Pasquier used to work in Château de Vizille.",
+        "question": "Where does Gaston d'Audiffret-Pasquier work?",
+        "llm_answer": "Château de Vizille"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P19_baa92bb5-4b2f-451f-a64a-885e0b2037bd",
+      "mode": "answer",
+      "question": "Where was Robert Pinget born?",
+      "llm_answer": "Bellegarde-du-Var, France",
+      "gold_answers": [
+        {
+          "label": "Geneva",
+          "uri": "Q71"
+        }
+      ],
+      "subject": {
+        "label": "Robert Pinget",
+        "uri": "Q123389"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Bellegarde-du-Var, France",
+      "claim_text": "Robert Pinget was born in Bellegarde-du-Var, France.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 45,
+        "answer_uri": "http://dbpedia.org/resource/Bellegarde-du-Var,_France",
+        "answer_entity": {
+          "name": "Bellegarde-du-Var,_France",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Robert_Pinget",
+        "relation_id": "P19",
+        "gss_query": "Bellegarde-du-Var, France",
+        "claim_text": "Robert Pinget was born in Bellegarde-du-Var, France.",
+        "question": "Where was Robert Pinget born?",
+        "llm_answer": "Bellegarde-du-Var, France"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Romain_Bellenger",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5275790691375732,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8189476728439331
+        },
+        {
+          "s": "http://dbpedia.org/resource/Pierre_Carrier-Belleuse",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5220636844635009,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8051592111587524
+        },
+        {
+          "s": "http://dbpedia.org/resource/France",
+          "p": "http://dbpedia.org/ontology/topLevelDomain",
+          "o": "http://dbpedia.org/resource/.fr",
+          "score": 0.5190277099609375,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7975692749023438
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lê_Văn_Viễn",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5159983158111572,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7899957895278931
+        },
+        {
+          "s": "http://dbpedia.org/resource/Flaugnarde",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5158069849014282,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7895174622535706
+        },
+        {
+          "s": "http://dbpedia.org/resource/Luc_Andrieux",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5146511316299438,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7866278290748596
+        },
+        {
+          "s": "http://dbpedia.org/resource/Elmire_Vautier",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5144165515899658,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7860413789749146
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jules-Géraud_Saliège",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5142499208450317,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7856248021125793
+        },
+        {
+          "s": "http://dbpedia.org/resource/Moïse_Kisling",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5140907049179078,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7852267622947693
+        },
+        {
+          "s": "http://dbpedia.org/resource/Louis_d'Astarac_de_Fontrailles",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5135072231292724,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7837680578231812
+        },
+        {
+          "s": "http://dbpedia.org/resource/Marie-Angélique_Memmie_Le_Blanc",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5132312774658203,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7830781936645508
+        },
+        {
+          "s": "http://dbpedia.org/resource/Charly_Grosskost",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5132173538208008,
+          "importance": 0.3333333333333333,
+          "similarity": 0.783043384552002
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yvan_Chiffre",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5130447149276733,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7826117873191833
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wladimir_d'Ormesson",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5129160404205322,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7822901010513306
+        },
+        {
+          "s": "http://dbpedia.org/resource/Riz_à_l'impératrice",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5115736484527588,
+          "importance": 0.3333333333333333,
+          "similarity": 0.778934121131897
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rino_Mondellini",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5112019062042237,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7780047655105591
+        },
+        {
+          "s": "http://dbpedia.org/resource/Elysée_Loustallot",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5111865043640137,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7779662609100342
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ours-Pierre-Armand_Petit-Dufrénoy",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5111234188079834,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7778085470199585
+        },
+        {
+          "s": "http://dbpedia.org/resource/Fernand_Sastre",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5111120462417602,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7777801156044006
+        },
+        {
+          "s": "http://dbpedia.org/resource/Marguerite_Beaugé",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5109115600585937,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7772789001464844
+        },
+        {
+          "s": "http://dbpedia.org/resource/Chantal_Sébire",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5106386184692383,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7765965461730957
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jean-Marie_Loret",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5104826211929321,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7762065529823303
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yolande_Ardissone",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.510122537612915,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7753063440322876
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rosine_Luguet",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5099084377288818,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7747710943222046
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yves_Mirande",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5097310066223144,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7743275165557861
+        },
+        {
+          "s": "http://dbpedia.org/resource/Le_Corbusier",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5097037076950073,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7742592692375183
+        },
+        {
+          "s": "http://dbpedia.org/resource/Armand-François-Marie_de_Charbonnel",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5091739177703858,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7729347944259644
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jean_Déré",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5090827465057373,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7727068662643433
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hồ_Văn_Nhựt",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.508916187286377,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7722904682159424
+        },
+        {
+          "s": "http://dbpedia.org/resource/Bérangère_Vattier",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5087683200836182,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7719208002090454
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yolande_Laffon",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5087245464324951,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7718113660812378
+        },
+        {
+          "s": "http://dbpedia.org/resource/Laure_Diana",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5087186813354492,
+          "importance": 0.3333333333333333,
+          "similarity": 0.771796703338623
+        },
+        {
+          "s": "http://dbpedia.org/resource/Paris",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5085805416107178,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7714513540267944
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jean_Fayard",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5084013700485229,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7710034251213074
+        },
+        {
+          "s": "http://dbpedia.org/resource/François_Viellard-Migeon",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5083946466445923,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7709866166114807
+        },
+        {
+          "s": "http://dbpedia.org/resource/Natalis_de_Wailly",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5083372592926025,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7708431482315063
+        },
+        {
+          "s": "http://dbpedia.org/resource/Léon-Honoré_Labande",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5082037448883057,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7705093622207642
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tournaisian",
+          "p": "http://dbpedia.org/property/lowerGsspLocation",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5078802108764648,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7697005271911621
+        },
+        {
+          "s": "http://dbpedia.org/resource/Celalettin_Arif",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5078605890274048,
+          "importance": 0.3333333333333333,
+          "similarity": 0.769651472568512
+        },
+        {
+          "s": "http://dbpedia.org/resource/Claude_François_Chauveau-Lagarde",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5076432228088379,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7691080570220947
+        },
+        {
+          "s": "http://dbpedia.org/resource/Noël_Amenc",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5076071262359619,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7690178155899048
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ustazade_Silvestre_de_Sacy",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5074912071228027,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7687280178070068
+        },
+        {
+          "s": "http://dbpedia.org/resource/France",
+          "p": "http://dbpedia.org/property/caption",
+          "o": "http://dbpedia.org/resource/Sébastien_Lecornu",
+          "score": 0.5071190595626831,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7677976489067078
+        },
+        {
+          "s": "http://dbpedia.org/resource/Crêpe",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5070717573165894,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7676793932914734
+        },
+        {
+          "s": "http://dbpedia.org/resource/Edmond_Michelet",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5066152572631836,
+          "importance": 0.3333333333333333,
+          "similarity": 0.766538143157959
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P20_6added67-d287-4af7-b53c-6ab3f2aea1b0",
+      "mode": "answer",
+      "question": "Where did William Hawi die?",
+      "llm_answer": "Kensington Palace Gardens",
+      "gold_answers": [
+        {
+          "label": "Beirut",
+          "uri": "Q3820"
+        }
+      ],
+      "subject": {
+        "label": "William Hawi",
+        "uri": "Q4116097"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Kensington Palace Gardens",
+      "claim_text": "William Hawi died in Kensington Palace Gardens.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 44,
+        "answer_uri": "http://dbpedia.org/resource/Kensington_Palace_Gardens",
+        "answer_entity": {
+          "name": "Kensington_Palace_Gardens",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/William_Hawi",
+        "relation_id": "P20",
+        "gss_query": "Kensington Palace Gardens",
+        "claim_text": "William Hawi died in Kensington Palace Gardens.",
+        "question": "Where did William Hawi die?",
+        "llm_answer": "Kensington Palace Gardens"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Kensington_Palace_Gardens",
+          "p": "http://dbpedia.org/ontology/location",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4508612842559815,
+          "importance": 0.12,
+          "similarity": 0.9471532106399536
+        },
+        {
+          "s": "http://dbpedia.org/resource/Kensington,_New_York",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3923241348266602,
+          "importance": 0.12,
+          "similarity": 0.8008103370666504
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Grove",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3799258441925049,
+          "importance": 0.12,
+          "similarity": 0.7698146104812622
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/England",
+          "score": 0.36650688362121586,
+          "importance": 0.12,
+          "similarity": 0.7362672090530396
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/property/blank2Info",
+          "o": "http://dbpedia.org/resource/.london",
+          "score": 0.36493355941772465,
+          "importance": 0.12,
+          "similarity": 0.7323338985443115
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ronald_Tree",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3633608312606812,
+          "importance": 0.12,
+          "similarity": 0.7284020781517029
+        },
+        {
+          "s": "http://dbpedia.org/resource/Chung_Ling_Soo",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.36138703536987304,
+          "importance": 0.12,
+          "similarity": 0.7234675884246826
+        },
+        {
+          "s": "http://dbpedia.org/resource/George_Francis_Hardy",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3613720626831055,
+          "importance": 0.12,
+          "similarity": 0.7234301567077637
+        },
+        {
+          "s": "http://dbpedia.org/resource/George_Whitehouse",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.36122638893127446,
+          "importance": 0.12,
+          "similarity": 0.723065972328186
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.3607138843536377,
+          "importance": 0.12,
+          "similarity": 0.7217847108840942
+        },
+        {
+          "s": "http://dbpedia.org/resource/Augusta_Innes_Withers",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.36066276741027836,
+          "importance": 0.12,
+          "similarity": 0.7216569185256958
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Blech",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3602060527801514,
+          "importance": 0.12,
+          "similarity": 0.7205151319503784
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Cust",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3600222797393799,
+          "importance": 0.12,
+          "similarity": 0.7200556993484497
+        },
+        {
+          "s": "http://dbpedia.org/resource/Millie_Small",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3594180793762207,
+          "importance": 0.12,
+          "similarity": 0.7185451984405518
+        },
+        {
+          "s": "http://dbpedia.org/resource/Saint_George_Hare",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35853364181518554,
+          "importance": 0.12,
+          "similarity": 0.7163341045379639
+        },
+        {
+          "s": "http://dbpedia.org/resource/Franz_Müller",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3584537239074707,
+          "importance": 0.12,
+          "similarity": 0.7161343097686768
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/Greater_London",
+          "score": 0.357959529876709,
+          "importance": 0.12,
+          "similarity": 0.7148988246917725
+        },
+        {
+          "s": "http://dbpedia.org/resource/William_Upton_Richards",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35768010330200195,
+          "importance": 0.12,
+          "similarity": 0.7142002582550049
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ian_Liddell",
+          "p": "http://dbpedia.org/property/significantProjects",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35766660881042484,
+          "importance": 0.12,
+          "similarity": 0.714166522026062
+        },
+        {
+          "s": "http://dbpedia.org/resource/Edwin_Austin_Abbey",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35731100749969485,
+          "importance": 0.12,
+          "similarity": 0.7132775187492371
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wembley_Point_Woman",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35666660976409914,
+          "importance": 0.12,
+          "similarity": 0.7116665244102478
+        },
+        {
+          "s": "http://dbpedia.org/resource/Melanie_McFadyean",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3565793962478638,
+          "importance": 0.12,
+          "similarity": 0.7114484906196594
+        },
+        {
+          "s": "http://dbpedia.org/resource/Vernon_Redwood",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35646571826934814,
+          "importance": 0.12,
+          "similarity": 0.7111642956733704
+        },
+        {
+          "s": "http://dbpedia.org/resource/Edward_Hodgson_(painter)",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35626122665405274,
+          "importance": 0.12,
+          "similarity": 0.7106530666351318
+        },
+        {
+          "s": "http://dbpedia.org/resource/Gervase_Helwys",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3562129230499268,
+          "importance": 0.12,
+          "similarity": 0.7105323076248169
+        },
+        {
+          "s": "http://dbpedia.org/resource/Francis_Stanfield",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3558985204696655,
+          "importance": 0.12,
+          "similarity": 0.7097463011741638
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Lowis",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3556427211761475,
+          "importance": 0.12,
+          "similarity": 0.7091068029403687
+        },
+        {
+          "s": "http://dbpedia.org/resource/Isambard_Kingdom_Brunel",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3554340572357178,
+          "importance": 0.12,
+          "similarity": 0.7085851430892944
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Gordon_Selfridge",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35543155384063724,
+          "importance": 0.12,
+          "similarity": 0.708578884601593
+        },
+        {
+          "s": "http://dbpedia.org/resource/Dilys_Powell",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3552492351531983,
+          "importance": 0.12,
+          "similarity": 0.7081230878829956
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cosmo_Crawley",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3552068681716919,
+          "importance": 0.12,
+          "similarity": 0.7080171704292297
+        },
+        {
+          "s": "http://dbpedia.org/resource/Alfred_Radcliffe-Brown",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35482337188720703,
+          "importance": 0.12,
+          "similarity": 0.7070584297180176
+        },
+        {
+          "s": "http://dbpedia.org/resource/Alasdair_Liddell",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35462708187103276,
+          "importance": 0.12,
+          "similarity": 0.7065677046775818
+        },
+        {
+          "s": "http://dbpedia.org/resource/Basil_Radford",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35446350288391115,
+          "importance": 0.12,
+          "similarity": 0.7061587572097778
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ursula_Jeans",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3543257684707642,
+          "importance": 0.12,
+          "similarity": 0.7058144211769104
+        },
+        {
+          "s": "http://dbpedia.org/resource/Luke_Kirby_(priest)",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35409643363952636,
+          "importance": 0.12,
+          "similarity": 0.7052410840988159
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.353842851638794,
+          "importance": 0.12,
+          "similarity": 0.7046071290969849
+        },
+        {
+          "s": "http://dbpedia.org/resource/Louis_H._Jackson",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35383913230895997,
+          "importance": 0.12,
+          "similarity": 0.7045978307723999
+        },
+        {
+          "s": "http://dbpedia.org/resource/Edwin_Bush",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35374214363098144,
+          "importance": 0.12,
+          "similarity": 0.7043553590774536
+        },
+        {
+          "s": "http://dbpedia.org/resource/Isabel_Jeans",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3537390441894531,
+          "importance": 0.12,
+          "similarity": 0.7043476104736328
+        },
+        {
+          "s": "http://dbpedia.org/resource/W._P._Lipscomb",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3536657066345215,
+          "importance": 0.12,
+          "similarity": 0.7041642665863037
+        },
+        {
+          "s": "http://dbpedia.org/resource/George_Hudson",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.35319592666625976,
+          "importance": 0.12,
+          "similarity": 0.7029898166656494
+        },
+        {
+          "s": "http://dbpedia.org/resource/Henry_Cavendish",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3531459064483643,
+          "importance": 0.12,
+          "similarity": 0.7028647661209106
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cy_Grant",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.3531449527740479,
+          "importance": 0.12,
+          "similarity": 0.7028623819351196
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P27_5fcc79ab-14fc-4c5a-96d7-545208d9c40d",
+      "mode": "answer",
+      "question": "What is the country of citizenship of Achille Valenciennes?",
+      "llm_answer": "France",
+      "gold_answers": [
+        {
+          "label": "France",
+          "uri": "Q142"
+        }
+      ],
+      "subject": {
+        "label": "Achille Valenciennes",
+        "uri": "Q340257"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "gss_query": "France",
+      "claim_text": "Achille Valenciennes is France citizen.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/France",
+        "answer_entity": {
+          "name": "France",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Achille_Valenciennes",
+        "relation_id": "P27",
+        "gss_query": "France",
+        "claim_text": "Achille Valenciennes is France citizen.",
+        "question": "What is the country of citizenship of Achille Valenciennes?",
+        "llm_answer": "France"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P36_fd682389-abc3-44a7-83e2-644f1899ac41",
+      "mode": "answer",
+      "question": "What is the capital of Ferry County?",
+      "llm_answer": "Republic",
+      "gold_answers": [
+        {
+          "label": "Republic",
+          "uri": "Q1006641"
+        }
+      ],
+      "subject": {
+        "label": "Ferry County",
+        "uri": "Q493228"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "gss_query": "Republic",
+      "claim_text": "The capital of Ferry County is Republic.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Republic",
+        "answer_entity": {
+          "name": "Republic",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Ferry_County",
+        "relation_id": "P36",
+        "gss_query": "Republic",
+        "claim_text": "The capital of Ferry County is Republic.",
+        "question": "What is the capital of Ferry County?",
+        "llm_answer": "Republic"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P106_64f321d8-9e9a-43a2-b196-af3fa9e63ab6",
+      "mode": "answer",
+      "question": "What is the occupation of Malcolm MacDonald?",
+      "llm_answer": "Politician",
+      "gold_answers": [
+        {
+          "label": "politician",
+          "uri": "Q82955"
+        }
+      ],
+      "subject": {
+        "label": "Malcolm MacDonald",
+        "uri": "Q333507"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "gss_query": "Politician",
+      "claim_text": "Malcolm MacDonald is a Politician by profession.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Politician",
+        "answer_entity": {
+          "name": "Politician",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Malcolm_MacDonald",
+        "relation_id": "P106",
+        "gss_query": "Politician",
+        "claim_text": "Malcolm MacDonald is a Politician by profession.",
+        "question": "What is the occupation of Malcolm MacDonald?",
+        "llm_answer": "Politician"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P17_9b67ec74-8ff0-4209-a716-c947e6d91864",
+      "mode": "answer",
+      "question": "Which country is Ginza located in?",
+      "llm_answer": "Japan",
+      "gold_answers": [
+        {
+          "label": "Japan",
+          "uri": "Q17"
+        }
+      ],
+      "subject": {
+        "label": "Ginza",
+        "uri": "Q746052"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "gss_query": "Japan",
+      "claim_text": "Ginza is located in Japan.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Japan",
+        "answer_entity": {
+          "name": "Japan",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Ginza",
+        "relation_id": "P17",
+        "gss_query": "Japan",
+        "claim_text": "Ginza is located in Japan.",
+        "question": "Which country is Ginza located in?",
+        "llm_answer": "Japan"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P159_2b593dbb-b601-48a7-b691-8f164fced68d",
+      "mode": "answer",
+      "question": "Where is the headquarters of Crossley Motors?",
+      "llm_answer": "Crossley Motors' headquarters was in Rochdale, England.",
+      "gold_answers": [
+        {
+          "label": "Manchester",
+          "uri": "Q18125"
+        }
+      ],
+      "subject": {
+        "label": "Crossley Motors",
+        "uri": "Q2602885"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "gss_query": "Crossley Motors' headquarters was in Rochdale, England.",
+      "claim_text": "The headquarter of Crossley Motors is in Crossley Motors' headquarters was in Rochdale, England..",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Crossley_Motors'_headquarters_was_in_Rochdale,_England.",
+        "answer_entity": {
+          "name": "Crossley_Motors'_headquarters_was_in_Rochdale,_England.",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Crossley_Motors",
+        "relation_id": "P159",
+        "gss_query": "Crossley Motors' headquarters was in Rochdale, England.",
+        "claim_text": "The headquarter of Crossley Motors is in Crossley Motors' headquarters was in Rochdale, England..",
+        "question": "Where is the headquarters of Crossley Motors?",
+        "llm_answer": "Crossley Motors' headquarters was in Rochdale, England."
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P495_319f9424-bcb1-4cf1-a4a6-b4bb57bb52d2",
+      "mode": "answer",
+      "question": "In which country was Sovetskoye Shampanskoye created?",
+      "llm_answer": "Russia",
+      "gold_answers": [
+        {
+          "label": "Belarus",
+          "uri": "Q184"
+        }
+      ],
+      "subject": {
+        "label": "Sovetskoye Shampanskoye",
+        "uri": "Q1789031"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "gss_query": "Russia",
+      "claim_text": "Sovetskoye Shampanskoye was created in Russia.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Russia",
+        "answer_entity": {
+          "name": "Russia",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Sovetskoye_Shampanskoye",
+        "relation_id": "P495",
+        "gss_query": "Russia",
+        "claim_text": "Sovetskoye Shampanskoye was created in Russia.",
+        "question": "In which country was Sovetskoye Shampanskoye created?",
+        "llm_answer": "Russia"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P740_08be758a-f5a4-4e43-97a5-473b91a8f130",
+      "mode": "answer",
+      "question": "Where was Dirge Within formed?",
+      "llm_answer": "United Kingdom",
+      "gold_answers": [
+        {
+          "label": "Chicago",
+          "uri": "Q1297"
+        }
+      ],
+      "subject": {
+        "label": "Dirge Within",
+        "uri": "Q5280749"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "gss_query": "United Kingdom",
+      "claim_text": "Dirge Within was founded in United Kingdom.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 36,
+        "answer_uri": "http://dbpedia.org/resource/United_Kingdom",
+        "answer_entity": {
+          "name": "United_Kingdom",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Dirge_Within",
+        "relation_id": "P740",
+        "gss_query": "United Kingdom",
+        "claim_text": "Dirge Within was founded in United Kingdom.",
+        "question": "Where was Dirge Within formed?",
+        "llm_answer": "United Kingdom"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/topLevelDomain",
+          "o": "http://dbpedia.org/resource/.uk",
+          "score": 0.537203598022461,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8430089950561523
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/capital",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.5342102289199829,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8355255722999573
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/property/sovereigntyType",
+          "o": "http://dbpedia.org/resource/Formation_of_the_United_Kingdom",
+          "score": 0.5272130012512207,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8180325031280518
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/property/demonym",
+          "o": "http://dbpedia.org/resource/British_people",
+          "score": 0.5220220804214477,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8050552010536194
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/language",
+          "o": "http://dbpedia.org/resource/English_language",
+          "score": 0.5215631246566772,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8039078116416931
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/house",
+          "o": "http://dbpedia.org/resource/House_of_Commons_of_the_United_Kingdom",
+          "score": 0.5188346147537232,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7970865368843079
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/religion",
+          "o": "http://dbpedia.org/resource/Irreligion_in_the_United_Kingdom",
+          "score": 0.5183943748474121,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7959859371185303
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/United_Kingdom__HistoricalEvent__5",
+          "score": 0.5182709217071533,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7956773042678833
+        },
+        {
+          "s": "http://dbpedia.org/resource/Than_E",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5180211305618286,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7950528264045715
+        },
+        {
+          "s": "http://dbpedia.org/resource/Oxfordian_(stage)",
+          "p": "http://dbpedia.org/property/upperGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5178832769393921,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7947081923484802
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/United_Kingdom__HistoricalEvent__6",
+          "score": 0.5178454160690308,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7946135401725769
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hirnantian",
+          "p": "http://dbpedia.org/property/upperGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5174280166625976,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7935700416564941
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Monarchy_of_the_United_Kingdom",
+          "score": 0.5174275636672974,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7935689091682434
+        },
+        {
+          "s": "http://dbpedia.org/resource/Mostafa_Fateh",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5172178030014039,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7930445075035095
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hersch_Lauterpacht",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5164179563522339,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7910448908805847
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/United_Kingdom__HistoricalEvent__4",
+          "score": 0.5157772541046143,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7894431352615356
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rhuddanian",
+          "p": "http://dbpedia.org/property/lowerGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.515754508972168,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7893862724304199
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/property/languages",
+          "o": "http://dbpedia.org/resource/English_language",
+          "score": 0.5156916856765748,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7892292141914368
+        },
+        {
+          "s": "http://dbpedia.org/resource/Gorstian",
+          "p": "http://dbpedia.org/property/lowerGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5145566940307618,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7863917350769043
+        },
+        {
+          "s": "http://dbpedia.org/resource/Dewi_Havhesp",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.514516544342041,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7862913608551025
+        },
+        {
+          "s": "http://dbpedia.org/resource/George_She",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5144876956939697,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7862192392349243
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ianthe_Jerrold",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.513978910446167,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7849472761154175
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/United_Kingdom__HistoricalEvent__1",
+          "score": 0.5139784336090087,
+          "importance": 0.3333333333333333,
+          "similarity": 0.784946084022522
+        },
+        {
+          "s": "http://dbpedia.org/resource/Dick_Bush",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.51378493309021,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7844623327255249
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yat_Malmgren",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5137665271759033,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7844163179397583
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Prime_Minister_of_the_United_Kingdom",
+          "score": 0.5133776903152466,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7834442257881165
+        },
+        {
+          "s": "http://dbpedia.org/resource/Shem_Tob_Gaguine",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5133742332458496,
+          "importance": 0.3333333333333333,
+          "similarity": 0.783435583114624
+        },
+        {
+          "s": "http://dbpedia.org/resource/Brownlow_North",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5132967948913574,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7832419872283936
+        },
+        {
+          "s": "http://dbpedia.org/resource/George_Arney",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5129846334457397,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7824615836143494
+        },
+        {
+          "s": "http://dbpedia.org/resource/Pliensbachian",
+          "p": "http://dbpedia.org/property/lowerGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.512934398651123,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7823359966278076
+        },
+        {
+          "s": "http://dbpedia.org/resource/Abdullahi_Qarshe",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5126358509063721,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7815896272659302
+        },
+        {
+          "s": "http://dbpedia.org/resource/United_Kingdom",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/United_Kingdom__HistoricalEvent__2",
+          "score": 0.512632155418396,
+          "importance": 0.3333333333333333,
+          "similarity": 0.78158038854599
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hettangian",
+          "p": "http://dbpedia.org/property/upperGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5122683048248291,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7806707620620728
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ordovician",
+          "p": "http://dbpedia.org/property/upperGsspLocation",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5122666597366333,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7806666493415833
+        },
+        {
+          "s": "http://dbpedia.org/resource/P._D._Gaitonde",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5118478775024414,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7796196937561035
+        },
+        {
+          "s": "http://dbpedia.org/resource/Niels_Bolwig",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/United_Kingdom",
+          "score": 0.5114906549453735,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7787266373634338
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P937_d3c5374f-1f02-45c5-90cd-1bd0283118b6",
+      "mode": "answer",
+      "question": "Where does Udo Lindenberg work?",
+      "llm_answer": "Hamburg",
+      "gold_answers": [
+        {
+          "label": "Hamburg",
+          "uri": "Q1055"
+        }
+      ],
+      "subject": {
+        "label": "Udo Lindenberg",
+        "uri": "Q312572"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "gss_query": "Hamburg",
+      "claim_text": "Udo Lindenberg used to work in Hamburg.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": true,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 38,
+        "answer_uri": "http://dbpedia.org/resource/Hamburg",
+        "answer_entity": {
+          "name": "Hamburg",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://dbpedia.org/resource/Udo_Lindenberg",
+        "relation_id": "P937",
+        "gss_query": "Hamburg",
+        "claim_text": "Udo Lindenberg used to work in Hamburg.",
+        "question": "Where does Udo Lindenberg work?",
+        "llm_answer": "Hamburg"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/Germany",
+          "score": 0.5747489929199219,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9368724822998047
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/west",
+          "o": "http://dbpedia.org/resource/Bremerhaven",
+          "score": 0.5666135549545288,
+          "importance": 0.3333333333333333,
+          "similarity": 0.916533887386322
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/east",
+          "o": "http://dbpedia.org/resource/Schwerin",
+          "score": 0.5638434410095214,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9096086025238037
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/southwest",
+          "o": "http://dbpedia.org/resource/Bremen",
+          "score": 0.5634139537811279,
+          "importance": 0.3333333333333333,
+          "similarity": 0.9085348844528198
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/south",
+          "o": "http://dbpedia.org/resource/Hanover",
+          "score": 0.5606193780899048,
+          "importance": 0.3333333333333333,
+          "similarity": 0.901548445224762
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/west",
+          "o": "http://dbpedia.org/resource/Stade",
+          "score": 0.5581111192703248,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8952777981758118
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg,_New_York",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5580463647842407,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8951159119606018
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aby_Warburg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5547810792922974,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8869526982307434
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/north",
+          "o": "http://dbpedia.org/resource/Kiel",
+          "score": 0.5535873413085938,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8839683532714844
+        },
+        {
+          "s": "http://dbpedia.org/resource/K.P._Brehmer",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5526331424713135,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8815828561782837
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/Municipalities_of_Germany",
+          "score": 0.5523863315582276,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8809658288955688
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/governingBody",
+          "o": "http://dbpedia.org/resource/Hamburg_Parliament",
+          "score": 0.5523790836334228,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8809477090835571
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Jürgens",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5523084163665771,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8807710409164429
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Roland",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5522853374481201,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8807133436203003
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Germany",
+          "score": 0.5520352602005005,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8800881505012512
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/States_of_Germany",
+          "score": 0.5520229578018189,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8800573945045471
+        },
+        {
+          "s": "http://dbpedia.org/resource/Götz_George",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.551923131942749,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8798078298568726
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/location",
+          "o": "http://dbpedia.org/resource/Hamburg_Airport",
+          "score": 0.5518394470214844,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8795986175537109
+        },
+        {
+          "s": "http://dbpedia.org/resource/Horst_Skoff",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5506229639053345,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8765574097633362
+        },
+        {
+          "s": "http://dbpedia.org/resource/Harry_Lehmann",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5505185127258301,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8762962818145752
+        },
+        {
+          "s": "http://dbpedia.org/resource/Lonny_Kellner",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5500845193862915,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8752112984657288
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans_Weymar",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.550002908706665,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8750072717666626
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans-Jochen_Jaschke",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5496298789978027,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8740746974945068
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg_(village),_New_York",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5476571083068847,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8691427707672119
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/northwest",
+          "o": "http://dbpedia.org/resource/Cuxhaven",
+          "score": 0.5473767995834351,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8684419989585876
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hamburg",
+          "p": "http://dbpedia.org/property/northeast",
+          "o": "http://dbpedia.org/resource/Lübeck",
+          "score": 0.5473743915557862,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8684359788894653
+        },
+        {
+          "s": "http://dbpedia.org/resource/Erna_Schlüter",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5470919370651245,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8677298426628113
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christa_Siems",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.546900749206543,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8672518730163574
+        },
+        {
+          "s": "http://dbpedia.org/resource/Bruno_Koschmider",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5465754508972168,
+          "importance": 0.3333333333333333,
+          "similarity": 0.866438627243042
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hans_Apel",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.54650399684906,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8662599921226501
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christian_Quadflieg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5461392402648926,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8653481006622314
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wilhelm_Berlin",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5455481767654419,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8638704419136047
+        },
+        {
+          "s": "http://dbpedia.org/resource/Franz_Pöschl",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5454851150512695,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8637127876281738
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christian_Warlich",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5453822374343872,
+          "importance": 0.3333333333333333,
+          "similarity": 0.863455593585968
+        },
+        {
+          "s": "http://dbpedia.org/resource/Wolfgang_Klein",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5453053951263428,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8632634878158569
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eric_M._Warburg",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5452900886535644,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8632252216339111
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jürgen_Oesten",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5451343536376954,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8628358840942383
+        },
+        {
+          "s": "http://dbpedia.org/resource/Karl_Klasen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Hamburg",
+          "score": 0.5450809001922607,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8627022504806519
+        }
+      ],
+      "pipeline_error": null
+    }
+  ]
+}

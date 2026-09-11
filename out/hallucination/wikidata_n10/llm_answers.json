@@ -1,0 +1,307 @@
+{
+  "created_at": "2026-08-06T13:02:18.725269+00:00",
+  "input": "C:\\Valantis\\JetBrains\\projects\\isl\\GSSplusplus\\dataset\\facteval_trex\\sample_10.json",
+  "n": 10,
+  "answers": [
+    {
+      "id": "trex_P19_3287d642-a959-4254-868a-3bb12c3f2598",
+      "question": "Where was Catherine Tasca born?",
+      "llm_answer": "France",
+      "gold_answers": [
+        {
+          "label": "Lyon",
+          "uri": "Q456"
+        }
+      ],
+      "subject": {
+        "label": "Catherine Tasca",
+        "uri": "Q2942078"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Catherine Tasca",
+        "obj_label": "Lyon",
+        "sub_uri": "Q2942078",
+        "obj_uri": "Q456",
+        "predicate_id": "P19"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P20_2c5251bb-2795-494c-adaf-f766eeec60d3",
+      "question": "Where did Fredrik Idestam die?",
+      "llm_answer": "Tampere",
+      "gold_answers": [
+        {
+          "label": "Helsinki",
+          "uri": "Q1757"
+        }
+      ],
+      "subject": {
+        "label": "Fredrik Idestam",
+        "uri": "Q2271104"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Fredrik Idestam",
+        "obj_label": "Helsinki",
+        "sub_uri": "Q2271104",
+        "obj_uri": "Q1757",
+        "predicate_id": "P20"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P27_2682256a-f283-4250-b3bb-f57e8c095523",
+      "question": "What is the country of citizenship of Mohammad Bahr al-Ulloum?",
+      "llm_answer": "Sudan",
+      "gold_answers": [
+        {
+          "label": "Iraq",
+          "uri": "Q796"
+        }
+      ],
+      "subject": {
+        "label": "Mohammad Bahr al-Ulloum",
+        "uri": "Q715989"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "triple": {
+        "sub_label": "Mohammad Bahr al-Ulloum",
+        "obj_label": "Iraq",
+        "sub_uri": "Q715989",
+        "obj_uri": "Q796",
+        "predicate_id": "P27"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P36_c31c88e9-930d-4fce-ad3f-b14138e8d788",
+      "question": "What is the capital of Albania?",
+      "llm_answer": "Tirana",
+      "gold_answers": [
+        {
+          "label": "Tirana",
+          "uri": "Q19689"
+        }
+      ],
+      "subject": {
+        "label": "Albania",
+        "uri": "Q222"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "triple": {
+        "sub_label": "Albania",
+        "obj_label": "Tirana",
+        "sub_uri": "Q222",
+        "obj_uri": "Q19689",
+        "predicate_id": "P36"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P106_a867ef49-57af-4634-a7ab-bda178c6057e",
+      "question": "What is the occupation of Don Durant?",
+      "llm_answer": "Football player",
+      "gold_answers": [
+        {
+          "label": "actor",
+          "uri": "Q33999"
+        }
+      ],
+      "subject": {
+        "label": "Don Durant",
+        "uri": "Q1563866"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "triple": {
+        "sub_label": "Don Durant",
+        "obj_label": "actor",
+        "sub_uri": "Q1563866",
+        "obj_uri": "Q33999",
+        "predicate_id": "P106"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P17_ca4dc9b5-4b9e-4828-a29f-6d39f732e519",
+      "question": "Which country is Yuquot located in?",
+      "llm_answer": "Canada",
+      "gold_answers": [
+        {
+          "label": "Canada",
+          "uri": "Q16"
+        }
+      ],
+      "subject": {
+        "label": "Yuquot",
+        "uri": "Q2590873"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Yuquot",
+        "obj_label": "Canada",
+        "sub_uri": "Q2590873",
+        "obj_uri": "Q16",
+        "predicate_id": "P17"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P159_2c660ab2-52ef-49b7-a183-a4da924c4bbe",
+      "question": "Where is the headquarters of Roger Dubuis?",
+      "llm_answer": "Geneva",
+      "gold_answers": [
+        {
+          "label": "Geneva",
+          "uri": "Q71"
+        }
+      ],
+      "subject": {
+        "label": "Roger Dubuis",
+        "uri": "Q670160"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Roger Dubuis",
+        "obj_label": "Geneva",
+        "sub_uri": "Q670160",
+        "obj_uri": "Q71",
+        "predicate_id": "P159"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P495_cc684433-b491-4de5-95fb-8e9d8ff5c00b",
+      "question": "In which country was Milanesa created?",
+      "llm_answer": "Argentina",
+      "gold_answers": [
+        {
+          "label": "Italy",
+          "uri": "Q38"
+        }
+      ],
+      "subject": {
+        "label": "Milanesa",
+        "uri": "Q12821"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Milanesa",
+        "obj_label": "Italy",
+        "sub_uri": "Q12821",
+        "obj_uri": "Q38",
+        "predicate_id": "P495"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P740_33c8b511-f8b5-4122-b3c6-d16605ce8722",
+      "question": "Where was Pink Fairies formed?",
+      "llm_answer": "London",
+      "gold_answers": [
+        {
+          "label": "London",
+          "uri": "Q84"
+        }
+      ],
+      "subject": {
+        "label": "Pink Fairies",
+        "uri": "Q2095846"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "triple": {
+        "sub_label": "Pink Fairies",
+        "obj_label": "London",
+        "sub_uri": "Q2095846",
+        "obj_uri": "Q84",
+        "predicate_id": "P740"
+      },
+      "error": null
+    },
+    {
+      "id": "trex_P937_08c206e2-50aa-4a60-a5dd-75d6fa28bc20",
+      "question": "Where does John Henry Newman work?",
+      "llm_answer": "Oxford University",
+      "gold_answers": [
+        {
+          "label": "Rome",
+          "uri": "Q220"
+        }
+      ],
+      "subject": {
+        "label": "John Henry Newman",
+        "uri": "Q44490"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "triple": {
+        "sub_label": "John Henry Newman",
+        "obj_label": "Rome",
+        "sub_uri": "Q44490",
+        "obj_uri": "Q220",
+        "predicate_id": "P937"
+      },
+      "error": null
+    }
+  ]
+}

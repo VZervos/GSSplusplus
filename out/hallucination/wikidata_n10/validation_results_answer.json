@@ -1,0 +1,1717 @@
+{
+  "created_at": "2026-09-02T10:59:18.775253+00:00",
+  "input": "C:\\Valantis\\JetBrains\\projects\\isl\\GSSplusplus\\out\\hallucination\\wikidata_n10\\llm_answers.json",
+  "dataset": "wikidata",
+  "mode": "answer",
+  "gss": "stock_pipeline",
+  "n": 10,
+  "summary": {
+    "decision": {
+      "supported": 0,
+      "weak_support": 0,
+      "unsupported": 4,
+      "uncertain": 6
+    },
+    "detection": {
+      "not_validated": 3,
+      "true_support": 0,
+      "true_support_granularity": 0,
+      "weak_true_support": 0,
+      "missed_support": 1,
+      "false_support": 0,
+      "weak_false_support": 0,
+      "uncertain": 6
+    },
+    "gold_match": 4,
+    "gold_acceptable": 4,
+    "granularity_match": 0
+  },
+  "results": [
+    {
+      "id": "trex_P19_3287d642-a959-4254-868a-3bb12c3f2598",
+      "mode": "answer",
+      "question": "Where was Catherine Tasca born?",
+      "llm_answer": "France",
+      "gold_answers": [
+        {
+          "label": "Lyon",
+          "uri": "Q456"
+        }
+      ],
+      "subject": {
+        "label": "Catherine Tasca",
+        "uri": "Q2942078"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "France",
+      "claim_text": "Catherine Tasca was born in France.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 27,
+        "answer_uri": "http://www.wikidata.org/entity/Q142",
+        "answer_entity": {
+          "name": "France",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q2942078",
+        "relation_id": "P19",
+        "gss_query": "France",
+        "claim_text": "Catherine Tasca was born in France.",
+        "question": "Where was Catherine Tasca born?",
+        "llm_answer": "France"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q169358",
+          "score": 0.48500384998321533,
+          "importance": 0.4533333333333333,
+          "similarity": 0.5325096249580383
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q207326",
+          "score": 0.48206646156311034,
+          "importance": 0.4533333333333333,
+          "similarity": 0.5251661539077759
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q8502",
+          "score": 0.4767784090042114,
+          "importance": 0.4533333333333333,
+          "similarity": 0.5119460225105286
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P2660",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-F3F67F65-F66B-4672-82A9-465B74BAECAD",
+          "score": 0.42549476623535154,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5637369155883789
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P6706",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-7162FDE3-1F3E-4DE5-9D26-4B7D410535D3",
+          "score": 0.42384374141693115,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5596093535423279
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P8933",
+          "o": "http://www.wikidata.org/entity/Q104229575",
+          "score": 0.4234620094299316,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5586550235748291
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P186",
+          "o": "http://www.wikidata.org/entity/Q181908",
+          "score": 0.42278454303741453,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5569613575935364
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q114163439-2E3632B5-6B80-44F5-9286-C7B6A26B6181",
+          "p": "http://www.wikidata.org/prop/statement/P180",
+          "o": "http://www.wikidata.org/entity/Q1484",
+          "score": 0.42273449897766113,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5568362474441528
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q31445525-39bb0e12-46a2-cc9f-994b-490a2d578273",
+          "p": "http://www.wikidata.org/prop/statement/P706",
+          "o": "http://www.wikidata.org/entity/Q1484",
+          "score": 0.4225309610366821,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5563274025917053
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P1889",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-efbb07a6-45a8-1c25-2147-087379d14792",
+          "score": 0.42215125560760497,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5553781390190125
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P8933",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-3d1cb37f-d92b-4b9a-bb1f-6c6d3e799223",
+          "score": 0.42200865745544436,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5550216436386108
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P186",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-B77B6F00-0547-4A8F-9BB2-1DA88733AB7D",
+          "score": 0.421328067779541,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5533201694488525
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P186",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-f78717b1-4359-04cb-415d-959f133a6b08",
+          "score": 0.42105097770690914,
+          "importance": 0.3333333333333333,
+          "similarity": 0.552627444267273
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P402",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-ff5c17d9-4f8e-85e9-0482-de9f5680773d",
+          "score": 0.42094974517822265,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5523743629455566
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P1667",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-F550F1AB-794F-47EF-8D88-87399274E64E",
+          "score": 0.42034235000610354,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5508558750152588
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q1231317-14a199bd-450c-29a3-eb92-23525c8cfbb4",
+          "p": "http://www.wikidata.org/prop/statement/P1889",
+          "o": "http://www.wikidata.org/entity/Q1484",
+          "score": 0.419459867477417,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5486496686935425
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P646",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-B63BACAE-7D36-48CA-87FE-63032A5C3B99",
+          "score": 0.4184842109680176,
+          "importance": 0.3333333333333333,
+          "similarity": 0.546210527420044
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P1566",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-CF7DAA79-3229-4730-99A8-6F95E0F77E22",
+          "score": 0.4184753179550171,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5461882948875427
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P910",
+          "o": "http://www.wikidata.org/entity/Q55329319",
+          "score": 0.41831729412078855,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5457932353019714
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P1886",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-d12468a6-4695-f01a-ae53-06814653dd4f",
+          "score": 0.4175339937210083,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5438349843025208
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q24330452-8ebadf64-b0d0-487d-a824-311d11b15913",
+          "p": "http://www.wikidata.org/prop/statement/P921",
+          "o": "http://www.wikidata.org/entity/Q1484",
+          "score": 0.41753153800964354,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5438288450241089
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P3815",
+          "o": "http://www.wikidata.org/entity/Q2435880",
+          "score": 0.41692233085632324,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5423058271408081
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P131",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-247d6bd0-4b2c-f6fd-89d2-61d39607af12",
+          "score": 0.41680173873901366,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5420043468475342
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P186",
+          "o": "http://www.wikidata.org/entity/Q3382545",
+          "score": 0.41676650047302244,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5419162511825562
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/direct/P186",
+          "o": "http://www.wikidata.org/entity/Q809752",
+          "score": 0.4165517330169678,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5413793325424194
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q104229575",
+          "p": "http://www.wikidata.org/prop/direct/P971",
+          "o": "http://www.wikidata.org/entity/Q1484",
+          "score": 0.4165405750274658,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5413514375686646
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1484",
+          "p": "http://www.wikidata.org/prop/P4708",
+          "o": "http://www.wikidata.org/entity/statement/Q1484-9224244c-4f07-1ba5-787d-57f67b49d23b",
+          "score": 0.41638176441192626,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5409544110298157
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P20_2c5251bb-2795-494c-adaf-f766eeec60d3",
+      "mode": "answer",
+      "question": "Where did Fredrik Idestam die?",
+      "llm_answer": "Tampere",
+      "gold_answers": [
+        {
+          "label": "Helsinki",
+          "uri": "Q1757"
+        }
+      ],
+      "subject": {
+        "label": "Fredrik Idestam",
+        "uri": "Q2271104"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "gss_query": "Tampere",
+      "claim_text": "Fredrik Idestam died in Tampere.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q40840",
+        "answer_entity": {
+          "name": "Tampere",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q2271104",
+        "relation_id": "P20",
+        "gss_query": "Tampere",
+        "claim_text": "Fredrik Idestam died in Tampere.",
+        "question": "Where did Fredrik Idestam die?",
+        "llm_answer": "Tampere"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P27_2682256a-f283-4250-b3bb-f57e8c095523",
+      "mode": "answer",
+      "question": "What is the country of citizenship of Mohammad Bahr al-Ulloum?",
+      "llm_answer": "Sudan",
+      "gold_answers": [
+        {
+          "label": "Iraq",
+          "uri": "Q796"
+        }
+      ],
+      "subject": {
+        "label": "Mohammad Bahr al-Ulloum",
+        "uri": "Q715989"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "gss_query": "Sudan",
+      "claim_text": "Mohammad Bahr al-Ulloum is Sudan citizen.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 39,
+        "answer_uri": "http://www.wikidata.org/entity/Q1049",
+        "answer_entity": {
+          "name": "Sudan",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q715989",
+        "relation_id": "P27",
+        "gss_query": "Sudan",
+        "claim_text": "Mohammad Bahr al-Ulloum is Sudan citizen.",
+        "question": "What is the country of citizenship of Mohammad Bahr al-Ulloum?",
+        "llm_answer": "Sudan"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://www.wikidata.org/entity/Q27925676",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.5298117666244507,
+          "importance": 0.5466666666666667,
+          "similarity": 0.5045294165611267
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1143522",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.5287455825805665,
+          "importance": 0.5466666666666667,
+          "similarity": 0.501863956451416
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1487",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q12737077",
+          "score": 0.5281224756240845,
+          "importance": 0.5466666666666667,
+          "similarity": 0.5003061890602112
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q64760958-bb5be819-4436-ec4a-22d6-1bb6398cba62",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.42175247669219973,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5543811917304993
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q56490304-3be556c6-495f-b1e0-acbe-f66d637d7a07",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4149095773696899,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5372739434242249
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q140315157-8081acf4-4980-d819-0d78-77d7f1237a64",
+          "p": "http://www.wikidata.org/prop/statement/P710",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41331658363342283,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5332914590835571
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q130553663-6d628677-435d-2422-4dac-817dc3c93272",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4132857799530029,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5332144498825073
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L631008-S1-01b7f144-4d6b-80be-95af-7af2678dd0c6",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41318204402923586,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5329551100730896
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q59034112-1dc0d311-4d07-e6be-545a-2299749f92da",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.413148021697998,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5328700542449951
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q59490186-3785f167-4b58-727f-cd70-0f78e75e9074",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4130178689956665,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5325446724891663
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1487",
+          "p": "http://www.wikidata.org/prop/P3321",
+          "o": "http://www.wikidata.org/entity/statement/Q1487-B53EFCD7-05CD-41A1-8C9F-647D7C8AC674",
+          "score": 0.412664246559143,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5316606163978577
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q117286861-b511561a-44b6-bec4-6e99-1ec71a33c2fd",
+          "p": "http://www.wikidata.org/prop/statement/P921",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4126462936401367,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5316157341003418
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q114067612-51cc347a-4d7e-884a-c997-da93a41b1777",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41255326271057124,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5313831567764282
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1487",
+          "p": "http://www.wikidata.org/prop/P373",
+          "o": "http://www.wikidata.org/entity/statement/q1487-44128B7A-83C1-4F01-8BE3-C8CD22424F91",
+          "score": 0.4125195264816284,
+          "importance": 0.3333333333333333,
+          "similarity": 0.531298816204071
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q28790662-918eb3fd-4d1e-19c0-da2a-6e89726f4a14",
+          "p": "http://www.wikidata.org/prop/statement/P138",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41245107650756835,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5311276912689209
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q95985008-8707edcc-4c2d-e277-431b-8dfd7b7d6668",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41241917610168455,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5310479402542114
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q21036062-d58cefa7-48b9-4569-978c-f1d31a427a57",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41240630149841306,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5310157537460327
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L347319-S1-440023a1-419c-9022-eca7-bfb743a71482",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41235196590423584,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5308799147605896
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1487",
+          "p": "http://www.wikidata.org/prop/P425",
+          "o": "http://www.wikidata.org/entity/statement/Q1487-a585cdba-417d-abe1-12ee-9b6d1576e2b5",
+          "score": 0.4120323657989502,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5300809144973755
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q3930162-B4C146D7-AA81-4CDA-B6B9-3E9B995537F3",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41194236278533936,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5298559069633484
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L1323933-S1-C587A2C6-48D1-4250-9C16-1254ABA3BD9D",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.411710524559021,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5292763113975525
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1487",
+          "p": "http://www.wikidata.org/prop/P279",
+          "o": "http://www.wikidata.org/entity/statement/Q1487-afa34766-4198-1564-e372-be912d9a5bcd",
+          "score": 0.41142964363098145,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5285741090774536
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q19867836",
+          "p": "http://www.wikidata.org/prop/direct/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4112052917480469,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5280132293701172
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q138448325-a9ab9b21-4ae4-08b7-0f60-53f51345293f",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41099212169647215,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5274803042411804
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q1132716-a829dde2-47de-1df4-d78d-1654f0d22015",
+          "p": "http://www.wikidata.org/prop/statement/P279",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4109579801559448,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5273949503898621
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q4977458-4ca22813-456b-7d37-9497-aff2bcf65b5b",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41085274219512935,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5271318554878235
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q108704499-0119BC68-DFD6-4907-87C8-80D1E2BC78FB",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41085019111633303,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5271254777908325
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q16732015-92938d32-42a2-090a-7a9f-a37e512c6ff8",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41071999073028564,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5267999768257141
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q74101176-e63f44da-4724-4d38-435b-931ec53a0412",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41070556640625,
+          "importance": 0.3333333333333333,
+          "similarity": 0.526763916015625
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q97971288",
+          "p": "http://www.w3.org/2002/07/owl#sameAs",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4106254577636719,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5265636444091797
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q113686631-b9776885-47c0-1ffa-8419-55e0d75dff0e",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4104710578918457,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5261776447296143
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q188954-0A77DA75-AC4F-4037-8133-6DC8821FA51D",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4104480743408203,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5261201858520508
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q106421262-a0379c85-41a1-1394-f362-eda61e2fed06",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4103864669799805,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5259661674499512
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L631009-S1-58a1cda5-435c-3b9c-5e7f-0d9a52d8f78e",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4102607250213623,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5256518125534058
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q2144405-d78f0aba-4366-dc69-ba21-a1f437047275",
+          "p": "http://www.wikidata.org/prop/statement/P3095",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41019182205200194,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5254795551300049
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q106530294-b0679466-421d-5b7b-4480-2a820cb1c57b",
+          "p": "http://www.wikidata.org/prop/statement/P3989",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.4101563453674316,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5253908634185791
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/q4495220-B4FC1904-2E69-48D9-B11D-29AB679447EC",
+          "p": "http://www.wikidata.org/prop/statement/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.41010587215423583,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5252646803855896
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q116896444",
+          "p": "http://www.wikidata.org/prop/direct/P106",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.409870982170105,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5246774554252625
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q114814353-0d47c5ae-444a-5423-9667-4f1326150e35",
+          "p": "http://www.wikidata.org/prop/statement/P279",
+          "o": "http://www.wikidata.org/entity/Q1487",
+          "score": 0.409845757484436,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5246143937110901
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P36_c31c88e9-930d-4fce-ad3f-b14138e8d788",
+      "mode": "answer",
+      "question": "What is the capital of Albania?",
+      "llm_answer": "Tirana",
+      "gold_answers": [
+        {
+          "label": "Tirana",
+          "uri": "Q19689"
+        }
+      ],
+      "subject": {
+        "label": "Albania",
+        "uri": "Q222"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "gss_query": "Tirana",
+      "claim_text": "The capital of Albania is Tirana.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q19689",
+        "answer_entity": {
+          "name": "Tirana",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q222",
+        "relation_id": "P36",
+        "gss_query": "Tirana",
+        "claim_text": "The capital of Albania is Tirana.",
+        "question": "What is the capital of Albania?",
+        "llm_answer": "Tirana"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P106_a867ef49-57af-4634-a7ab-bda178c6057e",
+      "mode": "answer",
+      "question": "What is the occupation of Don Durant?",
+      "llm_answer": "Football player",
+      "gold_answers": [
+        {
+          "label": "actor",
+          "uri": "Q33999"
+        }
+      ],
+      "subject": {
+        "label": "Don Durant",
+        "uri": "Q1563866"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "gss_query": "Football player",
+      "claim_text": "Don Durant is a Football player by profession.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q937857",
+        "answer_entity": {
+          "name": "Football_player",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q1563866",
+        "relation_id": "P106",
+        "gss_query": "Football player",
+        "claim_text": "Don Durant is a Football player by profession.",
+        "question": "What is the occupation of Don Durant?",
+        "llm_answer": "Football player"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P17_ca4dc9b5-4b9e-4828-a29f-6d39f732e519",
+      "mode": "answer",
+      "question": "Which country is Yuquot located in?",
+      "llm_answer": "Canada",
+      "gold_answers": [
+        {
+          "label": "Canada",
+          "uri": "Q16"
+        }
+      ],
+      "subject": {
+        "label": "Yuquot",
+        "uri": "Q2590873"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "gss_query": "Canada",
+      "claim_text": "Yuquot is located in Canada.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q16",
+        "answer_entity": {
+          "name": "Canada",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q2590873",
+        "relation_id": "P17",
+        "gss_query": "Canada",
+        "claim_text": "Yuquot is located in Canada.",
+        "question": "Which country is Yuquot located in?",
+        "llm_answer": "Canada"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P159_2c660ab2-52ef-49b7-a183-a4da924c4bbe",
+      "mode": "answer",
+      "question": "Where is the headquarters of Roger Dubuis?",
+      "llm_answer": "Geneva",
+      "gold_answers": [
+        {
+          "label": "Geneva",
+          "uri": "Q71"
+        }
+      ],
+      "subject": {
+        "label": "Roger Dubuis",
+        "uri": "Q670160"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "gss_query": "Geneva",
+      "claim_text": "The headquarter of Roger Dubuis is in Geneva.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q71",
+        "answer_entity": {
+          "name": "Geneva",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q670160",
+        "relation_id": "P159",
+        "gss_query": "Geneva",
+        "claim_text": "The headquarter of Roger Dubuis is in Geneva.",
+        "question": "Where is the headquarters of Roger Dubuis?",
+        "llm_answer": "Geneva"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P495_cc684433-b491-4de5-95fb-8e9d8ff5c00b",
+      "mode": "answer",
+      "question": "In which country was Milanesa created?",
+      "llm_answer": "Argentina",
+      "gold_answers": [
+        {
+          "label": "Italy",
+          "uri": "Q38"
+        }
+      ],
+      "subject": {
+        "label": "Milanesa",
+        "uri": "Q12821"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "gss_query": "Argentina",
+      "claim_text": "Milanesa was created in Argentina.",
+      "validation": {
+        "mode": "answer",
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 0,
+        "answer_uri": "http://www.wikidata.org/entity/Q414",
+        "answer_entity": {
+          "name": "Argentina",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q12821",
+        "relation_id": "P495",
+        "gss_query": "Argentina",
+        "claim_text": "Milanesa was created in Argentina.",
+        "question": "In which country was Milanesa created?",
+        "llm_answer": "Argentina"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P740_33c8b511-f8b5-4122-b3c6-d16605ce8722",
+      "mode": "answer",
+      "question": "Where was Pink Fairies formed?",
+      "llm_answer": "London",
+      "gold_answers": [
+        {
+          "label": "London",
+          "uri": "Q84"
+        }
+      ],
+      "subject": {
+        "label": "Pink Fairies",
+        "uri": "Q2095846"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "gss_query": "London",
+      "claim_text": "Pink Fairies was founded in London.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "gold_acceptable": true,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 43,
+        "answer_uri": "http://www.wikidata.org/entity/Q84",
+        "answer_entity": {
+          "name": "London",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q2095846",
+        "relation_id": "P740",
+        "gss_query": "London",
+        "claim_text": "Pink Fairies was founded in London.",
+        "question": "Where was Pink Fairies formed?",
+        "llm_answer": "London"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://www.wikidata.org/entity/L1408299",
+          "p": "http://www.wikidata.org/prop/direct/P1552",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.44019644260406493,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6004911065101624
+        },
+        {
+          "s": "http://www.wikidata.org/entity/L1408298",
+          "p": "http://www.wikidata.org/prop/direct/P1552",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4382404088973999,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5956010222434998
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4518679",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43462927341461177,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5865731835365295
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4561905",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4340602874755859,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5851507186889648
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q3744456",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43293874263763427,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5823468565940857
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4587626",
+          "p": "http://www.wikidata.org/prop/direct/P971",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43274316787719724,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5818579196929932
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4518667",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43232064247131347,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5808016061782837
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q3744836",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43196544647216795,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5799136161804199
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4196599",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43165323734283445,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5791330933570862
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4518673",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4314217090606689,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5785542726516724
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q3645975",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43081638813018797,
+          "importance": 0.3333333333333333,
+          "similarity": 0.57704097032547
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6256",
+          "p": "http://www.wikidata.org/prop/P4527",
+          "o": "http://www.wikidata.org/entity/statement/Q6256-6166B912-FEE8-4CDB-8F85-134BCD6EC6BD",
+          "score": 0.430644941329956,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5766123533248901
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613944",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4301396369934082,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5753490924835205
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q3517895",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.43001580238342285,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5750395059585571
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6357599",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4296849727630615,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5742124319076538
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4500389",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4291898965835571,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5729747414588928
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6435445",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4291191339492798,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5727978348731995
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6597464",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42904753684997554,
+          "importance": 0.3333333333333333,
+          "similarity": 0.572618842124939
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4518558",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4288732290267944,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5721830725669861
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q1056181-225D1E5C-19A3-4D9B-ACF6-BBC9643AC020",
+          "p": "http://www.wikidata.org/prop/statement/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4287316083908081,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5718290209770203
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613899",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42871768474578853,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5717942118644714
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613844",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4285325765609741,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5713314414024353
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6592629",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4284470558166504,
+          "importance": 0.3333333333333333,
+          "similarity": 0.571117639541626
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613965",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42837417125701904,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5709354281425476
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613969",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42823913097381594,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5705978274345398
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613868",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4281141996383667,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5702854990959167
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q3769069",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42803058624267576,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5700764656066895
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4518606",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4279991388320923,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5699978470802307
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613925",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4278943061828613,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5697357654571533
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6357579",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42784433364868163,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5696108341217041
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613909",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4276742696762085,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5691856741905212
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613941",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4276576042175293,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5691440105438232
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L706600-S2-8069a482-41ed-7677-423b-4bd112684d17",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4275466203689575,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5688665509223938
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q1055230-596DF1C9-3911-4244-9E05-913587753677",
+          "p": "http://www.wikidata.org/prop/statement/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4275301694869995,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5688254237174988
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L714885-S1-0909de97-47c1-c7c7-5236-7a0560779f75",
+          "p": "http://www.wikidata.org/prop/statement/P5137",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4275055408477783,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5687638521194458
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6435525",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42725617885589595,
+          "importance": 0.3333333333333333,
+          "similarity": 0.56814044713974
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/L1408298-bc3804ac-4cf9-9d22-4a4e-572d3d03db07",
+          "p": "http://www.wikidata.org/prop/statement/P1552",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42720384597778316,
+          "importance": 0.3333333333333333,
+          "similarity": 0.568009614944458
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6613886",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4271869421005249,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5679673552513123
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4365339",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4271534442901611,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5678836107254028
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6576479",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.427138352394104,
+          "importance": 0.3333333333333333,
+          "similarity": 0.56784588098526
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4163517",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.42708120346069334,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5677030086517334
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q4490159",
+          "p": "http://www.wikidata.org/prop/direct/P360",
+          "o": "http://www.wikidata.org/entity/Q6256",
+          "score": 0.4270043849945068,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5675109624862671
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6256",
+          "p": "http://www.wikidata.org/prop/direct/P1889",
+          "o": "http://www.wikidata.org/entity/Q3624078",
+          "score": 0.42700331211090087,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5675082802772522
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P937_08c206e2-50aa-4a60-a5dd-75d6fa28bc20",
+      "mode": "answer",
+      "question": "Where does John Henry Newman work?",
+      "llm_answer": "Oxford University",
+      "gold_answers": [
+        {
+          "label": "Rome",
+          "uri": "Q220"
+        }
+      ],
+      "subject": {
+        "label": "John Henry Newman",
+        "uri": "Q44490"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "gss_query": "Oxford University",
+      "claim_text": "John Henry Newman used to work in Oxford University.",
+      "validation": {
+        "mode": "answer",
+        "decision": "unsupported",
+        "reason": "no_subject_answer_relation_evidence_in_ace",
+        "detection": "not_validated",
+        "gold_match": false,
+        "gold_acceptable": false,
+        "granularity_match": false,
+        "granularity_type": null,
+        "gold_relation_linked": false,
+        "gold_answer_containment": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "subject_answer_linked": false,
+        "relation_linked": false,
+        "n_supporting_triples": 0,
+        "n_linked_triples": 0,
+        "supporting_predicates": [],
+        "linked_predicates": [],
+        "n_triples": 25,
+        "answer_uri": "http://www.wikidata.org/entity/Q34433",
+        "answer_entity": {
+          "name": "Oxford_University",
+          "type": "resource",
+          "importance": 5
+        },
+        "subject_uri": "http://www.wikidata.org/entity/Q44490",
+        "relation_id": "P937",
+        "gss_query": "Oxford University",
+        "claim_text": "John Henry Newman used to work in Oxford University.",
+        "question": "Where does John Henry Newman work?",
+        "llm_answer": "Oxford University"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q188451",
+          "score": 0.538371208190918,
+          "importance": 0.5466666666666667,
+          "similarity": 0.5259280204772949
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P31",
+          "o": "http://www.wikidata.org/entity/Q75054287",
+          "score": 0.532721999168396,
+          "importance": 0.5466666666666667,
+          "similarity": 0.51180499792099
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q6772421-08142d94-42ce-ae6e-46f4-111fa1bc158b",
+          "p": "http://www.wikidata.org/prop/statement/P366",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.42388279438018794,
+          "importance": 0.3333333333333333,
+          "similarity": 0.55970698595047
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P17",
+          "o": "http://www.wikidata.org/entity/Q1019",
+          "score": 0.42343080043792725,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5585770010948181
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q31361874",
+          "p": "http://www.w3.org/2002/07/owl#sameAs",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.42277348041534424,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5569337010383606
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P1269",
+          "o": "http://www.wikidata.org/entity/Q1019",
+          "score": 0.42037231922149654,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5509307980537415
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P910",
+          "o": "http://www.wikidata.org/entity/Q7318086",
+          "score": 0.4190367221832275,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5475918054580688
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P9185",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-99D405B6-571A-45AF-A8A2-FE4015388FC2",
+          "score": 0.4172179937362671,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5430449843406677
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P373",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-E444FB87-EB44-4EEF-9BBC-36EAFAAF0073",
+          "score": 0.41694533824920654,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5423633456230164
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q7685353-309DAB1D-9BEE-4CE5-BD5D-0798DA0D2056",
+          "p": "http://www.wikidata.org/prop/statement/P1269",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4166734218597412,
+          "importance": 0.3333333333333333,
+          "similarity": 0.541683554649353
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q131723632",
+          "p": "http://www.wikidata.org/prop/direct/P361",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4166390895843506,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5415977239608765
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P8313",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-A0EE11F1-B9A5-4ACE-A4A4-890E25438199",
+          "score": 0.41642811298370364,
+          "importance": 0.3333333333333333,
+          "similarity": 0.541070282459259
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q133854160-a6407a64-4203-1681-7225-b5a0ba779e19",
+          "p": "http://www.wikidata.org/prop/statement/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4161548376083374,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5403870940208435
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P279",
+          "o": "http://www.wikidata.org/entity/Q106586248",
+          "score": 0.415866208076477,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5396655201911926
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q114702536",
+          "p": "http://www.wikidata.org/prop/direct/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.41577420234680174,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5394355058670044
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P18",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-B30E617B-8C3E-46B0-B780-E3AC2DD684F6",
+          "score": 0.4156664848327637,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5391662120819092
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q137753347",
+          "p": "http://www.wikidata.org/prop/direct/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4153378963470459,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5383447408676147
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q25093633-7e4760f4-41ca-79ee-616c-dd5e8be5e465",
+          "p": "http://www.wikidata.org/prop/statement/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4149834156036377,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5374585390090942
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P3417",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-9A970E9E-BD51-4385-B56E-0AC2430C50A6",
+          "score": 0.4147655725479126,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5369139313697815
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q25093633",
+          "p": "http://www.wikidata.org/prop/direct/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4147170543670654,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5367926359176636
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P17",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-1680ddb3-4210-a787-5f21-362f0078ba9e",
+          "score": 0.41434116363525386,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5358529090881348
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q6772421",
+          "p": "http://www.wikidata.org/prop/direct/P366",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.4141536712646484,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5353841781616211
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/P910",
+          "o": "http://www.wikidata.org/entity/statement/Q1091536-7F2DD77A-605E-42B7-A4FC-D85A481501E8",
+          "score": 0.41376550197601314,
+          "importance": 0.3333333333333333,
+          "similarity": 0.534413754940033
+        },
+        {
+          "s": "http://www.wikidata.org/entity/Q1091536",
+          "p": "http://www.wikidata.org/prop/direct/P1269",
+          "o": "http://www.wikidata.org/entity/Q3007213",
+          "score": 0.41370320320129395,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5342580080032349
+        },
+        {
+          "s": "http://www.wikidata.org/entity/statement/Q131720394-e21f7de4-4aef-a985-bbec-63f4274b06b3",
+          "p": "http://www.wikidata.org/prop/statement/P279",
+          "o": "http://www.wikidata.org/entity/Q1091536",
+          "score": 0.41353070735931396,
+          "importance": 0.3333333333333333,
+          "similarity": 0.5338267683982849
+        }
+      ],
+      "pipeline_error": null
+    }
+  ]
+}

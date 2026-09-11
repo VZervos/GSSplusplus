@@ -24,15 +24,21 @@ else:  # Default to DBpedia
 # ============================================================================
 
 # LLM Provider Selection
-LLM_PROVIDER = "groq"  # Options: "gemini", "groq"
+# Options: "gemini", "groq", "ollama", "auto"
+# "auto" tries Groq when a real key is set, otherwise falls back to local Ollama.
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "auto").lower()
 
 # Gemini Configuration
-API_KEY = "YOUR KEY"
+API_KEY = os.getenv("GEMINI_API_KEY", "YOUR KEY")
 MODEL_NAME = "gemini-2.5-flash-lite"  # Change this to use different models
 
 # Groq Configuration
-GROQ_API_KEY = "YOUR KEY"
-GROQ_MODEL = "llama-3.1-8b-instant"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "YOUR KEY")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+
+# Ollama Configuration (local Llama)
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
 
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
 API_URL = f"{BASE_URL}/models/{MODEL_NAME}:generateContent"
@@ -113,9 +119,9 @@ VIS_NODE_FILTER_DEGREE_WEIGHT = 1
 # Knowledge Graph/SPARQL Configuration
 # ============================================================================
 
-KG_MAX_RETRIES = 2
+KG_MAX_RETRIES = 5
 KG_INITIAL_TIMEOUT = 45  # seconds
-KG_MAX_TIMEOUT = 90
+KG_MAX_TIMEOUT = 120
 
 KG_MAX_UNION_CLAUSES = 100  # Max UNION clauses to avoid 405/500 errors
 KG_DEFAULT_TRIPLE_LIMIT = 1000

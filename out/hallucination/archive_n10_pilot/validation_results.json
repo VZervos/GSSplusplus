@@ -1,0 +1,1876 @@
+{
+  "created_at": "2026-08-06T13:45:30.353457+00:00",
+  "input": "C:\\Valantis\\JetBrains\\projects\\isl\\GSSplusplus\\out\\hallucination\\llm_answers.json",
+  "dataset": "dbpedia",
+  "n": 10,
+  "summary": {
+    "decision": {
+      "supported": 1,
+      "unsupported": 8,
+      "uncertain": 1
+    },
+    "detection": {
+      "true_hallucination": 5,
+      "true_support": 1,
+      "missed_support": 3,
+      "false_support": 0,
+      "uncertain": 1
+    },
+    "gold_match": 4
+  },
+  "results": [
+    {
+      "id": "trex_P19_3287d642-a959-4254-868a-3bb12c3f2598",
+      "question": "Where was Catherine Tasca born?",
+      "llm_answer": "France",
+      "gold_answers": [
+        {
+          "label": "Lyon",
+          "uri": "Q456"
+        }
+      ],
+      "subject": {
+        "label": "Catherine Tasca",
+        "uri": "Q2942078"
+      },
+      "relation": {
+        "relation": "P19",
+        "template": "[X] was born in [Y] .",
+        "label": "place of birth",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) birth location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "true_hallucination",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "n_triples": 16,
+        "answer_uri": "http://dbpedia.org/resource/France",
+        "answer_entity": {
+          "name": "France",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Where was Catherine Tasca born?",
+        "llm_answer": "France"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Catherine_Fonteney",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5864800662994385,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7862001657485962
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hélène_Tigroudja",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5801272840499878,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7703182101249695
+        },
+        {
+          "s": "http://dbpedia.org/resource/Antonio_Tavares_(footballer)",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5798380346298218,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7695950865745544
+        },
+        {
+          "s": "http://dbpedia.org/resource/Patrick_Mignola",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5755464763641358,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7588661909103394
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sandra_Cunha",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5733710498809814,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7534276247024536
+        },
+        {
+          "s": "http://dbpedia.org/resource/Olga_Andreyeva_Carlisle",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5732761116027831,
+          "importance": 0.4533333333333333,
+          "similarity": 0.753190279006958
+        },
+        {
+          "s": "http://dbpedia.org/resource/Christine_Marchal-Ortiz",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5728944988250733,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7522362470626831
+        },
+        {
+          "s": "http://dbpedia.org/resource/Romain_Cabannes",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5708192081451415,
+          "importance": 0.4533333333333333,
+          "similarity": 0.747048020362854
+        },
+        {
+          "s": "http://dbpedia.org/resource/Nicole_Tagnon",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.570038625717163,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7450965642929077
+        },
+        {
+          "s": "http://dbpedia.org/resource/Alexis_Carra",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5700315923690795,
+          "importance": 0.4533333333333333,
+          "similarity": 0.745078980922699
+        },
+        {
+          "s": "http://dbpedia.org/resource/Suzanne_de_Troeye",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5678270549774169,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7395676374435425
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sophie_Buchaillard",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5674213380813599,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7385533452033997
+        },
+        {
+          "s": "http://dbpedia.org/resource/Corinne_Trang",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5674117059707642,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7385292649269104
+        },
+        {
+          "s": "http://dbpedia.org/resource/Angelina_(French_singer)",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.565822956085205,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7345573902130127
+        },
+        {
+          "s": "http://dbpedia.org/resource/Grégori_Derangère",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5656367034912109,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7340917587280273
+        },
+        {
+          "s": "http://dbpedia.org/resource/Marie-Hélène_Sajka",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/France",
+          "score": 0.5654436082839965,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7336090207099915
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P20_2c5251bb-2795-494c-adaf-f766eeec60d3",
+      "question": "Where did Fredrik Idestam die?",
+      "llm_answer": "Tampere",
+      "gold_answers": [
+        {
+          "label": "Helsinki",
+          "uri": "Q1757"
+        }
+      ],
+      "subject": {
+        "label": "Fredrik Idestam",
+        "uri": "Q2271104"
+      },
+      "relation": {
+        "relation": "P20",
+        "template": "[X] died in [Y] .",
+        "label": "place of death",
+        "description": "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "true_hallucination",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "n_triples": 16,
+        "answer_uri": "http://dbpedia.org/resource/Tampere",
+        "answer_entity": {
+          "name": "Tampere",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Where did Fredrik Idestam die?",
+        "llm_answer": "Tampere"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Nikolai_Tirkkonen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4902665615081787,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7256664037704468
+        },
+        {
+          "s": "http://dbpedia.org/resource/Emil_Aaltonen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4862597465515137,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7156493663787842
+        },
+        {
+          "s": "http://dbpedia.org/resource/Adolf_Törngren",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4847301483154297,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7118253707885742
+        },
+        {
+          "s": "http://dbpedia.org/resource/Zinnetullah_Ahsen_Böre",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4776818513870239,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6942046284675598
+        },
+        {
+          "s": "http://dbpedia.org/resource/Akilles_Järvinen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.47744059562683105,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6936014890670776
+        },
+        {
+          "s": "http://dbpedia.org/resource/Markus_Arsalo",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4772390127182007,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6930975317955017
+        },
+        {
+          "s": "http://dbpedia.org/resource/Hugo_Salmela",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4751608371734619,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6879020929336548
+        },
+        {
+          "s": "http://dbpedia.org/resource/Markus_Västilä",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4750377178192139,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6875942945480347
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jalmari_Sauli",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.47410199642181394,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6852549910545349
+        },
+        {
+          "s": "http://dbpedia.org/resource/Oskari_Laaksonen",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4732503890991211,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6831259727478027
+        },
+        {
+          "s": "http://dbpedia.org/resource/Kalle_Mikkolainen",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4731142520904541,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6827856302261353
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jorma_Karhunen",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.47299346923828123,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6824836730957031
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ulla_Nenonen",
+          "p": "http://dbpedia.org/property/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4729352474212647,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6823381185531616
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aisa_Hakimcan",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.47267551422119136,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6816887855529785
+        },
+        {
+          "s": "http://dbpedia.org/resource/Joose_Antonen",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.4725481510162354,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6813703775405884
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aarne_Honkavaara",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tampere",
+          "score": 0.47254180908203125,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6813545227050781
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P27_2682256a-f283-4250-b3bb-f57e8c095523",
+      "question": "What is the country of citizenship of Mohammad Bahr al-Ulloum?",
+      "llm_answer": "Sudan",
+      "gold_answers": [
+        {
+          "label": "Iraq",
+          "uri": "Q796"
+        }
+      ],
+      "subject": {
+        "label": "Mohammad Bahr al-Ulloum",
+        "uri": "Q715989"
+      },
+      "relation": {
+        "relation": "P27",
+        "template": "[X] is [Y] citizen .",
+        "label": "country of citizenship",
+        "description": "the object is a country that recognizes the subject as its citizen",
+        "type": "N-M"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "true_hallucination",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "n_triples": 14,
+        "answer_uri": "http://dbpedia.org/resource/Sudan",
+        "answer_entity": {
+          "name": "Sudan",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "What is the country of citizenship of Mohammad Bahr al-Ulloum?",
+        "llm_answer": "Sudan"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Mohammed_Ahmed_Abdallah",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5154795169830322,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7886987924575806
+        },
+        {
+          "s": "http://dbpedia.org/resource/Omer_Mohamed_Bakhit",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5118836879730224,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7797092199325562
+        },
+        {
+          "s": "http://dbpedia.org/resource/Mahmoud_Abdulaziz",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5113540649414062,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7783851623535156
+        },
+        {
+          "s": "http://dbpedia.org/resource/Mohammed_Abdul-Hayy",
+          "p": "http://dbpedia.org/ontology/nationality",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5090554475784301,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7726386189460754
+        },
+        {
+          "s": "http://dbpedia.org/resource/Bakri_Al-Madina",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5083789110183716,
+          "importance": 0.3333333333333333,
+          "similarity": 0.770947277545929
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ahmed_Awad_Ibn_Auf",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.508036208152771,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7700905203819275
+        },
+        {
+          "s": "http://dbpedia.org/resource/Abdul_Wahid_al-Nur",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5079841852188111,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7699604630470276
+        },
+        {
+          "s": "http://dbpedia.org/resource/Almoez_Ali",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5079049110412598,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7697622776031494
+        },
+        {
+          "s": "http://dbpedia.org/resource/Amir_Taj_al-Sir",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5075831890106202,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7689579725265503
+        },
+        {
+          "s": "http://dbpedia.org/resource/Basha_Bakri",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.50693678855896,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7673419713973999
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ibrahim_Al-Hassan",
+          "p": "http://dbpedia.org/property/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.50609872341156,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7652468085289001
+        },
+        {
+          "s": "http://dbpedia.org/resource/Al-Saddiq_Al-Raddi",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5058425426483154,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7646063566207886
+        },
+        {
+          "s": "http://dbpedia.org/resource/Abuaagla_Abdalla",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5056684017181396,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7641710042953491
+        },
+        {
+          "s": "http://dbpedia.org/resource/Reem_Aljeally",
+          "p": "http://dbpedia.org/ontology/birthPlace",
+          "o": "http://dbpedia.org/resource/Sudan",
+          "score": 0.5053826570510864,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7634566426277161
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P36_c31c88e9-930d-4fce-ad3f-b14138e8d788",
+      "question": "What is the capital of Albania?",
+      "llm_answer": "Tirana",
+      "gold_answers": [
+        {
+          "label": "Tirana",
+          "uri": "Q19689"
+        }
+      ],
+      "subject": {
+        "label": "Albania",
+        "uri": "Q222"
+      },
+      "relation": {
+        "relation": "P36",
+        "template": "The capital of [X] is [Y] .",
+        "label": "capital",
+        "description": "primary city of a country, state or other type of administrative territorial entity",
+        "type": "1-1"
+      },
+      "validation": {
+        "decision": "supported",
+        "reason": "answer_and_question_subject_co_occur_in_ace",
+        "detection": "true_support",
+        "gold_match": true,
+        "subject_in_graph": true,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "n_triples": 36,
+        "answer_uri": "http://dbpedia.org/resource/Tirana",
+        "answer_entity": {
+          "name": "Tirana",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "What is the capital of Albania?",
+        "llm_answer": "Tirana"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.7101850690841673,
+          "importance": 0.5733333333333333,
+          "similarity": 0.9154626727104187
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/ontology/country",
+          "o": "http://dbpedia.org/resource/Albania",
+          "score": 0.6256818027496338,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8842045068740845
+        },
+        {
+          "s": "http://dbpedia.org/resource/Principality_of_Albania",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.6241439552307129,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8803598880767822
+        },
+        {
+          "s": "http://dbpedia.org/resource/People's_Socialist_Republic_of_Albania",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.6206779451370239,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8716948628425598
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albanian_Kingdom_(1928–1939)",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.6197514743804932,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8693786859512329
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albanian_Republic_(1925–1928)",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.618465802192688,
+          "importance": 0.4533333333333333,
+          "similarity": 0.86616450548172
+        },
+        {
+          "s": "http://dbpedia.org/resource/Italian_protectorate_of_Albania_(1939–1943)",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.6151557893753052,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8578894734382629
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/largestCity",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.6148389072418212,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8570972681045532
+        },
+        {
+          "s": "http://dbpedia.org/resource/German_occupation_of_Albania",
+          "p": "http://dbpedia.org/property/capital",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.614379093170166,
+          "importance": 0.4533333333333333,
+          "similarity": 0.855947732925415
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Albania",
+          "score": 0.6112533302307128,
+          "importance": 0.4533333333333333,
+          "similarity": 0.8481333255767822
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/Capital_city",
+          "score": 0.5437717914581299,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8594294786453247
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/ontology/type",
+          "o": "http://dbpedia.org/resource/Municipalities_of_Albania",
+          "score": 0.5410106182098389,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8525265455245972
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/property/subdivisionName",
+          "o": "http://dbpedia.org/resource/Central_Albania",
+          "score": 0.5386329412460327,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8465823531150818
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/ontology/subdivision",
+          "o": "http://dbpedia.org/resource/Central_Albania",
+          "score": 0.5355042695999146,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8387606739997864
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tirana",
+          "p": "http://dbpedia.org/property/subdivisionType",
+          "o": "http://dbpedia.org/resource/Counties_of_Albania",
+          "score": 0.5339017391204834,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8347543478012085
+        },
+        {
+          "s": "http://dbpedia.org/resource/Paisi_of_Albania",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Tirana",
+          "score": 0.531401515007019,
+          "importance": 0.3333333333333333,
+          "similarity": 0.8285037875175476
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/establishedEvent",
+          "o": "http://dbpedia.org/resource/Independent_Albania",
+          "score": 0.4160709114074707,
+          "importance": 0.12,
+          "similarity": 0.8601772785186768
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/establishedEvent",
+          "o": "http://dbpedia.org/resource/Kingdom_of_Albania_(medieval)",
+          "score": 0.41544792366027833,
+          "importance": 0.12,
+          "similarity": 0.8586198091506958
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/sovereigntyType",
+          "o": "http://dbpedia.org/resource/History_of_Albania",
+          "score": 0.4138169975280762,
+          "importance": 0.12,
+          "similarity": 0.8545424938201904
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__10",
+          "score": 0.41338500690460206,
+          "importance": 0.12,
+          "similarity": 0.8534625172615051
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__7",
+          "score": 0.41274997901916505,
+          "importance": 0.12,
+          "similarity": 0.8518749475479126
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/establishedEvent",
+          "o": "http://dbpedia.org/resource/Principality_of_Albania",
+          "score": 0.41237051200866703,
+          "importance": 0.12,
+          "similarity": 0.8509262800216675
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__5",
+          "score": 0.4120929927825928,
+          "importance": 0.12,
+          "similarity": 0.8502324819564819
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__6",
+          "score": 0.4120750160217285,
+          "importance": 0.12,
+          "similarity": 0.8501875400543213
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/leaderTitle",
+          "o": "http://dbpedia.org/resource/Prime_Minister_of_Albania",
+          "score": 0.41190175724029543,
+          "importance": 0.12,
+          "similarity": 0.8497543931007385
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__12",
+          "score": 0.41170458507537844,
+          "importance": 0.12,
+          "similarity": 0.849261462688446
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__1",
+          "score": 0.4116610736846924,
+          "importance": 0.12,
+          "similarity": 0.849152684211731
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__2",
+          "score": 0.41105887603759766,
+          "importance": 0.12,
+          "similarity": 0.8476471900939941
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__4",
+          "score": 0.41101975154876713,
+          "importance": 0.12,
+          "similarity": 0.8475493788719177
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__3",
+          "score": 0.410853120803833,
+          "importance": 0.12,
+          "similarity": 0.8471328020095825
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/cctld",
+          "o": "http://dbpedia.org/resource/.al",
+          "score": 0.4107057542800904,
+          "importance": 0.12,
+          "similarity": 0.8467643857002258
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/establishedEvent",
+          "o": "http://dbpedia.org/resource/Principality_of_Albania_(medieval)",
+          "score": 0.41055509757995606,
+          "importance": 0.12,
+          "similarity": 0.8463877439498901
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__8",
+          "score": 0.40995986175537114,
+          "importance": 0.12,
+          "similarity": 0.8448996543884277
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__11",
+          "score": 0.4095702381134034,
+          "importance": 0.12,
+          "similarity": 0.8439255952835083
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/property/establishedEvent",
+          "o": "http://dbpedia.org/resource/Albanian_Kingdom_(1928–1939)",
+          "score": 0.40874249649047856,
+          "importance": 0.12,
+          "similarity": 0.8418562412261963
+        },
+        {
+          "s": "http://dbpedia.org/resource/Albania",
+          "p": "http://dbpedia.org/ontology/event",
+          "o": "http://dbpedia.org/resource/Albania__HistoricalEvent__9",
+          "score": 0.4082741470336914,
+          "importance": 0.12,
+          "similarity": 0.8406853675842285
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P106_a867ef49-57af-4634-a7ab-bda178c6057e",
+      "question": "What is the occupation of Don Durant?",
+      "llm_answer": "Football player",
+      "gold_answers": [
+        {
+          "label": "actor",
+          "uri": "Q33999"
+        }
+      ],
+      "subject": {
+        "label": "Don Durant",
+        "uri": "Q1563866"
+      },
+      "relation": {
+        "relation": "P106",
+        "template": "[X] is a [Y] by profession .",
+        "label": "occupation",
+        "description": "occupation of a person; see also \"field of work\" (Property:P101), \"position held\" (Property:P39)",
+        "type": "N-M"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "true_hallucination",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "n_triples": 19,
+        "answer_uri": "http://dbpedia.org/resource/Football_player",
+        "answer_entity": {
+          "name": "Football_player",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "What is the occupation of Don Durant?",
+        "llm_answer": "Football player"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Jerald_Brown__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.485946798324585,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7148669958114624
+        },
+        {
+          "s": "http://dbpedia.org/resource/Larry_Haynes__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4836905002593994,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7092262506484985
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jedd_Gardner__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4819766044616699,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7049415111541748
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tomas_Jack-Kurdyla__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4811795711517334,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7029489278793335
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jerry_Friesen__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.48101511001586916,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7025377750396729
+        },
+        {
+          "s": "http://dbpedia.org/resource/Walt_Kreinheder__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4802254199981689,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7005635499954224
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jim_Duncan_(cornerback)__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4792893171310425,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6982232928276062
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ken-Yon_Rambo__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4779408693313598,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6948521733283997
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cornel_Piper__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4774978876113891,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6937447190284729
+        },
+        {
+          "s": "http://dbpedia.org/resource/Tre_Odoms-Dukes__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4774657726287842,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6936644315719604
+        },
+        {
+          "s": "http://dbpedia.org/resource/Walt_Roepke__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.47696392536163335,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6924098134040833
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jeff_Perrett__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.47613725662231443,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6903431415557861
+        },
+        {
+          "s": "http://dbpedia.org/resource/Nicholas_Dheilly__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4757393836975098,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6893484592437744
+        },
+        {
+          "s": "http://dbpedia.org/resource/Walter_Curry_(gridiron_football)__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.47572102546691897,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6893025636672974
+        },
+        {
+          "s": "http://dbpedia.org/resource/Mel_Becket__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4756409406661988,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6891023516654968
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jed_Roberts__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.475415563583374,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6885389089584351
+        },
+        {
+          "s": "http://dbpedia.org/resource/David_Dallaire__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.47529559135437016,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6882389783859253
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jermaine_Mays__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4749094724655152,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6872736811637878
+        },
+        {
+          "s": "http://dbpedia.org/resource/Jack_Lang_(American_football)__CareerStation__1",
+          "p": "http://dbpedia.org/ontology/occupation",
+          "o": "http://dbpedia.org/resource/Football_player",
+          "score": 0.4748728036880493,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6871820092201233
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P17_ca4dc9b5-4b9e-4828-a29f-6d39f732e519",
+      "question": "Which country is Yuquot located in?",
+      "llm_answer": "Canada",
+      "gold_answers": [
+        {
+          "label": "Canada",
+          "uri": "Q16"
+        }
+      ],
+      "subject": {
+        "label": "Yuquot",
+        "uri": "Q2590873"
+      },
+      "relation": {
+        "relation": "P17",
+        "template": "[X] is located in [Y] .",
+        "label": "country",
+        "description": "sovereign state of this item; don't use on humans",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "n_triples": 20,
+        "answer_uri": "http://dbpedia.org/resource/Canada",
+        "answer_entity": {
+          "name": "Canada",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Which country is Yuquot located in?",
+        "llm_answer": "Canada"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Yulian_Butsmaniuk",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.48717648983001705,
+          "importance": 0.3333333333333333,
+          "similarity": 0.7179412245750427
+        },
+        {
+          "s": "http://dbpedia.org/resource/Pumpkin_pie",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4752654075622559,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6881635189056396
+        },
+        {
+          "s": "http://dbpedia.org/resource/Canada,_Kansas",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4730144023895264,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6825360059738159
+        },
+        {
+          "s": "http://dbpedia.org/resource/Irena_Turkevycz-Martynec",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4697561979293823,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6743904948234558
+        },
+        {
+          "s": "http://dbpedia.org/resource/Saskatoon_berry_pie",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.46697187423706055,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6674296855926514
+        },
+        {
+          "s": "http://dbpedia.org/resource/Macaroni_chinois",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.46563220024108887,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6640805006027222
+        },
+        {
+          "s": "http://dbpedia.org/resource/Pictou,_Colorado",
+          "p": "http://dbpedia.org/property/namedFor",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4646329879760742,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6615824699401855
+        },
+        {
+          "s": "http://dbpedia.org/resource/Poutine",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4635249376296997,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6588123440742493
+        },
+        {
+          "s": "http://dbpedia.org/resource/Man_Sai-cheong",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.46086425781249996,
+          "importance": 0.3333333333333333,
+          "similarity": 0.65216064453125
+        },
+        {
+          "s": "http://dbpedia.org/resource/Stu_Briese",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.46041209697723384,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6510302424430847
+        },
+        {
+          "s": "http://dbpedia.org/resource/Elisapee_Ootoova",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.46017246246337895,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6504311561584473
+        },
+        {
+          "s": "http://dbpedia.org/resource/Masami_Tsuruoka",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.45974776744842527,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6493694186210632
+        },
+        {
+          "s": "http://dbpedia.org/resource/Maple_syrup",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4585399627685547,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6463499069213867
+        },
+        {
+          "s": "http://dbpedia.org/resource/Yaroslav_Pasternak",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.458192253112793,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6454806327819824
+        },
+        {
+          "s": "http://dbpedia.org/resource/Teodosii_Halushchynskyi",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4573916912078857,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6434792280197144
+        },
+        {
+          "s": "http://dbpedia.org/resource/Waldo_Penner",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4565583229064941,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6413958072662354
+        },
+        {
+          "s": "http://dbpedia.org/resource/Terreneuvian",
+          "p": "http://dbpedia.org/property/lowerGsspLocation",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4564443111419678,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6411107778549194
+        },
+        {
+          "s": "http://dbpedia.org/resource/Isidore_Borecky",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.4562032461166382,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6405081152915955
+        },
+        {
+          "s": "http://dbpedia.org/resource/Fried_walleye",
+          "p": "http://dbpedia.org/property/placeOfOrigin",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.45584654808044434,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6396163702011108
+        },
+        {
+          "s": "http://dbpedia.org/resource/Aleksander_Laak",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Canada",
+          "score": 0.45559711456298824,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6389927864074707
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P159_2c660ab2-52ef-49b7-a183-a4da924c4bbe",
+      "question": "Where is the headquarters of Roger Dubuis?",
+      "llm_answer": "Geneva",
+      "gold_answers": [
+        {
+          "label": "Geneva",
+          "uri": "Q71"
+        }
+      ],
+      "subject": {
+        "label": "Roger Dubuis",
+        "uri": "Q670160"
+      },
+      "relation": {
+        "relation": "P159",
+        "template": "The headquarter of [X] is in [Y] .",
+        "label": "headquarters location",
+        "description": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "n_triples": 17,
+        "answer_uri": "http://dbpedia.org/resource/Geneva",
+        "answer_entity": {
+          "name": "Geneva",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Where is the headquarters of Roger Dubuis?",
+        "llm_answer": "Geneva"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/CoComment",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5603450746536255,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7208626866340637
+        },
+        {
+          "s": "http://dbpedia.org/resource/International_Broadcasting_Union",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5590337963104248,
+          "importance": 0.4533333333333333,
+          "similarity": 0.717584490776062
+        },
+        {
+          "s": "http://dbpedia.org/resource/Le_Courrier",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.558438512802124,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7160962820053101
+        },
+        {
+          "s": "http://dbpedia.org/resource/ITU-R",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5564292402267456,
+          "importance": 0.4533333333333333,
+          "similarity": 0.711073100566864
+        },
+        {
+          "s": "http://dbpedia.org/resource/Raëlism",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5558618040084838,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7096545100212097
+        },
+        {
+          "s": "http://dbpedia.org/resource/ECMA-407",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.554397985458374,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7059949636459351
+        },
+        {
+          "s": "http://dbpedia.org/resource/Journal_de_Genève",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5533710212707519,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7034275531768799
+        },
+        {
+          "s": "http://dbpedia.org/resource/La_Nation_Arabe",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5532517404556274,
+          "importance": 0.4533333333333333,
+          "similarity": 0.7031293511390686
+        },
+        {
+          "s": "http://dbpedia.org/resource/JRP-Ringier",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5518914432525635,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6997286081314087
+        },
+        {
+          "s": "http://dbpedia.org/resource/UN-Water",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5510569067001343,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6976422667503357
+        },
+        {
+          "s": "http://dbpedia.org/resource/International_Federation_of_Commercial,_Clerical,_Professional_and_Technical_Employees",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5506810398101807,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6967025995254517
+        },
+        {
+          "s": "http://dbpedia.org/resource/Formula_One_Teams_Association",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5506313533782958,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6965783834457397
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ecma_International",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5496955127716064,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6942387819290161
+        },
+        {
+          "s": "http://dbpedia.org/resource/ITU-T",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.548239275932312,
+          "importance": 0.4533333333333333,
+          "similarity": 0.69059818983078
+        },
+        {
+          "s": "http://dbpedia.org/resource/Edmond_de_Rothschild_Foundations",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5478943796157837,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6897359490394592
+        },
+        {
+          "s": "http://dbpedia.org/resource/Intellectual_Property_Watch",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.547292420387268,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6882310509681702
+        },
+        {
+          "s": "http://dbpedia.org/resource/Télévision_Suisse_Romande",
+          "p": "http://dbpedia.org/property/headquarters",
+          "o": "http://dbpedia.org/resource/Geneva",
+          "score": 0.5469059677124023,
+          "importance": 0.4533333333333333,
+          "similarity": 0.6872649192810059
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P495_cc684433-b491-4de5-95fb-8e9d8ff5c00b",
+      "question": "In which country was Milanesa created?",
+      "llm_answer": "Argentina",
+      "gold_answers": [
+        {
+          "label": "Italy",
+          "uri": "Q38"
+        }
+      ],
+      "subject": {
+        "label": "Milanesa",
+        "uri": "Q12821"
+      },
+      "relation": {
+        "relation": "P495",
+        "template": "[X] was created in [Y] .",
+        "label": "country of origin",
+        "description": "country of origin of this item (creative work, food, phrase, product, etc.)",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "true_hallucination",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": true,
+        "n_triples": 20,
+        "answer_uri": "http://dbpedia.org/resource/Argentina",
+        "answer_entity": {
+          "name": "Argentina",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "In which country was Milanesa created?",
+        "llm_answer": "Argentina"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/Constantino_Urbieta_Sosa",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4795412063598633,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6988530158996582
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cesáreo_Onzari",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.47528808116912846,
+          "importance": 0.3333333333333333,
+          "similarity": 0.688220202922821
+        },
+        {
+          "s": "http://dbpedia.org/resource/Milan_Stojadinović",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.471108865737915,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6777721643447876
+        },
+        {
+          "s": "http://dbpedia.org/resource/Vittorio_Meano",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.47046773433685307,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6761693358421326
+        },
+        {
+          "s": "http://dbpedia.org/resource/Néstor_Scotta__Néstor_Scotta__1",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4704436302185059,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6761090755462646
+        },
+        {
+          "s": "http://dbpedia.org/resource/Benito_Quinquela_Martín",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46871383190155025,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6717845797538757
+        },
+        {
+          "s": "http://dbpedia.org/resource/Cacho_Castaña",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4663170337677002,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6657925844192505
+        },
+        {
+          "s": "http://dbpedia.org/resource/Susana_Campos",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46524658203125,
+          "importance": 0.3333333333333333,
+          "similarity": 0.663116455078125
+        },
+        {
+          "s": "http://dbpedia.org/resource/Malisa_Zini",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4651517868041992,
+          "importance": 0.3333333333333333,
+          "similarity": 0.662879467010498
+        },
+        {
+          "s": "http://dbpedia.org/resource/Elvira_Rawson_de_Dellepiane",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4647916316986084,
+          "importance": 0.3333333333333333,
+          "similarity": 0.661979079246521
+        },
+        {
+          "s": "http://dbpedia.org/resource/Ángela_Romera_Vera",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46443552970886226,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6610888242721558
+        },
+        {
+          "s": "http://dbpedia.org/resource/Argentina",
+          "p": "http://dbpedia.org/property/leaderName",
+          "o": "http://dbpedia.org/resource/Horacio_Rosatti",
+          "score": 0.4640173196792603,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6600432991981506
+        },
+        {
+          "s": "http://dbpedia.org/resource/Matías_Ramos_Mejía",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4639891147613525,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6599727869033813
+        },
+        {
+          "s": "http://dbpedia.org/resource/Enzo_Viena",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46384770870208736,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6596192717552185
+        },
+        {
+          "s": "http://dbpedia.org/resource/Nelida_Lobato",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46335570812225346,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6583892703056335
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eliseo_Subiela",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4632278919219971,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6580697298049927
+        },
+        {
+          "s": "http://dbpedia.org/resource/Natalio_Cirilo_Banegas",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4622539520263672,
+          "importance": 0.3333333333333333,
+          "similarity": 0.655634880065918
+        },
+        {
+          "s": "http://dbpedia.org/resource/Guido_di_Tella",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46176426410675053,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6544106602668762
+        },
+        {
+          "s": "http://dbpedia.org/resource/Eusebio_Guiñez",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.46162867546081543,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6540716886520386
+        },
+        {
+          "s": "http://dbpedia.org/resource/Roberto_Porta",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/Argentina",
+          "score": 0.4616095304489136,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6540238261222839
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P740_33c8b511-f8b5-4122-b3c6-d16605ce8722",
+      "question": "Where was Pink Fairies formed?",
+      "llm_answer": "London",
+      "gold_answers": [
+        {
+          "label": "London",
+          "uri": "Q84"
+        }
+      ],
+      "subject": {
+        "label": "Pink Fairies",
+        "uri": "Q2095846"
+      },
+      "relation": {
+        "relation": "P740",
+        "template": "[X] was founded in [Y] .",
+        "label": "location of formation",
+        "description": "location where a group or organization was formed",
+        "type": "N-1"
+      },
+      "validation": {
+        "decision": "unsupported",
+        "reason": "no_question_subject_evidence_in_ace",
+        "detection": "missed_support",
+        "gold_match": true,
+        "subject_in_graph": false,
+        "gold_in_graph": true,
+        "answer_in_graph": true,
+        "n_triples": 20,
+        "answer_uri": "http://dbpedia.org/resource/London",
+        "answer_entity": {
+          "name": "London",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Where was Pink Fairies formed?",
+        "llm_answer": "London"
+      },
+      "subgraph_triples": [
+        {
+          "s": "http://dbpedia.org/resource/William_Baxter_Collier_Fyfe",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4548408508300781,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6371021270751953
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rosabella_Paulina_Fynes_Clinton",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4543102741241455,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6357756853103638
+        },
+        {
+          "s": "http://dbpedia.org/resource/Weir_Greenlees",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.45300652980804446,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6325163245201111
+        },
+        {
+          "s": "http://dbpedia.org/resource/Henry_Josiah_Lightfoot_Boston",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4509824991226197,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6274562478065491
+        },
+        {
+          "s": "http://dbpedia.org/resource/Rosalinde_Fuller",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44900827407836913,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6225206851959229
+        },
+        {
+          "s": "http://dbpedia.org/resource/Doretta_Morrow",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4471187114715576,
+          "importance": 0.3333333333333333,
+          "similarity": 0.617796778678894
+        },
+        {
+          "s": "http://dbpedia.org/resource/John_Hutchinson_(botanist)",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4467108726501465,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6167771816253662
+        },
+        {
+          "s": "http://dbpedia.org/resource/Joan_Marsham",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44546308517456057,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6136577129364014
+        },
+        {
+          "s": "http://dbpedia.org/resource/Melanie_McFadyean",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44426918029785156,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6106729507446289
+        },
+        {
+          "s": "http://dbpedia.org/resource/Nicky_Crane",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4437617063522339,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6094042658805847
+        },
+        {
+          "s": "http://dbpedia.org/resource/Thomas_Fowke_(burgess)",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44297640323638915,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6074410080909729
+        },
+        {
+          "s": "http://dbpedia.org/resource/London",
+          "p": "http://dbpedia.org/property/subdivisionType",
+          "o": "http://dbpedia.org/resource/Ceremonial_counties_of_England",
+          "score": 0.44284386634826656,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6071096658706665
+        },
+        {
+          "s": "http://dbpedia.org/resource/Sybil_Eaton",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4428050994873047,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6070127487182617
+        },
+        {
+          "s": "http://dbpedia.org/resource/Alix_Liddell",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44269189834594724,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6067297458648682
+        },
+        {
+          "s": "http://dbpedia.org/resource/Charlotte_Mayer",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4424009323120117,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6060023307800293
+        },
+        {
+          "s": "http://dbpedia.org/resource/Platon_Drakoulis",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4423719882965088,
+          "importance": 0.3333333333333333,
+          "similarity": 0.605929970741272
+        },
+        {
+          "s": "http://dbpedia.org/resource/Madge_Tree",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44235930442810056,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6058982610702515
+        },
+        {
+          "s": "http://dbpedia.org/resource/Carol_Marsh",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.44200456142425537,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6050114035606384
+        },
+        {
+          "s": "http://dbpedia.org/resource/Alice_Coleman",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.441785192489624,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6044629812240601
+        },
+        {
+          "s": "http://dbpedia.org/resource/Robert_Dolling",
+          "p": "http://dbpedia.org/ontology/deathPlace",
+          "o": "http://dbpedia.org/resource/London",
+          "score": 0.4416588544845581,
+          "importance": 0.3333333333333333,
+          "similarity": 0.6041471362113953
+        }
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "trex_P937_08c206e2-50aa-4a60-a5dd-75d6fa28bc20",
+      "question": "Where does John Henry Newman work?",
+      "llm_answer": "Oxford University",
+      "gold_answers": [
+        {
+          "label": "Rome",
+          "uri": "Q220"
+        }
+      ],
+      "subject": {
+        "label": "John Henry Newman",
+        "uri": "Q44490"
+      },
+      "relation": {
+        "relation": "P937",
+        "template": "[X] used to work in [Y] .",
+        "label": "work location",
+        "description": "location where persons were active",
+        "type": "N-M"
+      },
+      "validation": {
+        "decision": "uncertain",
+        "reason": "empty_subgraph",
+        "detection": "uncertain",
+        "gold_match": false,
+        "subject_in_graph": false,
+        "gold_in_graph": false,
+        "answer_in_graph": false,
+        "n_triples": 0,
+        "answer_uri": "http://dbpedia.org/resource/Oxford_University",
+        "answer_entity": {
+          "name": "Oxford_University",
+          "type": "resource",
+          "importance": 5
+        },
+        "question": "Where does John Henry Newman work?",
+        "llm_answer": "Oxford University"
+      },
+      "subgraph_triples": [],
+      "pipeline_error": null
+    }
+  ]
+}
