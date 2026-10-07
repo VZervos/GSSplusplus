@@ -1,0 +1,32 @@
+{
+  "id": "S34",
+  "question": "Are any of Mahmoud Dowlatabadi's works in the genre of The Makioka Sisters?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Mahmoud Dowlatabadi",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "The Makioka Sisters",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Q17537576",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "are"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Mahmoud Dowlatabadi",
+    "The Makioka Sisters",
+    "Q17537576"
+  ]
+}

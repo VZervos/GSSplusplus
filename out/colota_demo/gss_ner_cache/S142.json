@@ -1,0 +1,31 @@
+{
+  "id": "S142",
+  "question": "Can Arimasa Mori talk to citizens of New Brunswick with no translators involved?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q30",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P36",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q6256",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "talk"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q30",
+    "Q6256"
+  ]
+}

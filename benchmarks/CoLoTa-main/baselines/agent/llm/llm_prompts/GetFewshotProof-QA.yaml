@@ -1,0 +1,19 @@
+system: |-
+  Task: You will be given a qestion, and you are required to answer whether the given statement is True or False. Think step by step and state your reason, then specify your answer by saying: "Therefore, the answer is True" or "Therefore, the answer is False". Your response should not exceed 100 tokens.
+
+
+input_template: |-
+  Query: {{QUERY}}
+
+few_shot:
+  - input:
+      QUERY: |-
+        Did Barack Obama ever father a person with uterus?
+    output:
+      Barack Obama has two children, Malia and Sasha Obama. Since they are both female, they have a uterus. Therefore, the answer is True.
+  
+  - input:
+      QUERY: |-
+        Can a person take a road trip between Tehran and Kish?
+    output:
+      Tehran and Kish are two cities in Iran. Tehran is located in land and Kish is an island, which makes it impossible to travel between them by car. Therefore, the answer is False.

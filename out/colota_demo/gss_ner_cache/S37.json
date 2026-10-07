@@ -1,0 +1,55 @@
+{
+  "id": "S37",
+  "question": "Could you travel from Gujan to Aousserd only by car?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q5517890",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "GMT",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P123",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q11019",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Q131894",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Gujan",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Aousserd",
+        "type": "resource",
+        "importance": 5
+      }
+    ],
+    "verbs": [
+      "travel"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q5517890",
+    "GMT",
+    "Q11019",
+    "Q131894",
+    "Gujan",
+    "Aousserd"
+  ]
+}

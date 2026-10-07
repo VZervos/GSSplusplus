@@ -1,0 +1,31 @@
+{
+  "id": "S4",
+  "question": "Would it have been possible for Maria de Ventadorn to speak to someone 100 miles away?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q30",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P36",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q6256",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "be"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q30",
+    "Q6256"
+  ]
+}

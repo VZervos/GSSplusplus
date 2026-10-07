@@ -1,0 +1,34 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Gujan",
+    "p": "http://www.wikidata.org/prop/direct/country",
+    "o": "http://www.wikidata.org/entity/Iran",
+    "s_label": "Gujan",
+    "p_label": "country",
+    "o_label": "Iran",
+    "triple": "(Gujan, country, Iran)",
+    "importance": 0.3333333333333333,
+    "_s_name": "gujan",
+    "_o_name": "iran",
+    "_query_keywords": "{'aousserd', 'p123', 'you', 'gmt', 'q5517890', 'gujan', 'travel', 'to', 'q11019', 'could', 'only', 'q131894', 'by', 'from', 'could you travel from gujan to aousserd only by car?', 'car?'}",
+    "similarity": 0.7461711168289185,
+    "final_score": 0.4365427792072296,
+    "rank": 1
+  },
+  {
+    "s": "http://www.wikidata.org/entity/Aousserd",
+    "p": "http://www.wikidata.org/prop/direct/country",
+    "o": "http://www.wikidata.org/entity/Western_Sahara",
+    "s_label": "Aousserd",
+    "p_label": "country",
+    "o_label": "Western Sahara",
+    "triple": "(Aousserd, country, Western Sahara)",
+    "importance": 0.3333333333333333,
+    "_s_name": "aousserd",
+    "_o_name": "western sahara",
+    "_query_keywords": "{'aousserd', 'p123', 'you', 'gmt', 'q5517890', 'gujan', 'travel', 'to', 'q11019', 'could', 'only', 'q131894', 'by', 'from', 'could you travel from gujan to aousserd only by car?', 'car?'}",
+    "similarity": 0.6722594499588013,
+    "final_score": 0.4180648624897003,
+    "rank": 2
+  }
+]

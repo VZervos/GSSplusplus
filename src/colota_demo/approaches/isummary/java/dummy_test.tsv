@@ -1,0 +1,1 @@
+SELECT  ?x WHERE { <http://www.wikidata.org/entity/Q5> <http://www.wikidata.org/prop/direct/P31> ?x . }

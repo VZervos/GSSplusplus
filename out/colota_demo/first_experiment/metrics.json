@@ -1,0 +1,73 @@
+{
+  "n": 20,
+  "primary_k": 5,
+  "ks": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "model": "llama3.1:8b",
+  "embed_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "ids": [
+    "S1",
+    "S2",
+    "S3",
+    "S5",
+    "S13",
+    "S37",
+    "S51",
+    "S87",
+    "S95",
+    "S131",
+    "S142",
+    "S160",
+    "S164",
+    "S175",
+    "S184",
+    "S4",
+    "S10",
+    "S34",
+    "S55",
+    "S124"
+  ],
+  "corpus_size": 37,
+  "llm_accuracy": 0.5,
+  "gold_triples_accuracy": 0.9,
+  "rag_accuracy": 0.7,
+  "mrr": 1.0,
+  "mean_rr": 0.8022569444444445,
+  "mean_first_relevant_rank": 1.0,
+  "first_relevant_at_1": 1.0,
+  "first_relevant_at_3": 1.0,
+  "first_relevant_at_5": 1.0,
+  "depth": [
+    {
+      "k": 1,
+      "recall": 0.6458333333333334,
+      "rag_accuracy": 0.65
+    },
+    {
+      "k": 3,
+      "recall": 0.9583333333333334,
+      "rag_accuracy": 0.75
+    },
+    {
+      "k": 5,
+      "recall": 0.975,
+      "rag_accuracy": 0.7
+    },
+    {
+      "k": 10,
+      "recall": 1.0,
+      "rag_accuracy": 0.75
+    }
+  ],
+  "failure_counts": {
+    "oracle_reasoning": 2,
+    "reasoning": 6,
+    "knowledge": 8,
+    "retrieval": 1,
+    "insufficient": 1
+  }
+}

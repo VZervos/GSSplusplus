@@ -1,0 +1,27 @@
+{
+  "id": "S3",
+  "question": "Does Leopold Lanner's wife make a living using her voice?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q5",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P31",
+        "type": "property",
+        "importance": 4
+      }
+    ],
+    "verbs": [
+      "make"
+    ],
+    "synonyms": [
+      "use"
+    ]
+  },
+  "resource_names": [
+    "Q5"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "S5",
+  "question": "Was the predecessor of Ulf Kristersson in the position of Prime Minister a woman?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q5517890",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P123",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q11019",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Q131894",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Ulf_Kristersson",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Prime_Minister",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "was"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q5517890",
+    "Q11019",
+    "Q131894",
+    "Ulf_Kristersson",
+    "Prime_Minister"
+  ]
+}

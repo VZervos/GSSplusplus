@@ -1,0 +1,31 @@
+{
+  "id": "S131",
+  "question": "Would Pinar Abay typically clean toilets at ING Bank N.V. headquarters?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Pinar Abay",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "ING Bank N.V.",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Q1234567",
+        "type": "property",
+        "importance": 4
+      }
+    ],
+    "verbs": [
+      "clean"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Pinar Abay",
+    "ING Bank N.V."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "experiment": "isummary",
+  "data": "benchmarks/CoLoTa-main/CoLoTa_qa.json",
+  "ids": null,
+  "out_dir": "out/colota_demo",
+  "model": "llama3.1:8b",
+  "ks": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "primary_k": 5,
+  "approaches": {
+    "llm_only": false,
+    "gold_triples": false,
+    "rag_transformers": false,
+    "gss": false,
+    "isummary": true
+  },
+  "metrics": {
+    "accuracy": true,
+    "recall": true,
+    "mrr": true,
+    "mean_rr": true,
+    "first_relevant_rank": true,
+    "failures": true
+  },
+  "gss": {
+    "a": 0.75,
+    "kg": "corpus"
+  },
+  "isummary": {
+    "kappa": 12,
+    "jar": "third_party/iSummary/isummary.jar",
+    "train": "third_party/iSummary/data/wikidata/train.txt",
+    "test": "src/colota_demo/approaches/isummary/java/dummy_test.tsv",
+    "timeout_sec": 900
+  },
+  "embed_model": "sentence-transformers/all-MiniLM-L6-v2"
+}

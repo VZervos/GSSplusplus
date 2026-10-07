@@ -1,0 +1,31 @@
+{
+  "id": "S55",
+  "question": "Did Ala al-Din Muhammad III suffer from a mental disorder?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q30",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P36",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q6256",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "suffer"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q30",
+    "Q6256"
+  ]
+}

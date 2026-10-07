@@ -1,0 +1,99 @@
+{
+  "n": 20,
+  "approaches": [
+    "extract_embed",
+    "ppr"
+  ],
+  "ks": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "primary_k": 5,
+  "metrics": [
+    "accuracy",
+    "failures",
+    "first_relevant_rank",
+    "mean_rr",
+    "mrr",
+    "recall"
+  ],
+  "ppr_accuracy": 0.75,
+  "ppr_accuracy_at_k": {
+    "1": 0.7,
+    "3": 0.85,
+    "5": 0.75,
+    "10": 0.8
+  },
+  "extract_embed_accuracy": 0.75,
+  "extract_embed_accuracy_at_k": {
+    "1": 0.75,
+    "3": 0.8,
+    "5": 0.75,
+    "10": 0.75
+  },
+  "ppr_recall": {
+    "1": 0.6458333333333334,
+    "3": 0.9625,
+    "5": 0.975,
+    "10": 0.975
+  },
+  "ppr_mrr": 1.0,
+  "ppr_mean_rr": 0.7998611111111111,
+  "ppr_mean_first_relevant_rank": 1.0,
+  "ppr_first_relevant_at_k": {
+    "1": 1.0,
+    "3": 1.0,
+    "5": 1.0,
+    "10": 1.0
+  },
+  "extract_embed_recall": {
+    "1": 0.6458333333333334,
+    "3": 0.8666666666666668,
+    "5": 0.8666666666666668,
+    "10": 0.8666666666666668
+  },
+  "extract_embed_mrr": 1.0,
+  "extract_embed_mean_rr": 0.7534722222222222,
+  "extract_embed_mean_first_relevant_rank": 1.0,
+  "extract_embed_first_relevant_at_k": {
+    "1": 1.0,
+    "3": 1.0,
+    "5": 1.0,
+    "10": 1.0
+  },
+  "failure_counts": {},
+  "corpus_size": 37,
+  "model": "llama3.1:8b",
+  "experiment": "ppr_extract_embed",
+  "data": "C:\\Valantis\\JetBrains\\projects\\isl\\GSSplusplus\\benchmarks\\CoLoTa-main\\CoLoTa_qa.json",
+  "config": {
+    "approaches": [
+      "ppr",
+      "extract_embed"
+    ],
+    "ks": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "primary_k": 5,
+    "embed_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "gss": {
+      "a": 0.75,
+      "kg": "corpus"
+    },
+    "ppr": {
+      "alpha": 0.85
+    },
+    "isummary": {
+      "kappa": 12,
+      "jar": "third_party/iSummary/isummary.jar",
+      "train": "third_party/iSummary/data/wikidata/train.txt",
+      "test": "src/colota_demo/approaches/isummary/java/dummy_test.tsv",
+      "timeout_sec": 900
+    }
+  }
+}

@@ -1,0 +1,28 @@
+---> TIMES 1 
+
+
+
+HERE AGAIN!
+NODDII -<http://www.wikidata.org/entity/Q15804> 1
+WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
+COUN1 13
+GOOD TOTAL :13
+CONTINUE !
+all 153858 good 13 FASLE 0
+HERE 11 2
+KEY <http://www.wikidata.org/entity/Q15804>
+KEY <http://www.bigdata.com/rdf#serviceParam>
+BROKER FOR <http://www.wikidata.org/entity/Q15804>
+---> TIMES 1 
+
+
+
+HERE AGAIN!
+I FOUND AGAIN :http://www.wikidata.org/entity/Q15804
+I FOUND AGAIN :http://www.wikidata.org/entity/Q15804
+TOP NUMBER OF REPETIIONS - BREAK!
+BREAK AGAIN !
+CONTINUE !
+BREAKING THIS TASK! to next POSOSTO!
+NORMAR NODEC= NaN EDGEC NaN
+RANDOM NODEC= NaN EDGEC NaN

@@ -1,0 +1,21 @@
+question_id,gold,llm,gold_triples,rag_1,rag_3,rag_5,rag_10,recall_1,recall_3,recall_5,recall_10,mrr,mean_rr,first_relevant_rank,failure_tags,question
+S1,True,False,False,False,False,False,False,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,oracle_reasoning;reasoning,"If both places have equal population growth, is the population in Horsens going to reach 60000 before Ikast?"
+S2,False,False,False,False,False,False,False,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,,Is Yui Yuigahama's pet a corgi?
+S3,True,False,True,False,True,True,True,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,knowledge,Does Leopold Lanner's wife make a living using her voice?
+S5,True,False,True,True,True,True,True,0.5000,1.0000,1.0000,1.0000,1.0000,0.6667,1,knowledge,Was the predecessor of Ulf Kristersson in the position of Prime Minister a woman?
+S13,False,True,False,False,False,False,False,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,knowledge,Could someone in Vaughan take a taxi to the Jamjuree Art Gallery?
+S37,False,False,False,False,False,False,False,0.2500,0.5000,0.5000,1.0000,1.0000,0.4340,1,retrieval,Could you travel from Gujan to Aousserd only by car?
+S51,True,False,True,False,False,False,False,0.3333,0.6667,1.0000,1.0000,1.0000,0.5833,1,knowledge;reasoning,Could Ianis Hagi’s dad have seen his debut in Serie A?
+S87,False,False,False,False,False,False,False,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Could Paolo Cannavaro have suffered from middle child syndrome?
+S95,False,False,False,False,False,False,False,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Could an IKCO Samand make a vlog on its own?
+S131,False,False,False,False,False,False,False,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Would Pinar Abay typically clean toilets at ING Bank N.V. headquarters?
+S142,True,False,True,True,True,False,True,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,knowledge;reasoning,Can Arimasa Mori talk to citizens of New Brunswick with no translators involved?
+S160,True,False,True,False,False,False,False,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,knowledge;reasoning,Could Arsen Minasian travel to Tehran without requiring a passport?
+S164,True,False,True,True,True,True,True,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,knowledge,Would it be likely for David Fenimore Anderson to explain the Pythagorian theorem in a class?
+S175,False,False,False,False,False,False,False,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,,Is Lee Hyori a major singer in the Disco genre?
+S184,False,False,False,False,False,False,False,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Did Bernard Gohienetxe experience a peaceful death?
+S4,False,False,False,INSUFFICIENT,INSUFFICIENT,INSUFFICIENT,INSUFFICIENT,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,reasoning;insufficient,Would it have been possible for Maria de Ventadorn to speak to someone 100 miles away?
+S10,False,False,False,False,False,False,False,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Would The Tinker Tailor Soldier Spy be an appropriate film to show in a preschool class?
+S34,True,False,False,False,False,False,False,0.3333,1.0000,1.0000,1.0000,1.0000,0.6111,1,oracle_reasoning;reasoning,Are any of Mahmoud Dowlatabadi's works in the genre of The Makioka Sisters?
+S55,True,True,True,True,True,True,True,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,1,,Did Ala al-Din Muhammad III suffer from a mental disorder?
+S124,True,False,True,False,True,True,True,0.5000,1.0000,1.0000,1.0000,1.0000,0.7500,1,knowledge,Did Ivan Shuisky suffer the same fate as Benny Frey?

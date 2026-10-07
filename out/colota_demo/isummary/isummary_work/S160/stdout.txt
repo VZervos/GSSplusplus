@@ -1,0 +1,18 @@
+---> TIMES 1 
+
+
+
+HERE AGAIN!
+NODDII -<http://www.wikidata.org/entity/Q3616> 1
+WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
+COUN1 1
+GOOD TOTAL :0
+HERE AGAIN!
+I FOUND AGAIN :http://www.wikidata.org/entity/Q3616
+I FOUND AGAIN :http://www.wikidata.org/entity/Q3616
+TOP NUMBER OF REPETIIONS - BREAK!
+BREAK AGAIN !
+CONTINUE !
+BREAKING THIS TASK! to next POSOSTO!
+NORMAR NODEC= NaN EDGEC NaN
+RANDOM NODEC= NaN EDGEC NaN

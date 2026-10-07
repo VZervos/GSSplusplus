@@ -1,0 +1,206 @@
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : GPT-3.5 Turbo
+Mode: : original
+Example no: : 1
+Query: : Will the Albany in Georgia reach a hundred thousand occupants before the one in New York?
+Answer: : FALSE
+proof: Albany in New York is significantly larger than Albany in Georgia, with a population likely to be closer to or even surpassing a hundred thousand already. Albany in Georgia, on the other hand, has a population far lower than a hundred thousand and is not experiencing population growth at a rate that would allow it to reach that milestone before Albany in New York.
+
+Therefore, the answer is False.
+Selected option:: false
+Dataset: : CV
+Path: : data/
+Scoring Method: : zero shot CoT
+LLM Name: : gpt-4o
+Mode: : original
+Example no: : 1
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 292
+Query: : Can a snake swallow a M41 DK-1?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 290
+Query: : Can a snake swallow a Infanterikanonvagn 91?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 290
+Query: : Can a snake swallow a Infanterikanonvagn 91?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 290
+Query: : Can a snake swallow a Infanterikanonvagn 91?
+Answer: : FALSE
+Dataset: : QA
+Path: : data/
+Scoring Method: : few shot CoT
+LLM Name: : gpt-o1
+Mode: : modified
+Example no: : 290
+Query: : Can a snake swallow a Infanterikanonvagn 91?
+Answer: : FALSE

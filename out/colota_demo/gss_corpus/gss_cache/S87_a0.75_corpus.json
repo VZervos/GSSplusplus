@@ -1,0 +1,18 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Paolo_Cannavaro",
+    "p": "http://www.wikidata.org/prop/direct/sibling",
+    "o": "http://www.wikidata.org/entity/Fabio_Cannavaro",
+    "s_label": "Paolo Cannavaro",
+    "p_label": "sibling",
+    "o_label": "Fabio Cannavaro",
+    "triple": "(Paolo Cannavaro, sibling, Fabio Cannavaro)",
+    "importance": 0.3333333333333333,
+    "_s_name": "paolo cannavaro",
+    "_o_name": "fabio cannavaro",
+    "_query_keywords": "{'paolo', 'syndrome?', 'could paolo cannavaro have suffered from middle child syndrome?', 'child', 'middle', 'suffered', 'cannavaro', 'paolo cannavaro', 'could', 'have', 'from', 'q159852'}",
+    "similarity": 0.7678104043006897,
+    "final_score": 0.4419526010751724,
+    "rank": 1
+  }
+]

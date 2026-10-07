@@ -1,0 +1,26 @@
+{
+  "id": "S175",
+  "question": "Is Lee Hyori a major singer in the Disco genre?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Lee_Hyori",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Disco",
+        "type": "resource",
+        "importance": 3
+      }
+    ],
+    "verbs": [
+      "is"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Lee_Hyori",
+    "Disco"
+  ]
+}

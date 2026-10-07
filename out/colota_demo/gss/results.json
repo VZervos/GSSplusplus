@@ -1,0 +1,262 @@
+[
+  {
+    "id": "S1",
+    "question": "If both places have equal population growth, is the population in Horsens going to reach 60000 before Ikast?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "False",
+      "5": "False",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S2",
+    "question": "Is Yui Yuigahama's pet a corgi?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S3",
+    "question": "Does Leopold Lanner's wife make a living using her voice?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S5",
+    "question": "Was the predecessor of Ulf Kristersson in the position of Prime Minister a woman?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "True",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S13",
+    "question": "Could someone in Vaughan take a taxi to the Jamjuree Art Gallery?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S37",
+    "question": "Could you travel from Gujan to Aousserd only by car?",
+    "gold": "False",
+    "n_gold_triples": 4,
+    "gss": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S51",
+    "question": "Could Ianis Hagi’s dad have seen his debut in Serie A?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "True",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S87",
+    "question": "Could Paolo Cannavaro have suffered from middle child syndrome?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S95",
+    "question": "Could an IKCO Samand make a vlog on its own?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S131",
+    "question": "Would Pinar Abay typically clean toilets at ING Bank N.V. headquarters?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S142",
+    "question": "Can Arimasa Mori talk to citizens of New Brunswick with no translators involved?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S160",
+    "question": "Could Arsen Minasian travel to Tehran without requiring a passport?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S164",
+    "question": "Would it be likely for David Fenimore Anderson to explain the Pythagorian theorem in a class?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S175",
+    "question": "Is Lee Hyori a major singer in the Disco genre?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S184",
+    "question": "Did Bernard Gohienetxe experience a peaceful death?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S4",
+    "question": "Would it have been possible for Maria de Ventadorn to speak to someone 100 miles away?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S10",
+    "question": "Would The Tinker Tailor Soldier Spy be an appropriate film to show in a preschool class?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S34",
+    "question": "Are any of Mahmoud Dowlatabadi's works in the genre of The Makioka Sisters?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S55",
+    "question": "Did Ala al-Din Muhammad III suffer from a mental disorder?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "gss": {
+      "1": "True",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S124",
+    "question": "Did Ivan Shuisky suffer the same fate as Benny Frey?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  }
+]

@@ -1,0 +1,6 @@
+system: |-
+  Task: You will be given a qestion, and you are required to answer whether the given statement is True or False. Think step by step and state your reason, then specify your answer by saying: "Therefore, the answer is True" or "Therefore, the answer is False". Your response should not exceed 100 tokens.
+
+
+input_template: |-
+  Query: {{QUERY}}

@@ -1,0 +1,39 @@
+system: |-
+  Task: You are presented with a question that answering it requires reasoning about types of objects. By types, we mean the classes to which the objects belong to, such as "humans, animals, art works, etc.". You are asked to express general rules about what the types of object in the question need to be that would make the answer to be "yes". Remember, you are asked to mention what the types need to be to make the answer "yes", so you mustn't repeat what their current types are. Please take the following steps:
+
+  1- Consider the question about the objects and the First-order logic form of it. Provide a general rule about the types of objects in the question that make the answer to the question "yes". Think step-by-step and try to state the necessary and sufficient conditions of what the types of objects in the question need to be to make the answer "yes".
+  
+  2- Remember, the key is to think about the predicate and what the types of objects need to be to make the answer "yes". You should not repeat the types of objects themselves in your response. You should only mention the types of objects that make the answer "yes".
+  
+  2- Write this rule in the form of a First-order logic statement that its variables are conditioned based on their types. In other words, the acceptable format is: "First-Order Logic Statement: predicate(x, y) | x: type of x, y: type of y"
+
+  Important: End your response in the above format and don't say anything after it. Remember that you have to specify what the types of objects in the question needed to be to make the answer "yes", and not repeating the types of objects themselves.
+
+
+  Below are some examples to help you:
+  ------
+  Question: Can I hold Bing in a Basket?
+  First-Order Logic Question: can hold( basket, Bing)
+  Response: 
+  1- The question is asking if a "basket" can hold "Bing" in it. We need to think about the requirements of two objects x and y such that x can hold y in it. In general, an object x can hold another object y if x is a physical container and y is a physical object. Therefore, the answer to the question can only be "yes" if x is a physical container and y is a physical object.
+  2- First-Order Logic Statement: can hold( x, y) | x: physical container, y: physical object
+
+  ------
+  Question: Can someone eat utmail?
+  First-Order Logic Question: can eat( someone, utmail)
+  Response: 1- The question is asking if someone (which implicitly means a person) can eat utmail. We need to think about the requirements of two objects x and y such that x can eat y. In general, a person x can eat an object y if y is an edible object. However, if y is not an edible object, no person x can eat it.
+  2- First-Order Logic Statement: can eat( x, y) | x: person, y: edible object
+
+  ------
+  Question: Does an oxns breathe oxygen?
+  First-Order Logic Question: breathes(oxns, oxygen)
+  Response: 1- The question is asking if an oxns can breathe oxygen.  We need to think about the requirements of two objects x and y such that x breathes y. In general, only living creatures breathe. Also, only gases are breathable. Therefore, an object x can breathe an object y if x is a living creature and y is a gas. However, if x is not a living creature, then it doesn't breathe. Also, if y is not a gas, it cannot be breathed by x.
+  2- First-Order Logic Statement: breathes( x, y) | x: living creature, y: gas
+
+
+  ===
+  Now, it's your turn. Answer the following question:
+
+input_template: |-
+  Question: {{QUESTION}}
+  First-order logic Question: {{FOL_QUESTION}}

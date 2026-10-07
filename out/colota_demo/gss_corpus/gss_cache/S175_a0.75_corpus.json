@@ -1,0 +1,34 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Lee_Hyori",
+    "p": "http://www.wikidata.org/prop/direct/genre",
+    "o": "http://www.wikidata.org/entity/pop_music",
+    "s_label": "Lee Hyori",
+    "p_label": "genre",
+    "o_label": "pop music",
+    "triple": "(Lee Hyori, genre, pop music)",
+    "importance": 0.3333333333333333,
+    "_s_name": "lee hyori",
+    "_o_name": "pop music",
+    "_query_keywords": "{'lee_hyori', 'hyori', 'is', 'a', 'lee', 'genre?', 'singer', 'in', 'disco', 'is lee hyori a major singer in the disco genre?', 'major', 'the'}",
+    "similarity": 0.8617769479751587,
+    "final_score": 0.4654442369937897,
+    "rank": 1
+  },
+  {
+    "s": "http://www.wikidata.org/entity/Lee_Hyori",
+    "p": "http://www.wikidata.org/prop/direct/genre",
+    "o": "http://www.wikidata.org/entity/K-pop",
+    "s_label": "Lee Hyori",
+    "p_label": "genre",
+    "o_label": "K-pop",
+    "triple": "(Lee Hyori, genre, K-pop)",
+    "importance": 0.3333333333333333,
+    "_s_name": "lee hyori",
+    "_o_name": "k-pop",
+    "_query_keywords": "{'lee_hyori', 'hyori', 'is', 'a', 'lee', 'genre?', 'singer', 'in', 'disco', 'is lee hyori a major singer in the disco genre?', 'major', 'the'}",
+    "similarity": 0.820823073387146,
+    "final_score": 0.4552057683467865,
+    "rank": 2
+  }
+]

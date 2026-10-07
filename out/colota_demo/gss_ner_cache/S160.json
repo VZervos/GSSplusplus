@@ -1,0 +1,25 @@
+{
+  "id": "S160",
+  "question": "Could Arsen Minasian travel to Tehran without requiring a passport?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q252",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P31",
+        "type": "property",
+        "importance": 4
+      }
+    ],
+    "verbs": [
+      "travel"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q252"
+  ]
+}

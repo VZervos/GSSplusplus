@@ -1,0 +1,667 @@
+[
+  {
+    "id": "S1",
+    "question": "If both places have equal population growth, is the population in Horsens going to reach 60000 before Ikast?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.75,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Horsens, population, 59,449)",
+        "rank": 1,
+        "score": 0.44406968355178833
+      },
+      {
+        "triple": "(Ikast, population, 15,979)",
+        "rank": 2,
+        "score": 0.4281877279281616
+      }
+    ],
+    "gss_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S2",
+    "question": "Is Yui Yuigahama's pet a corgi?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Yui Yuigahama, has pet, Sablé)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Sablé, animal breed, dachshund)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S3",
+    "question": "Does Leopold Lanner's wife make a living using her voice?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.5,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Leopold Lanner, spouse, Stefanie Hertel)",
+        "rank": 1,
+        "score": 0.45383618772029877
+      },
+      {
+        "triple": "(Stefanie Hertel, occupation, singer)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.5,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S5",
+    "question": "Was the predecessor of Ulf Kristersson in the position of Prime Minister a woman?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Ulf Kristersson, position held, Prime Minister of Sweden, {replaces, Magdalena Andersson})",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Magdalena Andersson, sex or gender, female)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S13",
+    "question": "Could someone in Vaughan take a taxi to the Jamjuree Art Gallery?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.75,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Vaughan, description, city in Ontario, Canada)",
+        "rank": 1,
+        "score": 0.4375177323818207
+      },
+      {
+        "triple": "(Jamjuree Art Gallery, country, Thailand)",
+        "rank": 2,
+        "score": 0.43129272758960724
+      }
+    ],
+    "gss_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S37",
+    "question": "Could you travel from Gujan to Aousserd only by car?",
+    "gold": "False",
+    "n_gold_triples": 4,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.375,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Gujan, country, Iran)",
+        "rank": 1,
+        "score": 0.4365427792072296
+      },
+      {
+        "triple": "(Iran, continent, Asia)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Aousserd, country, Western Sahara)",
+        "rank": 2,
+        "score": 0.4180648624897003
+      },
+      {
+        "triple": "(Western Sahara, continent, Africa)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.25,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S51",
+    "question": "Could Ianis Hagi’s dad have seen his debut in Serie A?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Ianis Hagi, member of sports team, ACF Fiorentina {start time, 2016})",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(ACF Fiorentina, league, Serie A)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Ianis Hagi, father, Gheorghe Hagi)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S87",
+    "question": "Could Paolo Cannavaro have suffered from middle child syndrome?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 1.0,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Paolo Cannavaro, sibling, Fabio Cannavaro)",
+        "rank": 1,
+        "score": 0.4419526010751724
+      }
+    ],
+    "gss_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S95",
+    "question": "Could an IKCO Samand make a vlog on its own?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(IKCO Samand, instance of, automobile model)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S131",
+    "question": "Would Pinar Abay typically clean toilets at ING Bank N.V. headquarters?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 1.0,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Pinar Abay, position held, chief executive officer (of, ING Bank N.V.)",
+        "rank": 1,
+        "score": 0.44892770051956177
+      }
+    ],
+    "gss_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S142",
+    "question": "Can Arimasa Mori talk to citizens of New Brunswick with no translators involved?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Arimasa Mori, languages spoken, written or signed, French)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(New Brunswick, official language, French)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S160",
+    "question": "Could Arsen Minasian travel to Tehran without requiring a passport?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Arsen Minasian, country of citizenship, Iran)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Tehran, country, Iran)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S164",
+    "question": "Would it be likely for David Fenimore Anderson to explain the Pythagorian theorem in a class?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(David Fenimore Anderson, occupation, professor of mathematics)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S175",
+    "question": "Is Lee Hyori a major singer in the Disco genre?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.75,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Lee Hyori, genre, pop music)",
+        "rank": 1,
+        "score": 0.4654442369937897
+      },
+      {
+        "triple": "(Lee Hyori, genre, K-pop)",
+        "rank": 2,
+        "score": 0.4552057683467865
+      }
+    ],
+    "gss_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S184",
+    "question": "Did Bernard Gohienetxe experience a peaceful death?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Bernard Gohienetxe, cause of death, decapitation)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S4",
+    "question": "Would it have been possible for Maria de Ventadorn to speak to someone 100 miles away?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Maria de Ventadorn, date of birth, 12. century)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Maria de Ventadorn, date of death, 1222)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S10",
+    "question": "Would The Tinker Tailor Soldier Spy be an appropriate film to show in a preschool class?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Tinker Tailor Soldier Spy, ICAA rating, not recommended for children under 12)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S34",
+    "question": "Are any of Mahmoud Dowlatabadi's works in the genre of The Makioka Sisters?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.5,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Mahmoud Dowlatabadi, notable work, Kelidar)",
+        "rank": 1,
+        "score": 0.4488878846168518
+      },
+      {
+        "triple": "(Kelidar, genre, novel)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(The Makioka Sisters, genre, novel)",
+        "rank": 2,
+        "score": 0.3038918191194534
+      }
+    ],
+    "gss_recall": {
+      "1": 0.3333333333333333,
+      "3": 0.6666666666666666,
+      "5": 0.6666666666666666,
+      "10": 0.6666666666666666
+    },
+    "gss": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S55",
+    "question": "Did Ala al-Din Muhammad III suffer from a mental disorder?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "gss_mrr": 0.0,
+    "gss_mean_rr": 0.0,
+    "gss_first_relevant_rank": null,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Ala al-Din Muhammad III, medical condition, melancholia)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "gss_recall": {
+      "1": 0.0,
+      "3": 0.0,
+      "5": 0.0,
+      "10": 0.0
+    },
+    "gss": {
+      "1": "INSUFFICIENT",
+      "3": "INSUFFICIENT",
+      "5": "INSUFFICIENT",
+      "10": "INSUFFICIENT"
+    },
+    "failures": []
+  },
+  {
+    "id": "S124",
+    "question": "Did Ivan Shuisky suffer the same fate as Benny Frey?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "gss_mrr": 1.0,
+    "gss_mean_rr": 0.75,
+    "gss_first_relevant_rank": 1,
+    "gss_gold_ranks": [
+      {
+        "triple": "(Ivan Shuisky, cause of death, carbon monoxide poisoning)",
+        "rank": 2,
+        "score": 0.43218402564525604
+      },
+      {
+        "triple": "(Benny Frey, cause of death, carbon monoxide poisoning)",
+        "rank": 1,
+        "score": 0.4322108328342438
+      }
+    ],
+    "gss_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "gss": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "S1",
+  "question": "If both places have equal population growth, is the population in Horsens going to reach 60000 before Ikast?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Horsens",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Ikast",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Q11424",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "have",
+      "going",
+      "reach"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Horsens",
+    "Ikast",
+    "Q11424"
+  ]
+}

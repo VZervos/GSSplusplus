@@ -1,0 +1,31 @@
+{
+  "id": "S164",
+  "question": "Would it be likely for David Fenimore Anderson to explain the Pythagorian theorem in a class?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q2513",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P57",
+        "type": "property",
+        "importance": 5
+      },
+      {
+        "name": "Q17537576",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "explain"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q2513",
+    "Q17537576"
+  ]
+}

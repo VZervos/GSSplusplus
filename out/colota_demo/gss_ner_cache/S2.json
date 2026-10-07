@@ -1,0 +1,31 @@
+{
+  "id": "S2",
+  "question": "Is Yui Yuigahama's pet a corgi?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q2513",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Q11424",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "P57",
+        "type": "property",
+        "importance": 5
+      }
+    ],
+    "verbs": [
+      "is"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q2513",
+    "Q11424"
+  ]
+}

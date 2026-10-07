@@ -1,0 +1,1192 @@
+[
+  {
+    "id": "S1",
+    "question": "If both places have equal population growth, is the population in Horsens going to reach 60000 before Ikast?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Horsens, population, 59,449)",
+        "rank": 1,
+        "score": 0.24997782543655983
+      },
+      {
+        "triple": "(Ikast, population, 15,979)",
+        "rank": 2,
+        "score": 0.24997782543655983
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Horsens, population, 59,449)",
+        "rank": 1,
+        "score": 0.571479856967926
+      },
+      {
+        "triple": "(Ikast, population, 15,979)",
+        "rank": 2,
+        "score": 0.43304914236068726
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S2",
+    "question": "Is Yui Yuigahama's pet a corgi?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Yui Yuigahama, has pet, Sablé)",
+        "rank": 1,
+        "score": 0.40233025973300984
+      },
+      {
+        "triple": "(Sablé, animal breed, dachshund)",
+        "rank": 2,
+        "score": 0.3273302597330098
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.5,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Yui Yuigahama, has pet, Sablé)",
+        "rank": 1,
+        "score": 0.7356466054916382
+      },
+      {
+        "triple": "(Sablé, animal breed, dachshund)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S3",
+    "question": "Does Leopold Lanner's wife make a living using her voice?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Leopold Lanner, spouse, Stefanie Hertel)",
+        "rank": 1,
+        "score": 0.40233025973300984
+      },
+      {
+        "triple": "(Stefanie Hertel, occupation, singer)",
+        "rank": 2,
+        "score": 0.3273302597330098
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.5,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Leopold Lanner, spouse, Stefanie Hertel)",
+        "rank": 1,
+        "score": 0.6710675954818726
+      },
+      {
+        "triple": "(Stefanie Hertel, occupation, singer)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S5",
+    "question": "Was the predecessor of Ulf Kristersson in the position of Prime Minister a woman?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.5166666666666667,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Ulf Kristersson, position held, Prime Minister of Sweden, {replaces, Magdalena Andersson})",
+        "rank": 1,
+        "score": 0.49995412159288244
+      },
+      {
+        "triple": "(Magdalena Andersson, sex or gender, female)",
+        "rank": 30,
+        "score": 1.529280237250001e-06
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "ppr": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.5,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Ulf Kristersson, position held, Prime Minister of Sweden, {replaces, Magdalena Andersson})",
+        "rank": 1,
+        "score": 0.6123334765434265
+      },
+      {
+        "triple": "(Magdalena Andersson, sex or gender, female)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S13",
+    "question": "Could someone in Vaughan take a taxi to the Jamjuree Art Gallery?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Vaughan, description, city in Ontario, Canada)",
+        "rank": 2,
+        "score": 0.24997782543655983
+      },
+      {
+        "triple": "(Jamjuree Art Gallery, country, Thailand)",
+        "rank": 1,
+        "score": 0.24997782543655983
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Vaughan, description, city in Ontario, Canada)",
+        "rank": 1,
+        "score": 0.5174778699874878
+      },
+      {
+        "triple": "(Jamjuree Art Gallery, country, Thailand)",
+        "rank": 2,
+        "score": 0.4536811411380768
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S37",
+    "question": "Could you travel from Gujan to Aousserd only by car?",
+    "gold": "False",
+    "n_gold_triples": 4,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.5083333333333333,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Gujan, country, Iran)",
+        "rank": 2,
+        "score": 0.17675664393339485
+      },
+      {
+        "triple": "(Iran, continent, Asia)",
+        "rank": 5,
+        "score": 0.13925664393339485
+      },
+      {
+        "triple": "(Aousserd, country, Western Sahara)",
+        "rank": 1,
+        "score": 0.20115980715107704
+      },
+      {
+        "triple": "(Western Sahara, continent, Africa)",
+        "rank": 3,
+        "score": 0.16365980715107703
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.25,
+      "3": 0.75,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.375,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Gujan, country, Iran)",
+        "rank": 1,
+        "score": 0.5086804032325745
+      },
+      {
+        "triple": "(Iran, continent, Asia)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(Aousserd, country, Western Sahara)",
+        "rank": 2,
+        "score": 0.377006471157074
+      },
+      {
+        "triple": "(Western Sahara, continent, Africa)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.25,
+      "3": 0.5,
+      "5": 0.5,
+      "10": 0.5
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S51",
+    "question": "Could Ianis Hagi’s dad have seen his debut in Serie A?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.611111111111111,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Ianis Hagi, member of sports team, ACF Fiorentina {start time, 2016})",
+        "rank": 3,
+        "score": 0.1925521817684239
+      },
+      {
+        "triple": "(ACF Fiorentina, league, Serie A)",
+        "rank": 1,
+        "score": 0.24997782543655983
+      },
+      {
+        "triple": "(Ianis Hagi, father, Gheorghe Hagi)",
+        "rank": 2,
+        "score": 0.1925521817684239
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.3333333333333333,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.611111111111111,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Ianis Hagi, member of sports team, ACF Fiorentina {start time, 2016})",
+        "rank": 2,
+        "score": 0.48933145403862
+      },
+      {
+        "triple": "(ACF Fiorentina, league, Serie A)",
+        "rank": 3,
+        "score": 0.23713022470474243
+      },
+      {
+        "triple": "(Ianis Hagi, father, Gheorghe Hagi)",
+        "rank": 1,
+        "score": 0.5716097354888916
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.3333333333333333,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S87",
+    "question": "Could Paolo Cannavaro have suffered from middle child syndrome?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Paolo Cannavaro, sibling, Fabio Cannavaro)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Paolo Cannavaro, sibling, Fabio Cannavaro)",
+        "rank": 1,
+        "score": 0.5550304055213928
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S95",
+    "question": "Could an IKCO Samand make a vlog on its own?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(IKCO Samand, instance of, automobile model)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(IKCO Samand, instance of, automobile model)",
+        "rank": 1,
+        "score": 0.35842007398605347
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S131",
+    "question": "Would Pinar Abay typically clean toilets at ING Bank N.V. headquarters?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Pinar Abay, position held, chief executive officer (of, ING Bank N.V.)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Pinar Abay, position held, chief executive officer (of, ING Bank N.V.)",
+        "rank": 1,
+        "score": 0.5567988753318787
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S142",
+    "question": "Can Arimasa Mori talk to citizens of New Brunswick with no translators involved?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Arimasa Mori, languages spoken, written or signed, French)",
+        "rank": 1,
+        "score": 0.24997782543655983
+      },
+      {
+        "triple": "(New Brunswick, official language, French)",
+        "rank": 2,
+        "score": 0.24997782543655983
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Arimasa Mori, languages spoken, written or signed, French)",
+        "rank": 1,
+        "score": 0.5813685655593872
+      },
+      {
+        "triple": "(New Brunswick, official language, French)",
+        "rank": 2,
+        "score": 0.5038429498672485
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S160",
+    "question": "Could Arsen Minasian travel to Tehran without requiring a passport?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Arsen Minasian, country of citizenship, Iran)",
+        "rank": 1,
+        "score": 0.31601593368034886
+      },
+      {
+        "triple": "(Tehran, country, Iran)",
+        "rank": 2,
+        "score": 0.31601593368034886
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Arsen Minasian, country of citizenship, Iran)",
+        "rank": 1,
+        "score": 0.6818728446960449
+      },
+      {
+        "triple": "(Tehran, country, Iran)",
+        "rank": 2,
+        "score": 0.4132111966609955
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S164",
+    "question": "Would it be likely for David Fenimore Anderson to explain the Pythagorian theorem in a class?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(David Fenimore Anderson, occupation, professor of mathematics)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(David Fenimore Anderson, occupation, professor of mathematics)",
+        "rank": 1,
+        "score": 0.611466646194458
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S175",
+    "question": "Is Lee Hyori a major singer in the Disco genre?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Lee Hyori, genre, pop music)",
+        "rank": 2,
+        "score": 0.3851024519365512
+      },
+      {
+        "triple": "(Lee Hyori, genre, K-pop)",
+        "rank": 1,
+        "score": 0.3851024519365512
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Lee Hyori, genre, pop music)",
+        "rank": 1,
+        "score": 0.740096926689148
+      },
+      {
+        "triple": "(Lee Hyori, genre, K-pop)",
+        "rank": 2,
+        "score": 0.6883915662765503
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S184",
+    "question": "Did Bernard Gohienetxe experience a peaceful death?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Bernard Gohienetxe, cause of death, decapitation)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Bernard Gohienetxe, cause of death, decapitation)",
+        "rank": 1,
+        "score": 0.7205406427383423
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S4",
+    "question": "Would it have been possible for Maria de Ventadorn to speak to someone 100 miles away?",
+    "gold": "False",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Maria de Ventadorn, date of birth, 12. century)",
+        "rank": 1,
+        "score": 0.3851024519365512
+      },
+      {
+        "triple": "(Maria de Ventadorn, date of death, 1222)",
+        "rank": 2,
+        "score": 0.3851024519365512
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "False",
+      "5": "True",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Maria de Ventadorn, date of birth, 12. century)",
+        "rank": 1,
+        "score": 0.5647279620170593
+      },
+      {
+        "triple": "(Maria de Ventadorn, date of death, 1222)",
+        "rank": 2,
+        "score": 0.5191329121589661
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S10",
+    "question": "Would The Tinker Tailor Soldier Spy be an appropriate film to show in a preschool class?",
+    "gold": "False",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Tinker Tailor Soldier Spy, ICAA rating, not recommended for children under 12)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "True",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Tinker Tailor Soldier Spy, ICAA rating, not recommended for children under 12)",
+        "rank": 1,
+        "score": 0.66612708568573
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S34",
+    "question": "Are any of Mahmoud Dowlatabadi's works in the genre of The Makioka Sisters?",
+    "gold": "True",
+    "n_gold_triples": 3,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.611111111111111,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Mahmoud Dowlatabadi, notable work, Kelidar)",
+        "rank": 1,
+        "score": 0.33017694977450984
+      },
+      {
+        "triple": "(Kelidar, genre, novel)",
+        "rank": 2,
+        "score": 0.2982160479505009
+      },
+      {
+        "triple": "(The Makioka Sisters, genre, novel)",
+        "rank": 3,
+        "score": 0.1697787010986099
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.3333333333333333,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "False",
+      "10": "False"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.3333333333333333,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Mahmoud Dowlatabadi, notable work, Kelidar)",
+        "rank": 1,
+        "score": 0.639506459236145
+      },
+      {
+        "triple": "(Kelidar, genre, novel)",
+        "rank": null,
+        "score": null
+      },
+      {
+        "triple": "(The Makioka Sisters, genre, novel)",
+        "rank": null,
+        "score": null
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.3333333333333333,
+      "3": 0.3333333333333333,
+      "5": 0.3333333333333333,
+      "10": 0.3333333333333333
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "False",
+      "5": "False",
+      "10": "False"
+    },
+    "failures": []
+  },
+  {
+    "id": "S55",
+    "question": "Did Ala al-Din Muhammad III suffer from a mental disorder?",
+    "gold": "True",
+    "n_gold_triples": 1,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 1.0,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Ala al-Din Muhammad III, medical condition, melancholia)",
+        "rank": 1,
+        "score": 0.49995412159288244
+      }
+    ],
+    "ppr_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 1.0,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Ala al-Din Muhammad III, medical condition, melancholia)",
+        "rank": 1,
+        "score": 0.6470559239387512
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "True",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  },
+  {
+    "id": "S124",
+    "question": "Did Ivan Shuisky suffer the same fate as Benny Frey?",
+    "gold": "True",
+    "n_gold_triples": 2,
+    "ppr_mrr": 1.0,
+    "ppr_mean_rr": 0.75,
+    "ppr_first_relevant_rank": 1,
+    "ppr_gold_ranks": [
+      {
+        "triple": "(Ivan Shuisky, cause of death, carbon monoxide poisoning)",
+        "rank": 2,
+        "score": 0.36483025973300975
+      },
+      {
+        "triple": "(Benny Frey, cause of death, carbon monoxide poisoning)",
+        "rank": 1,
+        "score": 0.36483025973300975
+      }
+    ],
+    "ppr_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "ppr": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "extract_embed_mrr": 1.0,
+    "extract_embed_mean_rr": 0.75,
+    "extract_embed_first_relevant_rank": 1,
+    "extract_embed_gold_ranks": [
+      {
+        "triple": "(Ivan Shuisky, cause of death, carbon monoxide poisoning)",
+        "rank": 2,
+        "score": 0.45837682485580444
+      },
+      {
+        "triple": "(Benny Frey, cause of death, carbon monoxide poisoning)",
+        "rank": 1,
+        "score": 0.5242955684661865
+      }
+    ],
+    "extract_embed_recall": {
+      "1": 0.5,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "extract_embed": {
+      "1": "False",
+      "3": "True",
+      "5": "True",
+      "10": "True"
+    },
+    "failures": []
+  }
+]

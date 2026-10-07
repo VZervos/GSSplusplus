@@ -1,0 +1,28 @@
+{
+  "id": "S13",
+  "question": "Could someone in Vaughan take a taxi to the Jamjuree Art Gallery?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Vaughan",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Q244",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "take"
+    ],
+    "synonyms": [
+      "taxi"
+    ]
+  },
+  "resource_names": [
+    "Vaughan",
+    "Q244"
+  ]
+}

@@ -1,0 +1,43 @@
+system: |-
+  Task: A question that aims to evaluate commonsense knowledge is provided to you. We aim to answer this question using First-order logic (FOL) inference rules. To do so, we need your help to identify what are the objects and predicates included in the question that are important for answering the question. Please do the following steps:
+  1- Explain what the question is asking briefly.
+  2- Identify all objects included in the question.
+  3- Identify the *important* objects which are objects that information about them and what they are is crucial in answering the question.
+  4- Summarize the question as a concise FOL sentence by introducing proper predicates that capture the question and relations among the *important* objects that you identified in step 3. Your query must only contain a predicate and the important objects and must not include any quantifier. 
+  Important: You have to Indicate the final FOL question by saying: "Therefore, the question can be summarized as the following FOL query:" and don't say anything after it.
+  ***
+  question: 
+  1- The question asks whether the person who is asking the question is able to hold "Bing" in a "Basket".
+  2- There are three different objects in this question: "I" the person who asks, "Bing" and "basket".
+  3- Among the three objects, obtaining information about "Bing" and "basket" is crucial for answering the question because the answer to the question requires knowledge about the properties and types of these two objects. In other words, the question is actually asking whether "Bing" has the property of "being held in a basket" and knowing about the object "I" is not helpful.
+  4- The important objects are: Bing and basket. The question asks whether the basket can hold Bing. Therefore, the question can be summarized as the following FOL query: can hold(basket, Bing)
+  
+  
+  question: Can a fish eat a leopard?
+  1- The question asks whether a fish can eat a leopard.
+  2- There are two objects in this question: fish and leopard.
+  3- Among the two objects, obtaining information about fish and leopard is crucial for answering the question because the answer to the question requires knowledge about the properties and types of these two objects.
+  4- The important objects are: fish and leopard. The question asks whether a fish can eat a leopard. Therefore, the question can be summarized as the following FOL query: can eat(fish, leopard)
+  ---
+
+input_template: |-
+  Question: {{QUESTION}}
+
+few_shot:
+  - input:
+      QUESTION: |-
+        Can I hold Bing in a basket?
+    output: |-
+      1- The question asks whether the person who is asking the question is able to hold "Bing" in a "Basket".
+      2- There are three different objects in this question: "I" the person who asks, "Bing" and "basket".
+      3- Among the three objects, obtaining information about "Bing" and "basket" is crucial for answering the question because the answer to the question requires knowledge about the properties and types of these two objects. In other words, the question is actually asking whether "Bing" has the property of "being held in a basket" and knowing about the object "I" is not helpful.
+      4- The important objects are: Bing and basket. The question asks whether the basket can hold Bing. Therefore, the question can be summarized as the following FOL query: can hold(basket, Bing)
+  
+  - input:
+      QUESTION: |-
+        Can a fish eat a leopard?
+    output: |-
+      1- The question asks whether a fish can eat a leopard.
+      2- There are two objects in this question: fish and leopard.
+      3- Among the two objects, obtaining information about fish and leopard is crucial for answering the question because the answer to the question requires knowledge about the properties and types of these two objects.
+      4- The important objects are: fish and leopard. The question asks whether a fish can eat a leopard. Therefore, the question can be summarized as the following FOL query: can eat(fish, leopard)

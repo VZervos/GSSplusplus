@@ -1,0 +1,34 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Benny_Frey",
+    "p": "http://www.wikidata.org/prop/direct/cause_of_death",
+    "o": "http://www.wikidata.org/entity/carbon_monoxide_poisoning",
+    "s_label": "Benny Frey",
+    "p_label": "cause of death",
+    "o_label": "carbon monoxide poisoning",
+    "triple": "(Benny Frey, cause of death, carbon monoxide poisoning)",
+    "importance": 0.3333333333333333,
+    "_s_name": "benny frey",
+    "_o_name": "carbon monoxide poisoning",
+    "_query_keywords": "{'same', 'frey', 'shuisky', 'did ivan shuisky suffer the same fate as benny frey?', 'did', 'fate', 'ivan', 'ivan shuisky', 'frey?', 'benny', 'as', 'benny frey', 'suffer', 'the'}",
+    "similarity": 0.7288433313369751,
+    "final_score": 0.4322108328342438,
+    "rank": 1
+  },
+  {
+    "s": "http://www.wikidata.org/entity/Ivan_Shuisky",
+    "p": "http://www.wikidata.org/prop/direct/cause_of_death",
+    "o": "http://www.wikidata.org/entity/carbon_monoxide_poisoning",
+    "s_label": "Ivan Shuisky",
+    "p_label": "cause of death",
+    "o_label": "carbon monoxide poisoning",
+    "triple": "(Ivan Shuisky, cause of death, carbon monoxide poisoning)",
+    "importance": 0.3333333333333333,
+    "_s_name": "ivan shuisky",
+    "_o_name": "carbon monoxide poisoning",
+    "_query_keywords": "{'same', 'frey', 'shuisky', 'did ivan shuisky suffer the same fate as benny frey?', 'did', 'fate', 'ivan', 'ivan shuisky', 'frey?', 'benny', 'as', 'benny frey', 'suffer', 'the'}",
+    "similarity": 0.7287361025810242,
+    "final_score": 0.43218402564525604,
+    "rank": 2
+  }
+]

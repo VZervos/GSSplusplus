@@ -1,0 +1,38 @@
+system: |-
+  Task: You are presented with a question that answering it requires commonsense reasoning ability about types of objects. By types, we mean the classes to which the objects belong to, such as "humans, animals, art works, etc.". Please take the following steps:
+  1- Consider the question about the objects and the First-order logic query that is written about them. Provide a general rule about the types of objects that make the answer to the question "yes". Try to state the types that contain both necessary and sufficient conditions to make the answer "yes".
+  2- Write this rule in the form of a First-order logic statement that its variables are conditioned based on their types. In other words, the acceptable format is: " predicate(x, y) | x: type of x, y: type of y"
+
+input_template: |-
+  Question: {{QUESTION}}
+  First-order logic Question: {{FOL_QUESTION}}
+
+few_shot:
+  - input:
+      QUESTION: |-
+        Can I hold Bing in a basket?
+      FOL_QUESTION: |-
+        can hold(basket, Bing)
+      
+      
+    output: |-
+      1- The question is asking if a "basket" can hold "Bing" in it. In general, an object x can hold another object y if x is a physical container and y is a physical object. However, if x is not a physical container or y is not a physical object, then x cannot hold y.
+      2- can hold( x, y) | x: physical container, y: physical object
+  
+  - input:
+      QUESTION: |-
+        Can someone eat Gmail?
+      FOL_QUESTION: |-
+        can eat( someone, Gmail)
+    output: |-
+      1- The question is asking if a person can eat Gmail. In general, a person x can eat an object y if x is a person and y is an edible object. However, if y is not an edible object, no one can eat it.
+      2- can eat( x, y) | x: person, y: edible object
+
+  - input:
+      QUESTION: |-
+        Does an iPad breathe oxygen?
+      FOL_QUESTION: |-
+        breathes(iPad, oxygen)
+    output: |-
+      1- The question is asking if an iPad can breathe oxygen. In general, an object x can breathe y if x is a living creature and y is a gas. However, if x is not a living creature, then it doesn't breathe. Also, if y is not a gas, it cannot be breathed by x.
+      2- breathes( x, y) | x: living creature, y: gas

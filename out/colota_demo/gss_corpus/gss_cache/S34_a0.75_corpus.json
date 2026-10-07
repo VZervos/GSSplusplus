@@ -1,0 +1,34 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Mahmoud_Dowlatabadi",
+    "p": "http://www.wikidata.org/prop/direct/notable_work",
+    "o": "http://www.wikidata.org/entity/Kelidar",
+    "s_label": "Mahmoud Dowlatabadi",
+    "p_label": "notable work",
+    "o_label": "Kelidar",
+    "triple": "(Mahmoud Dowlatabadi, notable work, Kelidar)",
+    "importance": 0.3333333333333333,
+    "_s_name": "mahmoud dowlatabadi",
+    "_o_name": "kelidar",
+    "_query_keywords": "{'are', 'makioka', \"are any of mahmoud dowlatabadi's works in the genre of the makioka sisters?\", 'the makioka sisters', 'mahmoud dowlatabadi', 'sisters?', 'in', \"dowlatabadi's\", 'works', 'dowlatabadi', 'of', 'mahmoud', 'genre', 'any', 'the', 'sisters'}",
+    "similarity": 0.7955515384674072,
+    "final_score": 0.4488878846168518,
+    "rank": 1
+  },
+  {
+    "s": "http://www.wikidata.org/entity/The_Makioka_Sisters",
+    "p": "http://www.wikidata.org/prop/direct/genre",
+    "o": "http://www.wikidata.org/entity/novel",
+    "s_label": "The Makioka Sisters",
+    "p_label": "genre",
+    "o_label": "novel",
+    "triple": "(The Makioka Sisters, genre, novel)",
+    "importance": 0.12,
+    "_s_name": "the makioka sisters",
+    "_o_name": "novel",
+    "_query_keywords": "{'are', 'makioka', \"are any of mahmoud dowlatabadi's works in the genre of the makioka sisters?\", 'the makioka sisters', 'mahmoud dowlatabadi', 'sisters?', 'in', \"dowlatabadi's\", 'works', 'dowlatabadi', 'of', 'mahmoud', 'genre', 'any', 'the', 'sisters'}",
+    "similarity": 0.8555672764778137,
+    "final_score": 0.3038918191194534,
+    "rank": 2
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "id": "S87",
+  "question": "Could Paolo Cannavaro have suffered from middle child syndrome?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Paolo Cannavaro",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Q159852",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "have",
+      "suffered"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Paolo Cannavaro",
+    "Q159852"
+  ]
+}

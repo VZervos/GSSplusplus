@@ -1,0 +1,26 @@
+{
+  "id": "S124",
+  "question": "Did Ivan Shuisky suffer the same fate as Benny Frey?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Ivan Shuisky",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "Benny Frey",
+        "type": "resource",
+        "importance": 5
+      }
+    ],
+    "verbs": [
+      "suffer"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Ivan Shuisky",
+    "Benny Frey"
+  ]
+}

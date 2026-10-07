@@ -1,0 +1,34 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Vaughan",
+    "p": "http://www.wikidata.org/prop/direct/description",
+    "o": "http://www.wikidata.org/entity/city_in_Ontario,_Canada",
+    "s_label": "Vaughan",
+    "p_label": "description",
+    "o_label": "city in Ontario, Canada",
+    "triple": "(Vaughan, description, city in Ontario, Canada)",
+    "importance": 0.3333333333333333,
+    "_s_name": "vaughan",
+    "_o_name": "city in ontario, canada",
+    "_query_keywords": "{'jamjuree art gallery', 'jamjuree', 'a', 'gallery?', 'take', 'q131894', 'someone', 'p123', 'could someone in vaughan take a taxi to the jamjuree art gallery?', 'vaughan', 'q5517890', 'in', 'q11019', 'art', 'gmt', 'taxi', 'to', 'gallery', 'could', 'the'}",
+    "similarity": 0.7500709295272827,
+    "final_score": 0.4375177323818207,
+    "rank": 1
+  },
+  {
+    "s": "http://www.wikidata.org/entity/Jamjuree_Art_Gallery",
+    "p": "http://www.wikidata.org/prop/direct/country",
+    "o": "http://www.wikidata.org/entity/Thailand",
+    "s_label": "Jamjuree Art Gallery",
+    "p_label": "country",
+    "o_label": "Thailand",
+    "triple": "(Jamjuree Art Gallery, country, Thailand)",
+    "importance": 0.3333333333333333,
+    "_s_name": "jamjuree art gallery",
+    "_o_name": "thailand",
+    "_query_keywords": "{'jamjuree art gallery', 'jamjuree', 'a', 'gallery?', 'take', 'q131894', 'someone', 'p123', 'could someone in vaughan take a taxi to the jamjuree art gallery?', 'vaughan', 'q5517890', 'in', 'q11019', 'art', 'gmt', 'taxi', 'to', 'gallery', 'could', 'the'}",
+    "similarity": 0.725170910358429,
+    "final_score": 0.43129272758960724,
+    "rank": 2
+  }
+]

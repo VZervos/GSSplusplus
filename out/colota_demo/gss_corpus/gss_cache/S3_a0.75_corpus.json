@@ -1,0 +1,18 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Leopold_Lanner",
+    "p": "http://www.wikidata.org/prop/direct/spouse",
+    "o": "http://www.wikidata.org/entity/Stefanie_Hertel",
+    "s_label": "Leopold Lanner",
+    "p_label": "spouse",
+    "o_label": "Stefanie Hertel",
+    "triple": "(Leopold Lanner, spouse, Stefanie Hertel)",
+    "importance": 0.3333333333333333,
+    "_s_name": "leopold lanner",
+    "_o_name": "stefanie hertel",
+    "_query_keywords": "{'does', 'leopold lanner', 'wife', 'a', \"lanner's\", 'living', 'leopold', 'using', \"does leopold lanner's wife make a living using her voice?\", 'her', 'voice?', 'make', 'lanner', 'q1065'}",
+    "similarity": 0.8153447508811951,
+    "final_score": 0.45383618772029877,
+    "rank": 1
+  }
+]

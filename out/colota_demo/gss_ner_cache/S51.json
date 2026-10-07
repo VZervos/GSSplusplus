@@ -1,0 +1,37 @@
+{
+  "id": "S51",
+  "question": "Could Ianis Hagi’s dad have seen his debut in Serie A?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q5",
+        "type": "resource",
+        "importance": 5
+      },
+      {
+        "name": "P31",
+        "type": "property",
+        "importance": 4
+      },
+      {
+        "name": "Q11424",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Q17537576",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "have"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q5",
+    "Q11424",
+    "Q17537576"
+  ]
+}

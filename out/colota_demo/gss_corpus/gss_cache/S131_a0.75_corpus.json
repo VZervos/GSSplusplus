@@ -1,0 +1,18 @@
+[
+  {
+    "s": "http://www.wikidata.org/entity/Pinar_Abay",
+    "p": "http://www.wikidata.org/prop/direct/position_held",
+    "o": "http://www.wikidata.org/entity/chief_executive_officer_(of,_ING_Bank_N.V.",
+    "s_label": "Pinar Abay",
+    "p_label": "position held",
+    "o_label": "chief executive officer (of, ING Bank N.V.",
+    "triple": "(Pinar Abay, position held, chief executive officer (of, ING Bank N.V.)",
+    "importance": 0.3333333333333333,
+    "_s_name": "pinar abay",
+    "_o_name": "chief executive officer (of, ing bank n.v.",
+    "_query_keywords": "{'pinar abay', 'n.v.', 'toilets', 'would', 'at', 'would pinar abay typically clean toilets at ing bank n.v. headquarters?', 'pinar', 'headquarters?', 'ing bank n.v.', 'clean', 'bank', 'typically', 'q1234567', 'ing', 'abay'}",
+    "similarity": 0.7957108020782471,
+    "final_score": 0.44892770051956177,
+    "rank": 1
+  }
+]

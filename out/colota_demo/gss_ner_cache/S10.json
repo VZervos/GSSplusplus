@@ -1,0 +1,26 @@
+{
+  "id": "S10",
+  "question": "Would The Tinker Tailor Soldier Spy be an appropriate film to show in a preschool class?",
+  "raw": {
+    "entities": [
+      {
+        "name": "Q11424",
+        "type": "resource",
+        "importance": 3
+      },
+      {
+        "name": "Q17537576",
+        "type": "resource",
+        "importance": 1
+      }
+    ],
+    "verbs": [
+      "be"
+    ],
+    "synonyms": []
+  },
+  "resource_names": [
+    "Q11424",
+    "Q17537576"
+  ]
+}
